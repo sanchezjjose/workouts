@@ -1,0 +1,13 @@
+.Landing .description {
+  width: 80%;
+  text-align: left;
+  white-space: pre-line;
+}
+
+.Landing .welcome-message span {
+  background-color: yellow;
+}
+
+.Landing .App-navigation {
+    border-bottom: 1px solid black;
+}

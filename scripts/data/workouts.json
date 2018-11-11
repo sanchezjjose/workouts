@@ -1,0 +1,123 @@
+{
+	"id": "murry-hill-gang",
+	"name": "Murry Hill Gang",
+	"seasons": {
+		"1": {
+			"id": "1",
+			"title": "Fall 2018",
+			"active": true,
+			"schedule": {
+				"1": {
+					"id": "1",
+					"type": "Pickup Game",
+					"date": "October 1, 2018 7:00",
+					"location": "Murry Bergtraum H.S.",
+					"address": "411 Pearl St, New York, NY 10038",
+					"roster": [
+						"Max Moise",
+						"Jose Sanchez",
+						"Ernest Lindain",
+						"Dave",
+						"William Lin"
+					]
+				},
+				"2": {
+					"id": "2",
+					"type": "Pickup Game",
+					"date": "October 7, 2018 7:00",
+					"location": "Murry Bergtraum H.S.",
+					"address": "411 Pearl St, New York, NY 10038",
+					"roster": [
+						"Max Moise",
+						"Dave",
+						"William Lin"
+					]
+				},
+				"3": {
+					"id": "3",
+					"type": "Pickup Game",
+					"date": "October 31, 2018 7:00",
+					"location": "Murry Bergtraum H.S.",
+					"address": "411 Pearl St, New York, NY 10038",
+					"roster": [
+						"Max Moise",
+						"Jose Sanchez",
+						"Ernest Lindain",
+						"Dave",
+						"William Lin"
+					]
+				},
+				"6": {
+					"id": "6",
+					"type": "Pickup Game",
+					"date": "December 1, 2018 7:00",
+					"location": "Murry Bergtraum H.S.",
+					"address": "411 Pearl St, New York, NY 10038",
+					"roster": [
+						"Max Moise",
+						"Jose Sanchez",
+						"Edwin",
+						"Chris",
+						"Fan Feng",
+						"Hao Tan",
+						"Ernest Lindain",
+						"Dave",
+						"William Lin"
+					]
+				},
+				"9": {
+					"id": "9",
+					"type": "Pickup Game",
+					"date": "December 10, 2018 7:00",
+					"location": "Murry Bergtraum H.S.",
+					"address": "411 Pearl St, New York, NY 10038",
+					"roster": [
+						"Fan Feng",
+						"Hao Tan",
+						"Ernest Lindain",
+						"Dave",
+						"William Lin"
+					]
+				},
+				"13": {
+					"id": "13",
+					"type": "Pickup Game",
+					"date": "December 17, 2018 7:00",
+					"location": "Murry Bergtraum H.S.",
+					"address": "411 Pearl St, New York, NY 10038",
+					"roster": [
+						"Max Moise",
+						"Jose Sanchez",
+						"Edwin",
+						"Chris"
+					]
+				}
+			}
+		},
+		"2": {
+			"id": "2",
+			"title": "Winter 2019",
+			"active": false,
+			"schedule": {
+				"1": {
+					"id": "1",
+					"type": "Pickup Game",
+					"date": "January 25, 2019 7:00",
+					"location": "Murry Bergtraum H.S.",
+					"address": "411 Pearl St, New York, NY 10038",
+					"roster": [
+						"Max Moise",
+						"Jose Sanchez",
+						"Edwin",
+						"Chris",
+						"Fan Feng",
+						"Hao Tan",
+						"Ernest Lindain",
+						"Dave",
+						"William Lin"
+					]
+				}
+			}
+		}
+	}
+}

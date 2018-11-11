@@ -1,0 +1,21 @@
+{
+  "name": "workouts",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@material/fab": "^0.40.1",
+    "@material/icon-button": "^0.40.1",
+    "aws-sdk": "^2.273.1",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://workouts",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
