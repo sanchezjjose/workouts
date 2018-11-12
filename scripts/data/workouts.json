@@ -1,121 +1,67 @@
 {
-	"id": "murry-hill-gang",
-	"name": "Murry Hill Gang",
-	"seasons": {
-		"1": {
-			"id": "1",
-			"title": "Fall 2018",
-			"active": true,
-			"schedule": {
+	"id": "jose",
+	"workouts": {
+		"2018-11-12T23:44:13.381Z": {
+			"days": [
+				"Mondays",
+				"Fridays"
+			],
+			"chest": {
 				"1": {
-					"id": "1",
-					"type": "Pickup Game",
-					"date": "October 1, 2018 7:00",
-					"location": "Murry Bergtraum H.S.",
-					"address": "411 Pearl St, New York, NY 10038",
-					"roster": [
-						"Max Moise",
-						"Jose Sanchez",
-						"Ernest Lindain",
-						"Dave",
-						"William Lin"
-					]
+					"type": "Barbell Bench Press",
+					"weight": "160",
+					"reps": "8",
+					"sets": "3"
 				},
 				"2": {
-					"id": "2",
-					"type": "Pickup Game",
-					"date": "October 7, 2018 7:00",
-					"location": "Murry Bergtraum H.S.",
-					"address": "411 Pearl St, New York, NY 10038",
-					"roster": [
-						"Max Moise",
-						"Dave",
-						"William Lin"
-					]
+					"type": "Push Ups",
+					"weight": "0",
+					"reps": "100",
+					"sets": "4"
 				},
 				"3": {
-					"id": "3",
-					"type": "Pickup Game",
-					"date": "October 31, 2018 7:00",
-					"location": "Murry Bergtraum H.S.",
-					"address": "411 Pearl St, New York, NY 10038",
-					"roster": [
-						"Max Moise",
-						"Jose Sanchez",
-						"Ernest Lindain",
-						"Dave",
-						"William Lin"
-					]
+					"type": "Dips",
+					"weight": "0",
+					"reps": "10",
+					"sets": "4"
+				}
+			},
+			"shoulders": {
+				"1": {
+					"type": "Upright Cable Row",
+					"weight": "110",
+					"reps": "8",
+					"sets": "3"
+				},
+				"2": {
+					"type": "Lateral Raise Machine",
+					"weight": "75",
+					"reps": "8",
+					"sets": "3"
+				},
+				"3": {
+					"type": "Reverse Machine Flies",
+					"weight": "110",
+					"reps": "8",
+					"sets": "3"
+				},
+				"4": {
+					"type": "Barbell Military Press",
+					"weight": "100",
+					"reps": "5",
+					"sets": "3"
+				},
+				"5": {
+					"type": "Front Two-Dumbbell Raise",
+					"weight": "20",
+					"reps": "8",
+					"sets": "3"
 				},
 				"6": {
-					"id": "6",
-					"type": "Pickup Game",
-					"date": "December 1, 2018 7:00",
-					"location": "Murry Bergtraum H.S.",
-					"address": "411 Pearl St, New York, NY 10038",
-					"roster": [
-						"Max Moise",
-						"Jose Sanchez",
-						"Edwin",
-						"Chris",
-						"Fan Feng",
-						"Hao Tan",
-						"Ernest Lindain",
-						"Dave",
-						"William Lin"
-					]
-				},
-				"9": {
-					"id": "9",
-					"type": "Pickup Game",
-					"date": "December 10, 2018 7:00",
-					"location": "Murry Bergtraum H.S.",
-					"address": "411 Pearl St, New York, NY 10038",
-					"roster": [
-						"Fan Feng",
-						"Hao Tan",
-						"Ernest Lindain",
-						"Dave",
-						"William Lin"
-					]
-				},
-				"13": {
-					"id": "13",
-					"type": "Pickup Game",
-					"date": "December 17, 2018 7:00",
-					"location": "Murry Bergtraum H.S.",
-					"address": "411 Pearl St, New York, NY 10038",
-					"roster": [
-						"Max Moise",
-						"Jose Sanchez",
-						"Edwin",
-						"Chris"
-					]
-				}
-			}
-		},
-		"2": {
-			"id": "2",
-			"title": "Winter 2019",
-			"active": false,
-			"schedule": {
-				"1": {
-					"id": "1",
-					"type": "Pickup Game",
-					"date": "January 25, 2019 7:00",
-					"location": "Murry Bergtraum H.S.",
-					"address": "411 Pearl St, New York, NY 10038",
-					"roster": [
-						"Max Moise",
-						"Jose Sanchez",
-						"Edwin",
-						"Chris",
-						"Fan Feng",
-						"Hao Tan",
-						"Ernest Lindain",
-						"Dave",
-						"William Lin"
-					]
+					"type": "Shrugs",
+					"weight": "70",
+					"reps": "10",
+					"sets": "3"
 				}
 			}
 		}
