@@ -13,6 +13,9 @@ import Footer from './Footer/Footer';
 
 // import { TeamContext } from './TeamContext';
 
+// TODO: Replace w/ DynamoDB
+const workouts = require('./workouts.json');
+
 class App extends Component {
 
   constructor(props) {
@@ -28,9 +31,16 @@ class App extends Component {
 
     if (userId.length > 0) {
       const user = { id: userId };
+
+      const nextWorkout = Object.entries(workouts.workouts)[0][0];
+      const routine = Object.entries(workouts.workouts)[0][1];
+
+      console.log(workouts);
       
       this.setState({
-        user: user 
+        user: user,
+        workout: nextWorkout,
+        routine: routine
       })
     }
   }
@@ -42,7 +52,7 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container'>
-              <Home />
+              <Home routine={this.state.routine} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

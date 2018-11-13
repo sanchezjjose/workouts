@@ -8,3 +8,26 @@
   font-weight: 400;
   font-size: 32px;
 }
+
+.Home .part {
+  border-bottom: 1px #9b9b9b solid;
+  width: 95%;
+}
+
+.Home .group {
+  margin-bottom: 30px;
+}
+
+.Home .workout {
+  display: grid;
+  grid-template-columns: 150px repeat(3, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
+  overflow-x: scroll;
+  margin-bottom: 10px;
+}
+
+.Home .workout .type {
+  justify-self: left;
+}
