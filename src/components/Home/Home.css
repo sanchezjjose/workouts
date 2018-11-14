@@ -9,9 +9,30 @@
   font-size: 32px;
 }
 
-.Home .part {
+.Home .heading {
+  display: grid;
+  grid-template-columns: 150px repeat(3, 1fr);
+  justify-items: center;
+  align-items: end;
+  text-align: center;
   border-bottom: 1px #9b9b9b solid;
-  width: 95%;
+  margin: 10px 0;
+  padding-bottom: 5px;
+}
+
+.Home span {
+  font-size: 14px;
+}
+
+.Home .unit {
+  font-size: 10px;
+  color: #9b9b9b;
+}
+
+.Home .part {
+  display: inline-block;
+  justify-self: left; 
+  margin: 0;
 }
 
 .Home .group {
@@ -26,6 +47,7 @@
   align-items: center;
   overflow-x: scroll;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .Home .workout .type {
