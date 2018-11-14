@@ -9,7 +9,7 @@
   font-size: 32px;
 }
 
-.Home .heading {
+.Home .header {
   display: grid;
   grid-template-columns: 150px repeat(3, 1fr);
   justify-items: center;
@@ -20,11 +20,11 @@
   padding-bottom: 5px;
 }
 
-.Home span {
+.Home .header span {
   font-size: 14px;
 }
 
-.Home .unit {
+.Home .header .unit {
   font-size: 10px;
   color: #9b9b9b;
 }
