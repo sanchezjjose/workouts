@@ -15,7 +15,7 @@ class Home extends Component {
             <h2 className='weekday'>Tuesday</h2>
             <div className='group'>
               <div className='header'>
-                <h3 className='part'>Biceps</h3>
+                <h3 className='muscle'>Biceps</h3>
                 <span className='weight'>Weight <span className='unit'>(lbs)</span></span>
                 <span className='reps'>Reps</span>
                 <span className='sets'>Sets</span>
@@ -41,7 +41,7 @@ class Home extends Component {
             </div>
             <div className='group'>
               <div className='header'>
-                <h3 className='part'>Triceps</h3>
+                <h3 className='muscle'>Triceps</h3>
                 <span className='weight'>Weight <span className='unit'>(lbs)</span></span>
                 <span className='reps'>Reps</span>
                 <span className='sets'>Sets</span>

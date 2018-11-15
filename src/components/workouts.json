@@ -1,67 +1,67 @@
 {
 	"id": "jose",
+	"excercises": {
+		"chest": [
+			"Barbell Bench Press",
+			"Push Ups",
+			"Dips"
+		],
+		"shoulders": [
+			"Upright Cable Row",
+			"Lateral Raise Machine"
+		],
+		"back": [
+			"Pull Ups"
+		]
+	},
 	"workouts": {
-		"2018-11-12T23:44:13.381Z": {
-			"days": [
-				"Mondays",
-				"Fridays"
-			],
-			"chest": {
-				"1": {
-					"type": "Barbell Bench Press",
-					"weight": "160",
-					"reps": "8",
-					"sets": "3"
+		"history": {
+			"11-12-2018": {
+				"chest": {
+					"1": {
+						"type": "Barbell Bench Press",
+						"weight": "135",
+						"reps": "5",
+						"sets": "3"
+					}
 				},
-				"2": {
-					"type": "Push Ups",
-					"weight": "0",
-					"reps": "100",
-					"sets": "4"
-				},
-				"3": {
-					"type": "Dips",
-					"weight": "0",
-					"reps": "10",
-					"sets": "4"
+				"shoulders": {
+					"1": {
+						"type": "Upright Cable Row",
+						"weight": "90",
+						"reps": "6",
+						"sets": "3"
+					}
 				}
 			},
-			"shoulders": {
-				"1": {
-					"type": "Upright Cable Row",
-					"weight": "110",
-					"reps": "8",
-					"sets": "3"
+			"11-15-2018": {
+				"chest": {
+					"1": {
+						"type": "Barbell Bench Press",
+						"weight": "160",
+						"reps": "8",
+						"sets": "3"
+					}
+				}
+			}
+		},
+		"routine": {
+			"monday": {
+				"chest": {
+					"1": {
+						"type": "Barbell Bench Press",
+						"weight": "160",
+						"reps": "8",
+						"sets": "3"
+					}
 				},
-				"2": {
-					"type": "Lateral Raise Machine",
-					"weight": "75",
-					"reps": "8",
-					"sets": "3"
-				},
-				"3": {
-					"type": "Reverse Machine Flies",
-					"weight": "110",
-					"reps": "8",
-					"sets": "3"
-				},
-				"4": {
-					"type": "Barbell Military Press",
-					"weight": "100",
-					"reps": "5",
-					"sets": "3"
-				},
-				"5": {
-					"type": "Front Two-Dumbbell Raise",
-					"weight": "20",
-					"reps": "8",
-					"sets": "3"
-				},
-				"6": {
-					"type": "Shrugs",
-					"weight": "70",
-					"reps": "10",
-					"sets": "3"
+				"shoulders": {
+					"1": {
+						"type": "Upright Cable Row",
+						"weight": "110",
+						"reps": "8",
+						"sets": "3"
+					}
 				}
 			}
 		}
