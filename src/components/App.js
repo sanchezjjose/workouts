@@ -14,7 +14,7 @@ import Footer from './Footer/Footer';
 // import { TeamContext } from './TeamContext';
 
 // TODO: Replace w/ DynamoDB
-const workouts = require('./workouts.json');
+const workoutsDB = require('./workouts.json');
 
 class App extends Component {
 
@@ -22,26 +22,39 @@ class App extends Component {
     super(props);
 
     this.state = {
-      user: { }
+      user: {},
+      workout: {}
     };
   }
 
   componentDidMount() {
-    const userId = window.location.pathname.split('/')[1];
+    const id = window.location.pathname.split('/')[1];
 
-    if (userId.length > 0) {
-      const user = { id: userId };
+    if (id.length > 0) {
+      const user = { id: id };
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const dayOfWeek = days[new Date().getDay()];
+      const query = Object.entries(workoutsDB.routine).filter(([ key ]) => key === dayOfWeek);
 
-      const nextWorkout = Object.entries(workouts.workouts)[0][0];
-      const routine = Object.entries(workouts.workouts)[0][1];
+      if (query.length > 0) {
+        const result = query[0][1];
+        const routine = Object.entries(result).map(([ key, value ]) =>  {
+          return {
+            muscle: key,
+            exercises: Object.entries(value)
+          }
+        });
 
-      console.log(workouts);
-      
-      this.setState({
-        user: user,
-        workout: nextWorkout,
-        routine: routine
-      })
+        const workout = {
+          day: dayOfWeek,
+          routine: routine
+        };
+
+        this.setState({
+          user: user,
+          workout: workout
+        });
+      }
     }
   }
 
@@ -52,7 +65,7 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container'>
-              <Home routine={this.state.routine} />
+              <Home workout={this.state.workout} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>
