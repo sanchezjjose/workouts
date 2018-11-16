@@ -53,6 +53,8 @@
 }
 
 .Home .exercise .status-button {
+  width: 26px;
+  height: 26px;
   padding: 0;
 }
 
