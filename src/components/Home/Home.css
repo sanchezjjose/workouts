@@ -39,7 +39,7 @@
   margin-bottom: 30px;
 }
 
-.Home .workout {
+.Home .exercise {
   display: grid;
   grid-template-columns: 150px repeat(3, 1fr);
   grid-gap: 10px;
@@ -50,6 +50,6 @@
   font-size: 14px;
 }
 
-.Home .workout .type {
+.Home .exercise .name {
   justify-self: left;
 }

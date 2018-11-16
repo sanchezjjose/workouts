@@ -38,16 +38,22 @@ class App extends Component {
 
       if (query.length > 0) {
         const result = query[0][1];
-        const routine = Object.entries(result).map(([ key, value ]) =>  {
+        const routines = Object.entries(result).map(([ key, value ]) =>  {
           return {
             muscle: key,
-            exercises: Object.entries(value)
+            exercises: Object.entries(value).map(([ key, value ]) => {
+              return {
+                name: key,
+                metric: value
+              }
+            })
           }
         });
 
+        // TODO: Make Class instance / View Model
         const workout = {
           day: dayOfWeek,
-          routine: routine
+          routines: routines
         };
 
         this.setState({
