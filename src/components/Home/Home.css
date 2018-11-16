@@ -11,7 +11,9 @@
 
 .Home .header {
   display: grid;
-  grid-template-columns: 150px repeat(3, 1fr);
+  /* Add width of status button plus gap between button and name column */
+  grid-template-columns: calc(150px + 26px + 10px) repeat(3, 1fr);
+  grid-gap: 10px;
   justify-items: center;
   align-items: end;
   text-align: center;
@@ -41,13 +43,21 @@
 
 .Home .exercise {
   display: grid;
-  grid-template-columns: 150px repeat(3, 1fr);
+  grid-template-columns: 24px 150px repeat(3, 1fr);
   grid-gap: 10px;
   justify-items: center;
   align-items: center;
   overflow-x: scroll;
   margin-bottom: 10px;
   font-size: 14px;
+}
+
+.Home .exercise .status-button {
+  padding: 0;
+}
+
+.Home .exercise .status-button.fill {
+  color: green;
 }
 
 .Home .exercise .name {

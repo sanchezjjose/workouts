@@ -31,7 +31,7 @@ class App extends Component {
     const id = window.location.pathname.split('/')[1];
 
     if (id.length > 0) {
-      const user = { id: id };
+      const user = { id: id, name: workoutsDB.name };
       const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       const dayOfWeek = days[new Date().getDay()];
       const query = Object.entries(workoutsDB.routine).filter(([ key ]) => key === dayOfWeek);
@@ -71,7 +71,7 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container'>
-              <Home workout={this.state.workout} />
+              <Home user={this.state.user} workout={this.state.workout} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

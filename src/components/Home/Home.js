@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
 
 import './Home.css';
+import { userInfo } from 'os';
 
 class Home extends Component {
 
-  render () {
+  constructor(props) {
+    super(props);
+
+    this.markDone = this.markDone.bind(this);
+  }
+
+  markDone(e) {
+    if (e.target.innerText === 'check_circle_outline') {
+      e.target.innerText = 'check_circle';
+      e.target.classList.add('fill');
+
+    } else {
+      e.target.innerText = 'check_circle_outline';
+      e.target.classList.remove('fill');
+    }
+  }
+
+  render() {
     const workout = this.props.workout;
     const routines = workout.routines || [];
 
     return (
       <div className='Home'>
-        <h1>Jose's Workouts</h1> 
+        <h1>{this.props.user.name}'s Workout</h1> 
         <div className='content-wrapper'>
         {routines.length > 0 && 
           <div className='content'>
@@ -20,13 +38,14 @@ class Home extends Component {
                 <div key={routine.muscle} className='group'>
                   <div className='header'>
                     <h3 className='muscle'>{routine.muscle}</h3>
-                    <span className='weight'>Weight <span className='unit'>(lbs)</span></span>
+                    <span className='weight'>Weight</span>
                     <span className='reps'>Reps</span>
                     <span className='sets'>Sets</span>
                   </div>
                   {routine.exercises.map (exercise => {
                     return (
                       <div key={exercise.name} className='exercise'>
+                        <button onClick={(e) => this.markDone(e)} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
                         <div className='name'>{exercise.name}</div>
                         <div className='weight'>{exercise.metric.weight}</div>
                         <div className='reps'>{exercise.metric.reps}</div>
