@@ -55,7 +55,15 @@
 		}
 	},
 	"routine": {
+		"Monday": {
+		},
+		"Tuesday": {
+		},
+		"Wednesday": {
+		},
 		"Thursday": {
+		},
+		"Friday": {
 			"Chest": {
 				"Barbell Bench Press": {
 					"weight": "160",
@@ -66,6 +74,11 @@
 					"weight": "-",
 					"reps": "100",
 					"sets": "4"
+				},
+				"Dips": {
+					"weight": "-",
+					"reps": "10",
+					"sets": "4"
 				}
 			},
 			"Shoulders": {
@@ -73,8 +86,37 @@
 					"weight": "110",
 					"reps": "8",
 					"sets": "3"
+				},
+				"Lateral Raise Machine": {
+					"weight": "80",
+					"reps": "12",
+					"sets": "3"
+				},
+				"Reverse Machine Flies": {
+					"weight": "115",
+					"reps": "8",
+					"sets": "3"
+				},
+				"Barbell Military Press": {
+					"weight": "105",
+					"reps": "5",
+					"sets": "3"
+				},
+				"Front Two-Dumbbell Raise": {
+					"weight": "20",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Shrugs": {
+					"weight": "70",
+					"reps": "20",
+					"sets": "3"
 				}
 			}
+		},
+		"Saturday": {
+		},
+		"Sunday": {
 		}
 	}
 }
