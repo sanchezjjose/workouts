@@ -1,3 +1,7 @@
 .App {
   font-family: 'Roboto', sans-serif;
 }
+
+.App .container {
+  margin-bottom: 100px
+}
