@@ -72,5 +72,5 @@
   margin-top: 12px;
   bottom: 80px;
   right: 20px;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
 }

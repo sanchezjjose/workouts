@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './Home.css';
 
 // import { MDCRipple } from '@material/ripple';
+
 import "@material/fab/dist/mdc.fab.min.css";
 import "@material/icon-button/dist/mdc.icon-button.min.css";
 
@@ -27,10 +28,10 @@ class Home extends Component {
   }
 
   componentDidUpdate() {
-    // if (document.querySelector('.mdc-icon-button')) {
-    //   const iconButtonRipple = new MDCRipple(document.querySelector('.mdc-icon-button'));
-    //   iconButtonRipple.unbounded = true;
-    // }
+    // const toggleButton = new mdc.iconButton.MDCIconButtonToggle(document.getElementById('add-to-favorites'));
+    // const fabRipple = new MDCRipple(document.querySelector('.mdc-fab'));
+    // const iconButtonRipple = new MDCRipple(document.querySelector('.mdc-icon-button'));
+    // iconButtonRipple.unbounded = true;
   }
 
   render() {
@@ -67,7 +68,7 @@ class Home extends Component {
                 </div>
               );
             })}
-            <button className="mdc-fab mdc-fab--mini add-exercise-button" aria-label="Add">
+            <button className="mdc-fab add-exercise-button" aria-label="Add">
               <span className="mdc-fab__icon material-icons">add</span>
             </button>
           </div>
