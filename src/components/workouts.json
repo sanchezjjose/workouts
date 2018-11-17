@@ -72,7 +72,7 @@
 				},
 				"Pushups": {
 					"weight": "-",
-					"reps": "100",
+					"reps": "25",
 					"sets": "4"
 				},
 				"Dips": {
@@ -115,6 +115,72 @@
 			}
 		},
 		"Saturday": {
+			"Biceps": {
+				"Curls (bands)": {
+					"weight": "-",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Chin-Up": {
+					"weight": "-",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Dumbbell Curls": {
+					"weight": "25",
+					"reps": "10",
+					"sets": "3"
+				}
+			},
+			"Back": {
+				"Pull Ups": {
+					"weight": "-",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Bent-Over Barbell Row": {
+					"weight": "125",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Wide-Grip Seated Cable Row": {
+					"weight": "140",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Close-Grip Pull Down": {
+					"weight": "140",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Single-Arm Dumbbell Row": {
+					"weight": "140",
+					"reps": "10",
+					"sets": "3"
+				}
+			},
+			"Triceps": {
+				"Dips": {
+					"weight": "-",
+					"reps": "20",
+					"sets": "3"
+				},
+				"Tricep Pushdown (rope)": {
+					"weight": "60",
+					"reps": "8",
+					"sets": "3"
+				},
+				"Overhead Extension Machine": {
+					"weight": "60",
+					"reps": "10",
+					"sets": "3"
+				},
+				"EZ-Bar Standing Overhead": {
+					"weight": "70",
+					"reps": "10",
+					"sets": "3"
+				}
+			}
 		},
 		"Sunday": {
 		}

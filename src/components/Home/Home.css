@@ -59,9 +59,18 @@
 }
 
 .Home .exercise .status-button.fill {
-  color: green;
+  color: #00897B;
 }
 
 .Home .exercise .name {
   justify-self: left;
+}
+
+.Home .add-exercise-button {
+  background-color: #E53935;
+  position: fixed;
+  margin-top: 12px;
+  bottom: 80px;
+  right: 20px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
