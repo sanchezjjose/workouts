@@ -56,17 +56,9 @@
 	},
 	"routine": {
 		"Monday": {
-		},
-		"Tuesday": {
-		},
-		"Wednesday": {
-		},
-		"Thursday": {
-		},
-		"Friday": {
 			"Chest": {
 				"Barbell Bench Press": {
-					"weight": "160",
+					"weight": "165",
 					"reps": "8",
 					"sets": "3"
 				},
@@ -83,13 +75,13 @@
 			},
 			"Shoulders": {
 				"Upright Cable Row": {
-					"weight": "110",
+					"weight": "120",
 					"reps": "8",
 					"sets": "3"
 				},
 				"Lateral Raise Machine": {
 					"weight": "80",
-					"reps": "12",
+					"reps": "8",
 					"sets": "3"
 				},
 				"Reverse Machine Flies": {
@@ -104,7 +96,164 @@
 				},
 				"Front Two-Dumbbell Raise": {
 					"weight": "20",
+					"reps": "8",
+					"sets": "3"
+				},
+				"Shrugs": {
+					"weight": "70",
+					"reps": "20",
+					"sets": "3"
+				}
+			}
+		},
+		"Tuesday": {
+			"Biceps": {
+				"Curls (bands)": {
+					"weight": "-",
 					"reps": "10",
+					"sets": "3"
+				},
+				"Chin-Up": {
+					"weight": "-",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Dumbbell Curls": {
+					"weight": "25",
+					"reps": "10",
+					"sets": "3"
+				}
+			},
+			"Back": {
+				"Pull Ups": {
+					"weight": "-",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Bent-Over Barbell Row": {
+					"weight": "125",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Wide-Grip Seated Cable Row": {
+					"weight": "140",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Close-Grip Pull Down": {
+					"weight": "140",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Single-Arm Dumbbell Row": {
+					"weight": "65",
+					"reps": "10",
+					"sets": "3"
+				}
+			},
+			"Triceps": {
+				"Dips": {
+					"weight": "-",
+					"reps": "20",
+					"sets": "3"
+				},
+				"Tricep Pushdown (rope)": {
+					"weight": "110",
+					"reps": "8",
+					"sets": "3"
+				},
+				"Overhead Extension Machine": {
+					"weight": "60",
+					"reps": "10",
+					"sets": "3"
+				},
+				"EZ-Bar Standing Overhead": {
+					"weight": "70",
+					"reps": "10",
+					"sets": "3"
+				}
+			}
+		},
+		"Wednesday": {
+			"Legs": {
+				"Barbell Squat": {
+					"weight": "195",
+					"reps": "5",
+					"sets": "5"
+				},
+				"Barbell Deadlift": {
+					"weight": "150",
+					"reps": "5",
+					"sets": "1"
+				},
+				"Hip Hinge": {
+					"weight": "100",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Leg Extensions": {
+					"weight": "130",
+					"reps": "10",
+					"sets": "4"
+				},
+				"Seated Calf Raise": {
+					"weight": "260",
+					"reps": "10",
+					"sets": "4"
+				}
+			},
+			"Other": {
+				"Sauna": {
+					"weight": "-",
+					"reps": "30",
+					"sets": "1"
+				}
+			}
+		},
+		"Thursday": {
+		},
+		"Friday": {
+			"Chest": {
+				"Barbell Bench Press": {
+					"weight": "165",
+					"reps": "8",
+					"sets": "3"
+				},
+				"Pushups": {
+					"weight": "-",
+					"reps": "25",
+					"sets": "4"
+				},
+				"Dips": {
+					"weight": "-",
+					"reps": "10",
+					"sets": "4"
+				}
+			},
+			"Shoulders": {
+				"Upright Cable Row": {
+					"weight": "120",
+					"reps": "8",
+					"sets": "3"
+				},
+				"Lateral Raise Machine": {
+					"weight": "80",
+					"reps": "8",
+					"sets": "3"
+				},
+				"Reverse Machine Flies": {
+					"weight": "115",
+					"reps": "8",
+					"sets": "3"
+				},
+				"Barbell Military Press": {
+					"weight": "105",
+					"reps": "5",
+					"sets": "3"
+				},
+				"Front Two-Dumbbell Raise": {
+					"weight": "20",
+					"reps": "8",
 					"sets": "3"
 				},
 				"Shrugs": {
@@ -154,7 +303,7 @@
 					"sets": "3"
 				},
 				"Single-Arm Dumbbell Row": {
-					"weight": "140",
+					"weight": "65",
 					"reps": "10",
 					"sets": "3"
 				}
@@ -166,7 +315,7 @@
 					"sets": "3"
 				},
 				"Tricep Pushdown (rope)": {
-					"weight": "60",
+					"weight": "110",
 					"reps": "8",
 					"sets": "3"
 				},
@@ -183,6 +332,40 @@
 			}
 		},
 		"Sunday": {
+			"Legs": {
+				"Barbell Squat": {
+					"weight": "195",
+					"reps": "5",
+					"sets": "5"
+				},
+				"Barbell Deadlift": {
+					"weight": "150",
+					"reps": "5",
+					"sets": "1"
+				},
+				"Hip Hinge": {
+					"weight": "100",
+					"reps": "10",
+					"sets": "3"
+				},
+				"Leg Extensions": {
+					"weight": "130",
+					"reps": "10",
+					"sets": "4"
+				},
+				"Seated Calf Raise": {
+					"weight": "260",
+					"reps": "10",
+					"sets": "4"
+				}
+			},
+			"Other": {
+				"Sauna": {
+					"weight": "-",
+					"reps": "30",
+					"sets": "1"
+				}
+			}
 		}
 	}
 }
