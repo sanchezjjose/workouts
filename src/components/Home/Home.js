@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import './Home.css';
 
-// import { MDCRipple } from '@material/ripple';
-
+import { MDCRipple } from '@material/ripple';
 import "@material/fab/dist/mdc.fab.min.css";
 import "@material/icon-button/dist/mdc.icon-button.min.css";
 
@@ -28,10 +27,7 @@ class Home extends Component {
   }
 
   componentDidUpdate() {
-    // const toggleButton = new mdc.iconButton.MDCIconButtonToggle(document.getElementById('add-to-favorites'));
-    // const fabRipple = new MDCRipple(document.querySelector('.mdc-fab'));
-    // const iconButtonRipple = new MDCRipple(document.querySelector('.mdc-icon-button'));
-    // iconButtonRipple.unbounded = true;
+    new MDCRipple(document.querySelector('.mdc-fab'));
   }
 
   render() {
