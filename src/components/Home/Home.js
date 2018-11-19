@@ -9,18 +9,11 @@ import "@material/icon-button/dist/mdc.icon-button.min.css";
 
 class Home extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      edit: false
-    }
-
-    this.markDone = this.markDone.bind(this);
-    this.editWorkout = this.editWorkout.bind(this);
+  state = {
+    edit: false
   }
 
-  markDone(e) {
+  handleMarkDone = (e) => {
     if (e.target.innerText === 'check_circle_outline') {
       e.target.innerText = 'check_circle';
       e.target.classList.add('fill');
@@ -31,10 +24,18 @@ class Home extends Component {
     }
   }
 
-  editWorkout(e) {
+  handleEdit = (e) => {
     e.preventDefault();
 
+    console.log('Edit clicked...');
+
     this.setState({ edit: !this.state.edit });
+  }
+
+  handleDelete = (e) => {
+    e.preventDefault();
+
+    console.log('Deleting exercise...');
   }
 
   componentDidUpdate() {
@@ -53,7 +54,7 @@ class Home extends Component {
           <div className='content'>
             <div className='routine-heading'>
               <h2 className='weekday'>{workout.day}</h2>
-              <a onClick={this.editWorkout} className='edit' href='#'>Edit</a>
+              <button onClick={this.handleEdit} className='edit'>Edit</button>
             </div>
             {routines.map (routine => {
               return (
@@ -67,10 +68,10 @@ class Home extends Component {
                   {routine.exercises.map (exercise => {
                     return (
                       <div key={exercise.name} className='exercise'>
-                        <button onClick={(e) => this.markDone(e)} className="status-button mdc-icon-button material-icons">
-                          {this.state.edit && <span>delete</span>}
-                          check_circle_outline
-                        </button>
+                        {this.state.edit &&
+                          <button onClick={this.handleDelete} className="delete-button mdc-icon-button material-icons">delete</button>
+                        }
+                        <button onClick={this.handleMarkDone} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
                         <div className='name'>{exercise.name}</div>
                         <div className='weight'>{exercise.metric.weight}</div>
                         <div className='reps'>{exercise.metric.reps}</div>
