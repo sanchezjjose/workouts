@@ -22,6 +22,20 @@
   padding-bottom: 5px;
 }
 
+.Home .routine-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.Home .routine-heading .weekday {
+  margin: 0;
+}
+
+.Home .routine-heading .edit {
+  justify-self: end;
+}
+
 .Home .header span {
   font-size: 16px;
 }

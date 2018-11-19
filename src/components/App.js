@@ -31,35 +31,40 @@ class App extends Component {
     const id = window.location.pathname.split('/')[1];
 
     if (id.length > 0) {
-      const user = { id: id, name: workoutsDB.name };
-      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      const dayOfWeek = days[new Date().getDay()];
-      const query = Object.entries(workoutsDB.routine).filter(([ key ]) => key === dayOfWeek);
+      // TODO: Fake query, replace with DB lookup
+      const result = workoutsDB.find(result => result.id === id);
 
-      if (query.length > 0) {
-        const result = query[0][1];
-        const routines = Object.entries(result).map(([ key, value ]) =>  {
-          return {
-            muscle: key,
-            exercises: Object.entries(value).map(([ key, value ]) => {
-              return {
-                name: key,
-                metric: value
-              }
-            })
-          }
-        });
+      if (result) {
+        const user = { id: result.id, name: result.name };
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayOfWeek = days[new Date().getDay()];
+        const query = Object.entries(result.routine).filter(([ key ]) => key === dayOfWeek);
 
-        // TODO: Make Class instance / View Model
-        const workout = {
-          day: dayOfWeek,
-          routines: routines
-        };
+        if (query.length > 0) {
+          const result = query[0][1];
+          const routines = Object.entries(result).map(([ key, value ]) =>  {
+            return {
+              muscle: key,
+              exercises: Object.entries(value).map(([ key, value ]) => {
+                return {
+                  name: key,
+                  metric: value
+                }
+              })
+            }
+          });
 
-        this.setState({
-          user: user,
-          workout: workout
-        });
+          // TODO: Make Class instance / View Model
+          const workout = {
+            day: dayOfWeek,
+            routines: routines
+          };
+
+          this.setState({
+            user: user,
+            workout: workout
+          });
+        }
       }
     }
   }
