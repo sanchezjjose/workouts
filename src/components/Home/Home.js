@@ -12,7 +12,12 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      edit: false
+    }
+
     this.markDone = this.markDone.bind(this);
+    this.editWorkout = this.editWorkout.bind(this);
   }
 
   markDone(e) {
@@ -26,6 +31,12 @@ class Home extends Component {
     }
   }
 
+  editWorkout(e) {
+    e.preventDefault();
+
+    this.setState({ edit: !this.state.edit });
+  }
+
   componentDidUpdate() {
     new MDCRipple(document.querySelector('.mdc-fab'));
   }
@@ -36,11 +47,14 @@ class Home extends Component {
 
     return (
       <div className='Home'>
-        <h1>{this.props.user.name}'s Workout</h1> 
+        <h1>{this.props.user.name}'s Workout</h1>
         <div className='content-wrapper'>
         {routines.length > 0 && 
           <div className='content'>
-            <h2 className='weekday'>{workout.day}</h2>
+            <div className='routine-heading'>
+              <h2 className='weekday'>{workout.day}</h2>
+              <a onClick={this.editWorkout} className='edit' href='#'>Edit</a>
+            </div>
             {routines.map (routine => {
               return (
                 <div key={routine.muscle} className='group'>
@@ -53,7 +67,10 @@ class Home extends Component {
                   {routine.exercises.map (exercise => {
                     return (
                       <div key={exercise.name} className='exercise'>
-                        <button onClick={(e) => this.markDone(e)} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
+                        <button onClick={(e) => this.markDone(e)} className="status-button mdc-icon-button material-icons">
+                          {this.state.edit && <span>delete</span>}
+                          check_circle_outline
+                        </button>
                         <div className='name'>{exercise.name}</div>
                         <div className='weight'>{exercise.metric.weight}</div>
                         <div className='reps'>{exercise.metric.reps}</div>
