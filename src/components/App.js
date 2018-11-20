@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 
-// import * as WorkoutsAPI from '../api/WorkoutsAPI';
+import { getUserWorkouts } from '../api/WorkoutsAPI';
 // import * as Util from '../lib/Util';
 
 import Landing from './Landing/Landing';
@@ -11,61 +11,50 @@ import Home from './Home/Home';
 import Progress from './Progress/Progress';
 import Footer from './Footer/Footer';
 
-// import { TeamContext } from './TeamContext';
-
-// TODO: Replace w/ DynamoDB
-const workoutsDB = require('./workouts.json');
-
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      user: {},
-      workout: {}
-    };
-  }
+  state = {
+    user: {},
+    workout: {}
+  };
 
   componentDidMount() {
     const id = window.location.pathname.split('/')[1];
 
     if (id.length > 0) {
-      // TODO: Fake query, replace with DB lookup
-      const result = workoutsDB.find(result => result.id === id);
+      getUserWorkouts(id).then(user => {
+        if (user) {
+          const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+          const dayOfWeek = days[new Date().getDay()];
+          const query = Object.entries(user.routine).filter(([ key ]) => key === dayOfWeek);
 
-      if (result) {
-        const user = { id: result.id, name: result.name };
-        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const dayOfWeek = days[new Date().getDay()];
-        const query = Object.entries(result.routine).filter(([ key ]) => key === dayOfWeek);
+          if (query.length > 0) {
+            const result = query[0][1];
+            const routines = Object.entries(result).map(([ key, value ]) =>  {
+              return {
+                muscle: key,
+                exercises: Object.entries(value).map(([ key, value ]) => {
+                  return {
+                    name: key,
+                    metric: value
+                  }
+                })
+              }
+            });
 
-        if (query.length > 0) {
-          const result = query[0][1];
-          const routines = Object.entries(result).map(([ key, value ]) =>  {
-            return {
-              muscle: key,
-              exercises: Object.entries(value).map(([ key, value ]) => {
-                return {
-                  name: key,
-                  metric: value
-                }
-              })
-            }
-          });
+            // TODO: Make Class instance / View Model
+            const workout = {
+              day: dayOfWeek,
+              routines: routines
+            };
 
-          // TODO: Make Class instance / View Model
-          const workout = {
-            day: dayOfWeek,
-            routines: routines
-          };
-
-          this.setState({
-            user: user,
-            workout: workout
-          });
+            this.setState({
+              user: user,
+              workout: workout
+            });
+          }
         }
-      }
+      });
     }
   }
 

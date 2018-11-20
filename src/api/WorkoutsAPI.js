@@ -8,10 +8,10 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const getTeam = (id) => {
+const getUserWorkouts = (id) => {
   return new Promise((resolve, reject) => {
     const params = {
-      TableName: 'Teams',
+      TableName: 'Workouts',
       Key: {
         'id': id
       }
@@ -23,14 +23,14 @@ const getTeam = (id) => {
         reject(err)
 
       } else {
-        const teams = JSON.parse(JSON.stringify(data, null, 2));
+        const workouts = JSON.parse(JSON.stringify(data, null, 2));
 
-        if (Object.keys(teams).length > 0) {
-          const team = (teams && teams.Item) || {};
-          resolve(team);
+        if (Object.keys(workouts).length > 0) {
+          const userWorkout = (workouts && workouts.Item) || {};
+          resolve(userWorkout);
 
         } else {
-          reject(new Error(`Team ${id} not found.`));
+          reject(new Error(`User ${id} not found.`));
         }
       }
     })
@@ -211,4 +211,4 @@ const removeGame = (teamId, seasonId, gameId) => {
   });
 };
 
-export { getTeam, addPlayer, removePlayer, updateGame, addGame, removeGame };
+export { getUserWorkouts, addPlayer, removePlayer, updateGame, addGame, removeGame };

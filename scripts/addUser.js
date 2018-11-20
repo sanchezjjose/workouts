@@ -7,7 +7,7 @@ AWS.config.update({
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 
-const teamId = 'murry-hill-gang';
+const userId = 'josed';
 const seasonId = '1';
 const game = {
   "id": "12",
@@ -19,9 +19,9 @@ const game = {
 };
 
 const params = {
-  TableName: 'Teams',
+  TableName: 'Workouts',
   Key: {
-    'id': teamId
+    'id': userId
   },
   UpdateExpression: `SET seasons.#s.schedule.#g = :game`,
   ExpressionAttributeNames: {
