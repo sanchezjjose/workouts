@@ -14,13 +14,20 @@ class Home extends Component {
   }
 
   handleMarkDone = (e) => {
+    const date = new Date();
+    const historicalEntryDate = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`;
+
     if (e.target.innerText === 'check_circle_outline') {
       e.target.innerText = 'check_circle';
       e.target.classList.add('fill');
 
+      // Save to history
+
     } else {
       e.target.innerText = 'check_circle_outline';
       e.target.classList.remove('fill');
+
+      // Remove from history
     }
   }
 

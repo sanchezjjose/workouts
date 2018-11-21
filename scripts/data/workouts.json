@@ -29,27 +29,11 @@
 			]
 		},
 		"history": {
-			"11-12-2018": {
+			"11-20-2018": {
 				"Chest": {
 					"Barbell Bench Press": {
 						"weight": "135",
 						"reps": "5",
-						"sets": "3"
-					}
-				},
-				"Shoulders": {
-					"Upright Cable Row": {
-						"weight": "90",
-						"reps": "6",
-						"sets": "3"
-					}
-				}
-			},
-			"11-15-2018": {
-				"Chest": {
-					"Barbell Bench Press": {
-						"weight": "160",
-						"reps": "8",
 						"sets": "3"
 					}
 				}
