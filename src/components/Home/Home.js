@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './Home.css';
 
+import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutsAPI';
+
 import { MDCRipple } from '@material/ripple';
 import "@material/fab/dist/mdc.fab.min.css";
 import "@material/icon-button/dist/mdc.icon-button.min.css";
@@ -13,21 +15,36 @@ class Home extends Component {
     edit: false
   }
 
-  handleMarkDone = (e) => {
+  handleMarkDone = (e, muscle, exercise) => {
     const date = new Date();
-    const historicalEntryDate = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`;
+    const historicalDate = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`;
+    const id = this.props.user.id;
 
     if (e.target.innerText === 'check_circle_outline') {
       e.target.innerText = 'check_circle';
       e.target.classList.add('fill');
 
       // Save to history
+      addExerciseHistory(id, historicalDate, muscle, exercise)
+        .then(result => {
+          console.log('Successfully saved workout to history.');
+        })
+        .catch(e => {
+          console.error(e);
+        });
 
     } else {
       e.target.innerText = 'check_circle_outline';
       e.target.classList.remove('fill');
 
       // Remove from history
+      deleteExerciseHistory(id, historicalDate, muscle, exercise)
+        .then(result => {
+          console.log('Successfully removed workout to history.');
+        })
+        .catch(e => {
+          console.error(e);
+        });
     }
   }
 
@@ -76,9 +93,9 @@ class Home extends Component {
                     return (
                       <div key={exercise.name} className='exercise'>
                         {this.state.edit &&
-                          <button onClick={this.handleDelete} className="delete-button mdc-icon-button material-icons">delete</button>
+                          <button onClick={e => this.handleDelete(e, routine.muscle, exercise)} className="delete-button mdc-icon-button material-icons">delete</button>
                         }
-                        <button onClick={this.handleMarkDone} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
+                        <button onClick={e => this.handleMarkDone(e, routine.muscle, exercise)} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
                         <div className='name'>{exercise.name}</div>
                         <div className='weight'>{exercise.metric.weight}</div>
                         <div className='reps'>{exercise.metric.reps}</div>

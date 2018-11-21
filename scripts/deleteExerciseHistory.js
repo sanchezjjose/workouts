@@ -8,7 +8,7 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const userId = 'joses';
-const date = '11-20-2018';
+const date = '10-20-2018';
 const muscle = 'Shoulders';
 const exercise = "Upright Cable Row";
 

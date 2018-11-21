@@ -8,7 +8,7 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const userId = 'joses';
-const date = '11-20-2018';
+const date = '10-21-2018';
 const muscle = 'Shoulders';
 const exercise = {
   "Upright Cable Row": {
@@ -23,13 +23,13 @@ const params = {
   Key: {
     'id': userId
   },
-  UpdateExpression: `SET history.#d.#m = :exercise`,
+  UpdateExpression: `SET history.#d.#m = :e`,
   ExpressionAttributeNames: {
     "#d": date,
     "#m": muscle
   },
   ExpressionAttributeValues: {
-      ":exercise": exercise,
+      ":e": exercise,
   },
   ReturnValues:"ALL_NEW"
 };

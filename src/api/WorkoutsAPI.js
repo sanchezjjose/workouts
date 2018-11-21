@@ -37,178 +37,60 @@ const getUserWorkouts = (id) => {
   });
 };
 
-const updateGame = (teamId, seasonId, game) => {
-  console.log(`Updating game ${game.id}...`);
-
+const addExerciseHistory = (id, date, muscle, exercise) => {
   return new Promise((resolve, reject) => {
     const params = {
-      TableName: 'Teams',
+      TableName: 'Workouts',
       Key: {
-        'id': teamId
+        'id': id
       },
-      UpdateExpression: `SET seasons.#s.schedule.#g = :game`,
+      UpdateExpression: `SET history.#d.#m = :exercise`,
       ExpressionAttributeNames: {
-        "#s": seasonId,
-        "#g": game.id
+        "#d": date,
+        "#m": muscle
       },
       ExpressionAttributeValues: {
-          ":game": game,
+          ":exercise": exercise,
       },
       ReturnValues:"ALL_NEW"
     };
 
     docClient.update(params, (err, data) => {
       if (err) {
-        console.error('Unable to update game. Error JSON:', JSON.stringify(err, null, 2));
-        reject(err);
+        console.error('Unable to remove attribute from item. Error JSON:', JSON.stringify(err, null, 2));
 
       } else {
-        const teams = JSON.parse(JSON.stringify(data, null, 2));
-        const team = (teams && teams.Item) || {};
-
-        resolve(team);
+        console.log(data);
       }
-    })
+    });
   });
 };
 
-const addPlayer = (teamId, seasonId, gameId, playerName) => {
-  console.log(`Adding ${playerName} to game...`);
-
+const deleteExerciseHistory = (id, date, muscle, exercise) => {
   return new Promise((resolve, reject) => {
     const params = {
-      TableName: 'Teams',
+      TableName: 'Workouts',
       Key: {
-        'id': teamId
+        'id': id
       },
-      UpdateExpression: `SET seasons.#s.schedule.#g.#p = list_append(seasons.#s.schedule.#g.#p, :new_player)`,
+      UpdateExpression: `REMOVE history.#d.#m.#e`,
       ExpressionAttributeNames: {
-        "#p": "roster",
-        "#s": seasonId,
-        "#g": gameId
-      },
-      ExpressionAttributeValues: {
-          ":new_player": [ playerName ]
+        "#d": date,
+        "#m": muscle,
+        "#e": exercise
       },
       ReturnValues:"ALL_NEW"
     };
 
     docClient.update(params, (err, data) => {
       if (err) {
-        console.error('Unable to add player. Error JSON:', JSON.stringify(err, null, 2));
-        reject(err)
+        console.error('Unable to remove attribute from item. Error JSON:', JSON.stringify(err, null, 2));
 
       } else {
-        const teams = JSON.parse(JSON.stringify(data, null, 2));
-        const team = (teams && teams.Item) || {};
-
-        resolve(team);
+        console.log(data);
       }
-    })
+    });
   });
 };
 
-const removePlayer = (teamId, seasonId, gameId, updatedroster) => {
-  console.log(`Removing player from game...`);
-
-  return new Promise((resolve, reject) => {
-    const params = {
-      TableName: 'Teams',
-      Key: {
-        'id': teamId
-      },
-      UpdateExpression: `SET seasons.#s.schedule.#g.#p = :roster`,
-      ExpressionAttributeNames: {
-        "#p": "roster",
-        "#s": seasonId,
-        "#g": gameId
-      },
-      ExpressionAttributeValues: {
-          ":roster": updatedroster
-      },
-      ReturnValues:"ALL_NEW"
-    };
-
-    docClient.update(params, (err, data) => {
-      if (err) {
-        console.error('Unable to remove player. Error JSON:', JSON.stringify(err, null, 2));
-        reject(err);
-
-      } else {
-        const teams = JSON.parse(JSON.stringify(data, null, 2));
-        const team = (teams && teams.Item) || {};
-
-        resolve(team);
-      }
-    })
-  });
-};
-
-const addGame = (teamId, seasonId, game) => {
-  console.log(`Adding game to season...`);
-
-  return new Promise((resolve, reject) => {
-    const params = {
-      TableName: 'Teams',
-      Key: {
-        'id': teamId
-      },
-      UpdateExpression: `SET seasons.#s.schedule.#g = :game`,
-      ExpressionAttributeNames: {
-        "#s": seasonId,
-        "#g": game.id
-      },
-      ExpressionAttributeValues: {
-          ":game": game,
-      },
-      ReturnValues:"ALL_NEW"
-    };
-
-    docClient.update(params, (err, data) => {
-      if (err) {
-        console.error('Unable to add game. Error JSON:', JSON.stringify(err, null, 2));
-        reject(err);
-
-      } else {
-        const teams = JSON.parse(JSON.stringify(data, null, 2));
-        const team = (teams && teams.Item) || {};
-
-        resolve(team);
-      }
-    })
-  });
-};
-
-const removeGame = (teamId, seasonId, gameId) => {
-  console.log(`Removing game ${gameId}...`);
-
-  return new Promise((resolve, reject) => {
-    const params = {
-      TableName: 'Teams',
-      Key: {
-        'id': teamId
-      },
-      UpdateExpression: `REMOVE seasons.#s.schedule.#g`,
-      ExpressionAttributeNames: {
-        "#s": seasonId,
-        "#g": gameId
-      },
-      ReturnValues:"ALL_NEW"
-    };
-
-    docClient.update(params, (err, data) => {
-      if (err) {
-        console.error('Unable to remove game. Error JSON:', JSON.stringify(err, null, 2));
-        reject(err);
-
-      } else {
-        const teams = JSON.parse(JSON.stringify(data, null, 2));
-        const team = (teams && teams.Item) || {};
-
-        resolve(team);
-      }
-    })
-  });
-};
-
-export { getUserWorkouts, addPlayer, removePlayer, updateGame, addGame, removeGame };
+export { getUserWorkouts, addExerciseHistory, deleteExerciseHistory };
