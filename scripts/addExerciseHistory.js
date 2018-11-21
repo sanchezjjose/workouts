@@ -9,13 +9,12 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 const userId = 'joses';
 const date = '10-21-2018';
-const muscle = 'Shoulders';
-const exercise = {
-  "Upright Cable Row": {
-    "weight": "90",
-    "reps": "6",
-    "sets": "3"
-  }
+const muscle = 'Legs';
+const exercise = 'Squats';
+const metrics = { 
+  "weight": "100",
+  "reps": "6",
+  "sets": "3"
 };
 
 const params = {
@@ -23,20 +22,25 @@ const params = {
   Key: {
     'id': userId
   },
-  UpdateExpression: `SET history.#d.#m = :e`,
+  UpdateExpression: "SET history.#d = if_not_exists(history.#d, :m), history.#d.#m = if_not_exists(history.#d.#m, :e), history.#d.#m.#e = if_not_exists(history.#d.#m.#e, :metrics)",
   ExpressionAttributeNames: {
     "#d": date,
-    "#m": muscle
+    "#m": muscle,
+    "#e": exercise
   },
   ExpressionAttributeValues: {
-      ":e": exercise,
+    ":d": date,
+    ":m": muscle,
+    ":e": exercise,
+    ":metrics": metrics,
   },
+  // ConditionExpression: "attribute_not_exists(history.#d.#m.#e)",
   ReturnValues:"ALL_NEW"
 };
 
 docClient.update(params, (err, data) => {
   if (err) {
-    console.error('Unable to remove attribute from item. Error JSON:', JSON.stringify(err, null, 2));
+    console.error('Error JSON:', JSON.stringify(err, null, 2));
 
   } else {
     console.log(data);

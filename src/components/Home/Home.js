@@ -20,6 +20,7 @@ class Home extends Component {
     const historicalDate = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`;
     const id = this.props.user.id;
 
+    // TODO: add state variable to manage exercise status
     if (e.target.innerText === 'check_circle_outline') {
       e.target.innerText = 'check_circle';
       e.target.classList.add('fill');
