@@ -4,8 +4,8 @@ import './Progress.css';
 const Progress = ({ workouts }) => {
   return (
     <div className='Progress'>
-      <div className='content'>
-        <div className='content-wrapper'>
+      <div className='content-wrapper'>
+        <div className='content'>
           <h1>Your Progress</h1>
         </div>
       </div>

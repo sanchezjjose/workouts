@@ -64,7 +64,11 @@ class Home extends Component {
   }
 
   componentDidUpdate() {
-    new MDCRipple(document.querySelector('.mdc-fab'));
+    const fabButtonSelector = document.querySelector('.mdc-fab');
+
+    if (fabButtonSelector) {
+      new MDCRipple(fabButtonSelector);
+    }
   }
 
   render() {
@@ -73,9 +77,9 @@ class Home extends Component {
 
     return (
       <div className='Home'>
-        <h1>{this.props.user.name}'s Workout</h1>
+      {routines.length > 0 ? (
         <div className='content-wrapper'>
-        {routines.length > 0 && 
+          <h1>{this.props.user.name}'s Workout</h1>
           <div className='content'>
             <div className='routine-heading'>
               <h2 className='weekday'>{workout.day}</h2>
@@ -111,8 +115,10 @@ class Home extends Component {
               <span className="mdc-fab__icon material-icons">add</span>
             </button>
           </div>
-        }
-        </div>
+        </div>) : (
+          <h1>Today is your well deserved day off! Kick back and enjoy!</h1>
+        )
+      }
       </div>
     );
   }
