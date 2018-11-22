@@ -26,7 +26,7 @@ class App extends Component {
         if (user) {
           const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
           const dayOfWeek = days[new Date().getDay()];
-          const query = Object.entries(user.routine).filter(([ key ]) => key === dayOfWeek);
+          const query = Object.entries(user.routine).filter(([ key ]) => key === 'Saturday');
 
           if (query.length > 0) {
             const result = query[0][1];
