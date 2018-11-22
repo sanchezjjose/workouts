@@ -1,0 +1,26 @@
+.Exercise {
+  display: grid;
+  grid-template-columns: 48px 150px repeat(3, 1fr);
+  grid-gap: 5px;
+  justify-items: center;
+  align-items: center;
+  overflow-x: scroll;
+  font-size: 16px;
+}
+
+.Exercise .delete-button {
+  position: absolute;
+  left: -5px;
+}
+
+.Exercise .status-button {
+  padding: 0;
+}
+
+.Exercise .status-button.fill {
+  color: #00897B;
+}
+
+.Exercise .name {
+  justify-self: left;
+}

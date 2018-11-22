@@ -1,0 +1,61 @@
+.Routine .header {
+  display: grid;
+  /* Add width of status button plus gap between button and name column */
+  grid-template-columns: calc(150px + 48px + 5px) repeat(3, 1fr);
+  grid-gap: 5px;
+  justify-items: center;
+  align-items: end;
+  text-align: center;
+  border-bottom: 1px #9b9b9b solid;
+  margin: 10px 0;
+  padding-bottom: 5px;
+}
+
+.Routine .header span {
+  font-size: 16px;
+}
+
+.Routine .header .unit {
+  font-size: 10px;
+  color: #9b9b9b;
+}
+
+.Routine .routine-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.Routine .routine-heading .weekday {
+  margin: 0;
+}
+
+.Routine .routine-heading .edit {
+  justify-self: end;
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #069;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.Routine .muscle {
+  display: inline-block;
+  justify-self: left; 
+  margin: 0;
+}
+
+.Routine .group {
+  margin-top: 30px;
+}
+
+.Routine .add-exercise-button {
+  background-color: #E53935;
+  position: fixed;
+  margin-top: 12px;
+  bottom: 80px;
+  right: 20px;
+  /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
+}

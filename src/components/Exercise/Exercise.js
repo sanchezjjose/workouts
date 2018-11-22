@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-
-import './Exercise.css';
-
 import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutsAPI';
 
-import { MDCRipple } from '@material/ripple';
-import "@material/fab/dist/mdc.fab.min.css";
-import "@material/icon-button/dist/mdc.icon-button.min.css";
-
+import './Exercise.css';
 
 class Exercise extends Component {
 
@@ -57,19 +51,12 @@ class Exercise extends Component {
     console.log('Deleting exercise...');
   }
 
-  componentDidUpdate() {
-    const fabButtonSelector = document.querySelector('.mdc-fab');
-    if (fabButtonSelector) {
-      new MDCRipple(fabButtonSelector);
-    }
-  }
-
   render() {
     const routine = this.props.routine;
     const exercise = this.props.exercise;
 
     return (
-      <div className='exercise'>
+      <div className='Exercise'>
         {this.props.edit &&
           <button onClick={e => this.handleExerciseDelete(e, routine.muscle, exercise)} className="delete-button mdc-icon-button material-icons">delete</button>
         }

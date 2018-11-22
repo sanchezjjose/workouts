@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import './App.css';
-
 import { getUserWorkouts } from '../api/WorkoutsAPI';
-// import * as Util from '../lib/Util';
-
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import Progress from './Progress/Progress';
 import Footer from './Footer/Footer';
+
+import './App.css';
 
 class App extends Component {
 
@@ -25,8 +22,9 @@ class App extends Component {
       getUserWorkouts(id).then(user => {
         if (user) {
           const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-          const dayOfWeek = days[new Date().getDay()];
-          const query = Object.entries(user.routine).filter(([ key ]) => key === 'Saturday');
+          // const dayOfWeek = days[new Date().getDay()];
+          const dayOfWeek = 'Saturday';
+          const query = Object.entries(user.routine).filter(([ key ]) => key === dayOfWeek);
 
           if (query.length > 0) {
             const result = query[0][1];

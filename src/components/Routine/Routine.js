@@ -7,7 +7,6 @@ import { MDCRipple } from '@material/ripple';
 import "@material/fab/dist/mdc.fab.min.css";
 import "@material/icon-button/dist/mdc.icon-button.min.css";
 
-
 class Routine extends Component {
 
   state = {
@@ -16,15 +15,12 @@ class Routine extends Component {
 
   handleRoutineEdit = (e) => {
     e.preventDefault();
-
     console.log('Edit clicked...');
-
     this.setState({ edit: !this.state.edit });
   }
 
   componentDidUpdate() {
     const fabButtonSelector = document.querySelector('.mdc-fab');
-
     if (fabButtonSelector) {
       new MDCRipple(fabButtonSelector);
     }
