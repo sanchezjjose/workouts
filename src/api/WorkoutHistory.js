@@ -1,5 +1,4 @@
 import AWS from 'aws-sdk';
-import { debug } from 'util';
 
 AWS.config.update({ 
   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID, 
