@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutsAPI';
+import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutHistory';
 
 import './Exercise.css';
 
@@ -18,27 +18,29 @@ class Exercise extends Component {
       e.target.innerText = 'check_circle';
       e.target.classList.add('fill');
 
-      // Save to history
-      // addExerciseHistory(id, historicalDate, muscle, exercise)
-      //   .then(result => {
-      //     console.log('Successfully saved workout to history.');
-      //   })
-      //   .catch(e => {
-      //     console.error(e);
-      //   });
+debugger;
+
+      addExerciseHistory(id, historicalDate, muscle, exercise)
+        .then(() => {
+          console.log('Successfully saved workout to history.');
+        })
+        .catch(e => {
+          console.error(e);
+        });
 
     } else {
       e.target.innerText = 'check_circle_outline';
       e.target.classList.remove('fill');
 
-      // Remove from history
-      // deleteExerciseHistory(id, historicalDate, muscle, exercise)
-      //   .then(result => {
-      //     console.log('Successfully removed workout to history.');
-      //   })
-      //   .catch(e => {
-      //     console.error(e);
-      //   });
+debugger;
+
+      deleteExerciseHistory(id, historicalDate, exercise)
+        .then(() => {
+          console.log('Successfully removed workout to history.');
+        })
+        .catch(e => {
+          console.error(e);
+        });
     }
 
     this.setState(prevState => ({
