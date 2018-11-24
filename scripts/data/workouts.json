@@ -29,30 +29,19 @@
 			]
 		},
 		"history": {
-			"11-20-2018": {
-				"exercises": [
-					{ 
-						"muscle": "Chest",
-						"exercise": "Barbell Bench Press",
-						"weight": "135",
-						"reps": "5",
-						"sets": "3"
-					},
-					{ 
-						"muscle": "Chest",
-						"exercise": "Push-ups",
-						"weight": "-",
-						"reps": "25",
-						"sets": "4"
-					},
-					{ 
-						"muscle": "Shoulders",
-						"exercise": "Upright Cable Row",
-						"weight": "80",
-						"reps": "8",
-						"sets": "3"
-					}
-				]
+			"11-23-2018": {
+				"Barbell Bench Press": { 
+					"muscle": "Chest",
+					"weight": "135",
+					"reps": "5",
+					"sets": "3"
+				},
+				"Push-ups": { 
+					"muscle": "Chest",
+					"weight": "-",
+					"reps": "25",
+					"sets": "4"
+				}
 			}
 		},
 		"routine": {
