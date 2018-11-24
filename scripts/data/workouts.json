@@ -28,17 +28,20 @@
 				"Stretching"
 			]
 		},
-		"history": {
-			"11-20-2018": {
-				"Chest": {
-					"Barbell Bench Press": {
+		"history": [
+			{
+				"date": "11-20-2018",
+				"exercises": [
+					{ 
+						"muscle": "Chest",
+						"exercise": "Barbell Bench Press",
 						"weight": "135",
 						"reps": "5",
 						"sets": "3"
 					}
-				}
+				]
 			}
-		},
+		],
 		"routine": {
 			"Monday": {
 				"Chest": {
