@@ -9,9 +9,9 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 const userId = 'joses';
 const date = '11-24-2018';
-const exercise = {
+const exercise = 'Curls (bands)';
+const details = {
   muscle: 'Biceps',
-  exercise: 'Dumbbell Curls',
   weight: '25',
   reps: '8',
   sets: '3'
@@ -22,13 +22,12 @@ const params = {
   Key: {
     'id': userId
   },
-  UpdateExpression: "SET history = :d",
-  // ConditionExpression: "contains(history, :d)",
+  UpdateExpression: "SET history.#d = :d",
   ExpressionAttributeNames: {
-    "#d": "date"
+    "#d": date
   },
   ExpressionAttributeValues: {
-    ":d": date
+    ":d": {}
   },
   ReturnValues:"ALL_NEW"
 };
@@ -39,5 +38,30 @@ docClient.update(params, (err, data) => {
 
   } else {
     console.log(data);
+
+    const params = {
+      TableName: 'Workouts',
+      Key: {
+        'id': userId
+      },
+      UpdateExpression: "SET history.#d.#e = :de",
+      ExpressionAttributeNames: {
+        "#d": date,
+        "#e": exercise
+      },
+      ExpressionAttributeValues: {
+        ":de": details
+      },
+      ReturnValues:"ALL_NEW"
+    };
+
+    docClient.update(params, (err, data) => {
+      if (err) {
+        console.error('Error JSON:', JSON.stringify(err, null, 2));
+
+      } else {
+        console.log(data);
+      }
+    });
   }
 });

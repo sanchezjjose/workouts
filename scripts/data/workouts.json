@@ -30,13 +30,13 @@
 		},
 		"history": {
 			"11-23-2018": {
-				"Barbell Bench Press": { 
+				"Barbell Bench Press": {
 					"muscle": "Chest",
 					"weight": "135",
 					"reps": "5",
 					"sets": "3"
 				},
-				"Push-ups": { 
+				"Push-ups": {
 					"muscle": "Chest",
 					"weight": "-",
 					"reps": "25",

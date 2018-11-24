@@ -8,19 +8,17 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const userId = 'joses';
-const date = '10-20-2018';
-const muscle = 'Shoulders';
-const exercise = "Upright Cable Row";
+const date = '11-24-2018';
+const exercise = 'Curls (bands)';
 
 const params = {
   TableName: 'Workouts',
   Key: {
     'id': userId
   },
-  UpdateExpression: `REMOVE history.#d.#m.#e`,
+  UpdateExpression: `REMOVE history.#d.#e`,
   ExpressionAttributeNames: {
     "#d": date,
-    "#m": muscle,
     "#e": exercise
   },
   ReturnValues:"ALL_NEW"
