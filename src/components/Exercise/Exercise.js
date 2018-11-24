@@ -18,8 +18,6 @@ class Exercise extends Component {
       e.target.innerText = 'check_circle';
       e.target.classList.add('fill');
 
-debugger;
-
       addExerciseHistory(id, historicalDate, muscle, exercise)
         .then(() => {
           console.log('Successfully saved workout to history.');
@@ -31,8 +29,6 @@ debugger;
     } else {
       e.target.innerText = 'check_circle_outline';
       e.target.classList.remove('fill');
-
-debugger;
 
       deleteExerciseHistory(id, historicalDate, exercise)
         .then(() => {

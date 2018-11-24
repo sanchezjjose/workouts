@@ -16,7 +16,7 @@ const addExerciseHistory = (userId, date, muscle, exercise) => {
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET history.#d = :d",
+      UpdateExpression: "SET history.#d = if_not_exists(history.#d, :d)",
       ExpressionAttributeNames: {
         "#d": date
       },
@@ -25,7 +25,7 @@ const addExerciseHistory = (userId, date, muscle, exercise) => {
       },
       ReturnValues:"ALL_NEW"
     };
-    
+
     docClient.update(params, (err, data) => {
       if (err) {
         return reject('Error JSON:', JSON.stringify(err, null, 2));
