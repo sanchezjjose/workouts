@@ -28,9 +28,8 @@
 				"Stretching"
 			]
 		},
-		"history": [
-			{
-				"date": "11-20-2018",
+		"history": {
+			"11-20-2018": {
 				"exercises": [
 					{ 
 						"muscle": "Chest",
@@ -38,10 +37,24 @@
 						"weight": "135",
 						"reps": "5",
 						"sets": "3"
+					},
+					{ 
+						"muscle": "Chest",
+						"exercise": "Push-ups",
+						"weight": "-",
+						"reps": "25",
+						"sets": "4"
+					},
+					{ 
+						"muscle": "Shoulders",
+						"exercise": "Upright Cable Row",
+						"weight": "80",
+						"reps": "8",
+						"sets": "3"
 					}
 				]
 			}
-		],
+		},
 		"routine": {
 			"Monday": {
 				"Chest": {
@@ -362,8 +375,8 @@
 		"name": "Paula",
 		"excercises": {
 		},
-		"history": {
-		},
+		"history": [
+		],
 		"routine": {
 			"Monday": {
 			},

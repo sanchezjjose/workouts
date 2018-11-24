@@ -8,13 +8,13 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const userId = 'joses';
-const date = '10-21-2018';
-const muscle = 'Legs';
-const exercise = 'Squats';
-const metrics = { 
-  "weight": "100",
-  "reps": "6",
-  "sets": "3"
+const date = '10-23-2018';
+const exercise = {
+  muscle: 'Biceps',
+  exercise: 'Dumbbell Curls',
+  weight: '25',
+  reps: '8',
+  sets: '3'
 };
 
 const params = {
@@ -22,17 +22,14 @@ const params = {
   Key: {
     'id': userId
   },
-  UpdateExpression: "SET history.#d = if_not_exists(history.#d, :m), history.#d.#m = if_not_exists(history.#d.#m, :e), history.#d.#m.#e = if_not_exists(history.#d.#m.#e, :metrics)",
-  ExpressionAttributeNames: {
-    "#d": date,
-    "#m": muscle,
-    "#e": exercise
-  },
+  UpdateExpression: "SET history = list_append(history, :e)",
+  ConditionExpression: "attribute_exists(history, :d)",
+  // ExpressionAttributeNames: {
+  //   "#d": date
+  // },
   ExpressionAttributeValues: {
     ":d": date,
-    ":m": muscle,
     ":e": exercise,
-    ":metrics": metrics,
   },
   // ConditionExpression: "attribute_not_exists(history.#d.#m.#e)",
   ReturnValues:"ALL_NEW"
