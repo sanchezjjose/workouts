@@ -1,4 +1,4 @@
-import AWS from 'aws-sdk';
+const AWS = require('aws-sdk');
 
 AWS.config.update({ 
   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID, 
@@ -8,9 +8,12 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const addExerciseHistory = (userId, date, muscle, exercise) => {
-  return new Promise((resolve, reject) => {
-    const params = {
+const addExerciseHistory = (userId, muscle, exercise) => {
+  const today = new Date();
+  const date = `${today.getMonth()}-${today.getDate()}-${today.getFullYear()}`;
+
+  const p1 = new Promise((resolve, reject) => {
+    docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
@@ -23,48 +26,51 @@ const addExerciseHistory = (userId, date, muscle, exercise) => {
         ":d": {}
       },
       ReturnValues:"ALL_NEW"
-    };
-
-    docClient.update(params, (err, data) => {
+    }, (err, data) => {
       if (err) {
         return reject('Error JSON:', JSON.stringify(err, null, 2));
-    
-      } else {
-        const params = {
-          TableName: 'Workouts',
-          Key: {
-            'id': userId
-          },
-          UpdateExpression: "SET history.#d.#e = :de",
-          ExpressionAttributeNames: {
-            "#d": date,
-            "#e": exercise.name
-          },
-          ExpressionAttributeValues: {
-            ":de": {
-              muscle: muscle,
-              weight: exercise.metric.weight,
-              reps: exercise.metric.reps,
-              sets: exercise.metric.sets
-            }
-          },
-          ReturnValues:"ALL_NEW"
-        };
-    
-        docClient.update(params, (err, data) => {
-          if (err) {
-            return reject('Error JSON:', JSON.stringify(err, null, 2));
-    
-          } else {
-            return resolve(data);
-          }
-        });
       }
+
+      resolve(data);
+    });
+  })
+
+  const p2 = new Promise((resolve, reject) => {
+    docClient.update({
+      TableName: 'Workouts',
+      Key: {
+        'id': userId
+      },
+      UpdateExpression: "SET history.#d.#e = :de",
+      ExpressionAttributeNames: {
+        "#d": date,
+        "#e": exercise.name
+      },
+      ExpressionAttributeValues: {
+        ":de": {
+          muscle: muscle,
+          weight: exercise.metric.weight,
+          reps: exercise.metric.reps,
+          sets: exercise.metric.sets
+        }
+      },
+      ReturnValues:"ALL_NEW"
+    }, (err, data) => {
+      if (err) {
+        return reject('Error JSON:', JSON.stringify(err, null, 2));
+      }
+
+      resolve(data);
     });
   });
+
+  return Promise.all([ p1, p2 ]);
 };
 
-const deleteExerciseHistory = (userId, date, exercise) => {
+const deleteExerciseHistory = (userId, exercise) => {
+  const today = new Date();
+  const date = `${today.getMonth()}-${today.getDate()}-${today.getFullYear()}`;
+
   return new Promise((resolve, reject) => {
     const params = {
       TableName: 'Workouts',
@@ -90,4 +96,9 @@ const deleteExerciseHistory = (userId, date, exercise) => {
   });
 };
 
-export { addExerciseHistory, deleteExerciseHistory };
+module.exports = { 
+  addExerciseHistory: addExerciseHistory,
+  deleteExerciseHistory: deleteExerciseHistory
+};
+
+// export { addExerciseHistory, deleteExerciseHistory };

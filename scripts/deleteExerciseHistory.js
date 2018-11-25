@@ -1,34 +1,19 @@
-const AWS = require("aws-sdk");
-
-AWS.config.update({
-  region: "us-east-1",
-  // endpoint: "http://localhost:8000"
-});
-
-const docClient = new AWS.DynamoDB.DocumentClient();
+const historyAPI = require('../src/api/WorkoutHistory.js');
 
 const userId = 'joses';
-const date = '11-24-2018';
-const exercise = 'Curls (bands)';
-
-const params = {
-  TableName: 'Workouts',
-  Key: {
-    'id': userId
-  },
-  UpdateExpression: `REMOVE history.#d.#e`,
-  ExpressionAttributeNames: {
-    "#d": date,
-    "#e": exercise
-  },
-  ReturnValues:"ALL_NEW"
+const exercise = {
+  name: 'TEST: Barbell Squats',
+  metric: {
+    weight: '135',
+    reps: '5',
+    sets: '4'
+  }
 };
 
-docClient.update(params, (err, data) => {
-  if (err) {
-    console.error('Unable to remove attribute from item. Error JSON:', JSON.stringify(err, null, 2));
-
-  } else {
-    console.log(data);
-  }
-});
+historyAPI.deleteExerciseHistory(userId, exercise)
+  .then(() => {
+    console.log('Successfully deleted workout to history.');
+  })
+  .catch(e => {
+    console.error(e);
+  });

@@ -10,32 +10,32 @@ class Exercise extends Component {
   }
 
   handleExerciseDone = (e, muscle, exercise) => {
-    const date = new Date();
-    const historicalDate = `${date.getMonth()}-${date.getDate()}-${date.getFullYear()}`;
     const id = this.props.userId;
 
     if (!this.state.exerciseDone) {
       e.target.innerText = 'check_circle';
       e.target.classList.add('fill');
 
-      addExerciseHistory(id, historicalDate, muscle, exercise)
-        .then(() => {
-          console.log('Successfully saved workout to history.');
-        })
+      addExerciseHistory(id, muscle, exercise)
         .catch(e => {
           console.error(e);
+
+          // Reset
+          e.target.innerText = 'check_circle_outline';
+          e.target.classList.remove('fill');
         });
 
     } else {
       e.target.innerText = 'check_circle_outline';
       e.target.classList.remove('fill');
 
-      deleteExerciseHistory(id, historicalDate, exercise)
-        .then(() => {
-          console.log('Successfully removed workout to history.');
-        })
+      deleteExerciseHistory(id, exercise)
         .catch(e => {
           console.error(e);
+
+          // Reset
+          e.target.innerText = 'check_circle';
+          e.target.classList.add('fill');
         });
     }
 
