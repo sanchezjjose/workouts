@@ -8,7 +8,7 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 const tableName = 'Workouts';
-const workouts = JSON.parse(fs.readFileSync('data/workouts.json', 'utf8'));
+const workouts = JSON.parse(fs.readFileSync('./data/workouts.json', 'utf8'));
 
 console.log(workouts);
 

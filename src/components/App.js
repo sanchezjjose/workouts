@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { getUserWorkouts } from '../api/WorkoutsAPI';
+import { getUserWorkouts } from '../api/Users';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import Progress from './Progress/Progress';
