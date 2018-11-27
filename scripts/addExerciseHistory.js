@@ -4,7 +4,7 @@ const userId = 'joses';
 const muscle = 'Legs';
 const exercise = {
   name: 'TEST: Barbell Squats',
-  metric: {
+  metrics: {
     weight: '135',
     reps: '5',
     sets: '4'

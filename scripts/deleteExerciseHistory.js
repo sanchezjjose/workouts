@@ -3,7 +3,7 @@ const historyAPI = require('../src/api/WorkoutHistory.js');
 const userId = 'joses';
 const exercise = {
   name: 'TEST: Barbell Squats',
-  metric: {
+  metrics: {
     weight: '135',
     reps: '5',
     sets: '4'

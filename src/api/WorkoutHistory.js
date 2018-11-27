@@ -49,9 +49,9 @@ const addExerciseHistory = (userId, muscle, exercise) => {
       ExpressionAttributeValues: {
         ":de": {
           muscle: muscle,
-          weight: exercise.metric.weight,
-          reps: exercise.metric.reps,
-          sets: exercise.metric.sets
+          weight: exercise.metrics.weight,
+          reps: exercise.metrics.reps,
+          sets: exercise.metrics.sets
         }
       },
       ReturnValues:"ALL_NEW"

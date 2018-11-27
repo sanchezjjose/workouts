@@ -33,7 +33,7 @@ class App extends Component {
                 exercises: Object.entries(value).map(([ key, value ]) => {
                   return {
                     name: key,
-                    metric: value
+                    metrics: value
                   }
                 })
               }

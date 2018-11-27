@@ -43,7 +43,7 @@ class Routine extends Component {
                 <span className='sets'>Sets</span>
               </div>
               {routine.exercises.map (exercise => 
-                <Exercise key={exercise.name} userId={this.props.userId} routine={routine} exercise={exercise} edit={this.state.edit} />
+                <Exercise key={exercise.name} userId={this.props.userId} workoutDay={this.props.workout.day} routine={routine} exercise={exercise} edit={this.state.edit} />
               )}
             </div>
           );
