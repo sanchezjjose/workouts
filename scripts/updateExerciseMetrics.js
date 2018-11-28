@@ -13,7 +13,7 @@ const exercise = {
   }
 };
 
-exerciseAPI.updateExerciseMetrics(userId, workoutDay, muscle, exercise)
+exerciseAPI.updateExerciseMetrics(userId, workoutDay, muscle, exercise.name, exercise.metrics)
   .then(() => {
     console.log('Successfully set exercise metrics');
   })

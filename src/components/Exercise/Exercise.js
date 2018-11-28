@@ -9,35 +9,65 @@ class Exercise extends Component {
 
   state = {
     // Seed data
-    exerciseDone: this.props.exercise.metrics.done
-
-    // TODO: set exercise state
+    exercise: this.props.exercise
   }
 
   handleExerciseDone = (e) => {
     const id = this.props.userId;
     const workoutDay = this.props.workoutDay;
     const muscle = this.props.routine.muscle;
-    const exercise = this.props.exercise;
+    const exercise = this.state.exercise;
 
-    if (!this.state.exerciseDone) {
-      this.setState({ exerciseDone: true });
+    if (!exercise.metrics.done) {
+      this.setState((prevState) => ({
+        exercise: {
+          ...prevState.exercise,
+          metrics: {
+            ...prevState.exercise.metrics,
+            done: true
+          }
+        }
+      }));
 
       addExerciseHistory(id, muscle, exercise)
         .then(() => setExerciseStatus(id, workoutDay, muscle, exercise.name, true))
         .catch(e => {
           console.error(e);
-          this.setState({ exerciseDone: false });
+          this.setState((prevState) => ({
+            exercise: {
+              ...prevState.exercise,
+              metrics: {
+                ...prevState.exercise.metrics,
+                done: false
+              }
+            }
+          }));
         });
 
     } else {
-      this.setState({ exerciseDone: false });
+      this.setState((prevState) => ({
+        exercise: {
+          ...prevState.exercise,
+          metrics: {
+            ...prevState.exercise.metrics,
+            done: false
+          }
+        }
+      }));
 
       deleteExerciseHistory(id, exercise)
         .then(() => setExerciseStatus(id, workoutDay, muscle, exercise.name, false))
         .catch(e => {
           console.error(e);
-          this.setState({ exerciseDone: true });
+          this.setState((prevState) => ({
+            exercise: {
+              ...prevState.exercise,
+              metrics: {
+                ...prevState.exercise.metrics,
+                done: true
+              }
+            }
+          }));
         });
     }
   }
@@ -48,34 +78,57 @@ class Exercise extends Component {
   }
 
   handleEditWeight = (e) => {
-    const initialValue = +e.target.innerText;
-    const finalValue = initialValue + 5;
+    const initialValue = e.target.innerText;
+    const finalValue = +initialValue + 5;
 
-    if (!isNaN(initialValue)) {
+    if (!isNaN(finalValue)) {
       const id = this.props.userId;
       const workoutDay = this.props.workoutDay;
       const muscle = this.props.routine.muscle;
-      const exercise = this.props.exercise;
+      const exercise = this.state.exercise;
 
-      updateExerciseMetrics(id, workoutDay, muscle, exercise)
+      console.log(this.state.exercise.metrics);
+
+      this.setState((prevState) => ({
+        exercise: {
+          ...prevState.exercise,
+          metrics: {
+            ...prevState.exercise.metrics,
+            weight: finalValue
+          }
+        }
+      }));
+
+      console.log(this.state.exercise.metrics);
+
+      updateExerciseMetrics(id, workoutDay, muscle, exercise.name, this.state.exercise.metrics)
         .then(() => {
           console.log(`Successfully increased weight from ${initialValue} to ${finalValue}...`);
         })
         .catch(err => {
           console.error(err);
+          this.setState((prevState) => ({
+            exercise: {
+              ...prevState.exercise,
+              metrics: {
+                ...prevState.exercise.metrics,
+                weight: initialValue
+              }
+            }
+          }));
         })
     }
   }
 
   render() {
-    const exercise = this.props.exercise;
+    const exercise = this.state.exercise;
 
     return (
       <div className='Exercise'>
         {this.props.edit &&
           <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">delete</button>
         }
-        {this.state.exerciseDone ? 
+        {exercise.metrics.done ? 
           <button onClick={this.handleExerciseDone} className="status-button mdc-icon-button material-icons fill">check_circle</button> :
           <button onClick={this.handleExerciseDone} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
         }
