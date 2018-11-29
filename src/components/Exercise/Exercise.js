@@ -20,13 +20,7 @@ class Exercise extends Component {
 
     if (!exercise.metrics.done) {
       this.setState((prevState) => ({
-        exercise: {
-          ...prevState.exercise,
-          metrics: {
-            ...prevState.exercise.metrics,
-            done: true
-          }
-        }
+        exercise: { ...prevState.exercise, metrics: { ...prevState.exercise.metrics, done: true } }
       }));
 
       addExerciseHistory(id, muscle, exercise)
@@ -34,25 +28,13 @@ class Exercise extends Component {
         .catch(e => {
           console.error(e);
           this.setState((prevState) => ({
-            exercise: {
-              ...prevState.exercise,
-              metrics: {
-                ...prevState.exercise.metrics,
-                done: false
-              }
-            }
+            exercise: { ...prevState.exercise, metrics: { ...prevState.exercise.metrics, done: false } }
           }));
         });
 
     } else {
       this.setState((prevState) => ({
-        exercise: {
-          ...prevState.exercise,
-          metrics: {
-            ...prevState.exercise.metrics,
-            done: false
-          }
-        }
+        exercise: { ...prevState.exercise, metrics: { ...prevState.exercise.metrics, done: false } }
       }));
 
       deleteExerciseHistory(id, exercise)
@@ -60,13 +42,7 @@ class Exercise extends Component {
         .catch(e => {
           console.error(e);
           this.setState((prevState) => ({
-            exercise: {
-              ...prevState.exercise,
-              metrics: {
-                ...prevState.exercise.metrics,
-                done: true
-              }
-            }
+            exercise: { ...prevState.exercise, metrics: { ...prevState.exercise.metrics, done: true } }
           }));
         });
     }
@@ -86,35 +62,20 @@ class Exercise extends Component {
       const workoutDay = this.props.workoutDay;
       const muscle = this.props.routine.muscle;
       const exercise = this.state.exercise;
-
-      console.log(this.state.exercise.metrics);
+      const newMetrics = { ...this.state.exercise.metrics, weight: finalValue };
 
       this.setState((prevState) => ({
-        exercise: {
-          ...prevState.exercise,
-          metrics: {
-            ...prevState.exercise.metrics,
-            weight: finalValue
-          }
-        }
+        exercise: { ...prevState.exercise, metrics: newMetrics }
       }));
 
-      console.log(this.state.exercise.metrics);
-
-      updateExerciseMetrics(id, workoutDay, muscle, exercise.name, this.state.exercise.metrics)
+      updateExerciseMetrics(id, workoutDay, muscle, exercise.name, newMetrics)
         .then(() => {
           console.log(`Successfully increased weight from ${initialValue} to ${finalValue}...`);
         })
         .catch(err => {
           console.error(err);
           this.setState((prevState) => ({
-            exercise: {
-              ...prevState.exercise,
-              metrics: {
-                ...prevState.exercise.metrics,
-                weight: initialValue
-              }
-            }
+            exercise: { ...prevState.exercise, metrics: { ...prevState.exercise.metrics, weight: initialValue } }
           }));
         })
     }

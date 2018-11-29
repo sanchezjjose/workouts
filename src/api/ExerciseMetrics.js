@@ -8,7 +8,7 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const updateExerciseMetrics = (userId, workoutDay, muscle, exerciseName, exerciseMetrics) => {
+const updateExerciseMetrics = (userId, workoutDay, muscle, exerciseName, newMetrics) => {
   return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
@@ -23,7 +23,7 @@ const updateExerciseMetrics = (userId, workoutDay, muscle, exerciseName, exercis
         "#e": exerciseName
       },
       ExpressionAttributeValues: {
-        ":metrics": exerciseMetrics
+        ":metrics": newMetrics
       },
       ReturnValues:"ALL_NEW"
     }, (err, data) => {
