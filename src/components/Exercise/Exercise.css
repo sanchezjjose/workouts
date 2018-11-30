@@ -36,4 +36,11 @@
   height: 30px;
   width: 40px;
   text-align: center;
+  border: 0;
+  outline: 0;
+}
+
+.edit .Metric {
+  border-bottom: 0.5px solid #cecece;
+  width: 32px;
 }
