@@ -30,3 +30,7 @@
 .Exercise .name {
   justify-self: left;
 }
+
+.Metric {
+  padding: 10px;
+}
