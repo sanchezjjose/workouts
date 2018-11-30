@@ -22,8 +22,8 @@ class App extends Component {
       getUserWorkouts(id).then(user => {
         if (user) {
           const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-          const dayOfWeek = 'Friday';
-          // const dayOfWeek = days[new Date().getDay()];
+          // const dayOfWeek = 'Friday';
+          const dayOfWeek = days[new Date().getDay()];
           const query = Object.entries(user.routine).filter(([ key ]) => key === dayOfWeek);
 
           if (query.length > 0) {
