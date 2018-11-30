@@ -4,13 +4,13 @@
   grid-gap: 5px;
   justify-items: center;
   align-items: center;
-  overflow-x: scroll;
   font-size: 16px;
 }
 
 .Exercise.edit {
   grid-template-columns: repeat(2, 48px) 150px repeat(3, 1fr);
   margin-bottom: 5px;
+  overflow-x: scroll;
 }
 
 .Exercise.edit .delete-button {
@@ -32,5 +32,8 @@
 }
 
 .Metric {
-  padding: 10px;
+  font-size: 16px;
+  height: 30px;
+  width: 40px;
+  text-align: center;
 }

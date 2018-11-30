@@ -33,9 +33,9 @@ class Exercise extends Component {
     const swipedHorizontal = Math.abs(diffX) > Math.abs(diffY);
 
     if (swipedHorizontal) {
-      const metric = e.target.dataset.metric;
+      const metric = e.target.name;
       const increment = metric === 'weight' ? 5 : 1;
-      const initialValue = e.target.innerText;
+      const initialValue = e.target.value;
       const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
 
       if (!isNaN(finalValue) && finalValue > 0) {
@@ -112,6 +112,11 @@ class Exercise extends Component {
     console.log('Deleting exercise...');
   }
 
+  handleOnChange = (e) => {
+    e.preventDefault();
+    debugger;
+  }
+
   render() {
     const exercise = this.state.exercise;
     const exerciseClassName = this.props.edit ? 'edit' : '';
@@ -126,9 +131,9 @@ class Exercise extends Component {
           <button onClick={this.handleExerciseDone} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
         }
         <div className='name'>{exercise.name}</div>
-        <div className='Metric weight' data-metric='weight' onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>{exercise.metrics.weight}</div>
-        <div className='Metric reps' data-metric='reps' onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>{exercise.metrics.reps}</div>
-        <div className='Metric sets' data-metric='sets' onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>{exercise.metrics.sets}</div>
+        <input type='text' name='weight' className='Metric weight' onChange={this.handleOnChange} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd} value={exercise.metrics.weight} readOnly={!this.props.edit} />
+        <input type='text' name='reps' className='Metric reps' onChange={this.handleOnChange} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd} value={exercise.metrics.reps} readOnly={!this.props.edit} />
+        <input type='text' name='sets' className='Metric sets' onChange={this.handleOnChange} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd} value={exercise.metrics.sets} readOnly={!this.props.edit} />
       </div>
     );
   }
