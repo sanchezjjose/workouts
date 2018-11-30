@@ -8,9 +8,18 @@
   font-size: 16px;
 }
 
-.Exercise .delete-button {
-  position: absolute;
-  left: -5px;
+.Exercise.edit {
+  grid-template-columns: repeat(2, 48px) 150px repeat(3, 1fr);
+  margin-bottom: 5px;
+}
+
+
+.Exercise.edit .delete-button {
+  /* position: absolute;
+  left: -5px; */
+  padding: 0;
+  background: #E53935;
+  color: #fff;
 }
 
 .Exercise .status-button {

@@ -83,11 +83,12 @@ class Exercise extends Component {
 
   render() {
     const exercise = this.state.exercise;
+    const exerciseClassName = this.props.edit ? 'edit' : '';
 
     return (
-      <div className='Exercise'>
+      <div className={`Exercise ${exerciseClassName}`}>
         {this.props.edit &&
-          <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">delete</button>
+          <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button>
         }
         {exercise.metrics.done ? 
           <button onClick={this.handleExerciseDone} className="status-button mdc-icon-button material-icons fill">check_circle</button> :
