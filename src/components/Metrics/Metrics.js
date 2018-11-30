@@ -22,6 +22,10 @@ class Metrics extends Component {
       return;
     }
 
+    if (this.props.edit) {
+      return;
+    }
+
     const currentX = e.changedTouches[0].clientX;
     const currentY = e.changedTouches[0].clientY;
     const diffX = this.touchStartX - currentX;
