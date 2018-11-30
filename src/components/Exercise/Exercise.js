@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import Metrics from '../Metrics/Metrics';
 import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutHistory';
 import { setExerciseStatus } from '../../api/ExerciseStatus';
-import { updateExerciseMetrics } from '../../api/ExerciseMetrics';
 
 import './Exercise.css';
 
@@ -10,65 +10,6 @@ class Exercise extends Component {
   state = {
     // Seed data
     exercise: this.props.exercise
-  }
-
-  touchStartX = 0;
-  touchEndX = 0;
-
-  handleTouchStart = (e) => {
-    this.touchStartX = e.changedTouches[0].clientX;
-    this.touchStartY = e.changedTouches[0].clientY;
-  }
-
-  handleTouchEnd = (e) => {
-    if (this.touchStartX === null || this.touchStartY === null) {
-      return;
-    }
-
-    const currentX = e.changedTouches[0].clientX;
-    const currentY = e.changedTouches[0].clientY;
-    const diffX = this.touchStartX - currentX;
-    const diffY = this.touchStartY - currentY;
-    const swipedLeft = diffX > 0;
-    const swipedHorizontal = Math.abs(diffX) > Math.abs(diffY);
-
-    if (swipedHorizontal) {
-      const metric = e.target.name;
-      const increment = metric === 'weight' ? 5 : 1;
-      const initialValue = e.target.value;
-      const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
-
-      if (!isNaN(finalValue) && finalValue > 0) {
-        const id = this.props.userId;
-        const workoutDay = this.props.workoutDay;
-        const muscle = this.props.routine.muscle;
-        const exercise = this.state.exercise;
-
-        let newMetrics = { ...this.state.exercise.metrics };
-        if (metric === 'weight') {
-          newMetrics = { ...this.state.exercise.metrics, weight: finalValue };
-        } else if (metric === 'reps') {
-          newMetrics = { ...this.state.exercise.metrics, reps: finalValue };
-        } else if (metric === 'sets') {
-          newMetrics = { ...this.state.exercise.metrics, sets: finalValue };
-        }
-
-        this.setState((prevState) => ({
-          exercise: { ...prevState.exercise, metrics: newMetrics }
-        }));
-
-        updateExerciseMetrics(id, workoutDay, muscle, exercise.name, newMetrics)
-          .then(() => {
-            console.log(`Successfully changed ${metric} from ${initialValue} to ${finalValue}...`);
-          })
-          .catch(err => {
-            console.error(err);
-            this.setState((prevState) => ({
-              exercise: { ...prevState.exercise, metrics: { ...prevState.exercise.metrics, weight: initialValue } }
-            }));
-          })
-      }
-    }
   }
 
   handleExerciseDone = (e) => {
@@ -112,11 +53,6 @@ class Exercise extends Component {
     console.log('Deleting exercise...');
   }
 
-  handleOnChange = (e) => {
-    e.preventDefault();
-    debugger;
-  }
-
   render() {
     const exercise = this.state.exercise;
     const exerciseClassName = this.props.edit ? 'edit' : '';
@@ -131,9 +67,12 @@ class Exercise extends Component {
           <button onClick={this.handleExerciseDone} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
         }
         <div className='name'>{exercise.name}</div>
-        <input type='text' name='weight' className='Metric weight' onChange={this.handleOnChange} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd} value={exercise.metrics.weight} readOnly={!this.props.edit} />
-        <input type='text' name='reps' className='Metric reps' onChange={this.handleOnChange} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd} value={exercise.metrics.reps} readOnly={!this.props.edit} />
-        <input type='text' name='sets' className='Metric sets' onChange={this.handleOnChange} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd} value={exercise.metrics.sets} readOnly={!this.props.edit} />
+        <Metrics metricType='weight' 
+          userId={this.props.userId} workoutDay={this.props.workoutDay} routine={this.props.routine} exercise={exercise} metricValue={exercise.metrics.weight} edit={this.props.edit} />
+        <Metrics metricType='reps' 
+          userId={this.props.userId} workoutDay={this.props.workoutDay} routine={this.props.routine} exercise={exercise} metricValue={exercise.metrics.reps} edit={this.props.edit} />
+        <Metrics metricType='sets' 
+          userId={this.props.userId} workoutDay={this.props.workoutDay} routine={this.props.routine} exercise={exercise} metricValue={exercise.metrics.sets} edit={this.props.edit} />
       </div>
     );
   }
