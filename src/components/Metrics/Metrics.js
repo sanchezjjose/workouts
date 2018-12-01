@@ -7,6 +7,7 @@ class Metrics extends Component {
 
   state = {
     metricValue: this.props.metricValue,
+    // edited is synonomous with being in 'draft' state.
     edited: false
   }
 
@@ -40,24 +41,7 @@ class Metrics extends Component {
       const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
 
       if (!isNaN(finalValue) && finalValue > 0) {
-        const id = this.props.userId;
-        const workoutDay = this.props.workoutDay;
-        const muscle = this.props.routine.muscle;
-        const exercise = this.props.exercise;
-        const newMetrics = { ...this.props.exercise.metrics };
-
-        newMetrics[this.props.metricType] = finalValue;
-
         this.setState({ metricValue: finalValue });
-
-        updateExerciseMetrics(id, workoutDay, muscle, exercise.name, newMetrics)
-          .then(() => {
-            console.debug(`Successfully changed ${this.props.metricValue} from ${initialValue} to ${finalValue}...`);
-          })
-          .catch(err => {
-            console.error(err);
-            this.setState({ metricValue: initialValue });
-          })
       }
     }
   }
@@ -72,7 +56,12 @@ class Metrics extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState, prevContext) => {
-    if (this.state.edited && this.props.save) {
+    const metricValueChanged = this.state.metricValue !== prevState.metricValue;
+    const metricValueEdited = this.state.edited;
+    const saveButtonClicked = this.props.save;
+    const inEditMode = this.props.edit;
+
+    if ((metricValueChanged && !inEditMode) || (metricValueEdited && saveButtonClicked)) {
       this.setState({ edited: false });
 
       const id = this.props.userId;
