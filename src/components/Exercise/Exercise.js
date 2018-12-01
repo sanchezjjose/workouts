@@ -76,7 +76,6 @@ class Exercise extends Component {
           edit={this.props.edit}
           save={this.props.save}
           handleSaveSubmit={this.props.handleSaveSubmit} />
-
         <Metrics metricType='reps'
           userId={this.props.userId}
           workoutDay={this.props.workoutDay}
@@ -86,7 +85,6 @@ class Exercise extends Component {
           edit={this.props.edit}
           save={this.props.save}
           handleSaveSubmit={this.props.handleSaveSubmit} />
-
         <Metrics metricType='sets'
           userId={this.props.userId}
           workoutDay={this.props.workoutDay}

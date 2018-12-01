@@ -52,7 +52,7 @@ class Metrics extends Component {
 
         updateExerciseMetrics(id, workoutDay, muscle, exercise.name, newMetrics)
           .then(() => {
-            console.log(`Successfully changed ${this.props.metricValue} from ${initialValue} to ${finalValue}...`);
+            console.debug(`Successfully changed ${this.props.metricValue} from ${initialValue} to ${finalValue}...`);
           })
           .catch(err => {
             console.error(err);
@@ -73,18 +73,24 @@ class Metrics extends Component {
 
   componentDidUpdate = (prevProps, prevState, prevContext) => {
     if (this.state.edited && this.props.save) {
-      console.log(this.props.exercise.name);
-      console.log(this.props.metricType);
-      console.log(this.props.save);
-      console.log(this.state.metricValue);
-      console.log(prevState.metricValue);
-      console.log(prevProps.metricValue);
-      console.log('-----------');
-
-      // Resets save state to false
-      this.props.handleSaveSubmit();
-
       this.setState({ edited: false });
+
+      const id = this.props.userId;
+      const workoutDay = this.props.workoutDay;
+      const muscle = this.props.routine.muscle;
+      const exercise = this.props.exercise;
+      const newMetrics = { ...this.props.exercise.metrics };
+
+      newMetrics[this.props.metricType] = this.state.metricValue;
+
+      updateExerciseMetrics(id, workoutDay, muscle, exercise.name, newMetrics)
+        .then(() => {
+          this.props.handleSaveSubmit();
+        })
+        .catch(err => {
+          console.error(err);
+          this.setState({ metricValue: prevProps.metricValue });
+        });
     }
   }
 

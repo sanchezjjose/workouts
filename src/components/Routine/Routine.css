@@ -27,7 +27,7 @@
 }
 
 .Routine .routine-heading.save-mode {
-  grid-template-columns: 1fr repeat(2, 50px);
+  grid-template-columns: 1fr repeat(2, 75px);
 }
 
 .Routine .routine-heading .weekday {

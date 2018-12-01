@@ -10,25 +10,24 @@ import "@material/icon-button/dist/mdc.icon-button.min.css";
 class Routine extends Component {
 
   state = {
-    save: false,
-    edit: false
+    saveMode: false,
+    editMode: false
   }
 
   handleEdit = (e) => {
     e.preventDefault();
-    this.setState({ edit: !this.state.edit });
+    this.setState({ editMode: !this.state.editMode });
   }
 
   handleSave = (e) => {
     e.preventDefault();
-    this.setState({ save: true });
-    this.setState({ edit: !this.state.edit });
+    this.setState({ saveMode: true });
+    this.setState({ editMode: !this.state.editMode });
   }
 
   handleSaveSubmit = () => {
-    if (this.state.save === true) {
-      console.log('AAAAA');
-      this.setState({ save: false });
+    if (this.state.saveMode === true) {
+      this.setState({ saveMode: false });
     }
   }
 
@@ -42,12 +41,14 @@ class Routine extends Component {
   render() {
     return (
       <div className='Routine'>
-        <div className={`routine-heading ${this.state.edit ? 'save-mode' : ''}`}>
+        <div className={`routine-heading ${this.state.editMode ? 'save-mode' : ''}`}>
           <h2 className='weekday'>{this.props.workout.day}</h2>
-          {this.state.edit &&
+          {this.state.editMode &&
             <button onClick={this.handleSave} className='mode-button save'>Save</button>
           }
-          <button onClick={this.handleEdit} className='mode-button edit'>Edit</button>
+          <button onClick={this.handleEdit} className='mode-button edit'>
+            {this.state.editMode ? 'Cancel' : 'Edit'}
+          </button>
         </div>
         {this.props.routines.map (routine => {
           return (
@@ -64,8 +65,8 @@ class Routine extends Component {
                   workoutDay={this.props.workout.day} 
                   routine={routine} 
                   exercise={exercise} 
-                  edit={this.state.edit} 
-                  save={this.state.save}
+                  edit={this.state.editMode} 
+                  save={this.state.saveMode}
                   handleSaveSubmit={this.handleSaveSubmit} />
               )}
             </div>
