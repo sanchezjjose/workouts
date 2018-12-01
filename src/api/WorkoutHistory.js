@@ -10,7 +10,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 const addExerciseHistory = (userId, muscle, exercise) => {
   const today = new Date();
-  const date = `${today.getMonth()}-${today.getDate()}-${today.getFullYear()}`;
+  const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
 
   const p1 = new Promise((resolve, reject) => {
     docClient.update({
