@@ -10,13 +10,26 @@ import "@material/icon-button/dist/mdc.icon-button.min.css";
 class Routine extends Component {
 
   state = {
+    save: false,
     edit: false
   }
 
-  handleRoutineEdit = (e) => {
+  handleEdit = (e) => {
     e.preventDefault();
-    console.log('Edit clicked...');
     this.setState({ edit: !this.state.edit });
+  }
+
+  handleSave = (e) => {
+    e.preventDefault();
+    this.setState({ save: true });
+    this.setState({ edit: !this.state.edit });
+  }
+
+  handleSaveSubmit = () => {
+    if (this.state.save === true) {
+      console.log('AAAAA');
+      this.setState({ save: false });
+    }
   }
 
   componentDidUpdate() {
@@ -29,9 +42,12 @@ class Routine extends Component {
   render() {
     return (
       <div className='Routine'>
-        <div className='routine-heading'>
+        <div className={`routine-heading ${this.state.edit ? 'save-mode' : ''}`}>
           <h2 className='weekday'>{this.props.workout.day}</h2>
-          <button onClick={this.handleRoutineEdit} className='edit'>Edit</button>
+          {this.state.edit &&
+            <button onClick={this.handleSave} className='mode-button save'>Save</button>
+          }
+          <button onClick={this.handleEdit} className='mode-button edit'>Edit</button>
         </div>
         {this.props.routines.map (routine => {
           return (
@@ -43,7 +59,14 @@ class Routine extends Component {
                 <span className='sets'>Sets</span>
               </div>
               {routine.exercises.map (exercise => 
-                <Exercise key={exercise.name} userId={this.props.userId} workoutDay={this.props.workout.day} routine={routine} exercise={exercise} edit={this.state.edit} />
+                <Exercise key={exercise.name} 
+                  userId={this.props.userId} 
+                  workoutDay={this.props.workout.day} 
+                  routine={routine} 
+                  exercise={exercise} 
+                  edit={this.state.edit} 
+                  save={this.state.save}
+                  handleSaveSubmit={this.handleSaveSubmit} />
               )}
             </div>
           );

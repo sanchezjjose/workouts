@@ -67,12 +67,35 @@ class Exercise extends Component {
           <button onClick={this.handleExerciseDone} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
         }
         <div className='name'>{exercise.name}</div>
-        <Metrics metricType='weight' 
-          userId={this.props.userId} workoutDay={this.props.workoutDay} routine={this.props.routine} exercise={exercise} metricValue={exercise.metrics.weight} edit={this.props.edit} />
-        <Metrics metricType='reps' 
-          userId={this.props.userId} workoutDay={this.props.workoutDay} routine={this.props.routine} exercise={exercise} metricValue={exercise.metrics.reps} edit={this.props.edit} />
-        <Metrics metricType='sets' 
-          userId={this.props.userId} workoutDay={this.props.workoutDay} routine={this.props.routine} exercise={exercise} metricValue={exercise.metrics.sets} edit={this.props.edit} />
+        <Metrics metricType='weight'
+          userId={this.props.userId}
+          workoutDay={this.props.workoutDay}
+          routine={this.props.routine}
+          exercise={exercise}
+          metricValue={exercise.metrics.weight}
+          edit={this.props.edit}
+          save={this.props.save}
+          handleSaveSubmit={this.props.handleSaveSubmit} />
+
+        <Metrics metricType='reps'
+          userId={this.props.userId}
+          workoutDay={this.props.workoutDay}
+          routine={this.props.routine}
+          exercise={exercise}
+          metricValue={exercise.metrics.reps}
+          edit={this.props.edit}
+          save={this.props.save}
+          handleSaveSubmit={this.props.handleSaveSubmit} />
+
+        <Metrics metricType='sets'
+          userId={this.props.userId}
+          workoutDay={this.props.workoutDay}
+          routine={this.props.routine}
+          exercise={exercise}
+          metricValue={exercise.metrics.sets}
+          edit={this.props.edit}
+          save={this.props.save}
+          handleSaveSubmit={this.props.handleSaveSubmit} />
       </div>
     );
   }

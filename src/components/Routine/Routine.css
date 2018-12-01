@@ -26,11 +26,15 @@
   align-items: center;
 }
 
+.Routine .routine-heading.save-mode {
+  grid-template-columns: 1fr repeat(2, 50px);
+}
+
 .Routine .routine-heading .weekday {
   margin: 0;
 }
 
-.Routine .routine-heading .edit {
+.Routine .routine-heading .mode-button {
   justify-self: end;
   font-size: 18px;
   background: none;

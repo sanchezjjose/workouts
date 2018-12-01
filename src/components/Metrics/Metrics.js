@@ -5,8 +5,9 @@ import './Metrics.css';
 
 class Metrics extends Component {
 
-  state = { 
-    metricValue: this.props.metricValue
+  state = {
+    metricValue: this.props.metricValue,
+    edited: false
   }
 
   touchStartX = 0;
@@ -65,8 +66,26 @@ class Metrics extends Component {
     e.preventDefault();
 
     this.setState({
-      metricValue: e.target.value
+      metricValue: e.target.value,
+      edited: true
     });
+  }
+
+  componentDidUpdate = (prevProps, prevState, prevContext) => {
+    if (this.state.edited && this.props.save) {
+      console.log(this.props.exercise.name);
+      console.log(this.props.metricType);
+      console.log(this.props.save);
+      console.log(this.state.metricValue);
+      console.log(prevState.metricValue);
+      console.log(prevProps.metricValue);
+      console.log('-----------');
+
+      // Resets save state to false
+      this.props.handleSaveSubmit();
+
+      this.setState({ edited: false });
+    }
   }
 
   render() {
