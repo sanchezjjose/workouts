@@ -85,6 +85,7 @@ class Metrics extends Component {
 
       updateExerciseMetrics(id, workoutDay, muscle, exercise.name, newMetrics)
         .then(() => {
+          console.debug(`Changed ${this.props.metricType} metric for ${exercise.name} from ${prevProps.metricValue} to ${this.state.metricValue}.`);
           this.props.handleSaveSubmit();
         })
         .catch(err => {
