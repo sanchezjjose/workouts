@@ -25,6 +25,11 @@ class Routine extends Component {
     this.setState({ editMode: !this.state.editMode });
   }
 
+  handleReset = (e) => {
+    e.preventDefault();
+    // TODO: set done=false for each exercise, then update DB for that day
+  }
+
   handleSaveSubmit = () => {
     if (this.state.saveMode === true) {
       this.setState({ saveMode: false });
@@ -50,7 +55,7 @@ class Routine extends Component {
             </div>
           ) : (
             <div className='mode-button-container'>
-              <button onClick={this.handleSave} className='mode-button reset'>Reset</button>
+              <button onClick={this.handleReset} className='mode-button reset'>Reset</button>
               <button onClick={this.handleSave} className='mode-button edit'>Edit</button>
             </div>
           )}
