@@ -43,12 +43,17 @@ class Routine extends Component {
       <div className='Routine'>
         <div className={`routine-heading ${this.state.editMode ? 'save-mode' : ''}`}>
           <h2 className='weekday'>{this.props.workout.day}</h2>
-          {this.state.editMode &&
-            <button onClick={this.handleSave} className='mode-button save'>Save</button>
-          }
-          <button onClick={this.handleEdit} className='mode-button edit'>
-            {this.state.editMode ? 'Cancel' : 'Edit'}
-          </button>
+          {this.state.editMode ? (
+            <div className='mode-button-container editing'>
+              <button onClick={this.handleSave} className='mode-button save'>Save</button>
+              <button onClick={this.handleSave} className='mode-button cancel'>Cancel</button>
+            </div>
+          ) : (
+            <div className='mode-button-container'>
+              <button onClick={this.handleSave} className='mode-button reset'>Reset</button>
+              <button onClick={this.handleSave} className='mode-button edit'>Edit</button>
+            </div>
+          )}
         </div>
         {this.props.routines.map (routine => {
           return (

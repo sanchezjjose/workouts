@@ -26,10 +26,6 @@
   align-items: center;
 }
 
-.Routine .routine-heading.save-mode {
-  grid-template-columns: 1fr repeat(2, 75px);
-}
-
 .Routine .routine-heading .weekday {
   margin: 0;
 }
@@ -43,6 +39,18 @@
   cursor: pointer;
   text-decoration: underline;
   padding: 0;
+}
+
+.Routine .mode-button-container {
+  display: grid;
+  grid-template-columns: repeat(2, 60px);
+  justify-content: end;
+}
+
+.Routine .mode-button-container.editing {
+  display: grid;
+  grid-template-columns: repeat(2, 75px);
+  justify-content: end;
 }
 
 .Routine .muscle {

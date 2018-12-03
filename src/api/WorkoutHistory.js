@@ -69,7 +69,7 @@ const addExerciseHistory = (userId, muscle, exercise) => {
 
 const deleteExerciseHistory = (userId, exercise) => {
   const today = new Date();
-  const date = `${today.getMonth()}-${today.getDate()}-${today.getFullYear()}`;
+  const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
 
   return new Promise((resolve, reject) => {
     const params = {
