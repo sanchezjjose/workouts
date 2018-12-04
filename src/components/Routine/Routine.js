@@ -27,7 +27,15 @@ class Routine extends Component {
 
   handleReset = (e) => {
     e.preventDefault();
-    // TODO: set done=false for each exercise, then update DB for that day
+
+    const props = this.props;
+
+    // Set all exercise done status to false
+    props.workout.routines.forEach(r => {
+      r.exercises.forEach(e => {
+        props.user.routine[props.workout.day][r.muscle][e.name].done = false;
+      });
+    });
   }
 
   handleSaveSubmit = () => {
@@ -71,7 +79,7 @@ class Routine extends Component {
               </div>
               {routine.exercises.map (exercise => 
                 <Exercise key={exercise.name} 
-                  userId={this.props.userId} 
+                  userId={this.props.user.id} 
                   workoutDay={this.props.workout.day} 
                   routine={routine} 
                   exercise={exercise} 
