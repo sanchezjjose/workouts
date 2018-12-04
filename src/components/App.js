@@ -22,9 +22,9 @@ class App extends Component {
       getUserWorkouts(id).then(user => {
         if (user) {
           const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-          const dayOfWeek = 'Monday';
-          // const dayOfWeek = days[new Date().getDay()];
-          const query = Object.entries(user.routine).filter(([ key ]) => key === dayOfWeek);
+          // const workoutDay = 'Monday';
+          const workoutDay = days[new Date().getDay()];
+          const query = Object.entries(user.routine).filter(([ key ]) => key === workoutDay);
 
           if (query.length > 0) {
             const result = query[0][1];
@@ -42,7 +42,7 @@ class App extends Component {
 
             // TODO: Make Class instance / View Model
             const workout = {
-              day: dayOfWeek,
+              day: workoutDay,
               routines: routines
             };
 
