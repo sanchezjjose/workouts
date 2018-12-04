@@ -16,16 +16,21 @@ class Routine extends Component {
 
   handleEdit = (e) => {
     e.preventDefault();
-    this.setState({ editMode: !this.state.editMode });
+    this.setState({ editMode: true });
   }
 
   handleSave = (e) => {
     e.preventDefault();
     this.setState({ saveMode: true });
-    this.setState({ editMode: !this.state.editMode });
+    this.setState({ editMode: false });
   }
 
-  handleReset = (e) => {
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.setState({ editMode: false });
+  }
+
+  handleStartWorkout = (e) => {
     e.preventDefault();
 
     const props = this.props;
@@ -55,23 +60,26 @@ class Routine extends Component {
   }
 
   render() {
+    const dayOfWeek = this.props.workout.day;
+    const routines = this.props.workout.routines;
+
     return (
       <div className='Routine'>
         <div className={`routine-heading ${this.state.editMode ? 'save-mode' : ''}`}>
-          <h2 className='weekday'>{this.props.workout.day}</h2>
+          <h2 className='weekday'>{dayOfWeek}</h2>
           {this.state.editMode ? (
             <div className='mode-button-container editing'>
               <button onClick={this.handleSave} className='mode-button save'>Save</button>
-              <button onClick={this.handleSave} className='mode-button cancel'>Cancel</button>
+              <button onClick={this.handleCancel} className='mode-button cancel'>Cancel</button>
             </div>
           ) : (
             <div className='mode-button-container'>
-              <button onClick={this.handleReset} className='mode-button reset'>Start Workout</button>
-              <button onClick={this.handleSave} className='mode-button edit'>Edit</button>
+              <button onClick={this.handleStartWorkout} className='mode-button reset'>Start Workout</button>
+              <button onClick={this.handleEdit} className='mode-button edit'>Edit</button>
             </div>
           )}
         </div>
-        {this.props.routines.map (routine => {
+        {routines.map (routine => {
           return (
             <div key={routine.muscle} className='group'>
               <div className='header'>
@@ -82,8 +90,8 @@ class Routine extends Component {
               </div>
               {routine.exercises.map (exercise => 
                 <Exercise key={exercise.name} 
-                  userId={this.props.user.id} 
-                  workoutDay={this.props.workout.day} 
+                  user={this.props.user} 
+                  workout={this.props.workout} 
                   routine={routine} 
                   exercise={exercise} 
                   edit={this.state.editMode} 

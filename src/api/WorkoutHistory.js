@@ -8,7 +8,7 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const addExerciseHistory = (userId, muscle, exercise) => {
+const addExerciseHistory = (userId, exercise, muscle) => {
   const today = new Date();
   const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
 

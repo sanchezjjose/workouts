@@ -64,8 +64,8 @@ class Metrics extends Component {
     if ((metricValueChanged && !inEditMode) || (metricValueEdited && saveButtonClicked)) {
       this.setState({ edited: false });
 
-      const id = this.props.userId;
-      const workoutDay = this.props.workoutDay;
+      const id = this.props.user.id;
+      const workoutDay = this.props.workout.day;
       const muscle = this.props.routine.muscle;
       const exercise = this.props.exercise;
       const newMetrics = { ...this.props.exercise.metrics };
@@ -85,14 +85,15 @@ class Metrics extends Component {
   }
 
   render() {
+    const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
 
     return (
       <input type='text' name={metricType} className={`Metric ${metricType}`}
+        value={metricValue} 
         onTouchStart={this.handleTouchStart} 
         onTouchEnd={this.handleTouchEnd} 
         onChange={this.handleOnChange} 
-        value={this.state.metricValue} 
         readOnly={!this.props.edit} />
     );
   }
