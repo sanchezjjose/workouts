@@ -34,12 +34,12 @@ class Routine extends Component {
     e.preventDefault();
 
     const props = this.props;
-    const dayOfWeek = props.workout.day;
+    const workoutDay = props.workout.day;
 
     // Reset all exercise status
     props.workout.routines.forEach(r => {
       r.exercises.forEach(e => {
-        props.user.routine[dayOfWeek][r.muscle][e.name].done = false;
+        props.user.routine[workoutDay][r.muscle][e.name].done = false;
       });
     });
 
@@ -60,13 +60,13 @@ class Routine extends Component {
   }
 
   render() {
-    const dayOfWeek = this.props.workout.day;
+    const workoutDay = this.props.workout.day;
     const routines = this.props.workout.routines;
 
     return (
       <div className='Routine'>
         <div className={`routine-heading ${this.state.editMode ? 'save-mode' : ''}`}>
-          <h2 className='weekday'>{dayOfWeek}</h2>
+          <h2 className='weekday'>{workoutDay}</h2>
           {this.state.editMode ? (
             <div className='mode-button-container editing'>
               <button onClick={this.handleSave} className='mode-button save'>Save</button>
