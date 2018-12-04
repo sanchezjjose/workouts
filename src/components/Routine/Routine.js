@@ -96,6 +96,7 @@ class Routine extends Component {
                   exercise={exercise} 
                   edit={this.state.editMode} 
                   save={this.state.saveMode}
+                  handleRoutineChange={this.props.handleRoutineChange}
                   handleSaveSubmit={this.handleSaveSubmit} />
               )}
             </div>

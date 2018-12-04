@@ -7,30 +7,18 @@ import './Exercise.css';
 
 class Exercise extends Component {
 
-  state = {
-    // Seed data
-    exercise: this.props.exercise
-  }
-
   handleExerciseStatus = (exerciseComplete) => {
-    const id = this.props.user.id;
+    const user = this.props.user;
     const workoutDay = this.props.workout.day;
     const muscle = this.props.routine.muscle;
-    const exercise = this.state.exercise;
+    const exercise = this.props.exercise;
     const updateExerciseHistory = exerciseComplete ? addExerciseHistory : deleteExerciseHistory;
 
-    updateExerciseHistory(id, exercise, muscle)
-      .then(() => setExerciseStatus(id, workoutDay, muscle, exercise.name, exerciseComplete))
+    updateExerciseHistory(user.id, exercise, muscle)
+      .then(() => setExerciseStatus(user.id, workoutDay, muscle, exercise.name, exerciseComplete))
       .then(() => {
-        this.setState((prevState) => ({
-          exercise: { 
-            ...prevState.exercise, 
-            metrics: { 
-              ...prevState.exercise.metrics, 
-              done: exerciseComplete 
-            } 
-          }
-        }));
+        user.routine[workoutDay][muscle][exercise.name].done = exerciseComplete;
+        this.props.handleRoutineChange(user);
       })
       .catch(e => {
         console.error(e);
@@ -43,7 +31,7 @@ class Exercise extends Component {
   }
 
   render() {
-    const exercise = this.state.exercise;
+    const exercise = this.props.exercise;
     const exerciseClassName = this.props.edit ? 'edit' : '';
 
     return (
