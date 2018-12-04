@@ -22,8 +22,8 @@ class App extends Component {
       getUserWorkouts(id).then(user => {
         if (user) {
           const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-          // const dayOfWeek = 'Friday';
-          const dayOfWeek = days[new Date().getDay()];
+          const dayOfWeek = 'Monday';
+          // const dayOfWeek = days[new Date().getDay()];
           const query = Object.entries(user.routine).filter(([ key ]) => key === dayOfWeek);
 
           if (query.length > 0) {
@@ -56,6 +56,12 @@ class App extends Component {
     }
   }
 
+  handleRoutineChange = (user) => {
+    this.setState({
+      user: user
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -63,7 +69,7 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container'>
-              <Home user={this.state.user} workout={this.state.workout} />
+              <Home user={this.state.user} workout={this.state.workout} handleRoutineChange={this.handleRoutineChange} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

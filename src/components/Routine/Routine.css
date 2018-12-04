@@ -43,7 +43,7 @@
 
 .Routine .mode-button-container {
   display: grid;
-  grid-template-columns: repeat(2, 60px);
+  grid-template-columns: 150px 50px;
   justify-content: end;
 }
 

@@ -15,7 +15,7 @@ class Home extends Component {
         <div className='content-wrapper'>
           <h1>{this.props.user.name}'s Workout</h1>
           <div className='content'>
-           <Routine user={this.props.user} workout={workout} routines={routines} />
+           <Routine user={this.props.user} workout={workout} routines={routines} handleRoutineChange={this.props.handleRoutineChange} />
           </div>
         </div>) : (
           <h1>Today is your well deserved day off! Kick back and enjoy!</h1>
