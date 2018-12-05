@@ -8,22 +8,20 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const setRoutine = (userId, routine) => {
+const setRoutine = (userId, routine, workoutDay) => {
   return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #r.#d.#m.#e.done = :done",
+      UpdateExpression: "SET #r.#d = :routine",
       ExpressionAttributeNames: {
         "#r": "routine",
-        "#d": workoutDay,
-        "#m": muscle,
-        "#e": exerciseName
+        "#d": workoutDay
       },
       ExpressionAttributeValues: {
-        ":done": done 
+        ":routine": routine 
       },
       ReturnValues:"ALL_NEW"
     }, (err, data) => {

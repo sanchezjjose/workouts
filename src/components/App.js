@@ -28,7 +28,7 @@ class App extends Component {
 
           if (query.length > 0) {
             const result = query[0][1];
-            const routines = Object.entries(result).map(([ key, value ]) =>  {
+            const routines = Object.entries(result).filter(([ key ]) => key !== 'date').map(([ key, value ]) =>  {
               return {
                 muscle: key,
                 exercises: Object.entries(value).map(([ key, value ]) => {

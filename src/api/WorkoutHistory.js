@@ -8,11 +8,8 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const addExerciseHistory = (userId, exercise, muscle) => {
-  const today = new Date();
-  const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
-
-  const p1 = new Promise((resolve, reject) => {
+const addExerciseHistory = (userId, date, exercise, muscle) => {
+  const createDateEntry = new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
@@ -35,7 +32,7 @@ const addExerciseHistory = (userId, exercise, muscle) => {
     });
   })
 
-  const p2 = new Promise((resolve, reject) => {
+  const saveExercise = new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
@@ -64,13 +61,10 @@ const addExerciseHistory = (userId, exercise, muscle) => {
     });
   });
 
-  return Promise.all([ p1, p2 ]);
+  return Promise.all([ createDateEntry, saveExercise ]);
 };
 
-const deleteExerciseHistory = (userId, exercise) => {
-  const today = new Date();
-  const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
-
+const deleteExerciseHistory = (userId, date, exercise) => {
   return new Promise((resolve, reject) => {
     const params = {
       TableName: 'Workouts',
