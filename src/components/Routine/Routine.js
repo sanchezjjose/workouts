@@ -33,8 +33,12 @@ class Routine extends Component {
   handleStartWorkout = (e) => {
     e.preventDefault();
 
+    const today = new Date();
+    const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
     const props = this.props;
     const workoutDay = props.workout.day;
+
+    props.user.routine[workoutDay].date = date;
 
     // Reset all exercise status
     props.workout.routines.forEach(r => {
@@ -42,6 +46,8 @@ class Routine extends Component {
         props.user.routine[workoutDay][r.muscle][e.name].done = false;
       });
     });
+
+    // Save Routine
 
     props.handleRoutineChange(props.user);
   }

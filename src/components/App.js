@@ -48,7 +48,7 @@ class App extends Component {
 
             this.setState({
               user: user,
-              workout: workout
+              workout: workout // TODO: Make clear this is "Today's Workout"
             });
           }
         }
