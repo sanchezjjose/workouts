@@ -69,12 +69,10 @@ class Routine extends Component {
   }
 
   render() {
-    const workouts = this.props.workouts;
-
     return (
       <div className='Routine'>
         <div className={`routine-heading ${this.state.editMode ? 'save-mode' : ''}`}>
-          <h2 className='weekday'>{workoutDay}</h2>
+          <h2 className='weekday'>{this.props.workout.day}</h2>
           {this.state.editMode ? (
             <div className='mode-button-container editing'>
               <button onClick={this.handleSave} className='mode-button save'>Save</button>
@@ -87,7 +85,7 @@ class Routine extends Component {
             </div>
           )}
         </div>
-        {workouts.map (routine => {
+        {this.props.workout.map (routine => {
           return (
             <div key={routine.muscle} className='group'>
               <div className='header'>
