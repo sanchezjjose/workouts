@@ -12,7 +12,7 @@ class App extends Component {
 
   state = {
     user: {},
-    workout: {}
+    workouts: []
   };
 
   componentDidMount() {
@@ -22,35 +22,26 @@ class App extends Component {
       getUserWorkouts(id).then(user => {
         if (user) {
           const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-          // const workoutDay = 'Monday';
           const workoutDay = days[new Date().getDay()];
-          const query = Object.entries(user.routine).filter(([ key ]) => key === workoutDay);
-
-          if (query.length > 0) {
-            const result = query[0][1];
-            const routines = Object.entries(result).filter(([ key ]) => key !== 'date').map(([ key, value ]) =>  {
-              return {
-                muscle: key,
-                exercises: Object.entries(value).map(([ key, value ]) => {
-                  return {
-                    name: key,
-                    metrics: value
-                  }
-                })
-              }
-            });
-
-            // TODO: Make Class instance / View Model
-            const workout = {
-              day: workoutDay,
-              routines: routines
+          const todaysRoutine = user.routine[workoutDay];
+          const todaysWorkout = Object.entries(todaysRoutine).map((muscle, exercises) => {
+            return {
+              muscle: muscle,
+              exercises: Object.entries(exercises).map((name, metrics) => {
+                return {
+                  name: name,
+                  metrics: metrics
+                };
+              })
             };
+          });
 
-            this.setState({
-              user: user,
-              workout: workout // TODO: Make clear this is "Today's Workout"
-            });
-          }
+          todaysWorkout.day = workoutDay;
+
+          this.setState({
+            user: user,
+            workouts: todaysWorkout
+          });
         }
       });
     }
@@ -69,7 +60,7 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container'>
-              <Home user={this.state.user} workout={this.state.workout} handleRoutineChange={this.handleRoutineChange} />
+              <Home user={this.state.user} workouts={this.state.workouts} handleRoutineChange={this.handleRoutineChange} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

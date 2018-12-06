@@ -69,8 +69,7 @@ class Routine extends Component {
   }
 
   render() {
-    const workoutDay = this.props.workout.day;
-    const routines = this.props.workout.routines;
+    const workouts = this.props.workouts;
 
     return (
       <div className='Routine'>
@@ -88,7 +87,7 @@ class Routine extends Component {
             </div>
           )}
         </div>
-        {routines.map (routine => {
+        {workouts.map (routine => {
           return (
             <div key={routine.muscle} className='group'>
               <div className='header'>
