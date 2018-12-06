@@ -8,16 +8,13 @@ class Home extends Component {
   render() {
     return (
       <div className='Home'>
-      {this.props.workout.length > 0 ? (
         <div className='content-wrapper'>
           <h1>{this.props.user.name}'s Workout</h1>
           <div className='content'>
-           <Routine user={this.props.user} workout={this.props.workout} handleRoutineChange={this.props.handleRoutineChange} />
+           {/* <Routine user={this.props.user} workout={this.props.workout} handleRoutineChange={this.props.handleRoutineChange} /> */}
+           <Routine user={this.props.user} handleUserChange={this.props.handleUserChange} />
           </div>
-        </div>) : (
-          <h1>Today is your well deserved day off! Kick back and enjoy!</h1>
-        )
-      }
+        </div>
       </div>
     );
   }

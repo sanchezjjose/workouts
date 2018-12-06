@@ -15,6 +15,31 @@ class Routine extends Component {
     editMode: false
   }
 
+  // TODO: Move to a Class object
+  getWorkoutViewModel(workouts, dayOfWeek) {
+    const workout = Object.entries(workouts[dayOfWeek]).map((workout) => {
+      return {
+        muscle: workout[0],
+        exercises: Object.entries(workout[1]).map((exercise) => {
+          return {
+            name: exercise[0],
+            metrics: exercise[1]
+          };
+        })
+      };
+    }).filter(w => w.muscle !== 'date');
+
+    workout.day = dayOfWeek;
+
+    return workout;
+  }
+
+  handleRoutineChange = (workout) => {
+    this.setState({
+      workout: workout
+    });
+  
+
   handleEdit = (e) => {
     e.preventDefault();
     this.setState({ editMode: true });
@@ -51,7 +76,7 @@ class Routine extends Component {
     // Save Routine
     setRoutine(props.user.id, props.user.routine[workoutDay], workoutDay)
       .then(() => {
-        props.handleRoutineChange(props.user);
+        props.handleUserChange(props.user);
       });
   }
 
@@ -69,6 +94,10 @@ class Routine extends Component {
   }
 
   render() {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfWeek = days[new Date().getDay()];
+    const todaysWorkout = this.getWorkoutViewModel(user.routine, 'Wednesday');
+
     return (
       <div className='Routine'>
         <div className={`routine-heading ${this.state.editMode ? 'save-mode' : ''}`}>

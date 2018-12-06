@@ -9,8 +9,10 @@ class Exercise extends Component {
 
   handleExerciseStatus = (exerciseComplete) => {
     const user = this.props.user;
+    const workout = this.props.workout;
     const workoutDay = this.props.workout.day;
     const date = user.routine[workoutDay].date;
+    const routine = this.props.routine;
     const muscle = this.props.routine.muscle;
     const exercise = this.props.exercise;
     const updateExerciseHistory = exerciseComplete ? addExerciseHistory : deleteExerciseHistory;
@@ -18,8 +20,8 @@ class Exercise extends Component {
     updateExerciseHistory(user.id, date, exercise, muscle)
       .then(() => setExerciseStatus(user.id, workoutDay, muscle, exercise.name, exerciseComplete))
       .then(() => {
-        user.routine[workoutDay][muscle][exercise.name].done = exerciseComplete;
-        this.props.handleRoutineChange(user);
+        routine[muscle][exercise.name].done = exerciseComplete;
+        this.props.handleRoutineChange(workout);
       })
       .catch(e => {
         console.error(e);
