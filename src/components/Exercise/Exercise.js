@@ -9,10 +9,8 @@ class Exercise extends Component {
 
   handleExerciseStatus = (exerciseComplete) => {
     const user = this.props.user;
-    const workout = this.props.workout;
     const workoutDay = this.props.workout.day;
     const date = user.routine[workoutDay].date;
-    const routine = this.props.routine;
     const muscle = this.props.routine.muscle;
     const exercise = this.props.exercise;
     const updateExerciseHistory = exerciseComplete ? addExerciseHistory : deleteExerciseHistory;
@@ -20,8 +18,8 @@ class Exercise extends Component {
     updateExerciseHistory(user.id, date, exercise, muscle)
       .then(() => setExerciseStatus(user.id, workoutDay, muscle, exercise.name, exerciseComplete))
       .then(() => {
-        routine[muscle][exercise.name].done = exerciseComplete;
-        this.props.handleRoutineChange(workout);
+        user.routine[workoutDay][muscle][exercise.name].done = exerciseComplete;
+        this.props.handleUserChange(user);
       })
       .catch(e => {
         console.error(e);
@@ -47,6 +45,7 @@ class Exercise extends Component {
           <button onClick={() => this.handleExerciseStatus(true)} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
         }
         <div className='name'>{exercise.name}</div>
+
         <Metrics metricType='weight'
           user={this.props.user}
           workout={this.props.workout}
@@ -55,7 +54,9 @@ class Exercise extends Component {
           metricValue={exercise.metrics.weight}
           edit={this.props.edit}
           save={this.props.save}
+          handleUserChange={this.props.handleUserChange}
           handleSaveSubmit={this.props.handleSaveSubmit} />
+
         <Metrics metricType='reps'
           user={this.props.user}
           workout={this.props.workout}
@@ -64,7 +65,9 @@ class Exercise extends Component {
           metricValue={exercise.metrics.reps}
           edit={this.props.edit}
           save={this.props.save}
+          handleUserChange={this.props.handleUserChange}
           handleSaveSubmit={this.props.handleSaveSubmit} />
+
         <Metrics metricType='sets'
           user={this.props.user}
           workout={this.props.workout}
@@ -73,6 +76,7 @@ class Exercise extends Component {
           metricValue={exercise.metrics.sets}
           edit={this.props.edit}
           save={this.props.save}
+          handleUserChange={this.props.handleUserChange}
           handleSaveSubmit={this.props.handleSaveSubmit} />
       </div>
     );

@@ -23,11 +23,11 @@ const getUserWorkouts = (id) => {
         reject(err)
 
       } else {
-        const workouts = JSON.parse(JSON.stringify(data, null, 2));
+        const workouts = JSON.parse(JSON.stringify(data));
 
         if (Object.keys(workouts).length > 0) {
-          const userWorkout = (workouts && workouts.Item) || {};
-          resolve(userWorkout);
+          const userWorkouts = (workouts && workouts.Item) || {};
+          resolve(userWorkouts);
 
         } else {
           reject(new Error(`User ${id} not found.`));

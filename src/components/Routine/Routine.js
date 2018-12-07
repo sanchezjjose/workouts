@@ -16,7 +16,10 @@ class Routine extends Component {
   }
 
   // TODO: Move to a Class object
-  getWorkoutViewModel(workouts, dayOfWeek) {
+  getWorkoutViewModel(workouts) {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfWeek = days[new Date().getDay()];
+
     const workout = Object.entries(workouts[dayOfWeek]).map((workout) => {
       return {
         muscle: workout[0],
@@ -34,12 +37,6 @@ class Routine extends Component {
     return workout;
   }
 
-  handleRoutineChange = (workout) => {
-    this.setState({
-      workout: workout
-    });
-  
-
   handleEdit = (e) => {
     e.preventDefault();
     this.setState({ editMode: true });
@@ -56,20 +53,21 @@ class Routine extends Component {
     this.setState({ editMode: false });
   }
 
-  handleStartWorkout = (e) => {
+  handleStartWorkout = (e, workout) => {
     e.preventDefault();
 
     const today = new Date();
     const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
     const props = this.props;
-    const workoutDay = props.workout.day;
+    const workoutDay = workout.day;
 
+    // Set date on workout for historical purposes
     props.user.routine[workoutDay].date = date;
 
     // Reset all exercise status
-    props.workout.routines.forEach(r => {
-      r.exercises.forEach(e => {
-        props.user.routine[workoutDay][r.muscle][e.name].done = false;
+    workout.forEach(w => {
+      w.exercises.forEach(e => {
+        props.user.routine[workoutDay][w.muscle][e.name].done = false;
       });
     });
 
@@ -94,14 +92,12 @@ class Routine extends Component {
   }
 
   render() {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const dayOfWeek = days[new Date().getDay()];
-    const todaysWorkout = this.getWorkoutViewModel(user.routine, 'Wednesday');
+    const workout = this.getWorkoutViewModel(this.props.user.routine);
 
     return (
       <div className='Routine'>
         <div className={`routine-heading ${this.state.editMode ? 'save-mode' : ''}`}>
-          <h2 className='weekday'>{this.props.workout.day}</h2>
+          <h2 className='weekday'>{workout.day}</h2>
           {this.state.editMode ? (
             <div className='mode-button-container editing'>
               <button onClick={this.handleSave} className='mode-button save'>Save</button>
@@ -109,12 +105,12 @@ class Routine extends Component {
             </div>
           ) : (
             <div className='mode-button-container'>
-              <button onClick={this.handleStartWorkout} className='mode-button reset'>Start Workout</button>
+              <button onClick={(e) => this.handleStartWorkout(e, workout)} className='mode-button reset'>Start Workout</button>
               <button onClick={this.handleEdit} className='mode-button edit'>Edit</button>
             </div>
           )}
         </div>
-        {this.props.workout.map (routine => {
+        {workout.map (routine => {
           return (
             <div key={routine.muscle} className='group'>
               <div className='header'>
@@ -126,12 +122,12 @@ class Routine extends Component {
               {routine.exercises.map (exercise => 
                 <Exercise key={exercise.name} 
                   user={this.props.user} 
-                  workout={this.props.workout} 
+                  workout={workout} 
                   routine={routine} 
                   exercise={exercise} 
                   edit={this.state.editMode} 
                   save={this.state.saveMode}
-                  handleRoutineChange={this.props.handleRoutineChange}
+                  handleUserChange={this.props.handleUserChange}
                   handleSaveSubmit={this.handleSaveSubmit} />
               )}
             </div>

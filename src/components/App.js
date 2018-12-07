@@ -11,45 +11,17 @@ import './App.css';
 class App extends Component {
 
   state = {
-    user: {},
-    // workout: []
+    user: {}
   };
-
-  // getWorkoutViewModel(workouts, dayOfWeek) {
-  //   const workout = Object.entries(workouts[dayOfWeek]).map((workout) => {
-  //     return {
-  //       muscle: workout[0],
-  //       exercises: Object.entries(workout[1]).map((exercise) => {
-  //         return {
-  //           name: exercise[0],
-  //           metrics: exercise[1]
-  //         };
-  //       })
-  //     };
-  //   }).filter(w => w.muscle !== 'date');
-
-  //   workout.day = dayOfWeek;
-
-  //   return workout;
-  // }
 
   componentDidMount() {
     const id = window.location.pathname.split('/')[1];
 
     if (id.length > 0) {
       getUserWorkouts(id).then(user => {
-        if (user) {
-          const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-          const dayOfWeek = days[new Date().getDay()];
-          const todaysWorkout = this.getWorkoutViewModel(user.routine, 'Wednesday');
-
-          // TODO: consider changing user.routine to user.workouts
-
-          this.setState({
-            user: user,
-            // workout: todaysWorkout
-          });
-        }
+        this.setState({
+          user: user
+        });
       });
     }
   }
@@ -67,8 +39,10 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container'>
-              <Home user={this.state.user} handleUserChange={this.handleUserChange} />
-              {/* <Home user={this.state.user} workout={this.state.workout} handleRoutineChange={this.handleRoutineChange} /> */}
+              {this.state.user.routine ?
+                <Home user={this.state.user} handleUserChange={this.handleUserChange} /> :
+                <div>Loading...</div>
+              }
               <Footer userId={this.state.user.id} />
             </div>
           )}/>
