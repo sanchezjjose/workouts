@@ -3,6 +3,10 @@ import './Favorites.css';
 
 class Favorites extends Component {
 
+  state = {
+    showModal: false
+  }
+
   getFavoriteExercisesViewModel(favorites = {}) {
     return Object.entries(favorites).map(favorite => {
       return {
@@ -10,6 +14,14 @@ class Favorites extends Component {
         exercises: favorite[1]
       }
     });
+  }
+
+  addExercise = () => {
+    this.setState({ showModal: true });
+  };
+
+  closeModal = () => {
+    this.setState({ showModal: false });
   }
 
   render() {
@@ -32,7 +44,11 @@ class Favorites extends Component {
             })}
           </div>
         </div>
-        <button className="mdc-fab add-exercise-button" aria-label="Add">
+        <div className={`modal ${this.state.showModal ? 'show' : ''}`}>
+          <span onClick={this.closeModal} className='close'>&times;</span>
+          <p>Some text in the Modal..</p>
+        </div>
+        <button onClick={this.addExercise} className="mdc-fab add-exercise-button" aria-label="Add">
           <span className="mdc-fab__icon material-icons">add</span>
         </button>
       </div>
