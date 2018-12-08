@@ -4,7 +4,7 @@ const userId = 'joses';
 const workoutDay = 'Tuesday';
 const muscle = 'Back';
 const exercise = { 
-  name: 'Single-Arm Dumbbell Row',
+  name: 'TEST: Single-Arm Dumbbell Row',
   metrics: { 
     'done': false,
     'weight': '60',

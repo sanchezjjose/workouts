@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Exercise from '../Exercise/Exercise';
-import { setRoutine } from '../../api/RoutineWorkouts';
+import { saveRoutine } from '../../api/RoutineWorkouts';
 
 import './Routine.css';
 
@@ -71,8 +71,7 @@ class Routine extends Component {
       });
     });
 
-    // Save Routine
-    setRoutine(props.user.id, props.user.routine[workoutDay], workoutDay)
+    saveRoutine(props.user.id, props.user.routine[workoutDay], workoutDay)
       .then(() => {
         props.handleUserChange(props.user);
       });

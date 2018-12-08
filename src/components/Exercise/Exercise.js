@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Metrics from '../Metrics/Metrics';
 import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutHistory';
-import { setExerciseStatus } from '../../api/ExerciseStatus';
+import { saveExerciseStatus } from '../../api/ExerciseStatus';
 
 import './Exercise.css';
 
@@ -16,7 +16,7 @@ class Exercise extends Component {
     const updateExerciseHistory = exerciseComplete ? addExerciseHistory : deleteExerciseHistory;
 
     updateExerciseHistory(user.id, date, exercise, muscle)
-      .then(() => setExerciseStatus(user.id, workoutDay, muscle, exercise.name, exerciseComplete))
+      .then(() => saveExerciseStatus(user.id, workoutDay, muscle, exercise.name, exerciseComplete))
       .then(() => {
         user.routine[workoutDay][muscle][exercise.name].done = exerciseComplete;
         this.props.handleUserChange(user);

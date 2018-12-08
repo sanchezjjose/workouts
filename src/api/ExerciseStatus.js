@@ -8,7 +8,7 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const setExerciseStatus = (userId, workoutDay, muscle, exerciseName, done) => {
+const saveExerciseStatus = (userId, workoutDay, muscle, exerciseName, done) => {
   return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
@@ -38,5 +38,5 @@ const setExerciseStatus = (userId, workoutDay, muscle, exerciseName, done) => {
 };
 
 module.exports = { 
-  setExerciseStatus: setExerciseStatus
+  saveExerciseStatus: saveExerciseStatus
 };
