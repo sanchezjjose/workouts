@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getUserWorkouts } from '../api/Users';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
-import Progress from './Progress/Progress';
+import Favorites from './Favorites/Favorites';
 import Footer from './Footer/Footer';
 
 import './App.css';
@@ -46,9 +46,9 @@ class App extends Component {
               <Footer userId={this.state.user.id} />
             </div>
           )}/>
-          <Route exact={true} path='/:user_id/progress' render={() => (
+          <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container'>
-              <Progress />
+              <Favorites favorites={this.state.user.exercises}/>
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

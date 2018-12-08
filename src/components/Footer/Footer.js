@@ -14,10 +14,10 @@ const Footer = ({ userId }) => {
             <span className='footer-text'> home </span>
         </div>
       </Link>
-      <Link to={`/${userId}/progress`}>
+      <Link to={`/${userId}/favorites`}>
         <div className='footer-button'>
             <img src={progressNavIcon} className="tab-icon" alt="progress" />
-            <span className='footer-text'> progress </span>
+            <span className='footer-text'> favorites </span>
         </div>
       </Link>
     </div>
