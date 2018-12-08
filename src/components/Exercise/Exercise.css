@@ -30,3 +30,7 @@
 .Exercise .name {
   justify-self: left;
 }
+
+.Exercise .status-button:disabled {
+  opacity: 0.4;
+}

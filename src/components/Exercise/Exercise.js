@@ -34,6 +34,8 @@ class Exercise extends Component {
   render() {
     const exercise = this.props.exercise;
     const exerciseClassName = this.props.edit ? 'edit' : '';
+    const workoutDay = this.props.workout.day;
+    const hasDate = this.props.user.routine[workoutDay].date ? true : false;
 
     return (
       <div className={`Exercise ${exerciseClassName}`}>
@@ -41,8 +43,8 @@ class Exercise extends Component {
           <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button>
         }
         {exercise.metrics.done ? 
-          <button onClick={() => this.handleExerciseStatus(false)} className="status-button mdc-icon-button material-icons fill">check_circle</button> :
-          <button onClick={() => this.handleExerciseStatus(true)} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
+          <button onClick={() => this.handleExerciseStatus(false)} className="status-button mdc-icon-button material-icons fill" disabled={!hasDate}>check_circle</button> :
+          <button onClick={() => this.handleExerciseStatus(true)} className="status-button mdc-icon-button material-icons" disabled={!hasDate}>check_circle_outline</button>
         }
         <div className='name'>{exercise.name}</div>
 
