@@ -32,6 +32,9 @@ class Favorites extends Component {
             })}
           </div>
         </div>
+        <button className="mdc-fab add-exercise-button" aria-label="Add">
+          <span className="mdc-fab__icon material-icons">add</span>
+        </button>
       </div>
     );
   }
