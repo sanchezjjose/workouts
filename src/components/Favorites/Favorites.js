@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import FavoritesModal from '../FavoritesModal/FavoritesModal'
+
 import './Favorites.css';
 
 class Favorites extends Component {
@@ -20,10 +22,6 @@ class Favorites extends Component {
     this.setState({ showModal: true });
   };
 
-  closeModal = () => {
-    this.setState({ showModal: false });
-  }
-
   render() {
     const favoritesVm = this.getFavoriteExercisesViewModel(this.props.favorites);
 
@@ -44,11 +42,8 @@ class Favorites extends Component {
             })}
           </div>
         </div>
-        <div className={`modal ${this.state.showModal ? 'show' : ''}`}>
-          <span onClick={this.closeModal} className='close'>&times;</span>
-          <p>Some text in the Modal..</p>
-        </div>
-        <button onClick={this.addExercise} className="mdc-fab add-exercise-button" aria-label="Add">
+        <FavoritesModal show={this.state.showModal} />
+        <button onClick={this.addExercise} className="mdc-fab add-button" aria-label="Add">
           <span className="mdc-fab__icon material-icons">add</span>
         </button>
       </div>
