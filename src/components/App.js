@@ -32,6 +32,12 @@ class App extends Component {
     });
   }
 
+  handleFavoritesChange = (user) => {
+    this.setState({
+      user: user
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -48,7 +54,7 @@ class App extends Component {
           )}/>
           <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container'>
-              <Favorites favorites={this.state.user.exercises}/>
+              <Favorites user={this.state.user} handleFavoritesChange={this.handleFavoritesChange} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

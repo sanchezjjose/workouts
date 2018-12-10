@@ -36,7 +36,20 @@ class FavoritesModal extends Component {
   saveExercise = (e) => {
     e.preventDefault();
 
-    console.log(this.state);
+    const muscleGroup = this.state.muscleGroup;
+    const exercise = this.state.exerciseName;
+    const user = this.props.user;
+    const favorites = user.exercises;
+
+    favorites[muscleGroup] = favorites[muscleGroup] || [];
+
+    if (favorites[muscleGroup].indexOf(exercise) === -1) {
+      console.log(`Adding ${exercise} to ${favorites[muscleGroup]} favorites...`);
+      favorites[muscleGroup].push(exercise);
+
+      // TODO: Save change to DB
+      this.props.handleFavoritesChange(user);
+    }
   }
 
   render() {
