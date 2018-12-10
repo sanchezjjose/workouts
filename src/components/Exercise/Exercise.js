@@ -4,6 +4,7 @@ import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutHist
 import { saveExerciseStatus } from '../../api/ExerciseStatus';
 
 import './Exercise.css';
+import "@material/icon-button/dist/mdc.icon-button.min.css";
 
 class Exercise extends Component {
 

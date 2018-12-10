@@ -1,0 +1,9 @@
+.Fab.mdc-fab {
+  background-color: #E53935;
+  position: fixed;
+  margin-top: 12px;
+  bottom: 80px;
+  right: 20px;
+  z-index: 999 !important;
+  /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
+}

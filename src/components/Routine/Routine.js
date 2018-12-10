@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import Exercise from '../Exercise/Exercise';
+import Fab from '../FloatingActionButton/FloatingActionButton';
 import { saveRoutine } from '../../api/RoutineWorkouts';
 
 import './Routine.css';
-
-import { MDCRipple } from '@material/ripple';
-import "@material/fab/dist/mdc.fab.min.css";
-import "@material/icon-button/dist/mdc.icon-button.min.css";
 
 class Routine extends Component {
 
@@ -83,11 +80,8 @@ class Routine extends Component {
     }
   }
 
-  componentDidUpdate() {
-    const fabButtonSelector = document.querySelector('.mdc-fab');
-    if (fabButtonSelector) {
-      new MDCRipple(fabButtonSelector);
-    }
+  addExercise = () => {
+    console.log('Add exercise to routine button clicked...');
   }
 
   render() {
@@ -132,9 +126,7 @@ class Routine extends Component {
             </div>
           );
         })}
-        <button className="mdc-fab add-exercise-button" aria-label="Add">
-          <span className="mdc-fab__icon material-icons">add</span>
-        </button>
+        <Fab handleClick={this.addExercise} label='add' />
       </div>
     );
   }

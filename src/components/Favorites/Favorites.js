@@ -5,10 +5,6 @@ import './Favorites.css';
 
 class Favorites extends Component {
 
-  state = {
-    showModal: false
-  }
-
   getFavoriteExercisesViewModel(favorites = {}) {
     return Object.entries(favorites).map(favorite => {
       return {
@@ -17,10 +13,6 @@ class Favorites extends Component {
       }
     });
   }
-
-  addExercise = () => {
-    this.setState({ showModal: true });
-  };
 
   render() {
     const favoritesVm = this.getFavoriteExercisesViewModel(this.props.favorites);
@@ -42,10 +34,7 @@ class Favorites extends Component {
             })}
           </div>
         </div>
-        <FavoritesModal show={this.state.showModal} />
-        <button onClick={this.addExercise} className="mdc-fab add-button" aria-label="Add">
-          <span className="mdc-fab__icon material-icons">add</span>
-        </button>
+        <FavoritesModal />
       </div>
     );
   }
