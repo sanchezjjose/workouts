@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './FavoritesModal.css';
+import "@material/button/dist/mdc.button.min.css";
 
 class FavoritesModal extends Component {
 
   state = {
-    show: false
+    show: false,
+    muscleGroup: '',
+    exerciseName: '',
+    workoutType: 'strength'
   }
 
-  addExercise = () => {
+  showModal = () => {
     this.setState({ show: true });
   };
 
@@ -17,15 +21,50 @@ class FavoritesModal extends Component {
     this.setState({ show: false });
   }
 
+  onMuscleGroupChange = (e) => {
+    this.setState({ muscleGroup: e.target.value });
+  }
+
+  onExerciseNameChange = (e) => {
+    this.setState({ exerciseName: e.target.value });
+  }
+
+  onWorkoutTypeChange = (e) => {
+    this.setState({ workoutType: e.target.value });
+  }
+
+  saveExercise = (e) => {
+    e.preventDefault();
+
+    console.log(this.state);
+  }
+
   render() {
-    const onClick = this.state.show ? this.closeModal : this.addExercise;
+    const onClick = this.state.show ? this.closeModal : this.showModal;
     const label = this.state.show ? 'close' : 'add';
 
     return (
-      <div>
-        <div className={`FavoritesModal ${this.state.show ? 'show' : ''}`}>
+      <div className='FavoritesModal'>
+        <div className={`content ${this.state.show ? 'show' : ''}`}>
           <span onClick={this.closeModal} className='close'>&times;</span>
-          <p>Some text in the Modal..</p>
+          <button onClick={this.saveExercise} className="save-exercise-button mdc-button">Save</button>
+          <div>
+            <span label='Muscle'>Muscle Group: </span>
+            <input onChange={this.onMuscleGroupChange} type='text' name='muscle' placeholder='Chest'></input>
+          </div>
+          <div>
+            <span label='Exercise'>Exercise Name: </span>
+            <input onChange={this.onExerciseNameChange} type='text' name='exercise' placeholder='Push Ups'></input>
+          </div>
+          <div>
+            <span label='Type'>Workout Type: </span>
+            <div>
+              <input onChange={this.onWorkoutTypeChange} type='radio' id='strength' name='type' value='strength' checked={this.state.workoutType === 'strength'} />
+              <label htmlFor='strength'>Strength</label>
+              <input onChange={this.onWorkoutTypeChange} type='radio' id='cardio' name='type' value='cardio' checked={this.state.workoutType === 'cardio'} />
+              <label htmlFor='cardio'>Cardio</label>
+            </div>
+          </div>
         </div>
         <Fab handleClick={onClick} label={label} />
       </div>

@@ -1,17 +1,36 @@
 .FavoritesModal {
-  display: none;
   position: fixed;
+  bottom: 80px;
+  right: 20px;
+  height: 300px;
+  width: 300px;
+}
+
+.FavoritesModal .content {
+  display: none;
+  box-sizing: border-box;
+  padding: 20px;
+  position: absolute;
+  bottom: 55px;
+  right: 30px;
   z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: #fff;
+  border: 1px solid #000;
 }
 
-.FavoritesModal.show {
+.FavoritesModal .content .close {
+  font-size: 22px;
+}
+
+.FavoritesModal .show {
   display: block; 
+}
+
+.FavoritesModal .Fab.mdc-fab {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
