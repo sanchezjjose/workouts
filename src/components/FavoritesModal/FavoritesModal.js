@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { saveFavoriteExercise } from '../../api/Favorites';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './FavoritesModal.css';
@@ -44,11 +45,12 @@ class FavoritesModal extends Component {
     favorites[muscleGroup] = favorites[muscleGroup] || [];
 
     if (favorites[muscleGroup].indexOf(exercise) === -1) {
-      console.log(`Adding ${exercise} to ${favorites[muscleGroup]} favorites...`);
-      favorites[muscleGroup].push(exercise);
-
-      // TODO: Save change to DB
-      this.props.handleFavoritesChange(user);
+      saveFavoriteExercise(user.id, muscleGroup, exercise)
+        .then(() => {
+          favorites[muscleGroup].push(exercise);
+          this.props.handleFavoritesChange(user);
+        })
+        .catch(err => console.error('Error adding exercise to favorites.', err));
     }
   }
 

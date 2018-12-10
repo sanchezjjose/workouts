@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { getUserWorkouts } from '../api/Users';
+import { getUser } from '../api/Users';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
@@ -18,7 +18,7 @@ class App extends Component {
     const id = window.location.pathname.split('/')[1];
 
     if (id.length > 0) {
-      getUserWorkouts(id).then(user => {
+      getUser(id).then(user => {
         this.setState({
           user: user
         });

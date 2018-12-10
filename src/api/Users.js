@@ -7,8 +7,9 @@ AWS.config.update({
 });
 
 const docClient = new AWS.DynamoDB.DocumentClient();
+const tableName = 'Workouts';
 
-const getUserWorkouts = (id) => {
+const getUser = (id) => {
   return new Promise((resolve, reject) => {
     const params = {
       TableName: 'Workouts',
@@ -23,10 +24,10 @@ const getUserWorkouts = (id) => {
         reject(err)
 
       } else {
-        const workouts = JSON.parse(JSON.stringify(data));
+        const user = JSON.parse(JSON.stringify(data));
 
-        if (Object.keys(workouts).length > 0) {
-          const userWorkouts = (workouts && workouts.Item) || {};
+        if (Object.keys(user).length > 0) {
+          const userWorkouts = (user && user.Item) || {};
           resolve(userWorkouts);
 
         } else {
@@ -37,4 +38,35 @@ const getUserWorkouts = (id) => {
   });
 };
 
-export { getUserWorkouts };
+const createUser = (userId, fullName) => {
+  return new Promise((resolve, reject) => {
+    const params = {
+      TableName: tableName,
+      Item: {
+        'id':  userId,
+        'name': fullName,
+        'exercises':  {},
+        'history':  {},
+        'routine':  {
+          'Monday': {},
+          'Tuesday': {},
+          'Wednesday': {},
+          'Thursday': {},
+          'Friday': {},
+          'Saturday': {},
+          'Sunday': {},
+        }
+      }
+    };
+
+    docClient.put(params, function(err, data) {
+      if (err) {
+        console.error('Error creating user:', JSON.stringify(err, null, 2));
+      } else {
+        console.log('PutItem succeeded:', data);
+      }
+    });
+  });
+};
+
+export { getUser, createUser };

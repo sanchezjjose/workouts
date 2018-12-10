@@ -1,5 +1,10 @@
-.Landing .description {
+.Landing {
   width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Landing .description {
   text-align: left;
   white-space: pre-line;
 }
