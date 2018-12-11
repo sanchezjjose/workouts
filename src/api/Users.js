@@ -25,14 +25,15 @@ const getUser = (id) => {
 
       } else {
         const user = JSON.parse(JSON.stringify(data));
+        const userData = user && user.Item;
 
-        // if (Object.keys(user).length > 0) {
-          const userWorkouts = (user && user.Item) || {};
-          resolve(userWorkouts);
+        // TODO: Check Authentication cookie here
+        if (userData) {
+          resolve(userData);
 
-        // } else {
-        //   reject(new Error(`User ${id} not found.`));
-        // }
+        } else {
+          reject(`User ${id} does not exist.`);
+        }
       }
     })
   });
@@ -40,36 +41,43 @@ const getUser = (id) => {
 
 const createUser = (userId, fullName) => {
   return new Promise((resolve, reject) => {
-    const params = {
-      TableName: tableName,
-      Item: {
-        'id':  userId,
-        'name': fullName,
-        'exercises':  {},
-        'history':  {},
-        'routine':  {
-          'Monday': {},
-          'Tuesday': {},
-          'Wednesday': {},
-          'Thursday': {},
-          'Friday': {},
-          'Saturday': {},
-          'Sunday': {},
-        }
-      }
-    };
+    getUser(userId)
+      .then((user) => {
+        reject(`User ${user.id} already exists.`);
 
-    docClient.put(params, function(err, data) {
-      console.log('AAAAA');
-      console.log(err)
-      console.log(data);
+      }).catch((msg) => {
+        console.log(msg);
 
-      if (err) {
-        console.error('Error creating user:', JSON.stringify(err, null, 2));
-      } else {
-        console.log('PutItem succeeded:', data);
-      }
-    });
+        const params = {
+          TableName: tableName,
+          Item: {
+            'id':  userId,
+            'name': fullName,
+            'exercises':  {},
+            'history':  {},
+            'routine':  {
+              'Monday': {},
+              'Tuesday': {},
+              'Wednesday': {},
+              'Thursday': {},
+              'Friday': {},
+              'Saturday': {},
+              'Sunday': {},
+            }
+          }
+        };
+
+        docClient.put(params, function(err, data) {
+          if (err) {
+            console.error('Error creating user:', JSON.stringify(err, null, 2));
+            reject(err);
+
+          } else {
+            console.log('PutItem succeeded:', data);
+            resolve(data);
+          }
+        });
+      });
   });
 };
 

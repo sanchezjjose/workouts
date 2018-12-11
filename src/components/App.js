@@ -18,11 +18,15 @@ class App extends Component {
     const id = window.location.pathname.split('/')[1];
 
     if (id.length > 0) {
-      getUser(id).then(user => {
-        this.setState({
-          user: user
+      getUser(id)
+        .then(user => {
+          this.setState({
+            user: user
+          });
+        })
+        .catch(err => {
+          window.location = '/';
         });
-      });
     }
   }
 
