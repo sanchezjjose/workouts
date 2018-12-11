@@ -26,13 +26,13 @@ const getUser = (id) => {
       } else {
         const user = JSON.parse(JSON.stringify(data));
 
-        if (Object.keys(user).length > 0) {
+        // if (Object.keys(user).length > 0) {
           const userWorkouts = (user && user.Item) || {};
           resolve(userWorkouts);
 
-        } else {
-          reject(new Error(`User ${id} not found.`));
-        }
+        // } else {
+        //   reject(new Error(`User ${id} not found.`));
+        // }
       }
     })
   });
@@ -60,6 +60,10 @@ const createUser = (userId, fullName) => {
     };
 
     docClient.put(params, function(err, data) {
+      console.log('AAAAA');
+      console.log(err)
+      console.log(data);
+
       if (err) {
         console.error('Error creating user:', JSON.stringify(err, null, 2));
       } else {

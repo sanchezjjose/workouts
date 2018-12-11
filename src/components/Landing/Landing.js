@@ -30,31 +30,30 @@ class Landing extends Component {
   }
 
   handleRegistration = (e) => {
-    console.log('Registering...');
-
     getUser(this.state.username)
       .then((data) => {
         if (data.id) {
-          console.log('User already exists');
-          return;
-
-        } else {
-          console.log('User does not exist. Registering...');
-          return createUser(this.state.username, this.state.fullName)
+          return alert(`User ${this.state.username} already exists`);
         }
       })
+      .then(() => createUser(this.state.username, this.state.fullName))
       .then(() => window.location = `/${this.state.username}`)
       .catch((err) => {
-        alert(`There was an error registering.`, err);
+        console.error(`There was an error registering.`, err);
       });
   }
 
   handleSignin = (e) => {
-    console.log('Signing in...');
     getUser(this.state.username)
-      .then(() => window.location = `/${this.state.username}`)
-      .catch((err) => {
-        alert(`The username ${this.state.username} already exists`);
+      .then(user => {
+        if (user.id) {
+          return window.location = `/${this.state.username}`
+        }
+
+        alert(`The username ${this.state.username} does not exist.`);
+      })
+      .catch(err => {
+        alert('Error signing in: ', err);
       });
   }
 
