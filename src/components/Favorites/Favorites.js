@@ -17,16 +17,16 @@ class Favorites extends Component {
 
   removeExercise(muscle, exercise) {
     const user = this.props.user;
-    const updatedExercises = user.exercises[muscle].filter(e => e !== exercise);
+    const updatedExercises = user.favorites[muscle].filter(e => e !== exercise);
 
-    user.exercises[muscle] = updatedExercises;
+    user.favorites[muscle] = updatedExercises;
     this.props.handleFavoritesChange(user);
 
     removeFavoriteExercise(user.id, muscle, updatedExercises);
   }
 
   render() {
-    const favoritesVm = this.getFavoriteExercisesViewModel(this.props.user.exercises);
+    const favoritesVm = this.getFavoriteExercisesViewModel(this.props.user.favorites);
 
     return (
       <div className='Favorites'>

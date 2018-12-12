@@ -53,7 +53,7 @@ const createUser = (userId, fullName) => {
           Item: {
             'id':  userId,
             'name': fullName,
-            'exercises':  {},
+            'favorites':  {},
             'history':  {},
             'routine':  {
               'Monday': {},

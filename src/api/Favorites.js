@@ -15,9 +15,9 @@ const saveFavoriteExercise = (userId, muscle, exercise) => {
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #e.#m = if_not_exists(#e.#m, :e)",
+      UpdateExpression: "SET #f.#m = if_not_exists(#f.#m, :e)",
       ExpressionAttributeNames: {
-        "#e": "exercises",
+        "#f": "favorites",
         "#m": muscle
       },
       ExpressionAttributeValues: {
@@ -41,9 +41,9 @@ const saveFavoriteExercise = (userId, muscle, exercise) => {
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #e.#m = list_append(#e.#m, :e)",
+      UpdateExpression: "SET #f.#m = list_append(#f.#m, :e)",
       ExpressionAttributeNames: {
-        "#e": "exercises",
+        "#f": "favorites",
         "#m": muscle
       },
       ExpressionAttributeValues: {
@@ -71,9 +71,9 @@ const removeFavoriteExercise = (userId, muscle, exercises) => {
       Key: {
         'id': userId
       },
-      UpdateExpression: `SET #e.#m = :e`,
+      UpdateExpression: `SET #f.#m = :e`,
       ExpressionAttributeNames: {
-        "#e": "exercises",
+        "#f": "favorites",
         "#m": muscle
       },
       ExpressionAttributeValues: {
@@ -81,6 +81,11 @@ const removeFavoriteExercise = (userId, muscle, exercises) => {
       },
       ReturnValues:"ALL_NEW"
     };
+
+    if (exercises.length === 0) {
+      params.UpdateExpression = 'Remove #f.#m';
+      delete params.ExpressionAttributeValues;
+    }
 
     docClient.update(params, (err, data) => {
       if (err) {

@@ -18,7 +18,7 @@ workouts.forEach (workout => {
     Item: {
       'id':  workout.id,
       'name': workout.name,
-      'exercises':  workout.exercises,
+      'favorites':  workout.favorites,
       'history':  workout.history,
       'routine':  workout.routine,
     }

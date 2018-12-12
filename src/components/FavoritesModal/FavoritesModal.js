@@ -40,7 +40,7 @@ class FavoritesModal extends Component {
     const muscleGroup = this.state.muscleGroup;
     const exercise = this.state.exerciseName;
     const user = this.props.user;
-    const favorites = user.exercises;
+    const favorites = user.favorites;
 
     favorites[muscleGroup] = favorites[muscleGroup] || [];
 
