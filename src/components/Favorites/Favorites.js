@@ -17,12 +17,12 @@ class Favorites extends Component {
 
   removeExercise(muscle, exercise) {
     const user = this.props.user;
-    const exercises = user.exercises[muscle];
+    const updatedExercises = user.exercises[muscle].filter(e => e !== exercise);
 
-    exercises.filter(e => e !== exercise);
+    user.exercises[muscle] = updatedExercises;
     this.props.handleFavoritesChange(user);
 
-    removeFavoriteExercise(user.id, muscle, exercises);
+    removeFavoriteExercise(user.id, muscle, updatedExercises);
   }
 
   render() {
