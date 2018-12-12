@@ -20,6 +20,11 @@ class Favorites extends Component {
     const updatedExercises = user.favorites[muscle].filter(e => e !== exercise);
 
     user.favorites[muscle] = updatedExercises;
+
+    if (updatedExercises.length === 0) {
+      delete user.favorites[muscle];
+    }
+
     this.props.handleFavoritesChange(user);
 
     removeFavoriteExercise(user.id, muscle, updatedExercises);
