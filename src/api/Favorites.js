@@ -9,7 +9,33 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const saveFavoriteExercise = (userId, muscle, exercise) => {
-  return new Promise((resolve, reject) => {
+  const createMuscleEntry = new Promise((resolve, reject) => {
+    docClient.update({
+      TableName: 'Workouts',
+      Key: {
+        'id': userId
+      },
+      UpdateExpression: "SET #e.#m = if_not_exists(#e.#m, :e)",
+      ExpressionAttributeNames: {
+        "#e": "exercises",
+        "#m": muscle
+      },
+      ExpressionAttributeValues: {
+        ":e": []
+      },
+      ReturnValues:"ALL_NEW"
+
+    }, (err, data) => {
+      if (err) {
+        console.error(err);
+        return reject('Error JSON:', JSON.stringify(err, null, 2));
+      }
+
+      resolve(data);
+    });
+  });
+
+  const createMuscleExercises = new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
@@ -34,6 +60,8 @@ const saveFavoriteExercise = (userId, muscle, exercise) => {
       resolve(data);
     });
   });
+
+  return Promise.all([createMuscleEntry, createMuscleExercises]);
 };
 
 const removeFavoriteExercise = (userId, muscle, exercises) => {
