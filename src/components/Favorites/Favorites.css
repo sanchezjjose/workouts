@@ -8,3 +8,13 @@
   font-weight: 400;
   font-size: 32px;
 }
+
+.Favorites .exercise-group {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  align-items: center;
+}
+
+.Favorites .exercise-group .remove-button {
+  justify-self: center;
+}

@@ -36,6 +36,37 @@ const saveFavoriteExercise = (userId, muscle, exercise) => {
   });
 };
 
+const removeFavoriteExercise = (userId, muscle, exercises) => {
+  return new Promise((resolve, reject) => {
+    const params = {
+      TableName: 'Workouts',
+      Key: {
+        'id': userId
+      },
+      UpdateExpression: `SET #e.#m = :e`,
+      ExpressionAttributeNames: {
+        "#e": "exercises",
+        "#m": muscle
+      },
+      ExpressionAttributeValues: {
+        ":e": exercises
+      },
+      ReturnValues:"ALL_NEW"
+    };
+
+    docClient.update(params, (err, data) => {
+      if (err) {
+        console.error('Error JSON:', JSON.stringify(err, null, 2));
+        return reject(err);
+
+      } else {
+        resolve(data);
+      }
+    })
+  });
+}
+
 module.exports = { 
-  saveFavoriteExercise: saveFavoriteExercise
+  saveFavoriteExercise: saveFavoriteExercise,
+  removeFavoriteExercise: removeFavoriteExercise
 };

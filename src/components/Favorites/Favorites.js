@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FavoritesModal from '../FavoritesModal/FavoritesModal'
+import { removeFavoriteExercise } from '../../api/Favorites';
 
 import './Favorites.css';
 
@@ -12,6 +13,16 @@ class Favorites extends Component {
         exercises: favorite[1]
       }
     });
+  }
+
+  removeExercise(muscle, exercise) {
+    const user = this.props.user;
+    const exercises = user.exercises[muscle];
+
+    exercises.filter(e => e !== exercise);
+    this.props.handleFavoritesChange(user);
+
+    removeFavoriteExercise(user.id, muscle, exercises);
   }
 
   render() {
@@ -27,7 +38,10 @@ class Favorites extends Component {
                 <div key={favorite.muscle} className='exercises'>
                   <h3>{favorite.muscle}</h3>
                   {favorite.exercises.map(exercise =>
-                    <div key={exercise}>{exercise}</div>
+                    <div key={exercise} className='exercise-group'>
+                      <button onClick={e => this.removeExercise(favorite.muscle, exercise)} className="remove-button mdc-icon-button material-icons">remove_circle_outline</button>
+                      <div key={exercise} className='exercise-label'>{exercise}</div>
+                    </div>
                   )}
                 </div>
               )
