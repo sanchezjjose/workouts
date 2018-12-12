@@ -44,7 +44,7 @@ class Favorites extends Component {
                   <h3>{favorite.muscle}</h3>
                   {favorite.exercises.map(exercise =>
                     <div key={exercise} className='exercise-group'>
-                      <button onClick={e => this.removeExercise(favorite.muscle, exercise)} className="remove-button mdc-icon-button material-icons">remove_circle_outline</button>
+                      <button onClick={e => this.removeExercise(favorite.muscle, exercise)} className="remove-button mdc-icon-button material-icons">clear</button>
                       <div key={exercise} className='exercise-label'>{exercise}</div>
                     </div>
                   )}
