@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Exercise from '../Exercise/Exercise';
-import Fab from '../FloatingActionButton/FloatingActionButton';
+import RoutineModal from '../RoutineModal/RoutineModal';
 import { saveRoutine } from '../../api/RoutineWorkouts';
 
 import './Routine.css';
@@ -80,10 +80,6 @@ class Routine extends Component {
     }
   }
 
-  addExercise = () => {
-    console.log('Add exercise to routine button clicked...');
-  }
-
   render() {
     const workout = this.getWorkoutViewModel(this.props.user.routine);
 
@@ -126,7 +122,7 @@ class Routine extends Component {
             </div>
           );
         })}
-        <Fab handleClick={this.addExercise} label='add' />
+        <RoutineModal user={this.props.user} workoutDay={workout.day} handleFavoritesChange={this.props.handleFavoritesChange}/>
       </div>
     );
   }
