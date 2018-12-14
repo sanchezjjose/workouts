@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Metrics from '../Metrics/Metrics';
 import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutHistory';
 import { saveExerciseStatus } from '../../api/ExerciseStatus';
+import { saveRoutine } from '../../api/RoutineWorkouts';
 
 import './Exercise.css';
 import "@material/icon-button/dist/mdc.icon-button.min.css";
@@ -29,7 +30,28 @@ class Exercise extends Component {
 
   handleExerciseDelete = (e) => {
     e.preventDefault();
-    console.log('Deleting exercise...');
+
+    const user = this.props.user;
+    const workoutDay = this.props.workout.day;
+    const muscle = this.props.routine.muscle;
+    const exercise = this.props.exercise;
+
+    const todaysRoutine = user.routine[workoutDay];
+    const exercises = todaysRoutine[muscle];
+
+    delete exercises[exercise.name];
+
+    if (Object.keys(exercises).length === 0) {
+      delete todaysRoutine[muscle];
+    }
+
+    saveRoutine(user.id, todaysRoutine, workoutDay)
+      .then(() => {
+        this.props.handleUserChange(user);
+      })
+      .catch(e => {
+        console.log(e);
+      })
   }
 
   render() {
