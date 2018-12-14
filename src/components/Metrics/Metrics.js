@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { updateExerciseMetrics } from '../../api/ExerciseMetrics';
+import { saveExerciseMetrics } from '../../api/ExerciseMetrics';
 
 import './Metrics.css';
 
@@ -68,11 +68,8 @@ class Metrics extends Component {
       const workoutDay = this.props.workout.day;
       const muscle = this.props.routine.muscle;
       const exercise = this.props.exercise;
-      const newMetrics = { ...this.props.exercise.metrics };
 
-      newMetrics[this.props.metricType] = this.state.metricValue;
-
-      updateExerciseMetrics(id, workoutDay, muscle, exercise.name, newMetrics)
+      saveExerciseMetrics(id, workoutDay, muscle, exercise.name, this.props.metricType, this.state.metricValue)
         .then(() => {
           console.debug(`Changed ${this.props.metricType} metric for ${exercise.name} from ${prevProps.metricValue} to ${this.state.metricValue}.`);
           this.props.handleSaveSubmit();
@@ -83,7 +80,7 @@ class Metrics extends Component {
         });
 
       // Update user props and bubble up to parent component
-      this.props.user.routine[workoutDay][muscle][exercise.name] = newMetrics;
+      this.props.user.routine[workoutDay][muscle][exercise.name][this.props.metricType] = this.state.metricValue;
       this.props.handleUserChange(this.props.user);
     }
   }
