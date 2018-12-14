@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { saveFavoriteExercise } from '../../api/Favorites';
+import { saveRoutine } from '../../api/RoutineWorkouts';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './RoutineModal.css';
@@ -22,38 +22,6 @@ class RoutineModal extends Component {
     this.setState({ show: false });
   }
 
-  onMuscleGroupChange = (e) => {
-    this.setState({ muscleGroup: e.target.value });
-  }
-
-  onExerciseNameChange = (e) => {
-    this.setState({ exerciseName: e.target.value });
-  }
-
-  onWorkoutTypeChange = (e) => {
-    this.setState({ workoutType: e.target.value });
-  }
-
-  saveExercise = (e) => {
-    e.preventDefault();
-
-    const muscleGroup = this.state.muscleGroup;
-    const exercise = this.state.exerciseName;
-    const user = this.props.user;
-    const favorites = user.favorites;
-
-    favorites[muscleGroup] = favorites[muscleGroup] || [];
-
-    if (favorites[muscleGroup].indexOf(exercise) === -1) {
-      // saveFavoriteExercise(user.id, muscleGroup, exercise)
-      //   .then(() => {
-      //     favorites[muscleGroup].push(exercise);
-      //     this.props.handleFavoritesChange(user);
-      //   })
-      //   .catch(err => console.error('Error adding exercise to favorites.', err));
-    }
-  }
-
   // TODO: Move to class object.
   getFavoriteExercisesViewModel(favorites = {}) {
     return Object.entries(favorites).map(favorite => {
@@ -65,18 +33,20 @@ class RoutineModal extends Component {
   }
 
   addExercise = (muscle, exercise) => {
-    console.log(`Adding ${exercise} to routine for muscle group ${muscle}.`);
-    // const workoutDay = this.props.workoutDay;
-    const workoutDay = 'Friday';
-    const routine = this.props.user.routine[workoutDay][muscle] || {};
+    const props = this.props;
+    const user = props.user;
+    const workoutDay = props.workoutDay;
+    const muscleGroupExercises = user.routine[workoutDay][muscle] || {};
 
-    routine[exercise] = {
-      weight: 0,
-      reps: 0,
-      sets: 0
-    };
+    // TODO: Move to object that has an addExerciseToRoutine() method.
+    // Then, pass object to parent to update state.
+    muscleGroupExercises[exercise] = { weight: 0, reps: 0, sets: 0 };
+    user.routine[workoutDay][muscle] = muscleGroupExercises;
 
-    console.log(this.props.user.routine);
+    saveRoutine(user.id, user.routine[workoutDay], workoutDay)
+      .then(() => {
+        props.handleUserChange(user);
+      });
   }
 
   render() {

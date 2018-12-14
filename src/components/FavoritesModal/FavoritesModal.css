@@ -2,8 +2,6 @@
   position: fixed;
   bottom: 80px;
   right: 20px;
-  height: 300px;
-  width: 300px;
 }
 
 .FavoritesModal .content {
@@ -14,8 +12,8 @@
   bottom: 55px;
   right: 30px;
   z-index: 1;
-  width: 100%;
-  height: 100%;
+  height: 300px;
+  width: 300px;
   overflow: auto;
   background-color: #fff;
   border: 1px solid #000;

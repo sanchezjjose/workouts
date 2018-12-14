@@ -122,7 +122,7 @@ class Routine extends Component {
             </div>
           );
         })}
-        <RoutineModal user={this.props.user} workoutDay={workout.day} handleFavoritesChange={this.props.handleFavoritesChange}/>
+        <RoutineModal user={this.props.user} workoutDay={workout.day} handleUserChange={this.props.handleUserChange}/>
       </div>
     );
   }
