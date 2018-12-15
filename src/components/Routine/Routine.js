@@ -16,18 +16,23 @@ class Routine extends Component {
   getWorkoutViewModel(workouts) {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dayOfWeek = days[new Date().getDay()];
-
-    const workout = Object.entries(workouts[dayOfWeek]).map((workout) => {
+    const todaysWorkouts = Object.entries(workouts[dayOfWeek]);
+    const workout = todaysWorkouts.filter(workout => workout[0] !== 'date').map(workout => {
       return {
-        muscle: workout[0],
-        exercises: Object.entries(workout[1]).map((exercise) => {
+        type: workout[0],
+        routine: Object.entries(workout[1]).map(routine => {
           return {
-            name: exercise[0],
-            metrics: exercise[1]
-          };
-        })
+            muscle: routine[0],
+            exercises: Object.entries(routine[1]).map((exercise) => {
+              return {
+                name: exercise[0],
+                metrics: exercise[1]
+              };
+            })
+          }
+        }),
       };
-    }).filter(w => w.muscle !== 'date');
+    });
 
     workout.day = dayOfWeek;
 
@@ -63,8 +68,10 @@ class Routine extends Component {
 
     // Reset all exercise status
     workout.forEach(w => {
-      w.exercises.forEach(e => {
-        props.user.routine[workoutDay][w.muscle][e.name].done = false;
+      w.routine.forEach(r => {
+        r.exercises.forEach(e => {
+          props.user.routine[workoutDay][w.type][r.muscle][e.name].done = false;
+        });
       });
     });
 
@@ -99,30 +106,42 @@ class Routine extends Component {
             </div>
           )}
         </div>
-        {workout.map (routine => {
-          return (
-            <div key={routine.muscle} className='group'>
-              <div className='header'>
-                <h3 className='muscle'>{routine.muscle}</h3>
-                <span className='weight'>Weight</span>
-                <span className='reps'>Reps</span>
-                <span className='sets'>Sets</span>
+        {workout.map (w =>
+          w.routine.map (r => {
+            return (
+              <div key={r.muscle} className='group'>
+                {w.type === 'weight' ? (
+                  <div className='header'>
+                    <h3 className='muscle'>{r.muscle}</h3>
+                    <span className='weight'>Weight</span>
+                    <span className='reps'>Reps</span>
+                    <span className='sets'>Sets</span>
+                  </div>
+                ) : (
+                  <div className='header'>
+                    <h3 className='muscle'>{r.muscle}</h3>
+                    <span className='weight'>Time</span>
+                    <span className='reps'>Distance</span>
+                    <span className='sets'>Calories</span>
+                  </div>
+                )}
+                {r.exercises.map (exercise =>
+                  <Exercise key={exercise.name}
+                    user={this.props.user}
+                    workout={workout}
+                    workoutType={w.type}
+                    routine={r}
+                    exercise={exercise}
+                    edit={this.state.editMode}
+                    save={this.state.saveMode}
+                    handleUserChange={this.props.handleUserChange}
+                    handleSaveSubmit={this.handleSaveSubmit} />
+                )}
               </div>
-              {routine.exercises.map (exercise => 
-                <Exercise key={exercise.name} 
-                  user={this.props.user} 
-                  workout={workout} 
-                  routine={routine} 
-                  exercise={exercise} 
-                  edit={this.state.editMode} 
-                  save={this.state.saveMode}
-                  handleUserChange={this.props.handleUserChange}
-                  handleSaveSubmit={this.handleSaveSubmit} />
-              )}
-            </div>
-          );
-        })}
-        <RoutineModal user={this.props.user} workoutDay={workout.day} handleUserChange={this.props.handleUserChange}/>
+            );
+          })
+        )}
+        {/* <RoutineModal user={this.props.user} workoutDay={workout.day} handleUserChange={this.props.handleUserChange}/> */}
       </div>
     );
   }

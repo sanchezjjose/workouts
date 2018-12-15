@@ -1,7 +1,11 @@
 [ 
 	{
 		"id": "joses",
-		"name": "Jose",
+    "name": "Jose",
+    "settings": {
+      "units": "pounds",
+      "time": "minutes"
+    },
 		"favorites": {
 			"weight": {
 				"Chest": [
@@ -308,7 +312,7 @@
 							"done": false,
 							"time": "10",
 							"distance": "2",
-							"calories burned": "110"
+							"calories": "110"
 						}
 					},
 					"Stretching": {
@@ -316,7 +320,7 @@
 							"done": false,
 							"time": "0.5",
 							"distance": "-",
-							"calories burned": "-"
+							"calories": "-"
 						}
 					}
 				}
@@ -442,30 +446,6 @@
 						"sets": "1"
 					}
 				}
-			}
-		}
-	},
-	{
-		"id": "paulad",
-		"name": "Paula",
-		"excercises": {
-		},
-		"history": {
-		},
-		"routine": {
-			"Monday": {
-			},
-			"Tuesday": {
-			},
-			"Wednesday": {
-			},
-			"Thursday": {
-			},
-			"Friday": {
-			},
-			"Saturday": {
-			},
-			"Sunday": {
 			}
 		}
 	}

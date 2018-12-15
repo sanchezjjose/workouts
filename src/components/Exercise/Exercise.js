@@ -59,6 +59,7 @@ class Exercise extends Component {
     const exerciseClassName = this.props.edit ? 'edit' : '';
     const workoutDay = this.props.workout.day;
     const hasDate = this.props.user.routine[workoutDay].date ? true : false;
+    const metricTypes = this.props.workoutType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'calories'];
 
     return (
       <div className={`Exercise ${exerciseClassName}`}>
@@ -71,38 +72,19 @@ class Exercise extends Component {
         }
         <div className='name'>{exercise.name}</div>
 
-        <Metrics metricType='weight'
-          user={this.props.user}
-          workout={this.props.workout}
-          routine={this.props.routine}
-          exercise={exercise}
-          metricValue={exercise.metrics.weight}
-          edit={this.props.edit}
-          save={this.props.save}
-          handleUserChange={this.props.handleUserChange}
-          handleSaveSubmit={this.props.handleSaveSubmit} />
-
-        <Metrics metricType='reps'
-          user={this.props.user}
-          workout={this.props.workout}
-          routine={this.props.routine}
-          exercise={exercise}
-          metricValue={exercise.metrics.reps}
-          edit={this.props.edit}
-          save={this.props.save}
-          handleUserChange={this.props.handleUserChange}
-          handleSaveSubmit={this.props.handleSaveSubmit} />
-
-        <Metrics metricType='sets'
-          user={this.props.user}
-          workout={this.props.workout}
-          routine={this.props.routine}
-          exercise={exercise}
-          metricValue={exercise.metrics.sets}
-          edit={this.props.edit}
-          save={this.props.save}
-          handleUserChange={this.props.handleUserChange}
-          handleSaveSubmit={this.props.handleSaveSubmit} />
+        {metricTypes.map(metricType =>
+          <Metrics key={metricType}
+            metricType={metricType}
+            user={this.props.user}
+            workout={this.props.workout}
+            workoutType={this.props.workoutType}
+            routine={this.props.routine}
+            exercise={exercise}
+            edit={this.props.edit}
+            save={this.props.save}
+            handleUserChange={this.props.handleUserChange}
+            handleSaveSubmit={this.props.handleSaveSubmit} />
+        )}
       </div>
     );
   }
