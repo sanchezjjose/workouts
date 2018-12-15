@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Metrics from '../Metrics/Metrics';
 import { saveExerciseHistory, removeExerciseHistory } from '../../api/WorkoutHistory';
 import { saveExerciseStatus } from '../../api/ExerciseStatus';
-import { saveRoutine } from '../../api/RoutineWorkouts';
+import { saveRoutine } from '../../api/Routine';
 
 import './Exercise.css';
 import "@material/icon-button/dist/mdc.icon-button.min.css";
@@ -39,8 +39,8 @@ class Exercise extends Component {
     const workoutType = this.props.workoutType;
     const muscle = this.props.routine.muscle;
     const exercise = this.props.exercise;
-    const todaysRoutine = user.routine[workoutDay][workoutType];
-    const exercises = todaysRoutine[muscle];
+    const todaysRoutine = user.routine[workoutDay];
+    const exercises = todaysRoutine[workoutType][muscle];
 
     delete exercises[exercise.name];
 

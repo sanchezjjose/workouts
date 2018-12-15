@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { saveRoutine } from '../../api/RoutineWorkouts';
+import { saveRoutine } from '../../api/Routine';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './RoutineModal.css';

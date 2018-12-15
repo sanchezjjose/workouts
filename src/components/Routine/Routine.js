@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Exercise from '../Exercise/Exercise';
 import RoutineModal from '../RoutineModal/RoutineModal';
-import { saveRoutine } from '../../api/RoutineWorkouts';
+import { saveRoutine } from '../../api/Routine';
 
 import './Routine.css';
 
