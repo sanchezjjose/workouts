@@ -33,10 +33,10 @@ class Exercise extends Component {
 
     const user = this.props.user;
     const workoutDay = this.props.workout.day;
+    const workoutType = this.props.workoutType;
     const muscle = this.props.routine.muscle;
     const exercise = this.props.exercise;
-
-    const todaysRoutine = user.routine[workoutDay];
+    const todaysRoutine = user.routine[workoutDay][workoutType];
     const exercises = todaysRoutine[muscle];
 
     delete exercises[exercise.name];

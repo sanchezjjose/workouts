@@ -37,16 +37,18 @@ class RoutineModal extends Component {
     });
   }
 
-  addExercise = (muscle, exercise) => {
+  addExercise = (workoutType, muscle, exercise) => {
     const props = this.props;
     const user = props.user;
     const workoutDay = props.workoutDay;
-    const muscleGroupExercises = user.routine[workoutDay][muscle] || {};
+    const muscleGroupExercises = user.routine[workoutDay][workoutType][muscle] || {};
+    const initialMetrics = workoutType === 'weight' ?
+      { weight: '0', reps: '0', sets: '0', done: false } : { time: '0', distance: '0', calories: '0', done: false };
 
     // TODO: Move to object that has an addExerciseToRoutine() method.
     // Then, pass object to parent to update state.
-    muscleGroupExercises[exercise] = { weight: 0, reps: 0, sets: 0 };
-    user.routine[workoutDay][muscle] = muscleGroupExercises;
+    muscleGroupExercises[exercise] = initialMetrics;
+    user.routine[workoutDay][workoutType][muscle] = muscleGroupExercises;
 
     saveRoutine(user.id, user.routine[workoutDay], workoutDay)
       .then(() => {
@@ -62,16 +64,16 @@ class RoutineModal extends Component {
     return (
       <div className='FavoritesModal'>
         <div className={`content ${this.state.show ? 'show' : ''}`}>
-          {favoritesVm.map (favorite => {
-            return (
-              <div key={favorite.muscle} className='exercises'>
-                <h3>{favorite.muscle}</h3>
-                {favorite.exercises.map(exercise =>
-                  <div onClick={e => this.addExercise(favorite.muscle, exercise)} key={exercise} className='exercise-label'>{exercise}</div>
+          {favoritesVm.map (favorite => 
+            favorite.workouts.map(workout => 
+              <div key={workout.muscle} className='exercises'>
+                <h3>{workout.muscle}</h3>
+                {workout.exercises.map(exercise =>
+                  <div onClick={e => this.addExercise(favorite.type, workout.muscle, exercise)} key={exercise} className='exercise-label'>{exercise}</div>
                 )}
               </div>
             )
-          })}
+          )}
         </div>
         <Fab handleClick={onClick} label={label} />
       </div>

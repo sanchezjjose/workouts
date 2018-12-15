@@ -11,7 +11,7 @@ class FavoritesModal extends Component {
     show: false,
     muscleGroup: '',
     exerciseName: '',
-    workoutType: 'strength'
+    workoutType: 'weight'
   }
 
   showModal = () => {
@@ -74,10 +74,10 @@ class FavoritesModal extends Component {
           <div>
             <span label='Type'>Workout Type: </span>
             <div>
-              <input onChange={this.onWorkoutTypeChange} type='radio' id='strength' name='type' value='strength' checked={this.state.workoutType === 'strength'} />
-              <label htmlFor='strength'>Strength</label>
-              <input onChange={this.onWorkoutTypeChange} type='radio' id='cardio' name='type' value='cardio' checked={this.state.workoutType === 'cardio'} />
-              <label htmlFor='cardio'>Cardio</label>
+              <input onChange={this.onWorkoutTypeChange} type='radio' id='weight' name='type' value='weight' checked={this.state.workoutType === 'weight'} />
+              <label htmlFor='weight'>Weight Training</label>
+              <input onChange={this.onWorkoutTypeChange} type='radio' id='time' name='type' value='time' checked={this.state.workoutType === 'time'} />
+              <label htmlFor='time'>Time Based</label>
             </div>
           </div>
         </div>
