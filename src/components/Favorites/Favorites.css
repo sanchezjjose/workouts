@@ -9,6 +9,10 @@
   font-size: 32px;
 }
 
+.Favorites .exercises .workout-title {
+  border-bottom: 1px #9b9b9b solid;
+}
+
 .Favorites .exercise-group {
   display: grid;
   grid-template-columns: 30px 1fr;
@@ -16,5 +20,6 @@
 }
 
 .Favorites .exercise-group .remove-button {
+  font-size: 18px;
   justify-self: center;
 }

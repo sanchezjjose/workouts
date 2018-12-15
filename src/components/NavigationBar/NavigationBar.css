@@ -1,14 +1,18 @@
 .NavigationBar {
-  display: grid;
   align-items: center;
   background: #13131e;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
   color: #58b6f4;
+  display: grid;
   height: 56px;
-  margin-bottom: 20px;
   padding-left: 20px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 4;
 }
 
 .NavigationBar .title {
-  font-weight: 300;
   font-size: 28px;
+  font-weight: 300;
 }

@@ -122,7 +122,7 @@ class Routine extends Component {
                   <h3 className='muscle'>{r.muscle}</h3>
                   <span className='weight'>Time</span>
                   <span className='reps'>Distance</span>
-                  <span className='sets'>Calories</span>
+                  <span className='sets'>Kcal</span>
                 </div>
               )}
               {r.exercises.map (exercise =>
