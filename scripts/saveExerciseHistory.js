@@ -11,7 +11,7 @@ const exercise = {
   }
 };
 
-historyAPI.addExerciseHistory(userId, muscle, exercise)
+historyAPI.saveExerciseHistory(userId, muscle, exercise)
   .then(() => {
     console.log('Successfully saved workout to history.');
   })

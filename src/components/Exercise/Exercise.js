@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Metrics from '../Metrics/Metrics';
-import { addExerciseHistory, deleteExerciseHistory } from '../../api/WorkoutHistory';
+import { saveExerciseHistory, removeExerciseHistory } from '../../api/WorkoutHistory';
 import { saveExerciseStatus } from '../../api/ExerciseStatus';
 import { saveRoutine } from '../../api/RoutineWorkouts';
 
@@ -12,15 +12,18 @@ class Exercise extends Component {
   handleExerciseStatus = (exerciseComplete) => {
     const user = this.props.user;
     const workoutDay = this.props.workout.day;
+    const workoutType = this.props.workoutType;
     const date = user.routine[workoutDay].date;
     const muscle = this.props.routine.muscle;
     const exercise = this.props.exercise;
-    const updateExerciseHistory = exerciseComplete ? addExerciseHistory : deleteExerciseHistory;
+    const updateExerciseHistory = exerciseComplete ? saveExerciseHistory : removeExerciseHistory;
 
     updateExerciseHistory(user.id, date, exercise, muscle)
-      .then(() => saveExerciseStatus(user.id, workoutDay, muscle, exercise.name, exerciseComplete))
+      .then(() => 
+        saveExerciseStatus(user.id, workoutDay, workoutType, muscle, exercise.name, exerciseComplete)
+      )
       .then(() => {
-        user.routine[workoutDay][muscle][exercise.name].done = exerciseComplete;
+        user.routine[workoutDay][workoutType][muscle][exercise.name].done = exerciseComplete;
         this.props.handleUserChange(user);
       })
       .catch(e => {

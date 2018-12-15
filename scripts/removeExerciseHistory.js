@@ -10,7 +10,7 @@ const exercise = {
   }
 };
 
-historyAPI.deleteExerciseHistory(userId, exercise)
+historyAPI.removeExerciseHistory(userId, exercise)
   .then(() => {
     console.log('Successfully deleted workout to history.');
   })
