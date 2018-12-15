@@ -121,7 +121,8 @@
               "sets": "3"
             }
           }
-        }
+        },
+        "time": {}
 			},
 			"Tuesday": {
         "weight": {
@@ -203,7 +204,8 @@
               "sets": "3"
             }
           }
-        }
+        },
+        "time": {}
 			},
 			"Wednesday": {
 				"weight": {
@@ -247,9 +249,12 @@
               "sets": "1"
             }
           }
-        }
+        },
+        "time": {}
 			},
 			"Thursday": {
+        "weight": {},
+        "time": {}
 			},
 			"Friday": {
 				"weight": {
@@ -405,7 +410,8 @@
               "sets": "3"
             }
           }
-        }
+        },
+        "time": {}
 			},
 			"Sunday": {
 				"weight": {
@@ -449,7 +455,8 @@
               "sets": "1"
             }
           }
-        }
+        },
+        "time": {}
       }
 		}
 	}
