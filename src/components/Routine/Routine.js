@@ -17,6 +17,7 @@ class Routine extends Component {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dayOfWeek = days[new Date().getDay()];
     const todaysWorkouts = Object.entries(workouts[dayOfWeek]);
+
     const workout = todaysWorkouts.filter(workout => workout[0] !== 'date').map(workout => {
       return {
         type: workout[0],
@@ -141,7 +142,7 @@ class Routine extends Component {
             );
           })
         )}
-        {/* <RoutineModal user={this.props.user} workoutDay={workout.day} handleUserChange={this.props.handleUserChange}/> */}
+        <RoutineModal user={this.props.user} workoutDay={workout.day} handleUserChange={this.props.handleUserChange}/>
       </div>
     );
   }
