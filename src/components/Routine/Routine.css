@@ -28,6 +28,8 @@
 
 .Routine .routine-heading .weekday {
   margin: 0;
+  font-weight: 400;
+  font-size: 32px;
 }
 
 .Routine .routine-heading .mode-button {

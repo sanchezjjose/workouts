@@ -4,6 +4,7 @@ import { getUser } from '../api/Users';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
+import NavigationBar from './NavigationBar/NavigationBar';
 import Footer from './Footer/Footer';
 
 import './App.css';
@@ -49,6 +50,7 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container'>
+              <NavigationBar />
               {this.state.user.routine ?
                 <Home user={this.state.user} handleUserChange={this.handleUserChange} /> :
                 <div>Loading...</div>
@@ -58,6 +60,7 @@ class App extends Component {
           )}/>
           <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container'>
+              <NavigationBar />
               <Favorites user={this.state.user} handleFavoritesChange={this.handleFavoritesChange} />
               <Footer userId={this.state.user.id} />
             </div>

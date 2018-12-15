@@ -9,7 +9,6 @@ class Home extends Component {
     return (
       <div className='Home'>
         <div className='content-wrapper'>
-          <h1>{this.props.user.name}'s Workout</h1>
           <div className='content'>
             <Routine user={this.props.user} handleUserChange={this.props.handleUserChange} />
           </div>

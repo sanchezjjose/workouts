@@ -62,7 +62,7 @@ class Exercise extends Component {
     const exerciseClassName = this.props.edit ? 'edit' : '';
     const workoutDay = this.props.workout.day;
     const hasDate = this.props.user.routine[workoutDay].date ? true : false;
-    const metricTypes = this.props.workoutType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'calories'];
+    const metricTypes = this.props.workoutType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
 
     return (
       <div className={`Exercise ${exerciseClassName}`}>

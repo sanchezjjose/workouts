@@ -1,0 +1,14 @@
+.NavigationBar {
+  display: grid;
+  align-items: center;
+  background: #13131e;
+  color: #58b6f4;
+  height: 56px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.NavigationBar .title {
+  font-weight: 300;
+  font-size: 28px;
+}

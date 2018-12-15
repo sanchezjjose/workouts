@@ -44,7 +44,7 @@ class Favorites extends Component {
       <div className='Favorites'>
         <div className='content-wrapper'>
           <div className='content'>
-          <h1>Your Favorite Exercises</h1>
+          <h2>Favorite Exercises.</h2>
           {favoritesVm.map (favorite =>
             favorite.workouts.map(workout =>
               <div key={workout.muscle} className='exercises'>

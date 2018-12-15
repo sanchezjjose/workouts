@@ -43,7 +43,7 @@ class RoutineModal extends Component {
     const workoutDay = props.workoutDay;
     const muscleGroupExercises = user.routine[workoutDay][workoutType][muscle] || {};
     const initialMetrics = workoutType === 'weight' ?
-      { weight: '0', reps: '0', sets: '0', done: false } : { time: '0', distance: '0', calories: '0', done: false };
+      { weight: '-', reps: '-', sets: '-', done: false } : { time: '-', distance: '-', kcal: '-', done: false };
 
     // TODO: Move to object that has an addExerciseToRoutine() method.
     // Then, pass object to parent to update state.
