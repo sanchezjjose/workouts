@@ -1,39 +1,22 @@
 [ 
 	{
 		"id": "joses",
-    "name": "Jose",
-    "settings": {
-      "units": "pounds",
-      "time": "minutes"
-    },
+		"name": "Jose",
+		"settings": {
+			"units": "pounds",
+			"time": "minutes"
+		},
 		"favorites": {
-			"weight": {
-				"Chest": [
-					"Barbell Bench Press",
-					"Push Ups",
-					"Dips"
-				],
-				"Shoulders": [
-					"Upright Cable Row",
-					"Lateral Raise Machine"
-				],
-				"Back": [
-					"Pull Ups"
-				],
-				"Abs": [
-					"Crunches"
-				]
-			},
 			"time": {
 				"Abs": [
 					"Plank"
 				],
+				"Other": [
+					"Sauna"
+				],
 				"Running": [
 					"Treadmill",
 					"Elliptical"
-				],
-				"Other": [
-					"Sauna"
 				],
 				"Stretching": [
 					"Inner Thighs",
@@ -41,6 +24,48 @@
 					"Chest",
 					"Lower Back",
 					"Calf"
+				]
+			},
+			"weight": {
+				"Abs": [
+					"Crunches"
+				],
+				"Back": [
+					"Pull Ups",
+					"Bent-Over Barbell Row",
+					"Wide-Grip Seated Cable Row",
+					"Close-Grip Pull Down",
+					"Single-Arm Dumbbell Row"
+				],
+				"Biceps": [
+					"Curls (bands)",
+					"Chin-Up",
+					"Dumbbell Curls"
+				],
+				"Chest": [
+					"Barbell Bench Press",
+					"Push Ups",
+					"Dips"
+				],
+				"Legs": [
+					"Barbell Deadlift",
+					"Hip Hinge",
+					"Leg Extensions",
+					"Seated Calf Raise"
+				],
+				"Shoulders": [
+					"Upright Cable Row",
+					"Lateral Raise Machine",
+					"Reverse Machine Flies",
+					"Barbell Military Press",
+					"Front Two-Dumbbell Raise",
+					"Shrugs"
+				],
+				"Triceps": [
+					"Tricep Pushdown (rope)",
+					"Overhead Extension Machine",
+					"EZ-Bar Standing Overhead",
+					"Dips"
 				]
 			}
 		},
@@ -62,199 +87,199 @@
 		},
 		"routine": {
 			"Monday": {
-        "weight": {
-          "Chest": {
-            "Barbell Bench Press": {
-              "done": false,
-              "weight": "165",
-              "reps": "8",
-              "sets": "3"
-            },
-            "Pushups": {
-              "done": false,
-              "weight": "-",
-              "reps": "25",
-              "sets": "4"
-            },
-            "Dips": {
-              "done": false,
-              "weight": "-",
-              "reps": "10",
-              "sets": "4"
-            }
-          },
-          "Shoulders": {
-            "Upright Cable Row": {
-              "done": false,
-              "weight": "120",
-              "reps": "8",
-              "sets": "3"
-            },
-            "Lateral Raise Machine": {
-              "done": false,
-              "weight": "80",
-              "reps": "8",
-              "sets": "3"
-            },
-            "Reverse Machine Flies": {
-              "done": false,
-              "weight": "115",
-              "reps": "8",
-              "sets": "3"
-            },
-            "Barbell Military Press": {
-              "done": false,
-              "weight": "105",
-              "reps": "5",
-              "sets": "3"
-            },
-            "Front Two-Dumbbell Raise": {
-              "done": false,
-              "weight": "20",
-              "reps": "8",
-              "sets": "3"
-            },
-            "Shrugs": {
-              "done": false,
-              "weight": "70",
-              "reps": "20",
-              "sets": "3"
-            }
-          }
-        },
-        "time": {}
+				"weight": {
+					"Chest": {
+						"Barbell Bench Press": {
+							"done": false,
+							"weight": "165",
+							"reps": "8",
+							"sets": "3"
+						},
+						"Pushups": {
+							"done": false,
+							"weight": "-",
+							"reps": "25",
+							"sets": "4"
+						},
+						"Dips": {
+							"done": false,
+							"weight": "-",
+							"reps": "10",
+							"sets": "4"
+						}
+					},
+					"Shoulders": {
+						"Upright Cable Row": {
+							"done": false,
+							"weight": "120",
+							"reps": "8",
+							"sets": "3"
+						},
+						"Lateral Raise Machine": {
+							"done": false,
+							"weight": "80",
+							"reps": "8",
+							"sets": "3"
+						},
+						"Reverse Machine Flies": {
+							"done": false,
+							"weight": "115",
+							"reps": "8",
+							"sets": "3"
+						},
+						"Barbell Military Press": {
+							"done": false,
+							"weight": "105",
+							"reps": "5",
+							"sets": "3"
+						},
+						"Front Two-Dumbbell Raise": {
+							"done": false,
+							"weight": "20",
+							"reps": "8",
+							"sets": "3"
+						},
+						"Shrugs": {
+							"done": false,
+							"weight": "70",
+							"reps": "20",
+							"sets": "3"
+						}
+					}
+				},
+				"time": {}
 			},
 			"Tuesday": {
-        "weight": {
-          "Biceps": {
-            "Curls (bands)": {
-              "done": false,
-              "weight": "-",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Chin-Up": {
-              "done": false,
-              "weight": "-",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Dumbbell Curls": {
-              "done": false,
-              "weight": "25",
-              "reps": "10",
-              "sets": "3"
-            }
-          },
-          "Back": {
-            "Pull Ups": {
-              "done": false,
-              "weight": "-",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Bent-Over Barbell Row": {
-              "done": false,
-              "weight": "125",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Wide-Grip Seated Cable Row": {
-              "done": false,
-              "weight": "140",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Close-Grip Pull Down": {
-              "done": false,
-              "weight": "140",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Single-Arm Dumbbell Row": {
-              "done": false,
-              "weight": "65",
-              "reps": "10",
-              "sets": "3"
-            }
-          },
-          "Triceps": {
-            "Dips": {
-              "done": false,
-              "weight": "-",
-              "reps": "20",
-              "sets": "3"
-            },
-            "Tricep Pushdown (rope)": {
-              "done": false,
-              "weight": "110",
-              "reps": "8",
-              "sets": "3"
-            },
-            "Overhead Extension Machine": {
-              "done": false,
-              "weight": "60",
-              "reps": "10",
-              "sets": "3"
-            },
-            "EZ-Bar Standing Overhead": {
-              "done": false,
-              "weight": "70",
-              "reps": "10",
-              "sets": "3"
-            }
-          }
-        },
-        "time": {}
+				"weight": {
+					"Biceps": {
+						"Curls (bands)": {
+							"done": false,
+							"weight": "-",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Chin-Up": {
+							"done": false,
+							"weight": "-",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Dumbbell Curls": {
+							"done": false,
+							"weight": "25",
+							"reps": "10",
+							"sets": "3"
+						}
+					},
+					"Back": {
+						"Pull Ups": {
+							"done": false,
+							"weight": "-",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Bent-Over Barbell Row": {
+							"done": false,
+							"weight": "125",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Wide-Grip Seated Cable Row": {
+							"done": false,
+							"weight": "140",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Close-Grip Pull Down": {
+							"done": false,
+							"weight": "140",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Single-Arm Dumbbell Row": {
+							"done": false,
+							"weight": "65",
+							"reps": "10",
+							"sets": "3"
+						}
+					},
+					"Triceps": {
+						"Dips": {
+							"done": false,
+							"weight": "-",
+							"reps": "20",
+							"sets": "3"
+						},
+						"Tricep Pushdown (rope)": {
+							"done": false,
+							"weight": "110",
+							"reps": "8",
+							"sets": "3"
+						},
+						"Overhead Extension Machine": {
+							"done": false,
+							"weight": "60",
+							"reps": "10",
+							"sets": "3"
+						},
+						"EZ-Bar Standing Overhead": {
+							"done": false,
+							"weight": "70",
+							"reps": "10",
+							"sets": "3"
+						}
+					}
+				},
+				"time": {}
 			},
 			"Wednesday": {
 				"weight": {
-          "Legs": {
-            "Barbell Squat": {
-              "done": false,
-              "weight": "195",
-              "reps": "5",
-              "sets": "5"
-            },
-            "Barbell Deadlift": {
-              "done": false,
-              "weight": "150",
-              "reps": "5",
-              "sets": "1"
-            },
-            "Hip Hinge": {
-              "done": false,
-              "weight": "100",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Leg Extensions": {
-              "done": false,
-              "weight": "130",
-              "reps": "10",
-              "sets": "4"
-            },
-            "Seated Calf Raise": {
-              "done": false,
-              "weight": "260",
-              "reps": "10",
-              "sets": "4"
-            }
-          },
-          "Other": {
-            "Sauna": {
-              "done": false,
-              "weight": "-",
-              "reps": "30",
-              "sets": "1"
-            }
-          }
-        },
-        "time": {}
+					"Legs": {
+						"Barbell Squat": {
+							"done": false,
+							"weight": "195",
+							"reps": "5",
+							"sets": "5"
+						},
+						"Barbell Deadlift": {
+							"done": false,
+							"weight": "150",
+							"reps": "5",
+							"sets": "1"
+						},
+						"Hip Hinge": {
+							"done": false,
+							"weight": "100",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Leg Extensions": {
+							"done": false,
+							"weight": "130",
+							"reps": "10",
+							"sets": "4"
+						},
+						"Seated Calf Raise": {
+							"done": false,
+							"weight": "260",
+							"reps": "10",
+							"sets": "4"
+						}
+					},
+					"Other": {
+						"Sauna": {
+							"done": false,
+							"weight": "-",
+							"reps": "30",
+							"sets": "1"
+						}
+					}
+				},
+				"time": {}
 			},
 			"Thursday": {
-        "weight": {},
-        "time": {}
+				"weight": {},
+				"time": {}
 			},
 			"Friday": {
 				"weight": {
@@ -338,126 +363,126 @@
 			},
 			"Saturday": {
 				"weight": {
-          "Biceps": {
-            "Curls (bands)": {
-              "done": false,
-              "weight": "-",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Chin-Up": {
-              "done": false,
-              "weight": "-",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Dumbbell Curls": {
-              "done": false,
-              "weight": "25",
-              "reps": "10",
-              "sets": "3"
-            }
-          },
-          "Back": {
-            "Pull Ups": {
-              "done": false,
-              "weight": "-",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Bent-Over Barbell Row": {
-              "done": false,
-              "weight": "125",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Wide-Grip Seated Cable Row": {
-              "done": false,
-              "weight": "140",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Close-Grip Pull Down": {
-              "done": false,
-              "weight": "140",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Single-Arm Dumbbell Row": {
-              "done": false,
-              "weight": "65",
-              "reps": "10",
-              "sets": "3"
-            }
-          },
-          "Triceps": {
-            "Dips": {
-              "done": false,
-              "weight": "-",
-              "reps": "20",
-              "sets": "3"
-            },
-            "Tricep Pushdown (rope)": {
-              "done": false,
-              "weight": "110",
-              "reps": "8",
-              "sets": "3"
-            },
-            "EZ-Bar Standing Overhead": {
-              "done": false,
-              "weight": "70",
-              "reps": "10",
-              "sets": "3"
-            }
-          }
-        },
-        "time": {}
+					"Biceps": {
+						"Curls (bands)": {
+							"done": false,
+							"weight": "-",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Chin-Up": {
+							"done": false,
+							"weight": "-",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Dumbbell Curls": {
+							"done": false,
+							"weight": "25",
+							"reps": "10",
+							"sets": "3"
+						}
+					},
+					"Back": {
+						"Pull Ups": {
+							"done": false,
+							"weight": "-",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Bent-Over Barbell Row": {
+							"done": false,
+							"weight": "125",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Wide-Grip Seated Cable Row": {
+							"done": false,
+							"weight": "140",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Close-Grip Pull Down": {
+							"done": false,
+							"weight": "140",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Single-Arm Dumbbell Row": {
+							"done": false,
+							"weight": "65",
+							"reps": "10",
+							"sets": "3"
+						}
+					},
+					"Triceps": {
+						"Dips": {
+							"done": false,
+							"weight": "-",
+							"reps": "20",
+							"sets": "3"
+						},
+						"Tricep Pushdown (rope)": {
+							"done": false,
+							"weight": "110",
+							"reps": "8",
+							"sets": "3"
+						},
+						"EZ-Bar Standing Overhead": {
+							"done": false,
+							"weight": "70",
+							"reps": "10",
+							"sets": "3"
+						}
+					}
+				},
+				"time": {}
 			},
 			"Sunday": {
 				"weight": {
-          "Legs": {
-            "Barbell Squat": {
-              "done": false,
-              "weight": "195",
-              "reps": "5",
-              "sets": "5"
-            },
-            "Barbell Deadlift": {
-              "done": false,
-              "weight": "150",
-              "reps": "5",
-              "sets": "1"
-            },
-            "Hip Hinge": {
-              "done": false,
-              "weight": "100",
-              "reps": "10",
-              "sets": "3"
-            },
-            "Leg Extensions": {
-              "done": false,
-              "weight": "130",
-              "reps": "10",
-              "sets": "4"
-            },
-            "Seated Calf Raise": {
-              "done": false,
-              "weight": "260",
-              "reps": "10",
-              "sets": "4"
-            }
-          },
-          "Other": {
-            "Sauna": {
-              "done": false,
-              "weight": "-",
-              "reps": "30",
-              "sets": "1"
-            }
-          }
-        },
-        "time": {}
-      }
+					"Legs": {
+						"Barbell Squat": {
+							"done": false,
+							"weight": "195",
+							"reps": "5",
+							"sets": "5"
+						},
+						"Barbell Deadlift": {
+							"done": false,
+							"weight": "150",
+							"reps": "5",
+							"sets": "1"
+						},
+						"Hip Hinge": {
+							"done": false,
+							"weight": "100",
+							"reps": "10",
+							"sets": "3"
+						},
+						"Leg Extensions": {
+							"done": false,
+							"weight": "130",
+							"reps": "10",
+							"sets": "4"
+						},
+						"Seated Calf Raise": {
+							"done": false,
+							"weight": "260",
+							"reps": "10",
+							"sets": "4"
+						}
+					},
+					"Other": {
+						"Sauna": {
+							"done": false,
+							"weight": "-",
+							"reps": "30",
+							"sets": "1"
+						}
+					}
+				},
+				"time": {}
+			}
 		}
 	}
 ]
