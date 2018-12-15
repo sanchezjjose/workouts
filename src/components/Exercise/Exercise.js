@@ -45,7 +45,7 @@ class Exercise extends Component {
     delete exercises[exercise.name];
 
     if (Object.keys(exercises).length === 0) {
-      delete todaysRoutine[muscle];
+      delete todaysRoutine[workoutType][muscle];
     }
 
     saveRoutine(user.id, todaysRoutine, workoutDay)
