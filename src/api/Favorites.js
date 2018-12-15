@@ -8,16 +8,17 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const saveFavoriteExercise = (userId, muscle, exercise) => {
+const saveFavoriteExercise = (userId, workoutType, muscle, exercise) => {
   const createMuscleEntry = new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #f.#m = if_not_exists(#f.#m, :e)",
+      UpdateExpression: "SET #f.#t.#m = if_not_exists(#f.#t.#m, :e)",
       ExpressionAttributeNames: {
         "#f": "favorites",
+        "#t": workoutType,
         "#m": muscle
       },
       ExpressionAttributeValues: {
@@ -41,9 +42,10 @@ const saveFavoriteExercise = (userId, muscle, exercise) => {
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #f.#m = list_append(#f.#m, :e)",
+      UpdateExpression: "SET #f.#t.#m = list_append(#f.#t.#m, :e)",
       ExpressionAttributeNames: {
         "#f": "favorites",
+        "#t": workoutType,
         "#m": muscle
       },
       ExpressionAttributeValues: {
@@ -64,16 +66,17 @@ const saveFavoriteExercise = (userId, muscle, exercise) => {
   return Promise.all([createMuscleEntry, createMuscleExercises]);
 };
 
-const removeFavoriteExercise = (userId, muscle, exercises) => {
+const removeFavoriteExercise = (userId, workoutType, muscle, exercises) => {
   return new Promise((resolve, reject) => {
     const params = {
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: `SET #f.#m = :e`,
+      UpdateExpression: `SET #f.#t.#m = :e`,
       ExpressionAttributeNames: {
         "#f": "favorites",
+        "#t": workoutType,
         "#m": muscle
       },
       ExpressionAttributeValues: {
@@ -83,7 +86,7 @@ const removeFavoriteExercise = (userId, muscle, exercises) => {
     };
 
     if (exercises.length === 0) {
-      params.UpdateExpression = 'Remove #f.#m';
+      params.UpdateExpression = 'Remove #f.#t.#m';
       delete params.ExpressionAttributeValues;
     }
 

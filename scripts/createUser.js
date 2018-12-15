@@ -10,7 +10,8 @@ const tableName = 'Workouts';
 const workouts = {
   id: 'joses',
   name: 'Jose',
-  exercises: {},
+  settings: {},
+  favorites: {},
   history: {},
   routine: {}
 };
@@ -22,7 +23,8 @@ var params = {
   Item: {
     'id':  workouts.id,
     'name': workouts.name,
-    'exercises':  workouts.exercises,
+    'settings': workouts.settings,
+    'favorites':  workouts.favorites,
     'history':  workouts.history,
     'routine':  workouts.routine,
   }

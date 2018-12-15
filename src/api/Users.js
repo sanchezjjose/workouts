@@ -53,16 +53,44 @@ const createUser = (userId, fullName) => {
           Item: {
             'id':  userId,
             'name': fullName,
-            'favorites':  {},
+            'settings': {
+              'units': 'pounds',
+              'time': 'minutes'
+            },
+            'favorites':  {
+              'weight': {},
+              'time': {}
+            },
             'history':  {},
             'routine':  {
-              'Monday': {},
-              'Tuesday': {},
-              'Wednesday': {},
-              'Thursday': {},
-              'Friday': {},
-              'Saturday': {},
-              'Sunday': {},
+              'Monday': {
+                'weight': {},
+                'time': {}
+              },
+              'Tuesday': {
+                'weight': {},
+                'time': {}
+              },
+              'Wednesday': {
+                'weight': {},
+                'time': {}
+              },
+              'Thursday': {
+                'weight': {},
+                'time': {}
+              },
+              'Friday': {
+                'weight': {},
+                'time': {}
+              },
+              'Saturday': {
+                'weight': {},
+                'time': {}
+              },
+              'Sunday': {
+                'weight': {},
+                'time': {}
+              }
             }
           }
         };

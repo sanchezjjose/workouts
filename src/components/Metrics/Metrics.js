@@ -40,7 +40,7 @@ class Metrics extends Component {
       const initialValue = e.target.value;
       const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
 
-      if (!isNaN(finalValue) && finalValue > 0) {
+      if (!isNaN(finalValue) && finalValue >= 0) {
         this.setState({ metricValue: finalValue });
       }
     }

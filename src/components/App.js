@@ -58,7 +58,7 @@ class App extends Component {
           )}/>
           <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container'>
-              {/* <Favorites user={this.state.user} handleFavoritesChange={this.handleFavoritesChange} /> */}
+              <Favorites user={this.state.user} handleFavoritesChange={this.handleFavoritesChange} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

@@ -37,20 +37,23 @@ class FavoritesModal extends Component {
   saveExercise = (e) => {
     e.preventDefault();
 
+    const workoutType = this.state.workoutType;
     const muscleGroup = this.state.muscleGroup;
     const exercise = this.state.exerciseName;
     const user = this.props.user;
     const favorites = user.favorites;
+    
+    favorites[workoutType][muscleGroup] = favorites[workoutType][muscleGroup] || [];
 
-    favorites[muscleGroup] = favorites[muscleGroup] || [];
-
-    if (favorites[muscleGroup].indexOf(exercise) === -1) {
-      saveFavoriteExercise(user.id, muscleGroup, exercise)
+    if (favorites[workoutType][muscleGroup].indexOf(exercise) === -1) {
+      saveFavoriteExercise(user.id, workoutType, muscleGroup, exercise)
         .then(() => {
-          favorites[muscleGroup].push(exercise);
+          favorites[workoutType][muscleGroup].push(exercise);
           this.props.handleFavoritesChange(user);
         })
-        .catch(err => console.error('Error adding exercise to favorites.', err));
+        .catch(err => { 
+          console.error('Error adding exercise to favorites.', err);
+        });
     }
   }
 
