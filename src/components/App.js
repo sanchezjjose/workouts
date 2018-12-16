@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getUser } from '../api/Users';
+import User from '../models/User';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
@@ -21,6 +22,12 @@ class App extends Component {
     if (id.length > 0) {
       getUser(id)
         .then(user => {
+
+          const userObj = new User(user);
+          console.log(userObj);
+          console.log(userObj.getWorkouts());
+          console.log(userObj.getFavorites());
+
           this.setState({
             user: user
           });
