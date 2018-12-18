@@ -10,7 +10,7 @@ class Home extends Component {
       <div className='Home'>
         <div className='content-wrapper'>
           <div className='content'>
-            <Routine user={this.props.user} handleUserChange={this.props.handleUserChange} />
+            <Routine user={this.props.user} userObj={this.props.userObj} handleUserChange={this.props.handleUserChange} />
           </div>
         </div>
       </div>

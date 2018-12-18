@@ -22,21 +22,6 @@ class RoutineModal extends Component {
     this.setState({ show: false });
   }
 
-  // TODO: Move to class object.
-  getFavoriteExercisesViewModel(favorites = {}) {
-    return Object.entries(favorites).map(favorite => {
-      return {
-        type: favorite[0],
-        workouts: Object.entries(favorite[1]).map(workout => {
-          return {
-            muscle: workout[0],
-            exercises: workout[1]
-          };
-        })
-      };
-    });
-  }
-
   addExercise = (workoutType, muscle, exercise) => {
     const props = this.props;
     const user = props.user;
@@ -59,7 +44,7 @@ class RoutineModal extends Component {
   render() {
     const onClick = this.state.show ? this.closeModal : this.showModal;
     const label = this.state.show ? 'close' : 'add';
-    const favoritesVm = this.getFavoriteExercisesViewModel(this.props.user.favorites);
+    const favoritesVm = this.props.userObj.getFavorites();
 
     return (
       <div className='FavoritesModal'>
