@@ -6,21 +6,6 @@ import './Favorites.css';
 
 class Favorites extends Component {
 
-  // TODO: Move to class object.
-  getFavoriteExercisesViewModel(favorites = {}) {
-    return Object.entries(favorites).map(favorite => {
-      return {
-        type: favorite[0],
-        workouts: Object.entries(favorite[1]).map(workout => {
-          return {
-            muscle: workout[0],
-            exercises: workout[1]
-          };
-        })
-      };
-    });
-  }
-
   removeExercise(workoutType, muscle, exercise) {
     const user = this.props.user;
     const exercises = user.favorites[workoutType][muscle];
@@ -38,7 +23,7 @@ class Favorites extends Component {
   }
 
   render() {
-    const favoritesVm = this.getFavoriteExercisesViewModel(this.props.user.favorites);
+    const favoritesVm = this.props.userObj.getFavorites();
 
     return (
       <div className='Favorites'>

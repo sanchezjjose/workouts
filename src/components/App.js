@@ -13,7 +13,8 @@ import './App.css';
 class App extends Component {
 
   state = {
-    user: {}
+    user: {},
+    userObj: {}
   };
 
   componentDidMount() {
@@ -22,14 +23,9 @@ class App extends Component {
     if (id.length > 0) {
       getUser(id)
         .then(user => {
-
-          const userObj = new User(user);
-          console.log(userObj);
-          console.log(userObj.getWorkouts());
-          console.log(userObj.getFavorites());
-
           this.setState({
-            user: user
+            user: user,
+            userObj: new User(user)
           });
         })
         .catch(err => {
@@ -40,13 +36,15 @@ class App extends Component {
 
   handleUserChange = (user) => {
     this.setState({
-      user: user
+      user: user,
+      userObj: new User(user)
     });
   }
 
   handleFavoritesChange = (user) => {
     this.setState({
-      user: user
+      user: user,
+      userObj: new User(user)
     });
   }
 
@@ -59,7 +57,7 @@ class App extends Component {
             <div className='container'>
               <NavigationBar />
               {this.state.user.routine ?
-                <Home user={this.state.user} handleUserChange={this.handleUserChange} /> :
+                <Home user={this.state.user} userObj={this.state.userObj} handleUserChange={this.handleUserChange} /> :
                 <div>Loading...</div>
               }
               <Footer userId={this.state.user.id} />
@@ -68,7 +66,7 @@ class App extends Component {
           <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container'>
               <NavigationBar />
-              <Favorites user={this.state.user} handleFavoritesChange={this.handleFavoritesChange} />
+              <Favorites user={this.state.user} userObj={this.state.userObj} handleFavoritesChange={this.handleFavoritesChange} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

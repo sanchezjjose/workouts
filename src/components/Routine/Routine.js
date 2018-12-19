@@ -12,34 +12,6 @@ class Routine extends Component {
     editMode: false
   }
 
-  // TODO: Move to a Class object
-  getWorkoutViewModel(workouts) {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const dayOfWeek = days[new Date().getDay()];
-    const todaysWorkouts = Object.entries(workouts[dayOfWeek]);
-
-    const workout = todaysWorkouts.filter(workout => workout[0] !== 'date').map(workout => {
-      return {
-        type: workout[0],
-        routine: Object.entries(workout[1]).map(routine => {
-          return {
-            muscle: routine[0],
-            exercises: Object.entries(routine[1]).map((exercise) => {
-              return {
-                name: exercise[0],
-                metrics: exercise[1]
-              };
-            })
-          }
-        }),
-      };
-    });
-
-    workout.day = dayOfWeek;
-
-    return workout;
-  }
-
   handleEdit = (e) => {
     e.preventDefault();
     this.setState({ editMode: true });
@@ -89,7 +61,7 @@ class Routine extends Component {
   }
 
   render() {
-    const workout = this.getWorkoutViewModel(this.props.user.routine);
+    const workout = this.props.userObj.getWorkouts();
 
     return (
       <div className='Routine'>
@@ -140,7 +112,7 @@ class Routine extends Component {
             </div>
           )
         )}
-        <RoutineModal user={this.props.user} workoutDay={workout.day} handleUserChange={this.props.handleUserChange}/>
+        <RoutineModal user={this.props.user} userObj={this.props.userObj} workoutDay={workout.day} handleUserChange={this.props.handleUserChange}/>
       </div>
     );
   }
