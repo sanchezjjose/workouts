@@ -1,10 +1,12 @@
 const AWS = require('aws-sdk');
+const fs = require('fs');
 
 AWS.config.update({
   region: 'us-east-1'
 });
 
 if (process.env.NODE_ENV === 'development') {
+  console.log('AAA');
   AWS.config.update({
     endpoint: 'http://localhost:8000'
   });
