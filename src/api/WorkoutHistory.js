@@ -6,6 +6,12 @@ AWS.config.update({
   region: 'us-east-1'
 });
 
+if (process.env.NODE_ENV === 'development') {
+  AWS.config.update({
+    endpoint: 'http://localhost:8000'
+  });
+}
+
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const saveExerciseHistory = (userId, date, exercise, muscle) => {
