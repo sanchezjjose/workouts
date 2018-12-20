@@ -11,12 +11,13 @@ class User {
     this.user.routine[workoutDay][workoutType][muscle][exerciseName].done = status;
   }
 
-  getWorkouts() {
+  getWorkouts(day) {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const dayOfWeek = days[new Date().getDay()];
-    const todaysWorkouts = Object.entries(this.routine[dayOfWeek]);
+    const today = new Date().getDay();
+    const dayOfWeek = day || days[today];
+    const routine = Object.entries(this.routine[dayOfWeek]);
 
-    const workout = todaysWorkouts.filter(workout => workout[0] !== 'date').map(workout => {
+    const workout = routine.filter(workout => workout[0] !== 'date').map(workout => {
       return {
         type: workout[0],
         routine: Object.entries(workout[1]).map(routine => {
