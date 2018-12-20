@@ -1,16 +1,8 @@
-const AWS = require('aws-sdk');
+process.env.NODE_ENV = 'development';
 
-AWS.config.update({
-  region: 'us-east-1'
-});
-
-if (process.env.NODE_ENV === 'development') {
-  AWS.config.update({
-    endpoint: 'http://localhost:8000'
-  });
-}
-
+const AWS = require('../src/api/aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
+
 const params = {
   TableName: 'Workouts',
   Key: {

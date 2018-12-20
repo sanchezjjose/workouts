@@ -1,16 +1,6 @@
-const AWS = require('aws-sdk');
+const AWS = require('./aws-sdk.js');
 
-AWS.config.update({ 
-  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID, 
-  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-  region: 'us-east-1'
-});
-
-if (process.env.NODE_ENV === 'development') {
-  AWS.config.update({
-    endpoint: 'http://localhost:8000'
-  });
-}
+console.log(AWS);
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 

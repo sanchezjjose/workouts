@@ -1,16 +1,8 @@
-const AWS = require('aws-sdk');
+process.env.NODE_ENV = 'development';
 
-AWS.config.update({
-  region: 'us-east-1'
-});
-
-if (process.env.NODE_ENV === 'development') {
-  AWS.config.update({
-    endpoint: 'http://localhost:8000'
-  });
-}
-
+const AWS = require('../src/api/aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
+
 const tableName = 'Workouts';
 const workouts = {
   id: 'joses',
@@ -20,8 +12,6 @@ const workouts = {
   history: {},
   routine: {}
 };
-
-console.log(workouts);
 
 var params = {
   TableName: tableName,
@@ -34,8 +24,6 @@ var params = {
     'routine':  workouts.routine,
   }
 };
-
-console.log('Creating user entry.');
 
 docClient.put(params, function(err, data) {
   if (err) {

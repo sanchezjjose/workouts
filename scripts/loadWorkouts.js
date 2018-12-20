@@ -1,22 +1,11 @@
-const AWS = require('aws-sdk');
+process.env.NODE_ENV = 'development';
+
+const AWS = require('../src/api/aws-sdk');
 const fs = require('fs');
-
-AWS.config.update({
-  region: 'us-east-1'
-});
-
-if (process.env.NODE_ENV === 'development') {
-  console.log('AAA');
-  AWS.config.update({
-    endpoint: 'http://localhost:8000'
-  });
-}
-
 const docClient = new AWS.DynamoDB.DocumentClient();
+
 const tableName = 'Workouts';
 const workouts = JSON.parse(fs.readFileSync('./data/workouts.json', 'utf8'));
-
-console.log(workouts);
 
 workouts.forEach (workout => {
   const params = {
@@ -30,8 +19,6 @@ workouts.forEach (workout => {
       'routine':  workout.routine,
     }
   };
-
-  console.log('Loading test data.');
 
   docClient.put(params, function(err, data) {
     if (err) {
