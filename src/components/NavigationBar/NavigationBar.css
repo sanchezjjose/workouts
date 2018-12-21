@@ -22,7 +22,7 @@
 .top-app-bar__section--align-end {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 50px 50px;
+  grid-template-columns: 130px 50px;
   justify-self: end;
 }
 
