@@ -61,7 +61,8 @@ class Routine extends Component {
   }
 
   render() {
-    const workout = this.props.userObj.getWorkouts('Friday');
+    const workout = this.props.userObj.getWorkouts();
+    // const workout = this.props.userObj.getWorkouts('Friday');
 
     return (
       <div className='Routine'>
