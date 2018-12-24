@@ -24,7 +24,7 @@ class Exercise extends Component {
       )
       .then(() => {
         user.routine[workoutDay][workoutType][muscle][exercise.name].done = exerciseComplete;
-        this.props.handleUserChange(user);
+        this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
       })
       .catch(e => {
         console.error(e);
@@ -50,7 +50,7 @@ class Exercise extends Component {
 
     saveRoutine(user.id, todaysRoutine, workoutDay)
       .then(() => {
-        this.props.handleUserChange(user);
+        this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
       })
       .catch(e => {
         console.log(e);
