@@ -49,7 +49,7 @@ class FavoritesModal extends Component {
       saveFavoriteExercise(user.id, workoutType, muscleGroup, exercise)
         .then(() => {
           favorites[workoutType][muscleGroup].push(exercise);
-          this.props.handleFavoritesChange(user);
+          this.props.handleUserChange(user);
         })
         .catch(err => { 
           console.error('Error adding exercise to favorites.', err);

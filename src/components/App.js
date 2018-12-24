@@ -14,7 +14,9 @@ class App extends Component {
 
   state = {
     user: {},
-    userObj: {}
+    userObj: {},
+    editMode: false,
+    saveMode: false
   };
 
   componentDidMount() {
@@ -34,17 +36,12 @@ class App extends Component {
     }
   }
 
-  handleUserChange = (user) => {
+  handleUserChange = (user, editMode = false, saveMode = false) => {
     this.setState({
       user: user,
-      userObj: new User(user)
-    });
-  }
-
-  handleFavoritesChange = (user) => {
-    this.setState({
-      user: user,
-      userObj: new User(user)
+      userObj: new User(user),
+      editMode: editMode,
+      saveMode: saveMode
     });
   }
 
@@ -55,7 +52,7 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container'>
-              <NavigationBar />
+              <NavigationBar user={this.state.user} userObj={this.state.userObj} handleUserChange={this.handleUserChange} />
               {this.state.user.routine ?
                 <Home user={this.state.user} userObj={this.state.userObj} handleUserChange={this.handleUserChange} /> :
                 <div>Loading...</div>
@@ -65,8 +62,8 @@ class App extends Component {
           )}/>
           <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container'>
-              <NavigationBar />
-              <Favorites user={this.state.user} userObj={this.state.userObj} handleFavoritesChange={this.handleFavoritesChange} />
+              <NavigationBar user={this.state.user} userObj={this.state.userObj} handleUserChange={this.handleUserChange} />
+              <Favorites user={this.state.user} userObj={this.state.userObj} handleUserChange={this.handleUserChange} />
               <Footer userId={this.state.user.id} />
             </div>
           )}/>

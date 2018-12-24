@@ -17,7 +17,7 @@ class Favorites extends Component {
       delete user.favorites[workoutType][muscle];
     }
 
-    this.props.handleFavoritesChange(user);
+    this.props.handleUserChange(user);
 
     removeFavoriteExercise(user.id, workoutType, muscle, updatedExercises);
   }
@@ -45,7 +45,7 @@ class Favorites extends Component {
           )}
           </div>
         </div>
-        <FavoritesModal user={this.props.user} handleFavoritesChange={this.props.handleFavoritesChange} />
+        <FavoritesModal user={this.props.user} handleUserChange={this.props.handleUserChange} />
       </div>
     );
   }

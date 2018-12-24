@@ -1,7 +1,5 @@
 const AWS = require('./aws-sdk.js');
 
-console.log(AWS);
-
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const saveExerciseMetrics = (userId, workoutDay, workoutType, muscle, exerciseName, metricType, metricValue) => {
