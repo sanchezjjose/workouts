@@ -24,7 +24,7 @@ class Metrics extends Component {
       return;
     }
 
-    if (this.props.edit) {
+    if (this.props.editMode) {
       return;
     }
 
@@ -58,8 +58,8 @@ class Metrics extends Component {
   componentDidUpdate = (prevProps, prevState, prevContext) => {
     const metricValueChanged = this.state.metricValue !== prevState.metricValue;
     const metricValueEdited = this.state.edited;
-    const saveButtonClicked = this.props.save;
-    const inEditMode = this.props.edit;
+    const saveButtonClicked = this.props.saveMode;
+    const inEditMode = this.props.editMode;
 
     if ((metricValueChanged && !inEditMode) || (metricValueEdited && saveButtonClicked)) {
       this.setState({ edited: false });
@@ -73,7 +73,9 @@ class Metrics extends Component {
       saveExerciseMetrics(id, workoutDay, workoutType, muscle, exercise.name, this.props.metricType, this.state.metricValue)
         .then(() => {
           console.debug(`Changed ${this.props.metricType} metric for ${exercise.name} from ${prevProps.metricValue} to ${this.state.metricValue}.`);
-          this.props.handleSaveSubmit();
+          if (this.props.saveMode === true) {
+            this.props.handleUserChange(this.props.user, false, false);
+          }
         })
         .catch(err => {
           console.error(err);
@@ -96,7 +98,7 @@ class Metrics extends Component {
         onTouchStart={this.handleTouchStart} 
         onTouchEnd={this.handleTouchEnd} 
         onChange={this.handleOnChange} 
-        readOnly={!this.props.edit} />
+        readOnly={!this.props.editMode} />
     );
   }
 }

@@ -59,14 +59,14 @@ class Exercise extends Component {
 
   render() {
     const exercise = this.props.exercise;
-    const exerciseClassName = this.props.edit ? 'edit' : '';
+    const exerciseClassName = this.props.editMode ? 'edit' : '';
     const workoutDay = this.props.workout.day;
     const hasDate = this.props.user.routine[workoutDay].date ? true : false;
     const metricTypes = this.props.workoutType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
 
     return (
       <div className={`Exercise ${exerciseClassName}`}>
-        {this.props.edit &&
+        {this.props.editMode &&
           <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button>
         }
         {exercise.metrics.done ? 
@@ -83,10 +83,9 @@ class Exercise extends Component {
             workoutType={this.props.workoutType}
             routine={this.props.routine}
             exercise={exercise}
-            edit={this.props.edit}
-            save={this.props.save}
-            handleUserChange={this.props.handleUserChange}
-            handleSaveSubmit={this.props.handleSaveSubmit} />
+            editMode={this.props.editMode}
+            saveMode={this.props.saveMode}
+            handleUserChange={this.props.handleUserChange} />
         )}
       </div>
     );

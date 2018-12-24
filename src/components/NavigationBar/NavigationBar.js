@@ -5,25 +5,19 @@ import './NavigationBar.css';
 
 class NavigationBar extends Component {
 
-  state = {
-    saveMode: false,
-    editMode: false
-  }
-
   handleEdit = (e) => {
     e.preventDefault();
-    this.setState({ editMode: true });
+    this.props.handleUserChange(this.props.user, true, false);
   }
 
   handleSave = (e) => {
     e.preventDefault();
-    this.setState({ saveMode: true });
-    this.setState({ editMode: false });
+    this.props.handleUserChange(this.props.user, false, true);
   }
 
   handleCancel = (e) => {
     e.preventDefault();
-    this.setState({ editMode: false });
+    this.props.handleUserChange(this.props.user, false, false);
   }
 
   handleStartWorkout = (e) => {
@@ -49,14 +43,8 @@ class NavigationBar extends Component {
 
     saveRoutine(props.user.id, props.user.routine[workoutDay], workoutDay)
       .then(() => {
-        props.handleUserChange(props.user);
+        props.handleUserChange(props.user, false, false);
       });
-  }
-
-  handleSaveSubmit = () => {
-    if (this.state.saveMode === true) {
-      this.setState({ saveMode: false });
-    }
   }
 
   render() {
@@ -65,7 +53,7 @@ class NavigationBar extends Component {
         <section className='top-app-bar__section--align-start'>
           <span className='title'>Workouts</span>
         </section>
-        {this.state.editMode ? (
+        {this.props.editMode ? (
           <section className='top-app-bar__section--align-end'>
             <a href='#' onClick={this.handleSave} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Save</a>
             <a href='#' onClick={this.handleCancel} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>cancel</a>
