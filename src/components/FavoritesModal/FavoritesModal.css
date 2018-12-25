@@ -12,7 +12,7 @@
   bottom: 55px;
   right: 30px;
   z-index: 1;
-  height: 300px;
+  height: 400px;
   width: 300px;
   overflow: auto;
   background-color: #fff;
@@ -24,7 +24,17 @@
 }
 
 .FavoritesModal .show {
-  display: block; 
+  display: grid; 
+}
+
+.FavoritesModal .save-exercise-button {
+  background-color: #dddddd;
+}
+
+.FavoritesModal .metric {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 10px 0;
 }
 
 .FavoritesModal .Fab.mdc-fab {

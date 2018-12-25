@@ -65,17 +65,16 @@ class FavoritesModal extends Component {
       <div className='FavoritesModal'>
         <div className={`content ${this.state.show ? 'show' : ''}`}>
           <span onClick={this.closeModal} className='close'>&times;</span>
-          <button onClick={this.saveExercise} className="save-exercise-button mdc-button">Save</button>
-          <div>
-            <span label='Muscle'>Muscle Group: </span>
+          <div className='metric weight'>
+            <span label='Muscle'>Muscle Group</span>
             <input onChange={this.onMuscleGroupChange} type='text' name='muscle' placeholder='Chest'></input>
           </div>
-          <div>
-            <span label='Exercise'>Exercise Name: </span>
+          <div className='metric name'>
+            <span label='Exercise'>Exercise Name</span>
             <input onChange={this.onExerciseNameChange} type='text' name='exercise' placeholder='Push Ups'></input>
           </div>
-          <div>
-            <span label='Type'>Workout Type: </span>
+          <div className='metric type'>
+            <span label='Type'>Workout Type</span>
             <div>
               <input onChange={this.onWorkoutTypeChange} type='radio' id='weight' name='type' value='weight' checked={this.state.workoutType === 'weight'} />
               <label htmlFor='weight'>Weight Training</label>
@@ -83,6 +82,7 @@ class FavoritesModal extends Component {
               <label htmlFor='time'>Time Based</label>
             </div>
           </div>
+          <button onClick={this.saveExercise} className="save-exercise-button mdc-button">Save</button>
         </div>
         <Fab handleClick={onClick} label={label} />
       </div>

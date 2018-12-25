@@ -47,7 +47,7 @@ class RoutineModal extends Component {
     const favoritesVm = this.props.userObj.getFavorites();
 
     return (
-      <div className='FavoritesModal'>
+      <div className='RoutineModal'>
         <div className={`content ${this.state.show ? 'show' : ''}`}>
           {favoritesVm.map (favorite => 
             favorite.workouts.map(workout => 
