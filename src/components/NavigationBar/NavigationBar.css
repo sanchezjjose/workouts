@@ -19,18 +19,30 @@
   font-weight: 300;
 }
 
-.top-app-bar__section--align-end {
+.NavigationBar .top-app-bar__section--align-end {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 130px 50px;
   justify-self: end;
 }
 
-.top-app-bar__section--align-end button {
+.NavigationBar .top-app-bar__section--align-end button {
   background: none;
   border: none;
   padding: 0;
   color: #fff;
   font-size: 18px;
   text-decoration: none;
+}
+
+.favorites .NavigationBar .top-app-bar__section--align-end {
+  grid-template-columns: 50px;
+}
+
+.favorites .NavigationBar .top-app-bar__section--align-end.editing {
+  grid-template-columns: 130px 50px;
+}
+
+.favorites .NavigationBar .top-app-bar__section--align-end .start-workout-button {
+  display: none;
 }

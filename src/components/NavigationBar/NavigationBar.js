@@ -54,13 +54,13 @@ class NavigationBar extends Component {
           <span className='title'>Workouts</span>
         </section>
         {this.props.editMode ? (
-          <section className='top-app-bar__section--align-end'>
+          <section className='top-app-bar__section--align-end editing'>
             <button onClick={this.handleSave} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Save</button>
             <button onClick={this.handleCancel} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>cancel</button>
           </section>
         ) : (
           <section className='top-app-bar__section--align-end'>
-            <button onClick={this.handleStartWorkout} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Start Workout</button>
+            <button onClick={this.handleStartWorkout} className='start-workout-button mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Start Workout</button>
             <button onClick={this.handleEdit} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>edit</button>
           </section>
         )}

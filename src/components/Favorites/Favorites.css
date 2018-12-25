@@ -15,11 +15,20 @@
 
 .Favorites .exercise-group {
   display: grid;
-  grid-template-columns: 30px 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
+  height: 24px;
 }
 
-.Favorites .exercise-group .remove-button {
-  font-size: 18px;
-  justify-self: center;
+.Favorites .exercise-group.editing {
+  grid-template-columns: 60px 1fr;
+  height: 48px;
+  margin-bottom: 5px;
+}
+
+.Favorites .exercise-group .delete-button {
+  background: #E53935;
+  color: #fff;
+  padding: 0;
+  margin-bottom: 5px;
 }
