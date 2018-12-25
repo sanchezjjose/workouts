@@ -24,17 +24,33 @@
 }
 
 .FavoritesModal .show {
-  display: grid; 
+  display: grid;
+  grid-template-rows: 30px 1fr 1fr 1fr;
+}
+
+.FavoritesModal .label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.FavoritesModal .type .label {
+  margin-bottom: 5px;
 }
 
 .FavoritesModal .save-exercise-button {
   background-color: #dddddd;
+  color: #000;
+  font-weight: 600;
+  margin-top: 20px;
 }
 
 .FavoritesModal .metric {
   display: grid;
-  grid-template-columns: 1fr;
   margin: 10px 0;
+}
+
+.FavoritesModal .metric .options {
+  display: grid;
 }
 
 .FavoritesModal .Fab.mdc-fab {

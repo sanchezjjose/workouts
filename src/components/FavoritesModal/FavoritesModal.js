@@ -66,20 +66,24 @@ class FavoritesModal extends Component {
         <div className={`content ${this.state.show ? 'show' : ''}`}>
           <span onClick={this.closeModal} className='close'>&times;</span>
           <div className='metric weight'>
-            <span label='Muscle'>Muscle Group</span>
-            <input onChange={this.onMuscleGroupChange} type='text' name='muscle' placeholder='Chest'></input>
+            <div className='label'>Workout</div>
+            <input onChange={this.onMuscleGroupChange} type='text' name='muscle' placeholder='e.g, Chest, Running, Abs, Other'></input>
           </div>
           <div className='metric name'>
-            <span label='Exercise'>Exercise Name</span>
-            <input onChange={this.onExerciseNameChange} type='text' name='exercise' placeholder='Push Ups'></input>
+            <div className='label'>Exercise</div>
+            <input onChange={this.onExerciseNameChange} type='text' name='exercise' placeholder='e.g, Push Ups, Treadmill, Plank, Sauna'></input>
           </div>
           <div className='metric type'>
-            <span label='Type'>Workout Type</span>
-            <div>
-              <input onChange={this.onWorkoutTypeChange} type='radio' id='weight' name='type' value='weight' checked={this.state.workoutType === 'weight'} />
-              <label htmlFor='weight'>Weight Training</label>
-              <input onChange={this.onWorkoutTypeChange} type='radio' id='time' name='type' value='time' checked={this.state.workoutType === 'time'} />
-              <label htmlFor='time'>Time Based</label>
+            <div className='label'>Type</div>
+            <div className='options'>
+              <div>
+                <input onChange={this.onWorkoutTypeChange} type='radio' id='weight' name='type' value='weight' checked={this.state.workoutType === 'weight'} />
+                <label htmlFor='weight'>Weight Training</label>
+              </div>
+              <div>
+                <input onChange={this.onWorkoutTypeChange} type='radio' id='time' name='type' value='time' checked={this.state.workoutType === 'time'} />
+                <label htmlFor='time'>Time Based</label>
+              </div>
             </div>
           </div>
           <button onClick={this.saveExercise} className="save-exercise-button mdc-button">Save</button>
