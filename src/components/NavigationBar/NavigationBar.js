@@ -55,13 +55,13 @@ class NavigationBar extends Component {
         </section>
         {this.props.editMode ? (
           <section className='top-app-bar__section--align-end'>
-            <a href='#' onClick={this.handleSave} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Save</a>
-            <a href='#' onClick={this.handleCancel} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>cancel</a>
+            <button onClick={this.handleSave} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Save</button>
+            <button onClick={this.handleCancel} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>cancel</button>
           </section>
         ) : (
           <section className='top-app-bar__section--align-end'>
-            <a href='#' onClick={this.handleStartWorkout} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Start Workout</a>
-            <a href='#' onClick={this.handleEdit} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>edit</a>
+            <button onClick={this.handleStartWorkout} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Start Workout</button>
+            <button onClick={this.handleEdit} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>edit</button>
           </section>
         )}
       </header>

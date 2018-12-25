@@ -26,7 +26,10 @@
   justify-self: end;
 }
 
-.top-app-bar__section--align-end a {
+.top-app-bar__section--align-end button {
+  background: none;
+  border: none;
+  padding: 0;
   color: #fff;
   font-size: 18px;
   text-decoration: none;
