@@ -6,11 +6,28 @@ import './Routine.css';
 
 class Routine extends Component {
 
+  state = {
+    message: ''
+  }
+
+  displayMessage = (exercise) => {
+    this.setState({ 
+      message: `Added ${exercise} to routine.`
+    });
+
+    setTimeout(() => {
+      this.setState({ message: '' });
+    }, 1500);
+  }
+
   render() {
     const workout = this.props.userObj.getWorkouts();
 
     return (
       <div className='Routine'>
+        {this.state.message.length > 0 &&
+          <div className={`success-banner`}>{this.state.message}</div>
+        }
         <div className={`routine-heading ${this.props.editMode ? 'save-mode' : ''}`}>
           <h2 className='weekday'>{workout.day}</h2>
         </div>
@@ -46,7 +63,7 @@ class Routine extends Component {
             </div>
           )
         )}
-        <RoutineModal user={this.props.user} userObj={this.props.userObj} workoutDay={workout.day} handleUserChange={this.props.handleUserChange}/>
+        <RoutineModal user={this.props.user} userObj={this.props.userObj} workoutDay={workout.day} handleUserChange={this.props.handleUserChange} displayMessage={this.displayMessage} />
       </div>
     );
   }

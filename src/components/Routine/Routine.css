@@ -1,3 +1,35 @@
+.Routine {
+  
+}
+
+.Routine .success-banner {
+  display: grid;
+  position: absolute;
+  align-items: center;
+  justify-items: center;
+  background-color: #02ee7d;
+  color: #000;
+  font-weight: 400;
+  font-size: 18px;
+  transition:all 1s ease;
+  left: 0;
+  height: 60px;
+  width: 100%;
+}
+
+.Routine .routine-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.Routine .routine-heading .weekday {
+  margin: 0;
+  font-weight: 400;
+  font-size: 32px;
+}
+
 .Routine .header {
   display: grid;
   /* Add width of status button plus gap between button and name column */
@@ -18,18 +50,6 @@
 .Routine .header .unit {
   font-size: 10px;
   color: #9b9b9b;
-}
-
-.Routine .routine-heading {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-}
-
-.Routine .routine-heading .weekday {
-  margin: 0;
-  font-weight: 400;
-  font-size: 32px;
 }
 
 .Routine .routine-heading .mode-button {

@@ -7,6 +7,7 @@
 .Favorites h2 {
   font-weight: 400;
   font-size: 32px;
+  padding-top: 20px;
 }
 
 .Favorites .exercises .workout-title {

@@ -38,6 +38,7 @@ class RoutineModal extends Component {
     saveRoutine(user.id, user.routine[workoutDay], workoutDay)
       .then(() => {
         props.handleUserChange(user);
+        props.displayMessage(exercise);
       });
   }
 
