@@ -4,6 +4,21 @@
   width: 90%;
 }
 
+.Favorites .success-banner {
+  display: grid;
+  position: absolute;
+  align-items: center;
+  justify-items: center;
+  background-color: #02ee7d;
+  color: #000;
+  font-weight: 400;
+  font-size: 18px;
+  transition:all 1s ease;
+  left: 0;
+  height: 60px;
+  width: 100%;
+}
+
 .Favorites h2 {
   font-weight: 400;
   font-size: 32px;

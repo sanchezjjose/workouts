@@ -50,6 +50,7 @@ class FavoritesModal extends Component {
         .then(() => {
           favorites[workoutType][muscleGroup].push(exercise);
           this.props.handleUserChange(user);
+          this.props.displayMessage(exercise);
         })
         .catch(err => { 
           console.error('Error adding exercise to favorites.', err);
