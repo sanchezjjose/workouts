@@ -59,7 +59,7 @@ class Exercise extends Component {
 
   render() {
     const exercise = this.props.exercise;
-    const exerciseClassName = this.props.editMode ? 'edit' : '';
+    const exerciseClassName = this.props.editMode ? 'editing' : '';
     const workoutDay = this.props.workout.day;
     const hasDate = this.props.user.routine[workoutDay].date ? true : false;
     const metricTypes = this.props.workoutType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];

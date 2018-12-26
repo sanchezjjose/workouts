@@ -7,13 +7,13 @@
   font-size: 16px;
 }
 
-.Exercise.edit {
+.Exercise.editing {
   grid-template-columns: repeat(2, 48px) 150px repeat(3, 1fr);
   margin-bottom: 5px;
   overflow-x: scroll;
 }
 
-.Exercise.edit .delete-button {
+.Exercise.editing .delete-button {
   padding: 0;
   background: #E53935;
   color: #fff;
