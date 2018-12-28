@@ -4,7 +4,7 @@
 
 .Routine .success-banner {
   display: grid;
-  position: absolute;
+  position: fixed;
   align-items: center;
   justify-items: center;
   background-color: #02ee7d;
@@ -15,6 +15,7 @@
   left: 0;
   height: 60px;
   width: 100%;
+  z-index: 4;
 }
 
 .Routine .routine-heading {
