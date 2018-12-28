@@ -3,27 +3,25 @@ class User {
   constructor(user) {
     this.user = user;
     this.favorites = user.favorites;
-    this.routine = user.routine;
+    this.routines = user.routines;
     this.history = user.history;
   }
 
-  setWorkoutStatus(workoutDay, workoutType, muscle, exerciseName, status) {
-    this.user.routine[workoutDay][workoutType][muscle][exerciseName].done = status;
+  setExerciseStatus(workoutDay, workoutType, workoutName, exerciseName, status) {
+    this.user.routine[workoutDay][workoutType][workoutName][exerciseName].done = status;
   }
 
-  getWorkouts(day) {
+  getRoutineByDay(day) {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const today = new Date().getDay();
-    const dayOfWeek = day || days[today];
-    const routine = Object.entries(this.routine[dayOfWeek]);
-
-    const workout = routine.filter(workout => workout[0] !== 'date').map(workout => {
+    const dayOfWeek = day || days[new Date().getDay()];
+    const routine = Object.entries(this.routines[dayOfWeek]);
+    const result = routine.filter(routine => routine[0] !== 'date').map(routineTypes => {
       return {
-        type: workout[0],
-        routine: Object.entries(workout[1]).map(routine => {
+        type: routineTypes[0],
+        workouts: Object.entries(routineTypes[1]).map(workout => {
           return {
-            muscle: routine[0],
-            exercises: Object.entries(routine[1]).map((exercise) => {
+            name: workout[0],
+            exercises: Object.entries(workout[1]).map(exercise => {
               return {
                 name: exercise[0],
                 metrics: exercise[1]
@@ -34,9 +32,9 @@ class User {
       };
     });
 
-    workout.day = dayOfWeek;
+    result.day = dayOfWeek;
 
-    return workout;
+    return result;
   }
 
   getFavorites() {

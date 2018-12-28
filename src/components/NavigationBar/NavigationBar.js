@@ -23,27 +23,27 @@ class NavigationBar extends Component {
   handleStartWorkout = (e) => {
     e.preventDefault();
 
-    const workout = this.props.userObj.getWorkouts();
+    const routine = this.props.userObj.getRoutineByDay();
     const today = new Date();
     const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
-    const props = this.props;
-    const workoutDay = workout.day;
+    const dayOfWeek = routine.day;
+    const user = this.props.user;
 
     // Set date on workout for historical purposes
-    props.user.routine[workoutDay].date = date;
+    user.routine[dayOfWeek].date = date;
 
     // Reset all exercise status
-    workout.forEach(w => {
-      w.routine.forEach(r => {
-        r.exercises.forEach(e => {
-          props.user.routine[workoutDay][w.type][r.muscle][e.name].done = false;
+    routine.forEach(routineType => {
+      routineType.workouts.forEach(workout => {
+        workout.exercises.forEach(exercise => {
+          user.routine[dayOfWeek][routineType.type][workout.name][exercise.name].done = false;
         });
       });
     });
 
-    saveRoutine(props.user.id, props.user.routine[workoutDay], workoutDay)
+    saveRoutine(user.id, user.routine[dayOfWeek], dayOfWeek)
       .then(() => {
-        props.handleUserChange(props.user, false, false);
+        this.props.handleUserChange(user, false, false);
       });
   }
 

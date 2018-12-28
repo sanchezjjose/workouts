@@ -52,9 +52,21 @@ class App extends Component {
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container home'>
-              <NavigationBar user={this.state.user} userObj={this.state.userObj} handleUserChange={this.handleUserChange} editMode={this.state.editMode} saveMode={this.state.saveMode} />
-              {this.state.user.routine ?
-                <Home user={this.state.user} userObj={this.state.userObj} handleUserChange={this.handleUserChange} editMode={this.state.editMode} saveMode={this.state.saveMode} /> :
+              <NavigationBar 
+                user={this.state.user}
+                userObj={this.state.userObj}
+                handleUserChange={this.handleUserChange}
+                editMode={this.state.editMode}
+                saveMode={this.state.saveMode}
+              />
+              {this.state.user.routines ?
+                <Home
+                  user={this.state.user}
+                  userObj={this.state.userObj}
+                  handleUserChange={this.handleUserChange}
+                  editMode={this.state.editMode}
+                  saveMode={this.state.saveMode}
+                /> :
                 <div>Loading...</div>
               }
               <Footer userId={this.state.user.id} />
@@ -62,9 +74,20 @@ class App extends Component {
           )}/>
           <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container favorites'>
-              <NavigationBar user={this.state.user} userObj={this.state.userObj} handleUserChange={this.handleUserChange} editMode={this.state.editMode} saveMode={this.state.saveMode} />
+              <NavigationBar
+                user={this.state.user}
+                userObj={this.state.userObj}
+                handleUserChange={this.handleUserChange}
+                editMode={this.state.editMode}
+                saveMode={this.state.saveMode}
+              />
               {this.state.user.favorites ?
-                <Favorites user={this.state.user} userObj={this.state.userObj} editMode={this.state.editMode} handleUserChange={this.handleUserChange} /> :
+                <Favorites
+                  user={this.state.user}
+                  userObj={this.state.userObj}
+                  editMode={this.state.editMode}
+                  handleUserChange={this.handleUserChange}
+                /> :
                 <div>Loading...</div>
               }
               <Footer userId={this.state.user.id} />

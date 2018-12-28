@@ -21,7 +21,7 @@ class Routine extends Component {
   }
 
   render() {
-    const workout = this.props.userObj.getWorkouts();
+    const routine = this.props.userObj.getRoutineByDay();
 
     return (
       <div className='Routine'>
@@ -29,42 +29,49 @@ class Routine extends Component {
           <div className={`success-banner`}>{this.state.message}</div>
         }
         <div className={`routine-heading ${this.props.editMode ? 'save-mode' : ''}`}>
-          <h2 className='weekday'>{workout.day}</h2>
+          <h2 className='weekday'>{routine.day}</h2>
         </div>
-        {workout.map (w =>
-          w.routine.map (r =>
-            <div key={r.muscle} className='group'>
-              {w.type === 'weight' ? (
+        {routine.map (routineType =>
+          routineType.workouts.map (workout =>
+            <div key={workout.name} className='group'>
+              {routineType.type === 'weight' ? (
                 <div className='header'>
-                  <h3 className='muscle'>{r.muscle}</h3>
+                  <h3 className='muscle'>{workout.name}</h3>
                   <span className='weight'>Weight</span>
                   <span className='reps'>Reps</span>
                   <span className='sets'>Sets</span>
                 </div>
               ) : (
                 <div className='header'>
-                  <h3 className='muscle'>{r.muscle}</h3>
+                  <h3 className='muscle'>{workout.name}</h3>
                   <span className='weight'>Time</span>
                   <span className='reps'>Distance</span>
                   <span className='sets'>Kcal</span>
                 </div>
               )}
-              {r.exercises.map (exercise =>
-                <Exercise key={exercise.name}
+              {workout.exercises.map (exercise =>
+                <Exercise
+                  key={exercise.name}
                   user={this.props.user}
-                  workout={workout}
-                  workoutType={w.type}
-                  routine={r}
-                  exercise={exercise}
                   editMode={this.props.editMode}
                   saveMode={this.props.saveMode}
+                  handleUserChange={this.props.handleUserChange} 
                   displayMessage={this.displayMessage}
-                  handleUserChange={this.props.handleUserChange} />
+                  routine={routine}
+                  workoutType={routineType.type}
+                  workout={workout}
+                  exercise={exercise}
+                />
               )}
             </div>
           )
         )}
-        <RoutineModal user={this.props.user} userObj={this.props.userObj} workoutDay={workout.day} handleUserChange={this.props.handleUserChange} displayMessage={this.displayMessage} />
+        <RoutineModal 
+          user={this.props.user}
+          userObj={this.props.userObj}
+          workoutDay={routine.day}
+          handleUserChange={this.props.handleUserChange}
+          displayMessage={this.displayMessage} />
       </div>
     );
   }
