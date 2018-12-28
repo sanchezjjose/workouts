@@ -45,7 +45,7 @@ class User {
         type: favorite[0],
         workouts: Object.entries(favorite[1]).map(workout => {
           return {
-            muscle: workout[0],
+            name: workout[0],
             exercises: workout[1]
           };
         })

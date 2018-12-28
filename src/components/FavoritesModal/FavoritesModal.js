@@ -9,7 +9,7 @@ class FavoritesModal extends Component {
 
   state = {
     show: false,
-    muscleGroup: '',
+    workout: '',
     exerciseName: '',
     workoutType: 'weight'
   }
@@ -22,8 +22,8 @@ class FavoritesModal extends Component {
     this.setState({ show: false });
   }
 
-  onMuscleGroupChange = (e) => {
-    this.setState({ muscleGroup: e.target.value });
+  onWorkoutChange = (e) => {
+    this.setState({ workout: e.target.value });
   }
 
   onExerciseNameChange = (e) => {
@@ -38,19 +38,19 @@ class FavoritesModal extends Component {
     e.preventDefault();
 
     const workoutType = this.state.workoutType;
-    const muscleGroup = this.state.muscleGroup;
-    const exercise = this.state.exerciseName;
+    const workout = this.state.workout;
+    const exerciseName = this.state.exerciseName;
     const user = this.props.user;
     const favorites = user.favorites;
-    
-    favorites[workoutType][muscleGroup] = favorites[workoutType][muscleGroup] || [];
 
-    if (favorites[workoutType][muscleGroup].indexOf(exercise) === -1) {
-      saveFavoriteExercise(user.id, workoutType, muscleGroup, exercise)
+    favorites[workoutType][workout] = favorites[workoutType][workout] || [];
+
+    if (favorites[workoutType][workout].indexOf(exerciseName) === -1) {
+      saveFavoriteExercise(user.id, workoutType, workout, exerciseName)
         .then(() => {
-          favorites[workoutType][muscleGroup].push(exercise);
+          favorites[workoutType][workout].push(exerciseName);
           this.props.handleUserChange(user);
-          this.props.displayMessage(`Added ${exercise} to favorites.`);
+          this.props.displayMessage(`Added ${exerciseName} to favorites.`);
         })
         .catch(err => { 
           console.error('Error adding exercise to favorites.', err);
@@ -66,23 +66,23 @@ class FavoritesModal extends Component {
       <div className='FavoritesModal'>
         <div className={`content ${this.state.show ? 'show' : ''}`}>
           <span onClick={this.closeModal} className='close'>&times;</span>
-          <div className='metric weight'>
+          <div className='metric'>
             <div className='label'>Workout</div>
-            <input onChange={this.onMuscleGroupChange} type='text' name='muscle' placeholder='e.g, Chest, Running, Abs, Other'></input>
+            <input onChange={this.onWorkoutChange} type='text' placeholder='e.g, Chest, Running, Abs, Other'></input>
           </div>
-          <div className='metric name'>
-            <div className='label'>Exercise</div>
-            <input onChange={this.onExerciseNameChange} type='text' name='exercise' placeholder='e.g, Push Ups, Treadmill, Plank, Sauna'></input>
+          <div className='metric'>
+            <div className='label'>Exercise Name</div>
+            <input onChange={this.onExerciseNameChange} type='text' placeholder='e.g, Push Ups, Treadmill, Plank, Sauna'></input>
           </div>
           <div className='metric type'>
             <div className='label'>Type</div>
             <div className='options'>
               <div>
-                <input onChange={this.onWorkoutTypeChange} type='radio' id='weight' name='type' value='weight' checked={this.state.workoutType === 'weight'} />
+                <input onChange={this.onWorkoutTypeChange} type='radio' value='weight' checked={this.state.workoutType === 'weight'} />
                 <label htmlFor='weight'>Weight Training</label>
               </div>
               <div>
-                <input onChange={this.onWorkoutTypeChange} type='radio' id='time' name='type' value='time' checked={this.state.workoutType === 'time'} />
+                <input onChange={this.onWorkoutTypeChange} type='radio' value='time' checked={this.state.workoutType === 'time'} />
                 <label htmlFor='time'>Time Based</label>
               </div>
             </div>

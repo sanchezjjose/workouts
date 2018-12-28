@@ -8,10 +8,7 @@ import "@material/button/dist/mdc.button.min.css";
 class RoutineModal extends Component {
 
   state = {
-    show: false,
-    muscleGroup: '',
-    exerciseName: '',
-    workoutType: 'strength'
+    show: false
   }
 
   showModal = () => {
@@ -22,18 +19,18 @@ class RoutineModal extends Component {
     this.setState({ show: false });
   }
 
-  addExercise = (workoutType, muscle, exercise) => {
+  addExercise = (workoutType, workoutName, exercise) => {
     const props = this.props;
     const user = props.user;
     const workoutDay = props.workoutDay;
-    const muscleGroupExercises = user.routine[workoutDay][workoutType][muscle] || {};
+    const exercises = user.routine[workoutDay][workoutType][workoutName] || {};
     const initialMetrics = workoutType === 'weight' ?
       { weight: '-', reps: '-', sets: '-', done: false } : { time: '-', distance: '-', kcal: '-', done: false };
 
     // TODO: Move to object that has an addExerciseToRoutine() method.
     // Then, pass object to parent to update state.
-    muscleGroupExercises[exercise] = initialMetrics;
-    user.routine[workoutDay][workoutType][muscle] = muscleGroupExercises;
+    exercises[exercise] = initialMetrics;
+    user.routine[workoutDay][workoutType][workoutName] = exercises;
 
     saveRoutine(user.id, user.routine[workoutDay], workoutDay)
       .then(() => {
@@ -52,10 +49,10 @@ class RoutineModal extends Component {
         <div className={`content ${this.state.show ? 'show' : ''}`}>
           {favoritesVm.map (favorite => 
             favorite.workouts.map(workout => 
-              <div key={workout.muscle} className='exercises'>
-                <h3>{workout.muscle}</h3>
+              <div key={workout.name} className='exercises'>
+                <h3>{workout.name}</h3>
                 {workout.exercises.map(exercise =>
-                  <div onClick={e => this.addExercise(favorite.type, workout.muscle, exercise)} key={exercise} className='exercise-label'>{exercise}</div>
+                  <div onClick={e => this.addExercise(favorite.type, workout.name, exercise)} key={exercise} className='exercise-label'>{exercise}</div>
                 )}
               </div>
             )
