@@ -51,6 +51,7 @@ class Exercise extends Component {
     saveRoutine(user.id, todaysRoutine, workoutDay)
       .then(() => {
         this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
+        this.props.displayMessage(`Deleted ${exercise.name} from ${muscle} workout.`);
       })
       .catch(e => {
         console.log(e);
@@ -85,6 +86,7 @@ class Exercise extends Component {
             exercise={exercise}
             editMode={this.props.editMode}
             saveMode={this.props.saveMode}
+            displayMessage={this.props.displayMessage}
             handleUserChange={this.props.handleUserChange} />
         )}
       </div>

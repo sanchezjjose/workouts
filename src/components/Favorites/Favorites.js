@@ -10,9 +10,9 @@ class Favorites extends Component {
     message: ''
   }
 
-  displayMessage = (exercise) => {
+  displayMessage = (message) => {
     this.setState({ 
-      message: `Added ${exercise} to favorites.`
+      message: message
     });
 
     setTimeout(() => {

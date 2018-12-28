@@ -42,6 +42,7 @@ class Metrics extends Component {
 
       if (!isNaN(finalValue) && finalValue >= 0) {
         this.setState({ metricValue: finalValue });
+        this.props.displayMessage(`Changed ${this.props.exercise.name} ${this.props.metricType} value from ${initialValue} to ${finalValue}.`);
       }
     }
   }

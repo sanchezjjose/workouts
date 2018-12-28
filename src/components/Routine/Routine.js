@@ -10,9 +10,9 @@ class Routine extends Component {
     message: ''
   }
 
-  displayMessage = (exercise) => {
+  displayMessage = (message) => {
     this.setState({ 
-      message: `Added ${exercise} to routine.`
+      message: message 
     });
 
     setTimeout(() => {
@@ -58,6 +58,7 @@ class Routine extends Component {
                   exercise={exercise}
                   editMode={this.props.editMode}
                   saveMode={this.props.saveMode}
+                  displayMessage={this.displayMessage}
                   handleUserChange={this.props.handleUserChange} />
               )}
             </div>
