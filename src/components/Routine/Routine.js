@@ -17,7 +17,7 @@ class Routine extends Component {
 
     setTimeout(() => {
       this.setState({ message: '' });
-    }, 1500);
+    }, 3000);
   }
 
   render() {
