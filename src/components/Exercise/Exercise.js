@@ -67,12 +67,12 @@ class Exercise extends Component {
 
     return (
       <div className={`Exercise ${exerciseClassName}`}>
-        {this.props.editMode &&
-          <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button>
-        }
-        {exercise.metrics.done ? 
-          <button onClick={() => this.handleExerciseStatus(false)} className="status-button mdc-icon-button material-icons fill" disabled={!hasDate}>check_circle</button> :
-          <button onClick={() => this.handleExerciseStatus(true)} className="status-button mdc-icon-button material-icons" disabled={!hasDate}>check_circle_outline</button>
+        {this.props.editMode ?
+          <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button> :
+          (exercise.metrics.done ? 
+            <button onClick={() => this.handleExerciseStatus(false)} className="status-button mdc-icon-button material-icons fill" disabled={!hasDate}>check_circle</button> :
+            <button onClick={() => this.handleExerciseStatus(true)} className="status-button mdc-icon-button material-icons" disabled={!hasDate}>check_circle_outline</button>
+          )
         }
         <div className='name'>{exercise.name}</div>
 
