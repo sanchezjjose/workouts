@@ -29,7 +29,7 @@ class Routine extends Component {
           <div className={`success-banner`}>{this.state.message}</div>
         }
         <div className={`routine-heading ${this.props.editMode ? 'save-mode' : ''}`}>
-          <h2 className='weekday'>{routine.day}</h2>
+          <h2 className='weekday'>{routine.day} Routine</h2>
         </div>
         {routine.map (routineType =>
           routineType.workouts.map (workout =>
