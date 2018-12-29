@@ -77,7 +77,7 @@
   justify-content: end;
 }
 
-.Routine .muscle {
+.Routine .workout-name {
   display: inline-block;
   justify-self: left; 
   margin: 0;

@@ -11,19 +11,19 @@ class Exercise extends Component {
 
   handleExerciseStatus = (exerciseComplete) => {
     const user = this.props.user;
-    const workoutDay = this.props.workout.day;
+    const dayOfWeek = this.props.routine.day;
     const routineType = this.props.routineType;
-    const date = user.routines[workoutDay].date;
+    const date = user.routines[dayOfWeek].date;
     const workoutName = this.props.workout.name;
     const exercise = this.props.exercise;
     const updateExerciseHistory = exerciseComplete ? saveExerciseHistory : removeExerciseHistory;
 
     updateExerciseHistory(user.id, date, exercise, workoutName)
       .then(() => 
-        saveExerciseStatus(user.id, workoutDay, routineType, workoutName, exercise.name, exerciseComplete)
+        saveExerciseStatus(user.id, dayOfWeek, routineType, workoutName, exercise.name, exerciseComplete)
       )
       .then(() => {
-        user.routines[workoutDay][routineType][workoutName][exercise.name].done = exerciseComplete;
+        user.routines[dayOfWeek][routineType][workoutName][exercise.name].done = exerciseComplete;
         this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
       })
       .catch(e => {

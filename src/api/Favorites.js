@@ -1,18 +1,18 @@
 const AWS = require('./aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const saveFavoriteExercise = (userId, workoutType, muscle, exercise) => {
+const saveFavoriteExercise = (userId, workoutType, workout, exercise) => {
   const createMuscleEntry = new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #f.#t.#m = if_not_exists(#f.#t.#m, :e)",
+      UpdateExpression: "SET #f.#t.#w = if_not_exists(#f.#t.#w, :e)",
       ExpressionAttributeNames: {
         "#f": "favorites",
         "#t": workoutType,
-        "#m": muscle
+        "#w": workout
       },
       ExpressionAttributeValues: {
         ":e": []
@@ -35,11 +35,11 @@ const saveFavoriteExercise = (userId, workoutType, muscle, exercise) => {
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #f.#t.#m = list_append(#f.#t.#m, :e)",
+      UpdateExpression: "SET #f.#t.#w = list_append(#f.#t.#w, :e)",
       ExpressionAttributeNames: {
         "#f": "favorites",
         "#t": workoutType,
-        "#m": muscle
+        "#w": workout
       },
       ExpressionAttributeValues: {
         ":e": [ exercise ]
@@ -59,18 +59,18 @@ const saveFavoriteExercise = (userId, workoutType, muscle, exercise) => {
   return Promise.all([createMuscleEntry, createMuscleExercises]);
 };
 
-const removeFavoriteExercise = (userId, workoutType, muscle, exercises) => {
+const removeFavoriteExercise = (userId, workoutType, workout, exercises) => {
   return new Promise((resolve, reject) => {
     const params = {
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: `SET #f.#t.#m = :e`,
+      UpdateExpression: `SET #f.#t.#w = :e`,
       ExpressionAttributeNames: {
         "#f": "favorites",
         "#t": workoutType,
-        "#m": muscle
+        "#w": workout
       },
       ExpressionAttributeValues: {
         ":e": exercises
@@ -79,7 +79,7 @@ const removeFavoriteExercise = (userId, workoutType, muscle, exercises) => {
     };
 
     if (exercises.length === 0) {
-      params.UpdateExpression = 'Remove #f.#t.#m';
+      params.UpdateExpression = 'Remove #f.#t.#w';
       delete params.ExpressionAttributeValues;
     }
 

@@ -2,7 +2,7 @@ const AWS = require('./aws-sdk.js');
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const saveExerciseMetrics = (userId, workoutDay, workoutType, workoutName, exerciseName, metricType, metricValue) => {
+const saveExerciseMetrics = (userId, dayOfWeek, workoutType, workoutName, exerciseName, metricType, metricValue) => {
   return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
@@ -12,7 +12,7 @@ const saveExerciseMetrics = (userId, workoutDay, workoutType, workoutName, exerc
       UpdateExpression: "SET #r.#d.#wt.#wn.#e.#mt = :metricValue",
       ExpressionAttributeNames: {
         "#r": "routines",
-        "#d": workoutDay,
+        "#d": dayOfWeek,
         "#wt": workoutType,
         "#wn": workoutName,
         "#e": exerciseName,

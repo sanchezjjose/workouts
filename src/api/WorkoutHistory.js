@@ -1,7 +1,7 @@
 const AWS = require('./aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const saveExerciseHistory = (userId, date, exercise, muscle) => {
+const saveExerciseHistory = (userId, date, exercise, workout) => {
   const createDateEntry = new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
@@ -38,7 +38,7 @@ const saveExerciseHistory = (userId, date, exercise, muscle) => {
       },
       ExpressionAttributeValues: {
         ":de": {
-          muscle: muscle,
+          workout: workout,
           weight: exercise.metrics.weight,
           reps: exercise.metrics.reps,
           sets: exercise.metrics.sets

@@ -1,8 +1,8 @@
 const exerciseAPI = require('../src/api/ExerciseMetrics.js');
 
 const userId = 'joses';
-const workoutDay = 'Tuesday';
-const muscle = 'Back';
+const dayOfWeek = 'Tuesday';
+const workoutName = 'Back';
 const exercise = { 
   name: 'TEST: Single-Arm Dumbbell Row',
   metrics: { 
@@ -13,7 +13,7 @@ const exercise = {
   }
 };
 
-exerciseAPI.updateExerciseMetrics(userId, workoutDay, muscle, exercise.name, exercise.metrics)
+exerciseAPI.updateExerciseMetrics(userId, dayOfWeek, workoutName, exercise.name, exercise.metrics)
   .then(() => {
     console.log('Successfully set exercise metrics');
   })

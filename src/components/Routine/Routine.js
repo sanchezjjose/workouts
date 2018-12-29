@@ -36,14 +36,14 @@ class Routine extends Component {
             <div key={workout.name} className='group'>
               {routineType.type === 'weight' ? (
                 <div className='header'>
-                  <h3 className='muscle'>{workout.name}</h3>
+                  <h3 className='workout-name'>{workout.name}</h3>
                   <span className='weight'>Weight</span>
                   <span className='reps'>Reps</span>
                   <span className='sets'>Sets</span>
                 </div>
               ) : (
                 <div className='header'>
-                  <h3 className='muscle'>{workout.name}</h3>
+                  <h3 className='workout-name'>{workout.name}</h3>
                   <span className='weight'>Time</span>
                   <span className='reps'>Distance</span>
                   <span className='sets'>Kcal</span>
@@ -68,7 +68,7 @@ class Routine extends Component {
         <RoutineModal 
           user={this.props.user}
           userObj={this.props.userObj}
-          workoutDay={routine.day}
+          dayOfWeek={routine.day}
           handleUserChange={this.props.handleUserChange}
           displayMessage={this.displayMessage} />
       </div>

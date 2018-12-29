@@ -1,7 +1,7 @@
 const historyAPI = require('../src/api/WorkoutHistory.js');
 
 const userId = 'joses';
-const muscle = 'Legs';
+const workoutName = 'Legs';
 const exercise = {
   name: 'TEST: Barbell Squats',
   metrics: {
@@ -11,7 +11,7 @@ const exercise = {
   }
 };
 
-historyAPI.saveExerciseHistory(userId, muscle, exercise)
+historyAPI.saveExerciseHistory(userId, workoutName, exercise)
   .then(() => {
     console.log('Successfully saved workout to history.');
   })
