@@ -5,15 +5,20 @@
 }
 
 .Favorites .success-banner {
+  box-sizing: border-box;
   display: grid;
   position: fixed;
   align-items: center;
   justify-items: center;
+  text-align: center;
+  word-break: break-all;
+  padding: 0 10px;
+  overflow: hidden;
   background-color: #02ee7d;
   color: #000;
   font-weight: 400;
   font-size: 18px;
-  transition:all 1s ease;
+  transition: all 1s ease;
   left: 0;
   height: 60px;
   width: 100%;

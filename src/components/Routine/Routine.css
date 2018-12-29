@@ -1,8 +1,13 @@
 .Routine .success-banner {
+  box-sizing: border-box;
   display: grid;
   position: fixed;
   align-items: center;
   justify-items: center;
+  text-align: center;
+  word-break: break-all;
+  padding: 0 10px;
+  overflow: hidden;
   background-color: #02ee7d;
   color: #000;
   font-weight: 400;
