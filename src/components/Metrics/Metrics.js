@@ -66,12 +66,12 @@ class Metrics extends Component {
       this.setState({ edited: false });
 
       const id = this.props.user.id;
-      const workoutDay = this.props.workout.day;
       const routineType = this.props.routineType;
-      const muscle = this.props.routine.muscle;
+      const dayOfWeek = this.props.routine.day;
+      const workoutName = this.props.workout.name;
       const exercise = this.props.exercise;
 
-      saveExerciseMetrics(id, workoutDay, routineType, muscle, exercise.name, this.props.metricType, this.state.metricValue)
+      saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, this.props.metricType, this.state.metricValue)
         .then(() => {
           console.debug(`Changed ${this.props.metricType} metric for ${exercise.name} from ${prevProps.metricValue} to ${this.state.metricValue}.`);
           if (this.props.saveMode === true) {
@@ -84,7 +84,7 @@ class Metrics extends Component {
         });
 
       // Update user props and bubble up to parent component
-      this.props.user.routines[workoutDay][routineType][muscle][exercise.name][this.props.metricType] = this.state.metricValue;
+      this.props.user.routines[dayOfWeek][routineType][workoutName][exercise.name][this.props.metricType] = this.state.metricValue;
       this.props.handleUserChange(this.props.user);
     }
   }

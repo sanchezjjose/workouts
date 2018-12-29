@@ -77,17 +77,19 @@ class Exercise extends Component {
         <div className='name'>{exercise.name}</div>
 
         {metricTypes.map(metricType =>
-          <Metrics key={metricType}
+          <Metrics
+            key={metricType}
             metricType={metricType}
+            exercise={exercise}
             user={this.props.user}
             workout={this.props.workout}
-            routineType={this.props.routineType}
             routine={this.props.routine}
-            exercise={exercise}
+            routineType={this.props.routineType}
             editMode={this.props.editMode}
             saveMode={this.props.saveMode}
             displayMessage={this.props.displayMessage}
-            handleUserChange={this.props.handleUserChange} />
+            handleUserChange={this.props.handleUserChange}
+          />
         )}
       </div>
     );
