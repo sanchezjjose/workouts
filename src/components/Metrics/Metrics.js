@@ -47,6 +47,14 @@ class Metrics extends Component {
     }
   }
 
+  handleOnClick = (e) => {
+    e.preventDefault();
+
+    if (this.props.editMode && e.target.value === '-') {
+      e.target.value = '';
+    }
+  }
+
   handleOnChange = (e) => {
     e.preventDefault();
 
@@ -98,6 +106,7 @@ class Metrics extends Component {
         value={metricValue} 
         onTouchStart={this.handleTouchStart} 
         onTouchEnd={this.handleTouchEnd} 
+        onClick={this.handleOnClick}
         onChange={this.handleOnChange} 
         readOnly={!this.props.editMode} />
     );
