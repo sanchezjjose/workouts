@@ -8,7 +8,7 @@ class User {
   }
 
   setExerciseStatus(dayOfWeek, routineType, workoutName, exerciseName, status) {
-    this.user.routine[dayOfWeek][routineType][workoutName][exerciseName].done = status;
+    this.user.routines[dayOfWeek][routineType][workoutName][exerciseName].done = status;
   }
 
   getRoutineByDay(day) {
