@@ -10,7 +10,7 @@ const saveRoutine = (userId, routine, workoutDay) => {
       },
       UpdateExpression: "SET #r.#d = :routine",
       ExpressionAttributeNames: {
-        "#r": "routine",
+        "#r": "routines",
         "#d": workoutDay
       },
       ExpressionAttributeValues: {

@@ -11,7 +11,7 @@ class FavoritesModal extends Component {
     show: false,
     workout: '',
     exerciseName: '',
-    workoutType: 'weight'
+    routineType: 'weight'
   }
 
   showModal = () => {
@@ -30,25 +30,25 @@ class FavoritesModal extends Component {
     this.setState({ exerciseName: e.target.value });
   }
 
-  onWorkoutTypeChange = (e) => {
-    this.setState({ workoutType: e.target.value });
+  onRoutineTypeChange = (e) => {
+    this.setState({ routineType: e.target.value });
   }
 
   saveExercise = (e) => {
     e.preventDefault();
 
-    const workoutType = this.state.workoutType;
+    const routineType = this.state.routineType;
     const workout = this.state.workout;
     const exerciseName = this.state.exerciseName;
     const user = this.props.user;
     const favorites = user.favorites;
 
-    favorites[workoutType][workout] = favorites[workoutType][workout] || [];
+    favorites[routineType][workout] = favorites[routineType][workout] || [];
 
-    if (favorites[workoutType][workout].indexOf(exerciseName) === -1) {
-      saveFavoriteExercise(user.id, workoutType, workout, exerciseName)
+    if (favorites[routineType][workout].indexOf(exerciseName) === -1) {
+      saveFavoriteExercise(user.id, routineType, workout, exerciseName)
         .then(() => {
-          favorites[workoutType][workout].push(exerciseName);
+          favorites[routineType][workout].push(exerciseName);
           this.props.handleUserChange(user);
           this.props.displayMessage(`Added ${exerciseName} to favorites.`);
         })
@@ -78,11 +78,11 @@ class FavoritesModal extends Component {
             <div className='label'>Type</div>
             <div className='options'>
               <div>
-                <input onChange={this.onWorkoutTypeChange} type='radio' value='weight' checked={this.state.workoutType === 'weight'} />
+                <input onChange={this.onRoutineTypeChange} type='radio' value='weight' checked={this.state.routineType === 'weight'} />
                 <label htmlFor='weight'>Weight Training</label>
               </div>
               <div>
-                <input onChange={this.onWorkoutTypeChange} type='radio' value='time' checked={this.state.workoutType === 'time'} />
+                <input onChange={this.onRoutineTypeChange} type='radio' value='time' checked={this.state.routineType === 'time'} />
                 <label htmlFor='time'>Time Based</label>
               </div>
             </div>

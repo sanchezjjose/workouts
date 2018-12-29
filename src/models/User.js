@@ -7,8 +7,8 @@ class User {
     this.history = user.history;
   }
 
-  setExerciseStatus(workoutDay, workoutType, workoutName, exerciseName, status) {
-    this.user.routine[workoutDay][workoutType][workoutName][exerciseName].done = status;
+  setExerciseStatus(workoutDay, routineType, workoutName, exerciseName, status) {
+    this.user.routine[workoutDay][routineType][workoutName][exerciseName].done = status;
   }
 
   getRoutineByDay(day) {

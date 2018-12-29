@@ -10,7 +10,7 @@ const saveExerciseStatus = (userId, workoutDay, workoutType, muscle, exerciseNam
       },
       UpdateExpression: "SET #r.#d.#t.#m.#e.done = :done",
       ExpressionAttributeNames: {
-        "#r": "routine",
+        "#r": "routines",
         "#d": workoutDay,
         "#t": workoutType,
         "#m": muscle,

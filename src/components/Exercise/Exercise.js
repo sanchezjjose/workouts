@@ -12,18 +12,18 @@ class Exercise extends Component {
   handleExerciseStatus = (exerciseComplete) => {
     const user = this.props.user;
     const workoutDay = this.props.workout.day;
-    const workoutType = this.props.workoutType;
-    const date = user.routine[workoutDay].date;
-    const muscle = this.props.routine.muscle;
+    const routineType = this.props.routineType;
+    const date = user.routines[workoutDay].date;
+    const workoutName = this.props.workout.name;
     const exercise = this.props.exercise;
     const updateExerciseHistory = exerciseComplete ? saveExerciseHistory : removeExerciseHistory;
 
-    updateExerciseHistory(user.id, date, exercise, muscle)
+    updateExerciseHistory(user.id, date, exercise, workoutName)
       .then(() => 
-        saveExerciseStatus(user.id, workoutDay, workoutType, muscle, exercise.name, exerciseComplete)
+        saveExerciseStatus(user.id, workoutDay, routineType, workoutName, exercise.name, exerciseComplete)
       )
       .then(() => {
-        user.routine[workoutDay][workoutType][muscle][exercise.name].done = exerciseComplete;
+        user.routines[workoutDay][routineType][workoutName][exercise.name].done = exerciseComplete;
         this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
       })
       .catch(e => {
@@ -35,23 +35,23 @@ class Exercise extends Component {
     e.preventDefault();
 
     const user = this.props.user;
-    const workoutDay = this.props.workout.day;
-    const workoutType = this.props.workoutType;
-    const muscle = this.props.routine.muscle;
-    const exercise = this.props.exercise;
-    const todaysRoutine = user.routine[workoutDay];
-    const exercises = todaysRoutine[workoutType][muscle];
+    const dayOfWeek = this.props.routine.day;
+    const routineType = this.props.routineType;
+    const workoutName = this.props.workout.name;
+    const exerciseName = this.props.exercise.name;
+    const todaysRoutine = user.routines[dayOfWeek];
+    const exercises = todaysRoutine[routineType][workoutName];
 
-    delete exercises[exercise.name];
+    delete exercises[exerciseName];
 
     if (Object.keys(exercises).length === 0) {
-      delete todaysRoutine[workoutType][muscle];
+      delete todaysRoutine[routineType][workoutName];
     }
 
-    saveRoutine(user.id, todaysRoutine, workoutDay)
+    saveRoutine(user.id, todaysRoutine, dayOfWeek)
       .then(() => {
         this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
-        this.props.displayMessage(`Deleted ${exercise.name} from ${muscle} workout.`);
+        this.props.displayMessage(`Deleted ${exerciseName} from ${workoutName} workout.`);
       })
       .catch(e => {
         console.log(e);
@@ -61,9 +61,9 @@ class Exercise extends Component {
   render() {
     const exercise = this.props.exercise;
     const exerciseClassName = this.props.editMode ? 'editing' : '';
-    const workoutDay = this.props.workout.day;
-    const hasDate = this.props.user.routine[workoutDay].date ? true : false;
-    const metricTypes = this.props.workoutType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
+    const dayOfWeek = this.props.routine.day;
+    const hasDate = this.props.user.routines[dayOfWeek].date ? true : false;
+    const metricTypes = this.props.routineType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
 
     return (
       <div className={`Exercise ${exerciseClassName}`}>
@@ -81,7 +81,7 @@ class Exercise extends Component {
             metricType={metricType}
             user={this.props.user}
             workout={this.props.workout}
-            workoutType={this.props.workoutType}
+            routineType={this.props.routineType}
             routine={this.props.routine}
             exercise={exercise}
             editMode={this.props.editMode}

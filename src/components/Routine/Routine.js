@@ -58,10 +58,9 @@ class Routine extends Component {
                   handleUserChange={this.props.handleUserChange} 
                   displayMessage={this.displayMessage}
                   routine={routine}
-                  workoutType={routineType.type}
+                  routineType={routineType.type}
                   workout={workout}
-                  exercise={exercise}
-                />
+                  exercise={exercise} />
               )}
             </div>
           )

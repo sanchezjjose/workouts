@@ -11,7 +11,7 @@ const saveExerciseMetrics = (userId, workoutDay, workoutType, muscle, exerciseNa
       },
       UpdateExpression: "SET #r.#d.#wt.#m.#e.#mt = :metricValue",
       ExpressionAttributeNames: {
-        "#r": "routine",
+        "#r": "routines",
         "#d": workoutDay,
         "#wt": workoutType,
         "#m": muscle,

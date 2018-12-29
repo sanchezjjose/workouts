@@ -19,23 +19,26 @@ class RoutineModal extends Component {
     this.setState({ show: false });
   }
 
-  addExercise = (workoutType, workoutName, exercise) => {
+  addExercise = (routineType, workoutName, exercise) => {
     const props = this.props;
     const user = props.user;
     const workoutDay = props.workoutDay;
-    const exercises = user.routine[workoutDay][workoutType][workoutName] || {};
-    const initialMetrics = workoutType === 'weight' ?
+    const exercises = user.routines[workoutDay][routineType][workoutName] || {};
+    const initialMetrics = routineType === 'weight' ?
       { weight: '-', reps: '-', sets: '-', done: false } : { time: '-', distance: '-', kcal: '-', done: false };
 
     // TODO: Move to object that has an addExerciseToRoutine() method.
     // Then, pass object to parent to update state.
     exercises[exercise] = initialMetrics;
-    user.routine[workoutDay][workoutType][workoutName] = exercises;
+    user.routines[workoutDay][routineType][workoutName] = exercises;
 
-    saveRoutine(user.id, user.routine[workoutDay], workoutDay)
+    saveRoutine(user.id, user.routines[workoutDay], workoutDay)
       .then(() => {
         props.handleUserChange(user);
         props.displayMessage(`Added ${exercise} to routine.`);
+
+      }).catch(err => {
+        console.error(`Error adding exercise to workout.`, err);
       });
   }
 

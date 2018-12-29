@@ -55,7 +55,7 @@ const createUser = (userId, fullName) => {
               'time': {}
             },
             'history':  {},
-            'routine':  {
+            'routines':  {
               'Monday': {
                 'weight': {},
                 'time': {}
