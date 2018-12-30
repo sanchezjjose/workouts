@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RoutineDayPicker from '../RoutineDayPicker/RoutineDayPicker';
 import { saveRoutine } from '../../api/Routine';
 
 import './NavigationBar.css';
@@ -49,22 +50,27 @@ class NavigationBar extends Component {
 
   render() {
     return (
-      <header className='NavigationBar top-app-bar'>
-        <section className='top-app-bar__section--align-start'>
-          <span className='title'>Workouts</span>
-        </section>
-        {this.props.editMode ? (
-          <section className='top-app-bar__section--align-end editing'>
-            <button onClick={this.handleSave} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Save</button>
-            <button onClick={this.handleCancel} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>cancel</button>
+      <div className='NavigationBar-container'>
+        <header className='NavigationBar top-app-bar'>
+          <section className='top-app-bar__section--align-start'>
+            <span className='title'>Workouts</span>
           </section>
-        ) : (
-          <section className='top-app-bar__section--align-end'>
-            <button onClick={this.handleStartWorkout} className='start-workout-button mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Start Workout</button>
-            <button onClick={this.handleEdit} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>edit</button>
-          </section>
-        )}
-      </header>
+          {this.props.editMode ? (
+            <section className='top-app-bar__section--align-end editing'>
+              <button onClick={this.handleSave} className='mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Save</button>
+              <button onClick={this.handleCancel} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>cancel</button>
+            </section>
+          ) : (
+            <section className='top-app-bar__section--align-end'>
+              <button onClick={this.handleStartWorkout} className='start-workout-button mdc-top-app-bar__action-item' aria-label='Start Workout' alt='Start Workout'>Start Workout</button>
+              <button onClick={this.handleEdit} className='material-icons mdc-top-app-bar__action-item' aria-label='Edit' alt='Edit'>edit</button>
+            </section>
+          )}
+        </header>
+        {this.props.userObj.dayOfWeek &&
+          <RoutineDayPicker userObj={this.props.userObj} />
+        }
+      </div>
     );
   }
 }

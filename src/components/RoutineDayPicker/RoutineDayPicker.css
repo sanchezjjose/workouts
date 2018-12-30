@@ -1,0 +1,28 @@
+.RoutineDayPicker {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  justify-items: center;
+  height: 40px;
+}
+
+.RoutineDayPicker .routine-day {
+  display: grid;
+  justify-items: center;
+  align-items: center; 
+  background: #13131e;
+  color: #fff;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 60px;
+}
+
+.RoutineDayPicker .routine-day.active {
+  color: #58b6f4;
+  font-size: 18px;
+  font-weight: 600;
+  width: 35px;
+  height: 35px;
+  border-radius: 70px;
+}

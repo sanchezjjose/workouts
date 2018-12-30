@@ -1,21 +1,27 @@
 class User {
 
   constructor(user) {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const currentDay = days[new Date().getDay()];
+
     this.user = user;
     this.favorites = user.favorites;
     this.routines = user.routines;
     this.history = user.history;
+    this.dayOfWeek = currentDay;
+  }
+
+  setRoutineDay(dayOfWeek) {
+    this.dayOfWeek = dayOfWeek;
   }
 
   setExerciseStatus(dayOfWeek, routineType, workoutName, exerciseName, status) {
     this.user.routines[dayOfWeek][routineType][workoutName][exerciseName].done = status;
   }
 
-  getRoutineByDay(day) {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const dayOfWeek = day || days[new Date().getDay()];
-    const routine = Object.entries(this.routines[dayOfWeek]);
-    const result = routine.filter(routine => routine[0] !== 'date').map(routineTypes => {
+  getRoutineByDay() {
+    const routine = Object.entries(this.routines[this.dayOfWeek]).filter(routine => routine[0] !== 'date');
+    const result = routine.map(routineTypes => {
       return {
         type: routineTypes[0],
         workouts: Object.entries(routineTypes[1]).map(workout => {
@@ -32,7 +38,7 @@ class User {
       };
     });
 
-    result.day = dayOfWeek;
+    result.day = this.dayOfWeek;
 
     return result;
   }
