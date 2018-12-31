@@ -10,11 +10,15 @@ import Footer from './Footer/Footer';
 
 import './App.css';
 
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const today = days[new Date().getDay()];
+
 class App extends Component {
 
   state = {
     user: {},
     userObj: {},
+    dayOfWeek: today,
     editMode: false,
     saveMode: false
   };
@@ -45,6 +49,10 @@ class App extends Component {
     });
   }
 
+  handleDayChange = (dayOfWeek) => {
+    this.setState({ dayOfWeek: dayOfWeek });
+  }
+
   render() {
     return (
       <Router>
@@ -56,6 +64,7 @@ class App extends Component {
                 user={this.state.user}
                 userObj={this.state.userObj}
                 handleUserChange={this.handleUserChange}
+                dayOfWeek={this.state.dayOfWeek}
                 editMode={this.state.editMode}
                 saveMode={this.state.saveMode}
               />
@@ -64,6 +73,8 @@ class App extends Component {
                   user={this.state.user}
                   userObj={this.state.userObj}
                   handleUserChange={this.handleUserChange}
+                  handleDayChange={this.handleDayChange}
+                  dayOfWeek={this.state.dayOfWeek}
                   editMode={this.state.editMode}
                   saveMode={this.state.saveMode}
                 /> :

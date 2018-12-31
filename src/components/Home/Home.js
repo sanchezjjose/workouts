@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Routine from '../Routine/Routine';
+import RoutineDayPicker from '../RoutineDayPicker/RoutineDayPicker';
 
 import './Home.css';
 
@@ -10,7 +11,16 @@ class Home extends Component {
       <div className='Home'>
         <div className='content-wrapper'>
           <div className='content'>
-            <Routine user={this.props.user} userObj={this.props.userObj} handleUserChange={this.props.handleUserChange} editMode={this.props.editMode} saveMode={this.props.saveMode} />
+            <RoutineDayPicker
+              dayOfWeek={this.props.dayOfWeek}
+              handleDayChange={this.props.handleDayChange} />
+            <Routine
+              user={this.props.user}
+              userObj={this.props.userObj}
+              handleUserChange={this.props.handleUserChange}
+              dayOfWeek={this.props.dayOfWeek}
+              editMode={this.props.editMode}
+              saveMode={this.props.saveMode} />
           </div>
         </div>
       </div>

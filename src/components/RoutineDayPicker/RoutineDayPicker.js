@@ -4,24 +4,21 @@ import './RoutineDayPicker.css';
 
 class RoutineDayPicker extends Component {
 
-  state = {
-    dayOfWeek: this.props.userObj.dayOfWeek
-  }
-
-  handleClick = (e, dayOfWeek) => {
-    this.setState({ dayOfWeek: dayOfWeek });
+  handleClick = (dayOfWeek) => {
+    this.props.handleDayChange(dayOfWeek);
   }
 
   render() {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfweek = this.props.dayOfWeek;
 
     return (
       <div className='RoutineDayPicker'>
         {days.map (day => 
           <span 
             key={day}
-            onClick={e => this.handleClick(e, day)}
-            className={`routine-day ${this.state.dayOfWeek === day ? 'active' : ''}`}>{day.charAt(0)}</span>
+            onClick={() => this.handleClick(day)}
+            className={`routine-day ${dayOfweek === day ? 'active' : ''}`}>{day.charAt(0)}</span>
         )}
       </div>
     );

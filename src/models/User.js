@@ -1,26 +1,26 @@
 class User {
 
   constructor(user) {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const currentDay = days[new Date().getDay()];
+    // const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    // const currentDay = days[new Date().getDay()];
 
     this.user = user;
     this.favorites = user.favorites;
     this.routines = user.routines;
     this.history = user.history;
-    this.dayOfWeek = currentDay;
+    // this.dayOfWeek = currentDay;
   }
 
-  setRoutineDay(dayOfWeek) {
-    this.dayOfWeek = dayOfWeek;
-  }
+  // setRoutineDay(dayOfWeek) {
+  //   this.dayOfWeek = dayOfWeek;
+  // }
 
   setExerciseStatus(dayOfWeek, routineType, workoutName, exerciseName, status) {
     this.user.routines[dayOfWeek][routineType][workoutName][exerciseName].done = status;
   }
 
-  getRoutineByDay() {
-    const routine = Object.entries(this.routines[this.dayOfWeek]).filter(routine => routine[0] !== 'date');
+  getRoutineByDay(dayOfWeek) {
+    const routine = Object.entries(this.routines[dayOfWeek]).filter(routine => routine[0] !== 'date');
     const result = routine.map(routineTypes => {
       return {
         type: routineTypes[0],
@@ -38,7 +38,8 @@ class User {
       };
     });
 
-    result.day = this.dayOfWeek;
+    // TODO: maybe don't need this anymore
+    result.day = dayOfWeek;
 
     return result;
   }

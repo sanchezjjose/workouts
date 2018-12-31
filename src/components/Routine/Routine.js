@@ -21,7 +21,8 @@ class Routine extends Component {
   }
 
   render() {
-    const routine = this.props.userObj.getRoutineByDay();
+    const dayOfWeek = this.props.dayOfWeek;
+    const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
 
     return (
       <div className='Routine'>

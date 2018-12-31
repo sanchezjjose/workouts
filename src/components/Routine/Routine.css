@@ -13,6 +13,7 @@
   font-weight: 400;
   font-size: 18px;
   transition: all 1s ease;
+  top: 56px;
   left: 0;
   height: 60px;
   width: 100%;
@@ -22,7 +23,7 @@
 .Routine .routine-heading {
   display: grid;
   align-items: center;
-  padding-top: 20px;
+  margin-top: 10px;
 }
 
 .Routine .routine-heading .weekday {
