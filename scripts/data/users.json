@@ -265,17 +265,18 @@
 							"reps": "10",
 							"sets": "4"
 						}
-					},
+					}
+				},
+				"time": {
 					"Other": {
 						"Sauna": {
 							"done": false,
-							"weight": "-",
-							"reps": "30",
-							"sets": "1"
+							"time": "30",
+							"distance": "-",
+							"kcal": "-"
 						}
 					}
-				},
-				"time": {}
+				}
 			},
 			"Thursday": {
 				"weight": {},
@@ -471,17 +472,18 @@
 							"reps": "10",
 							"sets": "4"
 						}
-					},
+					}
+				},
+				"time": {
 					"Other": {
 						"Sauna": {
 							"done": false,
-							"weight": "-",
-							"reps": "30",
-							"sets": "1"
+							"time": "30",
+							"distance": "-",
+							"kcal": "-"
 						}
 					}
-				},
-				"time": {}
+				}
 			}
 		}
 	}
