@@ -23,10 +23,10 @@ class NavigationBar extends Component {
   handleStartWorkout = (e) => {
     e.preventDefault();
 
-    const routine = this.props.userObj.getRoutineByDay();
+    const dayOfWeek = this.props.dayOfWeek;
+    const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
     const today = new Date();
     const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
-    const dayOfWeek = routine.day;
     const user = this.props.user;
 
     // Set date on workout for historical purposes
