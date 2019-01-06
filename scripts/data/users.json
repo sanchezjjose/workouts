@@ -1,7 +1,7 @@
 [ 
 	{
-		"id": "test",
-		"name": "Test User",
+		"id": "joses",
+		"name": "Jose Sanchez",
 		"settings": {
 			"units": "pounds",
 			"time": "minutes"

@@ -6,7 +6,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 const params = {
   TableName: 'Workouts',
   Key: {
-    'id': 'joses'
+    'id': 'test'
   }
 };
 

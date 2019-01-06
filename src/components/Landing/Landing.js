@@ -31,27 +31,31 @@ class Landing extends Component {
   }
 
   handleRegistration = (e) => {
-    createUser(this.state.username, this.state.fullName)
-      .then(() => window.location = `/${this.state.username}`)
-      .catch((err) => {
-        alert(err);
-        console.error(`There was an error registering.`, err);
-      });
+    if (this.state.username.length > 0) {
+      createUser(this.state.username, this.state.fullName)
+        .then(() => window.location = `/${this.state.username}`)
+        .catch((err) => {
+          alert(err);
+          console.error(`There was an error registering.`, err);
+        });
+    }
   }
 
   handleSignin = (e) => {
-    getUser(this.state.username)
-      .then((user) => {
-        if (user.id) {
-          return window.location = `/${this.state.username}`
-        }
+    if (this.state.username.length > 0) {
+      getUser(this.state.username)
+        .then((user) => {
+          if (user.id) {
+            return window.location = `/${this.state.username}`
+          }
 
-        throw new Error(`User ${this.state.username} does not exist.`);
-      })
-      .catch(err => {
-        alert(err);
-        console.error(`There was an error signing in.`, err);
-      });
+          throw new Error(`User ${this.state.username} does not exist.`);
+        })
+        .catch(err => {
+          alert(err);
+          console.error(`There was an error signing in.`, err);
+        });
+    }
   }
 
   render() {
