@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getUser, createUser } from '../../api/Users';
 
+import "@material/button/dist/mdc.button.min.css"
 import './Landing.css';
 
 class Landing extends Component {
@@ -56,27 +57,24 @@ class Landing extends Component {
   render() {
     return (
       <div className='Landing'>
+        <div className='title'>Workouts</div>
         <div className='content'>
-          <h2 className='welcome-message'><span>Welcome to Workouts.</span></h2>
-          <p className='description'>
-            {
-              `
-              Create workouts, track your progress, and easily adjust your routines on the go.
-              `
-            }
-          </p>
           <div className='auth'>
-            <input onChange={this.handleUsernameOnChange} type='text' value={this.state.username} />
+            <div className='credentials'>
+              <input className='username-input' placeholder='Username' onChange={this.handleUsernameOnChange} type='text' value={this.state.username} />
+              {this.state.showRegister &&
+                <input className='full-name-input' placeholder='Full Name' onChange={this.handleFullNameOnChange} type='text' value={this.state.fullName} />
+              }
+            </div>
             {this.state.showRegister ? (
-              <div>
-                <input onChange={this.handleFullNameOnChange} type='text' value={this.state.fullName} />
-                <button onClick={this.handleRegistration} className='register'>Register</button>
-                <a onClick={this.handleSigninLinkClick} href='/'>Sign In</a>
+              <div className='submit'>
+                <button className='mdc-button--unelevated button register-button' onClick={this.handleRegistration}>Register</button>
+                <a className='link signin-link' onClick={this.handleSigninLinkClick} href='/'>Sign in</a>
               </div>
             ) : (
-              <div>
-                <button onClick={this.handleSignin} className='signin'>Sign In</button>
-                <a onClick={this.handleRegisterLinkClick} href='/'>Register</a>
+              <div className='submit'>
+                <button className='mdc-button--unelevated button signin-button' onClick={this.handleSignin}>Sign In</button>
+                <a className='link register-link' onClick={this.handleRegisterLinkClick} href='/'>Register</a>
               </div>
             )}
           </div>
