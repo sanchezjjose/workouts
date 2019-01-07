@@ -26,6 +26,8 @@ const saveExerciseHistory = (userId, date, exercise, workout) => {
   })
 
   const saveExercise = new Promise((resolve, reject) => {
+    delete exercise.metrics.done;
+
     docClient.update({
       TableName: 'Workouts',
       Key: {
@@ -39,9 +41,7 @@ const saveExerciseHistory = (userId, date, exercise, workout) => {
       ExpressionAttributeValues: {
         ":de": {
           workout: workout,
-          weight: exercise.metrics.weight,
-          reps: exercise.metrics.reps,
-          sets: exercise.metrics.sets
+          metrics: exercise.metrics
         }
       },
       ReturnValues:"ALL_NEW"
