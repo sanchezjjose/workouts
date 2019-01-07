@@ -28,6 +28,11 @@
   border-radius: 70px;
 }
 
+.RoutineDayPicker .routine-day.today.active {
+  color: #fff;
+  background: #D32F2F;
+}
+
 .RoutineDayPicker .routine-day.today {
-  color: #58b6f4;
+  color: #D32F2F;
 }

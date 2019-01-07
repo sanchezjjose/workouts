@@ -32,7 +32,7 @@
 }
 
 .Favorites .exercises .workout-title {
-  border-bottom: 1px #9b9b9b solid;
+  border-bottom: 1px #ddd solid;
 }
 
 .Favorites .exercise-group {
@@ -49,7 +49,7 @@
 }
 
 .Favorites .exercise-group .delete-button {
-  background: #E53935;
+  background: #D32F2F;
   color: #fff;
   padding: 0;
   margin-bottom: 5px;

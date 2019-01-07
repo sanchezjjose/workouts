@@ -1,9 +1,9 @@
 .NavigationBar {
   align-items: center;
-  background: #13131e;
+  background: #000;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
   box-sizing: border-box;
-  color: #58b6f4;
+  color: #fff;
   display: grid;
   height: 56px;
   grid-template-columns: 150px 1fr;
@@ -29,8 +29,8 @@
 .NavigationBar .top-app-bar__section--align-end button {
   background: none;
   border: none;
-  padding: 0;
   color: #fff;
+  padding: 0;
   font-size: 18px;
   text-decoration: none;
 }
