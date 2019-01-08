@@ -40,3 +40,7 @@
   box-sizing: border-box;
   margin: 0;
 }
+
+.RoutineModal .exercises h3 {
+  background: #fafafa;
+}

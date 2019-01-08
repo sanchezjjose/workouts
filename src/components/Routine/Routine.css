@@ -35,7 +35,7 @@
 .Routine .header {
   display: grid;
   /* Add width of status button plus gap between button and name column */
-  grid-template-columns: calc(150px + 48px + 5px) repeat(3, 1fr);
+  grid-template-columns: calc(155px + 48px + 5px) repeat(3, 1fr);
   grid-gap: 5px;
   justify-items: center;
   align-items: end;
