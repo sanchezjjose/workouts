@@ -80,7 +80,7 @@ class App extends Component {
                 /> :
                 <div>Loading...</div>
               }
-              <Footer userId={this.state.user.id} />
+              <Footer userId={this.state.user.id} activeTab='home' />
             </div>
           )}/>
           <Route exact={true} path='/:user_id/favorites' render={() => (
@@ -101,7 +101,7 @@ class App extends Component {
                 /> :
                 <div>Loading...</div>
               }
-              <Footer userId={this.state.user.id} />
+              <Footer userId={this.state.user.id} activeTab='favorites' />
             </div>
           )}/>
         </div>
