@@ -46,10 +46,20 @@ class RoutineModal extends Component {
     const onClick = this.state.show ? this.closeModal : this.showModal;
     const label = this.state.show ? 'close' : 'add';
     const favoritesVm = this.props.userObj.getFavorites();
+    const hasFavorites = (favoritesVm[0].workouts.length + favoritesVm[1].workouts.length) > 0;
 
     return (
       <div className='RoutineModal'>
         <div className={`content ${this.state.show ? 'show' : ''}`}>
+          {!hasFavorites &&
+            <div className='description'>
+              <p className='message'>
+                This will show a list of exercises to add to your routine
+                from your Favorites list.
+              </p> 
+              <a className='link-favorites' href={`${this.props.user.id}/favorites`}>Add Exercises To Favorites</a>
+            </div>
+          }
           {favoritesVm.map (favorite => 
             favorite.workouts.map(workout => 
               <div key={workout.name} className='exercises'>
