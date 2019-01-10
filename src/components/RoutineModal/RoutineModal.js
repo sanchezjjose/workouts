@@ -56,8 +56,10 @@ class RoutineModal extends Component {
               <p className='message'>
                 This will show a list of exercises to add to your routine
                 from your Favorites list.
-              </p> 
-              <a className='link-favorites' href={`${this.props.user.id}/favorites`}>Add Exercises To Favorites</a>
+              </p>
+              <div>
+              <a className='link-favorites' href={`${this.props.user.id}/favorites`}>ADD FAVORITE EXERCISES</a>
+              </div>
             </div>
           }
           {favoritesVm.map (favorite => 
