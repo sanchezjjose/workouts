@@ -15,7 +15,7 @@
   width: 300px;
   overflow: auto;
   background-color: #fff;
-  border: 1px solid #000;
+  border: 1px solid #ddd;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .RoutineModal .exercises .exercise-label, .RoutineModal .exercises h3 {
-  border-bottom: 1px #dddddd solid;
+  border-bottom: 1px #ddd solid;
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
@@ -43,4 +43,21 @@
 
 .RoutineModal .exercises h3 {
   background: #fafafa;
+}
+
+.RoutineModal .description {
+  box-sizing: border-box;
+  display: grid;
+  padding: 20px;
+  justify-items: center;
+  height: 100%;
+}
+
+.RoutineModal .description .message {
+  align-self: end;
+  margin-bottom: 100px;
+}
+
+.RoutineModal .description .link-favorites {
+  text-decoration: none;
 }

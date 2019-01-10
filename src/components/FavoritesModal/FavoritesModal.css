@@ -16,7 +16,7 @@
   width: 300px;
   overflow: auto;
   background-color: #fff;
-  border: 1px solid #000;
+  border: 1px solid #ddd;
 }
 
 .FavoritesModal .content .close {
