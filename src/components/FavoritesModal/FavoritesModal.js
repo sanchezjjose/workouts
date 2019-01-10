@@ -22,6 +22,13 @@ class FavoritesModal extends Component {
     this.setState({ show: false });
   }
 
+  clearInput = (e) => {
+    e.target.value = '';
+    this.setState({
+      [e.target.name]: ''
+    });
+  }
+
   onWorkoutChange = (e) => {
     this.setState({ workout: e.target.value });
   }
@@ -68,11 +75,11 @@ class FavoritesModal extends Component {
           <span onClick={this.closeModal} className='close'>&times;</span>
           <div className='metric'>
             <div className='label'>Workout</div>
-            <input onChange={this.onWorkoutChange} type='text' placeholder='e.g, Chest, Running, Abs, Other'></input>
+            <input onChange={this.onWorkoutChange} type='text' name='workout' placeholder='e.g, Chest, Running, Abs, Other'></input>
           </div>
           <div className='metric'>
             <div className='label'>Exercise Name</div>
-            <input onChange={this.onExerciseNameChange} type='text' placeholder='e.g, Push Ups, Treadmill, Plank, Sauna'></input>
+            <input onChange={this.onExerciseNameChange} type='text' name='exerciseName' placeholder='e.g, Push Ups, Treadmill, Plank, Sauna'></input>
           </div>
           <div className='metric type'>
             <div className='label'>Type</div>
