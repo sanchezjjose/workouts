@@ -54,10 +54,11 @@
 }
 
 .RoutineModal .description .message {
+  color: #757575;
   align-self: end;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 
 .RoutineModal .description .link-favorites {
-  text-decoration: none;
+  color: #D32F2F;
 }
