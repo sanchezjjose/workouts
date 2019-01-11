@@ -25,10 +25,17 @@
   grid-gap: 10px;
   grid-template-columns: 30px 50px;
   justify-self: end;
+  align-items: center;
+  justify-items: center;
 }
 
 .NavigationBar .top-app-bar__section--align-end.editing {
   grid-template-columns: 100px 50px;
+}
+
+.NavigationBar .top-app-bar__section--align-end.editing .action-buttons {
+  display: grid;
+  grid-template-columns: 50px 50px;
 }
 
 .NavigationBar .top-app-bar__section--align-end button {
@@ -40,11 +47,10 @@
   text-decoration: none;
 }
 
-.NavigationBar .top-app-bar__section--align-end .editing {
+.NavigationBar .top-app-bar__section--align-end .menu-drop-down {
   display: grid;
-  grid-template-columns: 50px 50px;
 }
 
-.favorites .NavigationBar .top-app-bar__section--align-end .start-workout-button {
-  display: none;
+.NavigationBar .top-app-bar__section--align-end .menu-drop-down button {
+  font-size: 24px;
 }

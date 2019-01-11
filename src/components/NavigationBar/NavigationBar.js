@@ -4,19 +4,24 @@ import './NavigationBar.css';
 
 class NavigationBar extends Component {
 
-  handleEdit = (e) => {
-    e.preventDefault();
+  state = {
+    menuOpen: false
+  }
+
+  handleEditClick = () => {
     this.props.handleUserChange(this.props.user, true, false);
   }
 
-  handleSave = (e) => {
-    e.preventDefault();
+  handleSaveClick = () => {
     this.props.handleUserChange(this.props.user, false, true);
   }
 
-  handleCancel = (e) => {
-    e.preventDefault();
+  handleCancelClick = () => {
     this.props.handleUserChange(this.props.user, false, false);
+  }
+
+  handleMenuClick = () => {
+    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }))
   }
 
   render() {
@@ -27,16 +32,20 @@ class NavigationBar extends Component {
         </section>
         <section className={`top-app-bar__section--align-end ${this.props.editMode ? 'editing' : ''}`}>
         {this.props.editMode ? (
-          <section className='editing'>
-            <button onClick={this.handleSave} className='mdc-top-app-bar__action-item'>Save</button>
-            <button onClick={this.handleCancel} className='material-icons mdc-top-app-bar__action-item'>cancel</button>
+          <section className='action-buttons'>
+            <button onClick={this.handleSaveClick} className='mdc-top-app-bar__action-item'>Save</button>
+            <button onClick={this.handleCancelClick} className='material-icons mdc-top-app-bar__action-item'>cancel</button>
           </section>
         ) : (
-          <section>
-            <button onClick={this.handleEdit} className='material-icons mdc-top-app-bar__action-item'>edit</button>
+          <section className='action-buttons'>
+            <button onClick={this.handleEditClick} className='material-icons mdc-top-app-bar__action-item'>edit</button>
           </section>
         )}
-        <button onClick={this.handleEdit} className='material-icons mdc-top-app-bar__action-item'>more_horiz</button>
+        <div className='menu-drop-down'>
+          <button onClick={this.handleMenuClick} className='material-icons mdc-top-app-bar__action-item'>
+            {this.state.menuOpen ? 'more_vert' : 'more_horiz' }
+          </button>
+        </div>
         </section>
       </header>
     );
