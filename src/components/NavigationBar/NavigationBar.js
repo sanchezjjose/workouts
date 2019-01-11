@@ -24,6 +24,10 @@ class NavigationBar extends Component {
     this.setState(prevState => ({ menuOpen: !prevState.menuOpen }))
   }
 
+  handleSettingsClick = () => {
+    alert('Settings coming soon...');
+  }
+
   render() {
     return (
       <header className='NavigationBar top-app-bar'>
@@ -41,10 +45,20 @@ class NavigationBar extends Component {
             <button onClick={this.handleEditClick} className='material-icons mdc-top-app-bar__action-item'>edit</button>
           </section>
         )}
-        <div className='menu-drop-down'>
+        <div className={`menu-drop-down ${this.state.menuOpen ? 'open' : ''}`}>
           <button onClick={this.handleMenuClick} className='material-icons mdc-top-app-bar__action-item'>
             {this.state.menuOpen ? 'more_vert' : 'more_horiz' }
           </button>
+          {this.state.menuOpen &&
+            <ul className='menu-items'>
+              <li onClick={this.handleSettingsClick} className='menu-preferences'>
+                Settings
+              </li>
+              <li className='menu-logout'>
+                <a href='/'>Logout</a>
+              </li>
+            </ul>
+          }
         </div>
         </section>
       </header>
