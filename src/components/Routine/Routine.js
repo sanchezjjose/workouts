@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Exercise from '../Exercise/Exercise';
 import RoutineModal from '../RoutineModal/RoutineModal';
+import { saveRoutine } from '../../api/Routine';
 
 import './Routine.css';
 
@@ -20,6 +21,33 @@ class Routine extends Component {
     }, 3000);
   }
 
+  handleStartWorkout = (e) => {
+    e.preventDefault();
+
+    const dayOfWeek = this.props.dayOfWeek;
+    const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
+    const today = new Date();
+    const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
+    const user = this.props.user;
+
+    // Set date on workout for historical purposes
+    user.routines[dayOfWeek].date = date;
+
+    // Reset all exercise status
+    routine.forEach(routineType => {
+      routineType.workouts.forEach(workout => {
+        workout.exercises.forEach(exercise => {
+          user.routines[dayOfWeek][routineType.type][workout.name][exercise.name].done = false;
+        });
+      });
+    });
+
+    saveRoutine(user.id, user.routines[dayOfWeek], dayOfWeek)
+      .then(() => {
+        this.props.handleUserChange(user, false, false);
+      });
+  }
+
   render() {
     const dayOfWeek = this.props.dayOfWeek;
     const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
@@ -30,7 +58,8 @@ class Routine extends Component {
           <div className={`success-banner`}>{this.state.message}</div>
         }
         <div className={`routine-heading ${this.props.editMode ? 'save-mode' : ''}`}>
-          <h2 className='weekday'>{routine.day} Routine</h2>
+          <div className='weekday'>{routine.day} Routine</div>
+          <button onClick={this.handleStartWorkout} className='start-workout-button'>New Workout</button>
         </div>
         {routine.map (routineType =>
           routineType.workouts.map (workout =>

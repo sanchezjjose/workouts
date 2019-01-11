@@ -24,12 +24,13 @@
   display: grid;
   align-items: center;
   margin-top: 30px;
+  grid-template-columns: 1fr 120px;
 }
 
 .Routine .routine-heading .weekday {
   margin: 0;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 26px;
 }
 
 .Routine .header {
@@ -57,4 +58,13 @@
 
 .Routine .group {
   margin-top: 30px;
+}
+
+.Routine .start-workout-button {
+  color: #000;
+  background: none;
+  border: 1px #000 solid;
+  font-size: 14px;
+  padding: 10px;
+  text-decoration: none;
 }
