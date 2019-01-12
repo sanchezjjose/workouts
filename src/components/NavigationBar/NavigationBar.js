@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import SettingsModal from '../SettingsModal/SettingsModal';
 
 import './NavigationBar.css';
 
 class NavigationBar extends Component {
 
   state = {
-    menuOpen: false
+    menuOpen: false,
+    settingsOpen: false
   }
 
   handleEditClick = () => {
@@ -25,7 +27,7 @@ class NavigationBar extends Component {
   }
 
   handleSettingsClick = () => {
-    alert('Settings coming soon...');
+    this.setState(prevState => ({ settingsOpen: !prevState.settingsOpen }))
   }
 
   render() {
@@ -35,32 +37,35 @@ class NavigationBar extends Component {
           <span className='title'>Workouts</span>
         </section>
         <section className={`top-app-bar__section--align-end ${this.props.editMode ? 'editing' : ''}`}>
-        {this.props.editMode ? (
-          <section className='action-buttons'>
-            <button onClick={this.handleSaveClick} className='mdc-top-app-bar__action-item'>Save</button>
-            <button onClick={this.handleCancelClick} className='material-icons mdc-top-app-bar__action-item'>cancel</button>
-          </section>
-        ) : (
-          <section className='action-buttons'>
-            <button onClick={this.handleEditClick} className='material-icons mdc-top-app-bar__action-item'>edit</button>
-          </section>
-        )}
-        <div className={`menu-drop-down ${this.state.menuOpen ? 'open' : ''}`}>
-          <button onClick={this.handleMenuClick} className='material-icons mdc-top-app-bar__action-item'>
-            {this.state.menuOpen ? 'more_vert' : 'more_horiz' }
-          </button>
-          {this.state.menuOpen &&
-            <ul className='menu-items'>
-              <li onClick={this.handleSettingsClick} className='menu-preferences'>
-                Settings
-              </li>
-              <li className='menu-logout'>
-                <a href='/'>Logout</a>
-              </li>
-            </ul>
-          }
-        </div>
+          {this.props.editMode ? (
+            <section className='action-buttons'>
+              <button onClick={this.handleSaveClick} className='mdc-top-app-bar__action-item'>Save</button>
+              <button onClick={this.handleCancelClick} className='material-icons mdc-top-app-bar__action-item'>cancel</button>
+            </section>
+          ) : (
+            <section className='action-buttons'>
+              <button onClick={this.handleEditClick} className='material-icons mdc-top-app-bar__action-item'>edit</button>
+            </section>
+          )}
+          <div className={`menu-drop-down ${this.state.menuOpen ? 'open' : ''}`}>
+            <button onClick={this.handleMenuClick} className='material-icons mdc-top-app-bar__action-item'>
+              {this.state.menuOpen ? 'more_vert' : 'more_horiz' }
+            </button>
+            {this.state.menuOpen &&
+              <ul className='menu-items'>
+                <li onClick={this.handleSettingsClick} className='menu-preferences'>
+                  Settings
+                </li>
+                <li className='menu-logout'>
+                  <a href='/'>Logout</a>
+                </li>
+              </ul>
+            }
+          </div>
         </section>
+        {this.state.settingsOpen &&
+          <SettingsModal />
+        }
       </header>
     );
   }
