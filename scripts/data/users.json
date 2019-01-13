@@ -3,8 +3,10 @@
 		"id": "joses",
 		"name": "Jose Sanchez",
 		"settings": {
-			"units": "pounds",
-			"time": "minutes"
+			"units": {
+				"weight": "lbs",
+				"time": "minutes"
+			}
 		},
 		"favorites": {
 			"time": {

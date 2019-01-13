@@ -23,11 +23,16 @@ class NavigationBar extends Component {
   }
 
   handleMenuClick = () => {
-    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }))
+    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
   }
 
-  handleSettingsClick = () => {
-    this.setState(prevState => ({ settingsOpen: !prevState.settingsOpen }))
+  handleSettingsOpen = () => {
+    this.setState({ settingsOpen: true });
+    this.setState({ menuOpen: false });
+  }
+
+  handleSettingsClose = () => {
+    this.setState({ settingsOpen: false });
   }
 
   render() {
@@ -53,7 +58,7 @@ class NavigationBar extends Component {
             </button>
             {this.state.menuOpen &&
               <ul className='menu-items'>
-                <li onClick={this.handleSettingsClick} className='menu-preferences'>
+                <li onClick={this.handleSettingsOpen} className='menu-preferences'>
                   Settings
                 </li>
                 <li className='menu-logout'>
@@ -64,7 +69,7 @@ class NavigationBar extends Component {
           </div>
         </section>
         {this.state.settingsOpen &&
-          <SettingsModal />
+          <SettingsModal settings={this.props.userObj.settings} handleSettingsClose={this.handleSettingsClose} />
         }
       </header>
     );

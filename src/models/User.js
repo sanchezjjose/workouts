@@ -8,6 +8,7 @@ class User {
     this.favorites = user.favorites;
     this.routines = user.routines;
     this.history = user.history;
+    this.settings = user.settings;
     // this.dayOfWeek = currentDay;
   }
 

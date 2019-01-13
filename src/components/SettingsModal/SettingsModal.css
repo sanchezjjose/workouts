@@ -8,3 +8,13 @@
   width: 70%;
   height: 300px; 
 }
+
+.SettingsModal .close-modal {
+  margin: 10px;
+  font-size: 24px;
+}
+
+.SettingsModal .form-field-heading {
+  margin: 20px 10px 0;
+  font-weight: 600;
+}
