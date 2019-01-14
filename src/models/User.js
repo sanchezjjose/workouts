@@ -1,23 +1,15 @@
 class User {
 
   constructor(user) {
-    // const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    // const currentDay = days[new Date().getDay()];
-
-    this.user = user;
+    this.id = user.id;
     this.favorites = user.favorites;
     this.routines = user.routines;
     this.history = user.history;
     this.settings = user.settings;
-    // this.dayOfWeek = currentDay;
   }
 
-  // setRoutineDay(dayOfWeek) {
-  //   this.dayOfWeek = dayOfWeek;
-  // }
-
   setExerciseStatus(dayOfWeek, routineType, workoutName, exerciseName, status) {
-    this.user.routines[dayOfWeek][routineType][workoutName][exerciseName].done = status;
+    this.routines[dayOfWeek][routineType][workoutName][exerciseName].done = status;
   }
 
   getRoutineByDay(dayOfWeek) {

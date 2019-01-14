@@ -5,7 +5,8 @@
 		"settings": {
 			"units": {
 				"weight": "lbs",
-				"time": "minutes"
+				"time": "minutes",
+				"distance": "mi"
 			}
 		},
 		"favorites": {
