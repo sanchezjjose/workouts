@@ -97,9 +97,26 @@ class Metrics extends Component {
     }
   }
 
+  convertMetricValue = (initialValue, type, unit) => {
+    switch (unit) {
+      case 'kg':
+        return (initialValue * 0.45359237).toFixed(1);
+
+      case 'km':
+        return (initialValue * 1.609344).toFixed(1);
+
+      case 'minutes':
+        return initialValue / 60;
+    
+      default:
+        return initialValue;
+    }
+  }
+
   render() {
-    const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
+    const metricUnit = this.props.user.settings.units[metricType];
+    const metricValue = this.convertMetricValue(this.state.metricValue, metricType, metricUnit);
 
     return (
       <input type='text' name={metricType} className={`Metric ${metricType}`}
