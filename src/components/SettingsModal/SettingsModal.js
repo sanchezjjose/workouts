@@ -44,7 +44,7 @@ class SettingsModal extends Component {
               <div className="mdc-radio__inner-circle"></div>
             </div>
           </div>
-          <label htmlFor="radio-lbs">lbs</label>
+          <label htmlFor="radio-lbs">Pounds</label>
           <div className="mdc-radio">
             <input onChange={this.handleChange} className="mdc-radio__native-control" type="radio" id="radio-kg" name="weight" value="kg" checked={weightUnit === 'kg'}/>
             <div className="mdc-radio__background">
@@ -52,13 +52,13 @@ class SettingsModal extends Component {
               <div className="mdc-radio__inner-circle"></div>
             </div>
           </div>
-          <label htmlFor="radio-kg">kg</label>
+          <label htmlFor="radio-kg">Kilograms</label>
         </div>
 
         <div className='form-field-heading'>Time</div>
         <div className="mdc-form-field">
           <div className="mdc-radio">
-            <input onChange={this.handleChange} className="mdc-radio__native-control" type="radio" id="radio-sec" name="time" value="seconds" checked={timeUnit === 'seconds'} />
+            <input onChange={this.handleChange} className="mdc-radio__native-control" type="radio" id="radio-sec" name="time" value="sec" checked={timeUnit === 'sec'} />
             <div className="mdc-radio__background">
               <div className="mdc-radio__outer-circle"></div>
               <div className="mdc-radio__inner-circle"></div>
@@ -66,7 +66,7 @@ class SettingsModal extends Component {
           </div>
           <label htmlFor="radio-sec">Seconds</label>
           <div className="mdc-radio">
-            <input onChange={this.handleChange} className="mdc-radio__native-control" type="radio" id="radio-min" name="time" value="minutes" checked={timeUnit === 'minutes'} />
+            <input onChange={this.handleChange} className="mdc-radio__native-control" type="radio" id="radio-min" name="time" value="min" checked={timeUnit === 'min'} />
             <div className="mdc-radio__background">
               <div className="mdc-radio__outer-circle"></div>
               <div className="mdc-radio__inner-circle"></div>

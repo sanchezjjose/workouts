@@ -5,7 +5,7 @@
 		"settings": {
 			"units": {
 				"weight": "lbs",
-				"time": "minutes",
+				"time": "min",
 				"distance": "mi"
 			}
 		},
@@ -482,7 +482,7 @@
 						"Sauna": {
 							"done": false,
 							"time": "30",
-							"distance": "-",
+							"distance": "1",
 							"kcal": "-"
 						}
 					}

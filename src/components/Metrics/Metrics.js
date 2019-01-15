@@ -36,7 +36,9 @@ class Metrics extends Component {
     const swipedHorizontal = Math.abs(diffX) > Math.abs(diffY);
 
     if (swipedHorizontal) {
-      const increment = this.props.metricType === 'weight' ? 5 : 1;
+      let increment = this.props.metricType === 'weight' ? 5 : 1;
+      increment = this.props.user.settings.units[this.props.metricType] === 'kg' ? 2.5 : increment;
+
       const initialValue = e.target.value;
       const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
 
@@ -97,26 +99,31 @@ class Metrics extends Component {
     }
   }
 
-  convertMetricValue = (initialValue, type, unit) => {
-    switch (unit) {
-      case 'kg':
-        return (initialValue * 0.45359237).toFixed(1);
+  convertMetricValue = (initialValue, unit) => {
 
-      case 'km':
-        return (initialValue * 1.609344).toFixed(1);
+    if (Number.isInteger(parseInt(initialValue, 10))) {
+      switch (unit) {
+        case 'kg':
+          return (initialValue * 0.45359237).toFixed(1);
 
-      case 'minutes':
-        return initialValue / 60;
-    
-      default:
-        return initialValue;
+        case 'km':
+          return (initialValue * 1.609344).toFixed(1);
+
+        case 'min':
+          return initialValue / 60;
+
+        default:
+          break;
+      }
     }
+
+    return initialValue
   }
 
   render() {
     const metricType = this.props.metricType;
     const metricUnit = this.props.user.settings.units[metricType];
-    const metricValue = this.convertMetricValue(this.state.metricValue, metricType, metricUnit);
+    const metricValue = this.convertMetricValue(this.state.metricValue, metricUnit);
 
     return (
       <input type='text' name={metricType} className={`Metric ${metricType}`}

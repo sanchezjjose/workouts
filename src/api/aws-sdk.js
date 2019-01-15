@@ -7,6 +7,8 @@ AWS.config.update({
 });
 
 if (process.env.NODE_ENV === 'development') {
+  console.log('Setting localhost endpoint.');
+
   AWS.config.update({
     endpoint: 'http://localhost:8000'
   });
