@@ -32,11 +32,11 @@ class RoutineModal extends Component {
         }, 
         reps: {
           value: '-',
-          unit: ''
+          unit: '-'
         }, 
         sets: {
           value: '-',
-          unit: ''
+          unit: '-'
         },
         done: false
       } : { 
@@ -50,7 +50,7 @@ class RoutineModal extends Component {
         }, 
         kcal: {
           value: '-',
-          unit: ''
+          unit: '-'
         },
         done: false
       };

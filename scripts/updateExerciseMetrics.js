@@ -5,7 +5,7 @@ const dayOfWeek = 'Tuesday';
 const workoutName = 'Back';
 const exercise = { 
   name: 'TEST: Single-Arm Dumbbell Row',
-  metrics: { 
+  metrics: {
     'done': false,
     'weight': '60',
     'reps': '8',

@@ -7,7 +7,6 @@ class Metrics extends Component {
 
   state = {
     metricValue: this.props.exercise.metrics[this.props.metricType].value,
-    metricUnit: this.props.exercise.metrics[this.props.metricType].unit,
     // edited is synonomous with being in 'draft' state.
     edited: false
   }
@@ -100,18 +99,38 @@ class Metrics extends Component {
     }
   }
 
-  convertMetricValue = (initialValue, unit) => {
+  convertMetricValue = () => {
+    const initialValue = this.state.metricValue;
+    const metricType = this.props.metricType;
+    const currentUnit = this.props.exercise.metrics[this.props.metricType].unit;
+    const settingsUnit = this.props.user.settings.units[metricType];
+    const shouldConvert = currentUnit !== settingsUnit;
 
     if (Number.isInteger(parseInt(initialValue, 10))) {
-      switch (unit) {
+      switch (currentUnit) {
+        case 'lbs':
+          if (shouldConvert) return (initialValue / 2.205).toFixed(1);
+          break;
+
         case 'kg':
-          return (initialValue * 0.45359237).toFixed(1);
+          if (shouldConvert) return (initialValue * 2.205).toFixed(1);
+          break;
+
+        case 'mi':
+          if (shouldConvert) return (initialValue * 1.609).toFixed(1);
+          break;
 
         case 'km':
-          return (initialValue * 1.609344).toFixed(1);
+          if (shouldConvert) return (initialValue / 1.609).toFixed(1);
+          break;
 
         case 'min':
-          return initialValue / 60;
+          if (shouldConvert) return (initialValue * 60).toFixed(1);
+          break;
+
+        case 'sec':
+          if (shouldConvert) return (initialValue / 60).toFixed(1);
+          break;
 
         default:
           break;
@@ -123,8 +142,7 @@ class Metrics extends Component {
 
   render() {
     const metricType = this.props.metricType;
-    const metricUnit = this.props.user.settings.units[metricType];
-    const metricValue = this.convertMetricValue(this.state.metricValue, metricUnit);
+    const metricValue = this.convertMetricValue();
 
     return (
       <input type='text' name={metricType} className={`Metric ${metricType}`}
