@@ -6,7 +6,8 @@ import './Metrics.css';
 class Metrics extends Component {
 
   state = {
-    metricValue: this.props.exercise.metrics[this.props.metricType],
+    metricValue: this.props.exercise.metrics[this.props.metricType].value,
+    metricUnit: this.props.exercise.metrics[this.props.metricType].unit,
     // edited is synonomous with being in 'draft' state.
     edited: false
   }
