@@ -106,30 +106,32 @@ class Metrics extends Component {
     const settingsUnit = this.props.user.settings.units[metricType];
     const shouldConvert = currentUnit !== settingsUnit;
 
+    let finalValue = initialValue;
+
     if (Number.isInteger(parseInt(initialValue, 10))) {
       switch (currentUnit) {
         case 'lbs':
-          if (shouldConvert) return (initialValue / 2.205).toFixed(1);
+          if (shouldConvert) finalValue = (initialValue / 2.205).toFixed(1);
           break;
 
         case 'kg':
-          if (shouldConvert) return (initialValue * 2.205).toFixed(1);
+          if (shouldConvert) finalValue = (initialValue * 2.205).toFixed(1);
           break;
 
         case 'mi':
-          if (shouldConvert) return (initialValue * 1.609).toFixed(1);
+          if (shouldConvert) finalValue = (initialValue * 1.609).toFixed(1);
           break;
 
         case 'km':
-          if (shouldConvert) return (initialValue / 1.609).toFixed(1);
+          if (shouldConvert) finalValue = (initialValue / 1.609).toFixed(1);
           break;
 
         case 'min':
-          if (shouldConvert) return (initialValue * 60).toFixed(1);
+          if (shouldConvert) finalValue = (initialValue * 60).toFixed(1);
           break;
 
         case 'sec':
-          if (shouldConvert) return (initialValue / 60).toFixed(1);
+          if (shouldConvert) finalValue = (initialValue / 60).toFixed(1);
           break;
 
         default:
@@ -137,7 +139,7 @@ class Metrics extends Component {
       }
     }
 
-    return initialValue
+    return Math.round(finalValue * 100) / 100;
   }
 
   render() {
