@@ -8,7 +8,8 @@ class Metrics extends Component {
   state = {
     metricValue: this.props.exercise.metrics[this.props.metricType].value,
     // edited is synonomous with being in 'draft' state.
-    edited: false
+    edited: false,
+    converted: false
   }
 
   touchStartX = 0;
@@ -80,10 +81,13 @@ class Metrics extends Component {
       const dayOfWeek = this.props.routine.day;
       const workoutName = this.props.workout.name;
       const exercise = this.props.exercise;
+      const metricValue = this.state.metricValue;
+      const metricType = this.props.metricType;
+      const settingsUnit = this.props.user.settings.units[metricType];
 
-      saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, this.props.metricType, this.state.metricValue)
+      saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, metricType, metricValue, settingsUnit)
         .then(() => {
-          console.debug(`Changed ${this.props.metricType} metric for ${exercise.name} from ${prevProps.metricValue} to ${this.state.metricValue}.`);
+          console.debug(`Changed ${metricType} metric for ${exercise.name} from ${prevProps.metricValue} to ${metricValue}.`);
           if (this.props.saveMode === true) {
             this.props.handleUserChange(this.props.user, false, false);
           }
@@ -104,34 +108,34 @@ class Metrics extends Component {
     const metricType = this.props.metricType;
     const currentUnit = this.props.exercise.metrics[this.props.metricType].unit;
     const settingsUnit = this.props.user.settings.units[metricType];
-    const shouldConvert = currentUnit !== settingsUnit;
+    const shouldConvert = currentUnit !== settingsUnit && Number.isInteger(parseInt(initialValue, 10));
 
     let finalValue = initialValue;
 
-    if (Number.isInteger(parseInt(initialValue, 10))) {
+    if (shouldConvert) {
       switch (currentUnit) {
         case 'lbs':
-          if (shouldConvert) finalValue = (initialValue / 2.205).toFixed(1);
+          finalValue = (initialValue / 2.205).toFixed(1);
           break;
 
         case 'kg':
-          if (shouldConvert) finalValue = (initialValue * 2.205).toFixed(1);
+          finalValue = (initialValue * 2.205).toFixed(1);
           break;
 
         case 'mi':
-          if (shouldConvert) finalValue = (initialValue * 1.609).toFixed(1);
+          finalValue = (initialValue * 1.609).toFixed(1);
           break;
 
         case 'km':
-          if (shouldConvert) finalValue = (initialValue / 1.609).toFixed(1);
+          finalValue = (initialValue / 1.609).toFixed(1);
           break;
 
         case 'min':
-          if (shouldConvert) finalValue = (initialValue * 60).toFixed(1);
+          finalValue = (initialValue * 60).toFixed(1);
           break;
 
         case 'sec':
-          if (shouldConvert) finalValue = (initialValue / 60).toFixed(1);
+          finalValue = (initialValue / 60).toFixed(1);
           break;
 
         default:
