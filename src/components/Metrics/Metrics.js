@@ -148,7 +148,8 @@ class Metrics extends Component {
 
   render() {
     const metricType = this.props.metricType;
-    const metricValue = this.convertMetricValue();
+    const metricValue = isNaN(this.state.metricValue) || this.props.editMode ? 
+      this.state.metricValue : this.convertMetricValue();
 
     return (
       <input type='text' name={metricType} className={`Metric ${metricType}`}

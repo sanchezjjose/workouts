@@ -620,8 +620,42 @@
 			},
 			"Thursday": {
 				"weight": {
+					"Legs": {
+						"Barbell Squat": {
+							"done": false,
+							"weight": {
+								"value": "195",
+								"unit": "lbs"
+							},
+							"reps": {
+								"value": "5",
+								"unit": "-"
+							},
+							"sets": {
+								"value": "3",
+								"unit": "-"
+							}
+						}
+					}
 				},
 				"time": {
+					"Running": {
+						"Treadmill": {
+							"done": false,
+							"time": {
+								"value": "10",
+								"unit": "min"
+							},
+							"distance": {
+								"value": "5",
+								"unit": "mi"
+							},
+							"kcal": {
+								"value": "100",
+								"unit": "-"
+							}
+						}
+					}
 				}
 			},
 			"Friday": {
