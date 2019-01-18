@@ -51,8 +51,6 @@ class Metrics extends Component {
   }
 
   handleOnClick = (e) => {
-    // e.preventDefault();
-
     if (this.props.editMode && e.target.value === '-') {
       e.target.value = '';
     }
@@ -68,12 +66,22 @@ class Metrics extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState, prevContext) => {
+    const metricValue = this.state.metricValue;
+    const metricUnit = this.state.metricUnit;
+    const metricType = this.props.metricType;
+    const settingsUnit = this.props.user.settings.units[metricType] || '-';
+    const shouldUpdate = metricUnit !== settingsUnit && !isNaN(this.state.metricValue);
+
     const metricValueChanged = this.state.metricValue !== prevState.metricValue;
     const metricValueEdited = this.state.edited;
     const saveButtonClicked = this.props.saveMode;
     const inEditMode = this.props.editMode;
+    const shouldSave = (metricValueChanged && !inEditMode) || (metricValueEdited && saveButtonClicked);
 
-    if ((metricValueChanged && !inEditMode) || (metricValueEdited && saveButtonClicked)) {
+    if (shouldUpdate) {
+      this.convertMetricValue(metricUnit, settingsUnit);
+
+    } else if (shouldSave) {
       this.setState({ edited: false });
 
       const id = this.props.user.id;
@@ -81,9 +89,6 @@ class Metrics extends Component {
       const dayOfWeek = this.props.routine.day;
       const workoutName = this.props.workout.name;
       const exercise = this.props.exercise;
-      const metricValue = this.state.metricValue;
-      const metricType = this.props.metricType;
-      const settingsUnit = this.props.user.settings.units[metricType];
 
       saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, metricType, metricValue, settingsUnit)
         .then(() => {
@@ -103,19 +108,7 @@ class Metrics extends Component {
     }
   }
 
-  shouldComponentUpdate = () => {
-    const metricUnit = this.state.metricUnit;
-    const metricType = this.props.metricType;
-    const settingsUnit = this.props.user.settings.units[metricType] || '-';
-    const shouldUpdate = metricUnit !== settingsUnit && !isNaN(this.state.metricValue);
-
-    if (shouldUpdate) {
-      this.convertMetricValue(metricUnit, settingsUnit);
-    }
-
-    return shouldUpdate;
-  }
-
+  // TODO: Move to a util
   convertMetricValue = (currentUnit, settingsUnit) => {
     const initialValue = this.state.metricValue;
     let finalValue = initialValue;
