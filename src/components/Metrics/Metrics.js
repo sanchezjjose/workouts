@@ -108,7 +108,7 @@ class Metrics extends Component {
     const metricUnit = this.state.metricUnit;
     const metricType = this.props.metricType;
     const settingsUnit = this.props.user.settings.units[metricType] || '-';
-    const shouldUpdate = metricUnit !== settingsUnit;
+    const shouldUpdate = metricUnit !== settingsUnit && !isNaN(this.state.metricValue);
 
     if (shouldUpdate) {
       this.convertMetricValue(metricUnit, settingsUnit);
