@@ -104,6 +104,19 @@ class Metrics extends Component {
     }
   }
 
+  shouldComponentUpdate = () => {
+    const metricUnit = this.state.metricUnit;
+    const metricType = this.props.metricType;
+    const settingsUnit = this.props.user.settings.units[metricType] || '-';
+    const shouldUpdate = metricUnit !== settingsUnit;
+
+    if (shouldUpdate) {
+      this.convertMetricValue(metricUnit, settingsUnit);
+    }
+
+    return shouldUpdate;
+  }
+
   convertMetricValue = (currentUnit, settingsUnit) => {
     const initialValue = this.state.metricValue;
     let finalValue = initialValue;
@@ -147,13 +160,7 @@ class Metrics extends Component {
 
   render() {
     const metricValue = this.state.metricValue;
-    const metricUnit = this.state.metricUnit;
     const metricType = this.props.metricType;
-    const settingsUnit = this.props.user.settings.units[metricType] || '-';
-
-    if (metricUnit !== settingsUnit) {
-      this.convertMetricValue(metricUnit, settingsUnit);
-    }
 
     return (
       <input type='text' name={metricType} className={`Metric ${metricType}`}
