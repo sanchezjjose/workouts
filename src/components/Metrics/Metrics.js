@@ -92,14 +92,14 @@ class Metrics extends Component {
 
       saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, metricType, metricValue, settingsUnit)
         .then(() => {
-          console.debug(`Changed ${metricType} metric for ${exercise.name} from ${prevProps.metricValue} to ${metricValue}.`);
+          console.debug(`Changed ${metricType} metric for ${exercise.name} from ${prevState.metricValue} to ${metricValue}.`);
           if (this.props.saveMode === true) {
             this.props.handleUserChange(this.props.user, false, false);
           }
         })
         .catch(err => {
           console.error(err);
-          this.setState({ metricValue: prevProps.metricValue });
+          this.setState({ metricValue: prevState.metricValue });
         });
 
       // Update user props and bubble up to parent component
