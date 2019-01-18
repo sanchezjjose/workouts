@@ -9,8 +9,7 @@ class Metrics extends Component {
     metricValue: this.props.exercise.metrics[this.props.metricType].value,
     metricUnit: this.props.exercise.metrics[this.props.metricType].unit,
     // edited is synonomous with being in 'draft' state.
-    edited: false,
-    converted: false
+    edited: false
   }
 
   touchStartX = 0;
@@ -52,7 +51,7 @@ class Metrics extends Component {
   }
 
   handleOnClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     if (this.props.editMode && e.target.value === '-') {
       e.target.value = '';
