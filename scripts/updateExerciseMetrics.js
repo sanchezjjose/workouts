@@ -1,5 +1,4 @@
 const exerciseAPI = require('../src/api/ExerciseMetrics.js');
-
 const userId = 'joses';
 const dayOfWeek = 'Tuesday';
 const workoutName = 'Back';

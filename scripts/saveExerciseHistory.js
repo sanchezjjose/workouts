@@ -1,5 +1,4 @@
 const historyAPI = require('../src/api/WorkoutHistory.js');
-
 const userId = 'joses';
 const workoutName = 'Legs';
 const exercise = {

@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'development';
-
 const AWS = require('../src/api/aws-sdk');
 const fs = require('fs');
 const docClient = new AWS.DynamoDB.DocumentClient();

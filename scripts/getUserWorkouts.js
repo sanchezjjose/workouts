@@ -1,12 +1,10 @@
-process.env.NODE_ENV = 'development';
-
 const AWS = require('../src/api/aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const params = {
   TableName: 'Workouts',
   Key: {
-    'id': 'test'
+    'id': 'joses'
   }
 };
 

@@ -1,5 +1,4 @@
 const exerciseAPI = require('../src/api/ExerciseStatus.js');
-
 const userId = 'joses';
 const workoutDay = 'Monday';
 const workoutType = 'weight';
