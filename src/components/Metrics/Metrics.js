@@ -7,6 +7,7 @@ class Metrics extends Component {
 
   state = {
     metricValue: this.props.exercise.metrics[this.props.metricType].value,
+    metricUnit: this.props.exercise.metrics[this.props.metricType].unit,
     // edited is synonomous with being in 'draft' state.
     edited: false,
     converted: false
@@ -103,53 +104,56 @@ class Metrics extends Component {
     }
   }
 
-  convertMetricValue = () => {
+  convertMetricValue = (currentUnit, settingsUnit) => {
     const initialValue = this.state.metricValue;
-    const metricType = this.props.metricType;
-    const currentUnit = this.props.exercise.metrics[this.props.metricType].unit;
-    const settingsUnit = this.props.user.settings.units[metricType];
-    const shouldConvert = currentUnit !== settingsUnit && Number.isInteger(parseInt(initialValue, 10));
-
     let finalValue = initialValue;
 
-    if (shouldConvert) {
-      switch (currentUnit) {
-        case 'lbs':
-          finalValue = (initialValue / 2.205).toFixed(1);
-          break;
+    switch (currentUnit) {
+      case 'lbs':
+        finalValue = (initialValue / 2.205).toFixed(1);
+        break;
 
-        case 'kg':
-          finalValue = (initialValue * 2.205).toFixed(1);
-          break;
+      case 'kg':
+        finalValue = (initialValue * 2.205).toFixed(1);
+        break;
 
-        case 'mi':
-          finalValue = (initialValue * 1.609).toFixed(1);
-          break;
+      case 'mi':
+        finalValue = (initialValue * 1.609).toFixed(1);
+        break;
 
-        case 'km':
-          finalValue = (initialValue / 1.609).toFixed(1);
-          break;
+      case 'km':
+        finalValue = (initialValue / 1.609).toFixed(1);
+        break;
 
-        case 'min':
-          finalValue = (initialValue * 60).toFixed(1);
-          break;
+      case 'min':
+        finalValue = (initialValue * 60).toFixed(1);
+        break;
 
-        case 'sec':
-          finalValue = (initialValue / 60).toFixed(1);
-          break;
+      case 'sec':
+        finalValue = (initialValue / 60).toFixed(1);
+        break;
 
-        default:
-          break;
-      }
+      default:
+        break;
     }
 
-    return Math.round(finalValue * 100) / 100;
+    finalValue = Math.round(finalValue * 100) / 100;
+
+    this.setState({
+      metricValue: finalValue,
+      metricUnit: settingsUnit
+    });
   }
 
   render() {
+    const metricValue = this.state.metricValue;
+    const metricUnit = this.state.metricUnit;
     const metricType = this.props.metricType;
-    const metricValue = isNaN(this.state.metricValue) || this.props.editMode ? 
-      this.state.metricValue : this.convertMetricValue();
+    const settingsUnit = this.props.user.settings.units[metricType] || '-';
+
+    if (metricUnit !== settingsUnit) {
+      this.convertMetricValue(metricUnit, settingsUnit);
+    }
 
     return (
       <input type='text' name={metricType} className={`Metric ${metricType}`}

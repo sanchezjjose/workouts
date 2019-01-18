@@ -21,7 +21,7 @@ const saveExerciseMetrics = (userId, dayOfWeek, workoutType, workoutName, exerci
       ExpressionAttributeValues: {
         ":metric": {
           value: metricValue,
-          unit: metricUnit
+          unit: metricUnit || '-' // TODO: maybe okay to leave undefined for reps, sets and kcal (not in settings)
         }
       },
       ReturnValues:"ALL_NEW"
