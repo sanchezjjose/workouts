@@ -103,7 +103,10 @@ class Metrics extends Component {
         });
 
       // Update user props and bubble up to parent component
-      this.props.user.routines[dayOfWeek][routineType][workoutName][exercise.name][this.props.metricType] = this.state.metricValue;
+      this.props.user.routines[dayOfWeek][routineType][workoutName][exercise.name][this.props.metricType] = {
+        value: metricValue,
+        unit: metricUnit
+      };
       this.props.handleUserChange(this.props.user);
     }
   }

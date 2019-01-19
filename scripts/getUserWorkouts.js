@@ -4,7 +4,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 const params = {
   TableName: 'Workouts',
   Key: {
-    'id': 'joses'
+    'id': process.env.USER_ID || 'joses'
   }
 };
 
