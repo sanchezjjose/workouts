@@ -79,8 +79,11 @@ class Exercise extends Component {
         {metricTypes.map(metricType =>
           <Metrics
             key={metricType}
-            metricType={metricType}
             exercise={exercise}
+            metricType={metricType}
+            metricValue={exercise.metrics[metricType].value}
+            metricUnit={exercise.metrics[metricType].unit}
+            settingsUnit={this.props.user.settings.units[metricType]}
             user={this.props.user}
             workout={this.props.workout}
             routine={this.props.routine}

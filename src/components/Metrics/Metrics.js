@@ -5,11 +5,17 @@ import './Metrics.css';
 
 class Metrics extends Component {
 
-  state = {
-    metricValue: this.props.exercise.metrics[this.props.metricType].value,
-    metricUnit: this.props.exercise.metrics[this.props.metricType].unit,
-    // edited is synonomous with being in 'draft' state.
-    edited: false
+  constructor(props) {
+    super(props);
+
+    this.convertMetric = this.convertMetric.bind(this);
+
+    this.state = {
+      metricValue: (this.props.settingsUnit === this.props.metricUnit) ? this.props.metricValue : this.convertMetric(),
+      // metricUnit: this.props.metricUnit,
+      // edited is synonomous with being in 'draft' state.
+      edited: false
+    }
   }
 
   touchStartX = 0;
@@ -65,12 +71,16 @@ class Metrics extends Component {
     });
   }
 
+  componentDidMount = () => {
+    // debugger;
+  }
+
   componentDidUpdate = (prevProps, prevState, prevContext) => {
     const metricValue = this.state.metricValue;
-    const metricUnit = this.state.metricUnit;
+    // const metricUnit = this.state.metricUnit;
     const metricType = this.props.metricType;
-    const settingsUnit = this.props.user.settings.units[metricType] || '-';
-    const shouldUpdate = metricUnit !== settingsUnit && !isNaN(this.state.metricValue);
+    const settingsUnit = this.props.settingsUnit || '-';
+    // const shouldUpdate = metricUnit !== settingsUnit && !isNaN(this.state.metricValue);
 
     const metricValueChanged = this.state.metricValue !== prevState.metricValue;
     const metricValueEdited = this.state.edited;
@@ -78,10 +88,11 @@ class Metrics extends Component {
     const inEditMode = this.props.editMode;
     const shouldSave = (metricValueChanged && !inEditMode) || (metricValueEdited && saveButtonClicked);
 
-    if (shouldUpdate) {
-      this.convertMetricValue(metricUnit, settingsUnit);
+    // if (shouldUpdate) {
+    //   this.convertMetricValue(metricUnit, settingsUnit);
 
-    } else if (shouldSave) {
+    // } else if (shouldSave) {
+    if (shouldSave) {
       this.setState({ edited: false });
 
       const id = this.props.user.id;
@@ -105,52 +116,58 @@ class Metrics extends Component {
       // Update user props and bubble up to parent component
       this.props.user.routines[dayOfWeek][routineType][workoutName][exercise.name][this.props.metricType] = {
         value: metricValue,
-        unit: metricUnit
+        unit: settingsUnit
+        // unit: metricUnit
       };
       this.props.handleUserChange(this.props.user);
     }
   }
 
   // TODO: Move to a util
-  convertMetricValue = (currentUnit, settingsUnit) => {
-    const initialValue = this.state.metricValue;
+  convertMetric = () => {
+    const currentUnit = this.props.metricUnit;
+    const initialValue = this.props.metricValue;
     let finalValue = initialValue;
 
-    switch (currentUnit) {
-      case 'lbs':
-        finalValue = (initialValue / 2.205).toFixed(1);
-        break;
+    if (initialValue !== '-') {
+      switch (currentUnit) {
+        case 'lbs':
+          finalValue = (initialValue / 2.205).toFixed(1);
+          break;
 
-      case 'kg':
-        finalValue = (initialValue * 2.205).toFixed(1);
-        break;
+        case 'kg':
+          finalValue = (initialValue * 2.205).toFixed(1);
+          break;
 
-      case 'mi':
-        finalValue = (initialValue * 1.609).toFixed(1);
-        break;
+        case 'mi':
+          finalValue = (initialValue * 1.609).toFixed(1);
+          break;
 
-      case 'km':
-        finalValue = (initialValue / 1.609).toFixed(1);
-        break;
+        case 'km':
+          finalValue = (initialValue / 1.609).toFixed(1);
+          break;
 
-      case 'min':
-        finalValue = (initialValue * 60).toFixed(1);
-        break;
+        case 'min':
+          finalValue = (initialValue * 60).toFixed(1);
+          break;
 
-      case 'sec':
-        finalValue = (initialValue / 60).toFixed(1);
-        break;
+        case 'sec':
+          finalValue = (initialValue / 60).toFixed(1);
+          break;
 
-      default:
-        break;
+        default:
+          break;
+      }
+
+      finalValue = Math.round(finalValue * 100) / 100;
     }
 
-    finalValue = Math.round(finalValue * 100) / 100;
+    return finalValue;
 
-    this.setState({
-      metricValue: finalValue,
-      metricUnit: settingsUnit
-    });
+    // this.setState({
+    //   metricValue: finalValue,
+    //   metricUnit: settingsUnit
+    // });
   }
 
   render() {
