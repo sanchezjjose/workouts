@@ -5,15 +5,9 @@ import './Metrics.css';
 
 class Metrics extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.getMetricValue = this.getMetricValue.bind(this);
-
-    this.state = {
-      metricValue: this.getMetricValue(),
-      edited: false // represents in draft mode
-    }
+  state = {
+    metricValue: this.props.metricValue,
+    edited: false // represents in draft mode
   }
 
   touchStartX = 0;
@@ -41,9 +35,7 @@ class Metrics extends Component {
     const swipedHorizontal = Math.abs(diffX) > Math.abs(diffY);
 
     if (swipedHorizontal) {
-      let increment = this.props.metricType === 'weight' ? 5 : 1;
-      increment = this.props.user.settings.units[this.props.metricType] === 'kg' ? 2.5 : increment;
-
+      const increment = this.props.metricType === 'weight' ? 2.5 : 1;
       const initialValue = e.target.value;
       const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
 
@@ -69,6 +61,16 @@ class Metrics extends Component {
     });
   }
 
+  componentDidMount = () => {
+    const metricUnit = this.props.metricUnit;
+    const settingsUnit = this.props.settingsUnit;
+
+    // Unit settings unchanged or don't exist
+    if (settingsUnit !== metricUnit && typeof settingsUnit !== 'undefined') {
+      this.setState({ metricValue: this.convertMetricValue() });
+    }
+  }
+
   componentDidUpdate = (prevProps, prevState, prevContext) => {
     const metricValueChanged = this.state.metricValue !== prevState.metricValue;
     const metricValueEdited = this.state.edited;
@@ -78,7 +80,7 @@ class Metrics extends Component {
 
     if (shouldSave) {
       this.setState({ edited: false });
-      this.saveMetric(this.state.metricValue, this.props.metricUnit);
+      this.saveMetric(this.state.metricValue, this.props.settingsUnit);
     }
   }
 
@@ -112,52 +114,43 @@ class Metrics extends Component {
     this.props.handleUserChange(this.props.user);
   }
 
-  getMetricValue = () => {
+  convertMetricValue = () => {
     const metricValue = this.props.metricValue;
     const metricUnit = this.props.metricUnit;
-    const settingsUnit = this.props.settingsUnit;
 
-    // Unit settings unchanged or don't exist
-    if (settingsUnit === metricUnit || settingsUnit === undefined) {
-      return metricValue;
+     // Unit settings changed, convert value
+    let result = metricValue;
 
-    } else {
-      // Unit settings changed, convert value
-      let result = metricValue;
+    switch (metricUnit) {
+      case 'lbs':
+        result = (metricValue / 2.205).toFixed(1);
+        break;
 
-      switch (metricUnit) {
-        case 'lbs':
-          result = (metricValue / 2.205).toFixed(1);
-          break;
+      case 'kg':
+        result = (metricValue * 2.205).toFixed(1);
+        break;
 
-        case 'kg':
-          result = (metricValue * 2.205).toFixed(1);
-          break;
+      case 'mi':
+        result = (metricValue * 1.609).toFixed(1);
+        break;
 
-        case 'mi':
-          result = (metricValue * 1.609).toFixed(1);
-          break;
+      case 'km':
+        result = (metricValue / 1.609).toFixed(1);
+        break;
 
-        case 'km':
-          result = (metricValue / 1.609).toFixed(1);
-          break;
+      case 'min':
+        result = (metricValue * 60).toFixed(1);
+        break;
 
-        case 'min':
-          result = (metricValue * 60).toFixed(1);
-          break;
+      case 'sec':
+        result = (metricValue / 60).toFixed(1);
+        break;
 
-        case 'sec':
-          result = (metricValue / 60).toFixed(1);
-          break;
-
-        default:
-          break;
-      }
-
-      const convertedMetricValue = Math.round(result * 100) / 100;
-      this.saveMetric(convertedMetricValue, this.props.settingsUnit);
-      return convertedMetricValue;
+      default:
+        break;
     }
+
+    return Math.round(result * 100) / 100;
   }
 
   render() {
