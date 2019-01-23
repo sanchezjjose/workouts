@@ -8,13 +8,11 @@ class Metrics extends Component {
   constructor(props) {
     super(props);
 
-    this.convertMetric = this.convertMetric.bind(this);
+    this.getMetricValue = this.getMetricValue.bind(this);
 
     this.state = {
-      metricValue: (this.props.settingsUnit === this.props.metricUnit) ? this.props.metricValue : this.convertMetric(),
-      // metricUnit: this.props.metricUnit,
-      // edited is synonomous with being in 'draft' state.
-      edited: false
+      metricValue: this.getMetricValue(),
+      edited: false // represents in draft mode
     }
   }
 
@@ -71,103 +69,95 @@ class Metrics extends Component {
     });
   }
 
-  componentDidMount = () => {
-    // debugger;
-  }
-
   componentDidUpdate = (prevProps, prevState, prevContext) => {
-    const metricValue = this.state.metricValue;
-    // const metricUnit = this.state.metricUnit;
-    const metricType = this.props.metricType;
-    const settingsUnit = this.props.settingsUnit || '-';
-    // const shouldUpdate = metricUnit !== settingsUnit && !isNaN(this.state.metricValue);
-
     const metricValueChanged = this.state.metricValue !== prevState.metricValue;
     const metricValueEdited = this.state.edited;
     const saveButtonClicked = this.props.saveMode;
     const inEditMode = this.props.editMode;
     const shouldSave = (metricValueChanged && !inEditMode) || (metricValueEdited && saveButtonClicked);
 
-    // if (shouldUpdate) {
-    //   this.convertMetricValue(metricUnit, settingsUnit);
-
-    // } else if (shouldSave) {
     if (shouldSave) {
       this.setState({ edited: false });
-
-      const id = this.props.user.id;
-      const routineType = this.props.routineType;
-      const dayOfWeek = this.props.routine.day;
-      const workoutName = this.props.workout.name;
-      const exercise = this.props.exercise;
-
-      saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, metricType, metricValue, settingsUnit)
-        .then(() => {
-          console.debug(`Changed ${metricType} metric for ${exercise.name} from ${prevState.metricValue} to ${metricValue}.`);
-          if (this.props.saveMode === true) {
-            this.props.handleUserChange(this.props.user, false, false);
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          this.setState({ metricValue: prevState.metricValue });
-        });
-
-      // Update user props and bubble up to parent component
-      this.props.user.routines[dayOfWeek][routineType][workoutName][exercise.name][this.props.metricType] = {
-        value: metricValue,
-        unit: settingsUnit
-        // unit: metricUnit
-      };
-      this.props.handleUserChange(this.props.user);
+      this.saveMetric(this.state.metricValue, this.props.metricUnit);
     }
   }
 
-  // TODO: Move to a util
-  convertMetric = () => {
-    const currentUnit = this.props.metricUnit;
-    const initialValue = this.props.metricValue;
-    let finalValue = initialValue;
+  saveMetric(metricValue, metricUnit) {
+    const id = this.props.user.id;
+    const routineType = this.props.routineType;
+    const dayOfWeek = this.props.routine.day;
+    const workoutName = this.props.workout.name;
+    const exercise = this.props.exercise;
+    const metricType = this.props.metricType;
 
-    if (initialValue !== '-') {
-      switch (currentUnit) {
+    saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, metricType, metricValue, metricUnit)
+      .then(() => {
+        console.debug(`Changed ${metricType} metric for ${exercise.name} from ${this.state.metricValue} to ${metricValue}.`);
+
+        if (this.props.saveMode === true) {
+          this.props.handleUserChange(this.props.user, false, false);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState(prevState => ({ metricValue: prevState.metricValue }));
+      });
+
+    // Update user props and bubble up to parent component
+    this.props.user.routines[dayOfWeek][routineType][workoutName][exercise.name][this.props.metricType] = {
+      value: metricValue,
+      unit: metricUnit
+    };
+
+    this.props.handleUserChange(this.props.user);
+  }
+
+  getMetricValue = () => {
+    const metricValue = this.props.metricValue;
+    const metricUnit = this.props.metricUnit;
+    const settingsUnit = this.props.settingsUnit;
+
+    // Unit settings unchanged or don't exist
+    if (settingsUnit === metricUnit || settingsUnit === undefined) {
+      return metricValue;
+
+    } else {
+      // Unit settings changed, convert value
+      let result = metricValue;
+
+      switch (metricUnit) {
         case 'lbs':
-          finalValue = (initialValue / 2.205).toFixed(1);
+          result = (metricValue / 2.205).toFixed(1);
           break;
 
         case 'kg':
-          finalValue = (initialValue * 2.205).toFixed(1);
+          result = (metricValue * 2.205).toFixed(1);
           break;
 
         case 'mi':
-          finalValue = (initialValue * 1.609).toFixed(1);
+          result = (metricValue * 1.609).toFixed(1);
           break;
 
         case 'km':
-          finalValue = (initialValue / 1.609).toFixed(1);
+          result = (metricValue / 1.609).toFixed(1);
           break;
 
         case 'min':
-          finalValue = (initialValue * 60).toFixed(1);
+          result = (metricValue * 60).toFixed(1);
           break;
 
         case 'sec':
-          finalValue = (initialValue / 60).toFixed(1);
+          result = (metricValue / 60).toFixed(1);
           break;
 
         default:
           break;
       }
 
-      finalValue = Math.round(finalValue * 100) / 100;
+      const convertedMetricValue = Math.round(result * 100) / 100;
+      this.saveMetric(convertedMetricValue, this.props.settingsUnit);
+      return convertedMetricValue;
     }
-
-    return finalValue;
-
-    // this.setState({
-    //   metricValue: finalValue,
-    //   metricUnit: settingsUnit
-    // });
   }
 
   render() {
