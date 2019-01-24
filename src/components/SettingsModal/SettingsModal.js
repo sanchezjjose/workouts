@@ -20,9 +20,12 @@ class SettingsModal extends Component {
 
       // TODO: replace with userObj.setSettings method
       user['settings'] = settings;
-      this.props.handleUserChange(user)
+      this.props.handleUserChange(user);
 
-      saveSettings(user.id, settings);
+      saveSettings(user.id, settings)
+        .then(() => {
+          window.location.reload();  
+        });
     });
   }
 
