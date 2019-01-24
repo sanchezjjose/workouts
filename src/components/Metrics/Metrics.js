@@ -64,9 +64,12 @@ class Metrics extends Component {
   componentDidMount = () => {
     const metricUnit = this.props.metricUnit;
     const settingsUnit = this.props.settingsUnit;
+    const shouldConvert = settingsUnit !== metricUnit
+      && typeof settingsUnit !== 'undefined'
+      && !isNaN(this.state.metricValue);
 
     // Unit settings unchanged or don't exist
-    if (settingsUnit !== metricUnit && typeof settingsUnit !== 'undefined') {
+    if (shouldConvert) {
       this.setState({ metricValue: this.convertMetricValue() });
     }
   }
@@ -80,11 +83,11 @@ class Metrics extends Component {
 
     if (shouldSave) {
       this.setState({ edited: false });
-      this.saveMetric(this.state.metricValue, this.props.settingsUnit);
+      this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
     }
   }
 
-  saveMetric(metricValue, metricUnit) {
+  saveMetric(prevMetricValue, prevSettingsUnit, metricValue, settingsUnit) {
     const id = this.props.user.id;
     const routineType = this.props.routineType;
     const dayOfWeek = this.props.routine.day;
@@ -92,9 +95,9 @@ class Metrics extends Component {
     const exercise = this.props.exercise;
     const metricType = this.props.metricType;
 
-    saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, metricType, metricValue, metricUnit)
+    saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, metricType, metricValue, settingsUnit)
       .then(() => {
-        console.debug(`Changed ${metricType} metric for ${exercise.name} from ${this.state.metricValue} to ${metricValue}.`);
+        console.debug(`Changed ${metricType} metric for ${exercise.name} from ${prevMetricValue} ${prevSettingsUnit} to ${metricValue} ${settingsUnit}.`);
 
         if (this.props.saveMode === true) {
           this.props.handleUserChange(this.props.user, false, false);
@@ -108,7 +111,7 @@ class Metrics extends Component {
     // Update user props and bubble up to parent component
     this.props.user.routines[dayOfWeek][routineType][workoutName][exercise.name][this.props.metricType] = {
       value: metricValue,
-      unit: metricUnit
+      unit: settingsUnit
     };
 
     this.props.handleUserChange(this.props.user);
