@@ -81,7 +81,7 @@
 						"Barbell Bench Press": {
 							"done": false,
 							"weight": { "value": "165", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Pushups": {
@@ -101,19 +101,19 @@
 						"Upright Cable Row": {
 							"done": false,
 							"weight": { "value": "120", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Lateral Raise Machine": {
 							"done": false,
 							"weight": { "value": "80", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Reverse Machine Flies": {
 							"done": false,
 							"weight": { "value": "115", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Barbell Military Press": {
@@ -124,8 +124,8 @@
 						},
 						"Front Two-Dumbbell Raise": {
 							"done": false,
-							"weight": { "value": "20", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"weight": { "value": "25", "unit": "lbs" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Shrugs": {
@@ -150,13 +150,13 @@
 						"Chin-Up": {
 							"done": false,
 							"weight": { "value": "-", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Dumbbell Curls": {
 							"done": false,
-							"weight": { "value": "25", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"weight": { "value": "30", "unit": "lbs" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						}
 					},
@@ -164,31 +164,31 @@
 						"Pull Ups": {
 							"done": false,
 							"weight": { "value": "-", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "8", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Bent-Over Barbell Row": {
 							"done": false,
 							"weight": { "value": "125", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Wide-Grip Seated Cable Row": {
 							"done": false,
 							"weight": { "value": "140", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Close-Grip Pull Down": {
 							"done": false,
 							"weight": { "value": "140", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Single-Arm Dumbbell Row": {
 							"done": false,
 							"weight": { "value": "65", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						}
 					},
@@ -202,19 +202,13 @@
 						"Tricep Pushdown (rope)": {
 							"done": false,
 							"weight": { "value": "110", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
-							"sets": { "value": "3", "unit": "-" }
-						},
-						"Overhead Extension Machine": {
-							"done": false,
-							"weight": { "value": "60", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"EZ-Bar Standing Overhead": {
 							"done": false,
 							"weight": { "value": "70", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						}
 					}
@@ -239,19 +233,19 @@
 						"Hip Hinge": {
 							"done": false,
 							"weight": { "value": "100", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Leg Extensions": {
 							"done": false,
 							"weight": { "value": "130", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "4", "unit": "-" }
 						},
 						"Seated Calf Raise": {
 							"done": false,
 							"weight": { "value": "260", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "4", "unit": "-" }
 						}
 					}
@@ -261,7 +255,7 @@
 						"Sauna": {
 							"done": false,
 							"time": { "value": "10", "unit": "min" },
-							"distance": { "value": "1", "unit": "mi" },
+							"distance": { "value": "-", "unit": "-" },
 							"kcal": { "value": "-", "unit": "-" }
 						}
 					}
@@ -277,7 +271,7 @@
 						"Barbell Bench Press": {
 							"done": false,
 							"weight": { "value": "165", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Pushups": {
@@ -297,19 +291,19 @@
 						"Upright Cable Row": {
 							"done": false,
 							"weight": { "value": "120", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Lateral Raise Machine": {
 							"done": false,
 							"weight": { "value": "80", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Reverse Machine Flies": {
 							"done": false,
 							"weight": { "value": "115", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Barbell Military Press": {
@@ -320,8 +314,8 @@
 						},
 						"Front Two-Dumbbell Raise": {
 							"done": false,
-							"weight": { "value": "20", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
+							"weight": { "value": "25", "unit": "lbs" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Shrugs": {
@@ -346,13 +340,13 @@
 						"Chin-Up": {
 							"done": false,
 							"weight": { "value": "-", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Dumbbell Curls": {
 							"done": false,
-							"weight": { "value": "25", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"weight": { "value": "30", "unit": "lbs" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						}
 					},
@@ -360,31 +354,31 @@
 						"Pull Ups": {
 							"done": false,
 							"weight": { "value": "-", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "8", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Bent-Over Barbell Row": {
 							"done": false,
 							"weight": { "value": "125", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Wide-Grip Seated Cable Row": {
 							"done": false,
 							"weight": { "value": "140", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Close-Grip Pull Down": {
 							"done": false,
 							"weight": { "value": "140", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Single-Arm Dumbbell Row": {
 							"done": false,
 							"weight": { "value": "65", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						}
 					},
@@ -398,19 +392,13 @@
 						"Tricep Pushdown (rope)": {
 							"done": false,
 							"weight": { "value": "110", "unit": "lbs" },
-							"reps": { "value": "8", "unit": "-" },
-							"sets": { "value": "3", "unit": "-" }
-						},
-						"Overhead Extension Machine": {
-							"done": false,
-							"weight": { "value": "60", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"EZ-Bar Standing Overhead": {
 							"done": false,
 							"weight": { "value": "70", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						}
 					}
@@ -435,19 +423,19 @@
 						"Hip Hinge": {
 							"done": false,
 							"weight": { "value": "100", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Leg Extensions": {
 							"done": false,
 							"weight": { "value": "130", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "4", "unit": "-" }
 						},
 						"Seated Calf Raise": {
 							"done": false,
 							"weight": { "value": "260", "unit": "lbs" },
-							"reps": { "value": "10", "unit": "-" },
+							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "4", "unit": "-" }
 						}
 					}
@@ -457,7 +445,7 @@
 						"Sauna": {
 							"done": false,
 							"time": { "value": "10", "unit": "min" },
-							"distance": { "value": "1", "unit": "mi" },
+							"distance": { "value": "-", "unit": "-" },
 							"kcal": { "value": "-", "unit": "-" }
 						}
 					}
@@ -555,82 +543,14 @@
 			},
 			"Wednesday": {
 				"weight": {
-					"Legs": {
-						"Barbell Squat": {
-							"done": false,
-							"weight": {
-								"value": "195",
-								"unit": "lbs"
-							},
-							"reps": {
-								"value": "5",
-								"unit": "-"
-							},
-							"sets": {
-								"value": "3",
-								"unit": "-"
-							}
-						}
-					}
 				},
 				"time": {
-					"Running": {
-						"Treadmill": {
-							"done": false,
-							"time": {
-								"value": "10",
-								"unit": "min"
-							},
-							"distance": {
-								"value": "5",
-								"unit": "mi"
-							},
-							"kcal": {
-								"value": "100",
-								"unit": "-"
-							}
-						}
-					}
 				}
 			},
 			"Thursday": {
 				"weight": {
-					"Legs": {
-						"Barbell Squat": {
-							"done": false,
-							"weight": {
-								"value": "195",
-								"unit": "lbs"
-							},
-							"reps": {
-								"value": "5",
-								"unit": "-"
-							},
-							"sets": {
-								"value": "3",
-								"unit": "-"
-							}
-						}
-					}
 				},
 				"time": {
-					"Running": {
-						"Treadmill": {
-							"done": false,
-							"time": {
-								"value": "10",
-								"unit": "min"
-							},
-							"distance": {
-								"value": "5",
-								"unit": "mi"
-							},
-							"kcal": {
-								"value": "100",
-								"unit": "-"
-							}
-						}
-					}
 				}
 			},
 			"Friday": {

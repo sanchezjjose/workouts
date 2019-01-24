@@ -130,7 +130,7 @@ class Metrics extends Component {
         break;
 
       case 'kg':
-        result = (metricValue * 2.205).toFixed(1);
+        result = Math.round((metricValue * 2.205).toFixed(1));
         break;
 
       case 'mi':
@@ -153,7 +153,7 @@ class Metrics extends Component {
         break;
     }
 
-    return Math.round(result * 100) / 100;
+    return result;
   }
 
   render() {
