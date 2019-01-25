@@ -121,39 +121,28 @@ class Metrics extends Component {
     const metricValue = this.props.metricValue;
     const metricUnit = this.props.metricUnit;
 
-     // Unit settings changed, convert value
-    let result = metricValue;
-
     switch (metricUnit) {
       case 'lbs':
-        result = (metricValue / 2.205).toFixed(1);
-        break;
+        return (metricValue / 2.205).toFixed(1);
 
       case 'kg':
-        result = Math.round((metricValue * 2.205).toFixed(1));
-        break;
+        return Math.round((metricValue * 2.205).toFixed(1));
 
       case 'mi':
-        result = (metricValue * 1.609).toFixed(1);
-        break;
+        return (metricValue * 1.609).toFixed(1);
 
       case 'km':
-        result = (metricValue / 1.609).toFixed(1);
-        break;
+        return (metricValue / 1.609).toFixed(1);
 
       case 'min':
-        result = (metricValue * 60).toFixed(1);
-        break;
+        return (metricValue * 60).toFixed(1);
 
       case 'sec':
-        result = (metricValue / 60).toFixed(1);
-        break;
+        return (metricValue / 60).toFixed(1);
 
       default:
-        break;
+        return metricValue;
     }
-
-    return result;
   }
 
   render() {
