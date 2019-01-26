@@ -4,6 +4,9 @@ import { saveExerciseHistory, removeExerciseHistory } from '../../api/WorkoutHis
 import { saveExerciseStatus } from '../../api/ExerciseStatus';
 import { saveRoutine } from '../../api/Routine';
 
+import checkCircleFilled from './check_circle-24px.svg';
+import checkCircleOutline from './check_circle_outline-24px.svg';
+
 import './Exercise.css';
 import "@material/icon-button/dist/mdc.icon-button.min.css";
 
@@ -60,18 +63,19 @@ class Exercise extends Component {
 
   render() {
     const exercise = this.props.exercise;
-    const exerciseClassName = this.props.editMode ? 'editing' : '';
-    const dayOfWeek = this.props.routine.day;
-    const hasDate = this.props.user.routines[dayOfWeek].date ? true : false;
+    const modeClassName = this.props.editMode ? 'editing' : '';
+    const workoutStartedClassName = this.props.workoutStarted ? 'workout-started' : '';
     const metricTypes = this.props.routineType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
 
     return (
-      <div className={`Exercise ${exerciseClassName}`}>
+      <div className={`Exercise ${modeClassName} ${workoutStartedClassName}`}>
         {this.props.editMode ?
           <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button> :
-          (exercise.metrics.done ? 
-            <button onClick={() => this.handleExerciseStatus(false)} className="status-button mdc-icon-button material-icons fill" disabled={!hasDate}>check_circle</button> :
-            <button onClick={() => this.handleExerciseStatus(true)} className="status-button mdc-icon-button material-icons" disabled={!hasDate}>check_circle_outline</button>
+          (this.props.workoutStarted &&
+            (exercise.metrics.done ? 
+              <img onClick={() => this.handleExerciseStatus(false)} src={checkCircleFilled} alt="done" /> :
+              <img onClick={() => this.handleExerciseStatus(true)} src={checkCircleOutline} alt="not-done" />
+            )
           )
         }
         <div className='name'>{exercise.name}</div>

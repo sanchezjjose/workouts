@@ -26,15 +26,20 @@
 }
 
 .Routine .routine-heading .weekday {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   font-weight: 400;
   font-size: 26px;
 }
 
+.Routine .routine-heading .subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: grey;
+}
+
 .Routine .header {
   display: grid;
-  /* Add width of status button plus gap between button and name column */
-  grid-template-columns: calc(155px + 48px + 5px) repeat(3, 1fr);
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   grid-gap: 5px;
   justify-items: center;
   align-items: end;
@@ -42,6 +47,11 @@
   border-bottom: 1px #ddd solid;
   margin: 10px 0;
   padding-bottom: 5px;
+}
+
+.Routine.workout-started .header {
+  /* Add width of status button plus gap between button and name column */
+  grid-template-columns: calc(155px + 48px + 5px) repeat(3, 1fr);
 }
 
 .Routine .workout-name {
@@ -66,6 +76,7 @@
   border: 1px #000 solid;
   font-size: 14px;
   padding: 10px;
+  margin-top: 20px;
   text-decoration: none;
 }
 
@@ -84,23 +95,11 @@
     grid-template-columns: 2fr 1fr 1fr 1fr;
   }
 
-  .Routine .group .Exercise {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
-
   .Routine .group .header .workout-name {
     font-size: 14px;
   }
 
   .Routine .group .header span {
-    font-size: 12px;
-  }
-
-  .Routine .group .Exercise .name {
-    font-size: 14px;
-  }
-
-  .Routine .group .Exercise input {
     font-size: 12px;
   }
 }

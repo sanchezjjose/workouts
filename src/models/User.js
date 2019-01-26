@@ -12,6 +12,10 @@ class User {
     this.routines[dayOfWeek][routineType][workoutName][exerciseName].done = status;
   }
 
+  getWorkoutDate(dayOfWeek) {
+    return this.routines[dayOfWeek].date;
+  }
+
   getRoutineByDay(dayOfWeek) {
     const routine = Object.entries(this.routines[dayOfWeek]).filter(routine => routine[0] !== 'date');
     const result = routine.map(routineTypes => {

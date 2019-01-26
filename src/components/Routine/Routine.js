@@ -27,11 +27,11 @@ class Routine extends Component {
     const dayOfWeek = this.props.dayOfWeek;
     const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
     const today = new Date();
-    const date = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
+    const todayDateFormatted = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
     const user = this.props.user;
 
     // Set date on workout for historical purposes
-    user.routines[dayOfWeek].date = date;
+    user.routines[dayOfWeek].date = todayDateFormatted;
 
     // Reset all exercise status
     routine.forEach(routineType => {
@@ -48,18 +48,35 @@ class Routine extends Component {
       });
   }
 
+  isTodaysWorkoutStarted = (workoutDateFormatted) => {
+    const today = new Date();
+    const todayDate = new Date(`${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`).getTime();
+    const workoutDate = new Date(workoutDateFormatted).getTime();
+
+    return todayDate === workoutDate;
+  }
+
   render() {
     const dayOfWeek = this.props.dayOfWeek;
     const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
+    const workoutDateFormatted = this.props.userObj.getWorkoutDate(dayOfWeek);
+    const workoutStarted = this.isTodaysWorkoutStarted(workoutDateFormatted);
+    // const workoutStarted = this.isTodaysWorkoutStarted('1-25-2019');
+    const workoutStartedClassName = workoutStarted ? 'workout-started' : '';
 
     return (
-      <div className='Routine'>
+      <div className={`Routine ${workoutStartedClassName}`}>
         {this.state.message.length > 0 &&
           <div className={`success-banner`}>{this.state.message}</div>
         }
         <div className={`routine-heading ${this.props.editMode ? 'save-mode' : ''}`}>
           <div className='weekday'>{routine.day} Routine</div>
-          <button onClick={this.handleStartWorkout} className='start-workout-button'>Start New Workout</button>
+          {workoutDateFormatted && 
+            <div className='subtitle'>{workoutDateFormatted}</div>
+          }
+          {!workoutStarted &&
+            <button onClick={this.handleStartWorkout} className='start-workout-button'>Start New Workout</button>
+          }
         </div>
         {routine.map (routineType =>
           routineType.workouts.map (workout =>
@@ -83,10 +100,12 @@ class Routine extends Component {
                 <Exercise
                   key={exercise.name}
                   user={this.props.user}
+                  userObj={this.props.userObj}
                   editMode={this.props.editMode}
                   saveMode={this.props.saveMode}
                   handleUserChange={this.props.handleUserChange} 
                   displayMessage={this.displayMessage}
+                  workoutStarted={workoutStarted}
                   routine={routine}
                   routineType={routineType.type}
                   workout={workout}
