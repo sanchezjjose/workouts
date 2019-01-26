@@ -21,14 +21,12 @@
 }
 
 .Routine .routine-heading {
-  display: grid;
   align-items: center;
   margin-top: 30px;
-  grid-template-columns: 1fr 120px;
 }
 
 .Routine .routine-heading .weekday {
-  margin: 0;
+  margin-bottom: 20px;
   font-weight: 400;
   font-size: 26px;
 }
@@ -46,14 +44,16 @@
   padding-bottom: 5px;
 }
 
-.Routine .header span {
-  font-size: 16px;
-}
-
 .Routine .workout-name {
   display: inline-block;
-  justify-self: left; 
+  justify-self: left;
+  font-size: 16px;
+  font-weight: 600;
   margin: 0;
+}
+
+.Routine .header span {
+  font-size: 14px;
 }
 
 .Routine .group {
@@ -67,4 +67,40 @@
   font-size: 14px;
   padding: 10px;
   text-decoration: none;
+}
+
+/* Apple Watch */
+@media only screen and (max-width: 319px) {
+
+  .Routine .routine-heading .weekday {
+    font-size: 18px;
+  }
+
+  .Routine .start-workout-button {
+    font-size: 12px;
+  }
+
+  .Routine .group .header {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+
+  .Routine .group .Exercise {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .Routine .group .header .workout-name {
+    font-size: 14px;
+  }
+
+  .Routine .group .header span {
+    font-size: 12px;
+  }
+
+  .Routine .group .Exercise .name {
+    font-size: 14px;
+  }
+
+  .Routine .group .Exercise input {
+    font-size: 12px;
+  }
 }

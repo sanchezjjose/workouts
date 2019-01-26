@@ -6,3 +6,18 @@
   margin-top: 56px;
   margin-bottom: 150px
 }
+
+/* Apple Watch */
+@media only screen and (max-width: 319px) {
+
+  .App .container {
+    margin: 0;
+  }
+
+  .App .container .NavigationBar,
+  .App .container .Footer,
+  .App .container .RoutineModal,
+  .App .container .RoutineDayPicker {
+    display: none;
+  }
+}

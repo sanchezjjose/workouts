@@ -59,21 +59,21 @@ class Routine extends Component {
         }
         <div className={`routine-heading ${this.props.editMode ? 'save-mode' : ''}`}>
           <div className='weekday'>{routine.day} Routine</div>
-          <button onClick={this.handleStartWorkout} className='start-workout-button'>New Workout</button>
+          <button onClick={this.handleStartWorkout} className='start-workout-button'>Start New Workout</button>
         </div>
         {routine.map (routineType =>
           routineType.workouts.map (workout =>
             <div key={workout.name} className='group'>
               {routineType.type === 'weight' ? (
                 <div className='header'>
-                  <h3 className='workout-name'>{workout.name}</h3>
+                  <div className='workout-name'>{workout.name}</div>
                   <span className='weight'>Weight</span>
                   <span className='reps'>Reps</span>
                   <span className='sets'>Sets</span>
                 </div>
               ) : (
                 <div className='header'>
-                  <h3 className='workout-name'>{workout.name}</h3>
+                  <div className='workout-name'>{workout.name}</div>
                   <span className='weight'>Time</span>
                   <span className='reps'>Distance</span>
                   <span className='sets'>Kcal</span>

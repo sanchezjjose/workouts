@@ -20,13 +20,6 @@
   font-weight: 400;
 }
 
-/* Apple Watch */
-@media only screen and (max-width: 319px) { 
-  .NavigationBar .title {
-    color: green;
-  }
-}
-
 .NavigationBar .top-app-bar__section--align-end {
   display: grid;
   grid-gap: 10px;
