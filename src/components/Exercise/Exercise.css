@@ -44,7 +44,8 @@
 @media only screen and (max-width: 319px) {
 
   .Routine .group .Exercise.workout-started {
-    grid-template-columns: 48px 1fr repeat(3, 1fr);
+    /* grid-template-columns: 48px 1fr repeat(3, 1fr); */
+    grid-template-columns: 24px 1fr repeat(3, 20px);
   }
 
   .Routine .group .Exercise {
@@ -52,10 +53,10 @@
   }
 
   .Routine .group .Exercise .name {
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .Routine .group .Exercise input {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
