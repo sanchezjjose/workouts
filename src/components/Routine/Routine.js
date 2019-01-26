@@ -50,10 +50,9 @@ class Routine extends Component {
 
   isTodaysWorkoutStarted = (workoutDateFormatted) => {
     const today = new Date();
-    const todayDate = new Date(`${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`).getTime();
-    const workoutDate = new Date(workoutDateFormatted).getTime();
+    const todayDateFormatted = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
 
-    return todayDate === workoutDate;
+    return todayDateFormatted === workoutDateFormatted;
   }
 
   render() {
@@ -61,7 +60,6 @@ class Routine extends Component {
     const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
     const workoutDateFormatted = this.props.userObj.getWorkoutDate(dayOfWeek);
     const workoutStarted = this.isTodaysWorkoutStarted(workoutDateFormatted);
-    // const workoutStarted = this.isTodaysWorkoutStarted('1-25-2019');
     const workoutStartedClassName = workoutStarted ? 'workout-started' : '';
 
     return (

@@ -21,16 +21,21 @@ class Exercise extends Component {
     const exercise = this.props.exercise;
     const updateExerciseHistory = exerciseComplete ? saveExerciseHistory : removeExerciseHistory;
 
+    // Optimistic update
+    user.routines[dayOfWeek][routineType][workoutName][exercise.name].done = exerciseComplete;
+    this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
+
     updateExerciseHistory(user.id, date, exercise, workoutName)
-      .then(() => 
+      .then(
         saveExerciseStatus(user.id, dayOfWeek, routineType, workoutName, exercise.name, exerciseComplete)
       )
-      .then(() => {
-        user.routines[dayOfWeek][routineType][workoutName][exercise.name].done = exerciseComplete;
-        this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
-      })
       .catch(e => {
+        alert('There was a problem with updating exercise status.');
         console.error(e);
+
+        // Reset update
+        user.routines[dayOfWeek][routineType][workoutName][exercise.name].done = !exerciseComplete;
+        this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
       });
   }
 

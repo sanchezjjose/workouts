@@ -12,6 +12,7 @@
 
   .App .container {
     margin: 0;
+    margin-bottom: 30px;
   }
 
   .App .container .NavigationBar,

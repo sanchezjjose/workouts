@@ -26,8 +26,6 @@ const saveExerciseHistory = (userId, date, exercise, workout) => {
   })
 
   const saveExercise = new Promise((resolve, reject) => {
-    delete exercise.metrics.done;
-
     docClient.update({
       TableName: 'Workouts',
       Key: {
@@ -87,5 +85,3 @@ module.exports = {
   saveExerciseHistory: saveExerciseHistory,
   removeExerciseHistory: removeExerciseHistory
 };
-
-// export { addExerciseHistory, deleteExerciseHistory };
