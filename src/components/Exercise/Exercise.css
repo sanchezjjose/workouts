@@ -32,11 +32,12 @@
 @media only screen and (max-width: 319px) {
 
   .Routine .group .Exercise.workout-started {
-    grid-template-columns: 18px 1fr repeat(3, 20px);
+    grid-template-columns: 18px 1fr repeat(3, 30px);
   }
 
   .Routine .group .Exercise {
     grid-template-columns: 2fr repeat(3, 1fr);
+    margin-bottom: 10px;
   }
 
   .Routine .group .Exercise .name {
