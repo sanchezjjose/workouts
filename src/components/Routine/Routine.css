@@ -96,7 +96,7 @@
   } */
 
   .Routine .group .header {
-    grid-template-columns: 1fr repeat(3, 20px);
+    grid-template-columns: 1fr repeat(3, 30px);
   }
 
   .Routine .group .header .workout-name {
@@ -104,6 +104,6 @@
   }
 
   .Routine .group .header span {
-    font-size: 12px;
+    font-size: 10px;
   }
 }

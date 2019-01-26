@@ -78,8 +78,8 @@ class Exercise extends Component {
           <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button> :
           (this.props.workoutStarted &&
             (exercise.metrics.done ? 
-              <img onClick={() => this.handleExerciseStatus(false)} src={checkCircleFilled} alt="done" /> :
-              <img onClick={() => this.handleExerciseStatus(true)} src={checkCircleOutline} alt="not-done" />
+              <img className='status-button' onClick={() => this.handleExerciseStatus(false)} src={checkCircleFilled} alt="done" /> :
+              <img className='status-button' onClick={() => this.handleExerciseStatus(true)} src={checkCircleOutline} alt="not-done" />
             )
           )
         }

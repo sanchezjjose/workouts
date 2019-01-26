@@ -24,28 +24,15 @@
   color: #fff;
 }
 
-.Exercise .status-button {
-  padding: 0;
-}
-
-.Exercise .status-button.fill {
-  color: #000;
-}
-
 .Exercise .name {
   justify-self: left;
-}
-
-.Exercise .status-button:disabled {
-  opacity: 0.4;
 }
 
 /* Apple Watch */
 @media only screen and (max-width: 319px) {
 
   .Routine .group .Exercise.workout-started {
-    /* grid-template-columns: 48px 1fr repeat(3, 1fr); */
-    grid-template-columns: 24px 1fr repeat(3, 20px);
+    grid-template-columns: 18px 1fr repeat(3, 20px);
   }
 
   .Routine .group .Exercise {
@@ -58,5 +45,10 @@
 
   .Routine .group .Exercise input {
     font-size: 10px;
+  }
+
+  .Routine .group .Exercise .status-button {
+    height: 18px;
+    width: 18px;
   }
 }
