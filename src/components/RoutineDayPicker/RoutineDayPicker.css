@@ -30,9 +30,9 @@
 
 .RoutineDayPicker .routine-day.today.active {
   color: #fff;
-  background: #D32F2F;
+  background: var(--main-red-color);
 }
 
 .RoutineDayPicker .routine-day.today {
-  color: #D32F2F;
+  color: var(--main-red-color);
 }
