@@ -6,7 +6,7 @@
   box-sizing: border-box;
   color: #000;
   display: grid;
-  height: 56px;
+  height: 65px;
   grid-template-columns: 150px 1fr;
   padding-left: 20px;
   position: fixed;
