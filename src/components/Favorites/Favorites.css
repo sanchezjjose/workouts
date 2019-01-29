@@ -1,8 +1,3 @@
-.Favorites {
-  background-color: var(--main-bg-color);
-  height: 100vh;
-}
-
 .Favorites .content-wrapper {
   margin-left: auto;
   margin-right: auto;
