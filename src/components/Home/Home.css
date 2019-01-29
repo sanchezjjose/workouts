@@ -1,4 +1,9 @@
 .Home {
+  background-color: var(--main-bg-color);
+  height: 100vh;
+}
+
+.Home .content-wrapper {
   margin-left: auto;
   margin-right: auto;
   width: 90%;

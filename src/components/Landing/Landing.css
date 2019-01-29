@@ -2,7 +2,7 @@
   display: grid;
   grid-template-rows: 100px 1fr;
   justify-items: center;
-  background: #eee;
+  background: var(--main-bg-color);
   height: 100vh;
 }
 
@@ -17,6 +17,7 @@
   align-items: center;
   justify-items: center;
   background: #fff;
+  border: 1px var(--main-border-color) solid;
   margin-top: 20px;
   width: 300px;
   height: 300px;
@@ -29,7 +30,7 @@
 
 .Landing .auth .username-input, .full-name-input {
   border: none;
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px var(--main-border-color) solid;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 300;
@@ -57,7 +58,7 @@
 }
 
 .Landing .auth .submit .link {
-  color: #58b6f4;
+  color: var(--main-link-color);
   font-size: 15px;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);

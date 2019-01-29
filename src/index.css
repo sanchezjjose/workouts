@@ -27,8 +27,11 @@ textarea:focus {
 
 :root {
   --main-bg-color: #fafafa;
+  --main-border-color: #e6e6e6;
+  --main-link-color: #58b6f4;
   --main-txt-color: #000;
   --main-red-color: #d32f2f;
   --main-green-color: #02ee7d;
   --secondary-bg-color: #eee;
+  --secondary-border-color:rgba(0,0,0,.0975);
 }
