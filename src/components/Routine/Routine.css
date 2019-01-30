@@ -27,14 +27,14 @@
 
 .Routine .routine-heading .weekday {
   margin-bottom: 5px;
-  font-weight: 400;
-  font-size: 26px;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .Routine .routine-heading .subtitle {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
-  color: grey;
+  color: var(--secondary-txt-color);
 }
 
 .Routine .header {
@@ -57,13 +57,13 @@
 .Routine .workout-name {
   display: inline-block;
   justify-self: left;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 600;
   margin: 0;
 }
 
 .Routine .header span {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .Routine .group {
@@ -74,10 +74,11 @@
   color: #fff;
   background: #000;
   border: 1px #000 solid;
-  font-size: 14px;
-  padding: 10px;
+  font-size: 16px;
   margin-top: 20px;
   text-decoration: none;
+  height: 45px;
+  width: 140px;
 }
 
 /* Apple Watch */

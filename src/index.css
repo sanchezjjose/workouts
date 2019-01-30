@@ -32,6 +32,7 @@ textarea:focus {
   --main-txt-color: #000;
   --main-red-color: #d32f2f;
   --main-green-color: #02ee7d;
+  --secondary-txt-color: #757575;
   --secondary-bg-color: #eee;
   --secondary-border-color:rgba(0,0,0,.0975);
 }
