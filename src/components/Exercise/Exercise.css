@@ -1,8 +1,6 @@
 .Exercise {
   display: grid;
-  grid-template-columns: calc(155px + 48px + 5px) repeat(3, 1fr);
-  /* grid-template-columns: 2fr repeat(3, 1fr); */
-  /* grid-template-columns: 48px 155px repeat(3, 1fr); */
+  grid-template-columns: 3fr repeat(3, 1fr);
   grid-gap: 5px;
   justify-items: center;
   align-items: center;
@@ -10,12 +8,12 @@
   margin-bottom: 10px;
 }
 
-.Exercise.workout-started {
-  grid-template-columns: 48px 155px repeat(3, 1fr);
+.Exercise.workout-started,
+.Exercise.editing {
+  grid-template-columns: 48px 2fr repeat(3, 1fr);
 }
 
 .Exercise.editing {
-  /* grid-template-columns: 48px 155px repeat(3, 1fr); */
   grid-gap: 10px;
   margin-bottom: 5px;
   overflow-x: scroll;
@@ -35,11 +33,7 @@
 @media only screen and (max-width: 319px) {
 
   .Routine .group .Exercise.workout-started {
-    grid-template-columns: 18px 1fr repeat(3, 30px);
-  }
-
-  .Routine .group .Exercise {
-    grid-template-columns: 2fr repeat(3, 1fr);
+    grid-template-columns: 18px 2fr repeat(3, 1fr);
   }
 
   .Routine .group .Exercise .name {

@@ -69,7 +69,8 @@ class Exercise extends Component {
   render() {
     const exercise = this.props.exercise;
     const modeClassName = this.props.editMode ? 'editing' : '';
-    const workoutStartedClassName = this.props.workoutStartedToday ? 'workout-started' : '';
+    const workoutStartedClassName = this.props.didWorkout ? 'workout-started' : '';
+    // const workoutStartedClassName = this.props.workoutStartedToday ? 'workout-started' : '';
     const metricTypes = this.props.routineType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
 
     return (
