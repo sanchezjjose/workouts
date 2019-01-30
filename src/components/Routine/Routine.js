@@ -73,7 +73,7 @@ class Routine extends Component {
             <div className='subtitle'>{workoutDateFormatted}</div>
           }
           {!workoutStarted &&
-            <button onClick={this.handleStartWorkout} className='start-workout-button'>Start New Workout</button>
+            <button onClick={this.handleStartWorkout} className='start-workout-button'>Start Workout</button>
           }
         </div>
         {routine.map (routineType =>

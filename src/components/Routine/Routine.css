@@ -71,8 +71,8 @@
 }
 
 .Routine .start-workout-button {
-  color: #000;
-  background: none;
+  color: #fff;
+  background: #000;
   border: 1px #000 solid;
   font-size: 14px;
   padding: 10px;
