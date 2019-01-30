@@ -69,14 +69,14 @@ class Exercise extends Component {
   render() {
     const exercise = this.props.exercise;
     const modeClassName = this.props.editMode ? 'editing' : '';
-    const workoutStartedClassName = this.props.workoutStarted ? 'workout-started' : '';
+    const workoutStartedClassName = this.props.workoutStartedToday ? 'workout-started' : '';
     const metricTypes = this.props.routineType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
 
     return (
       <div className={`Exercise ${modeClassName} ${workoutStartedClassName}`}>
         {this.props.editMode ?
           <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button> :
-          (this.props.workoutStarted &&
+          (this.props.didWorkout &&
             (exercise.metrics.done ? 
               <img className='status-button' onClick={() => this.handleExerciseStatus(false)} src={checkCircleFilled} alt="done" /> :
               <img className='status-button' onClick={() => this.handleExerciseStatus(true)} src={checkCircleOutline} alt="not-done" />

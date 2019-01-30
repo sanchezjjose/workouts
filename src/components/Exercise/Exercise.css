@@ -1,6 +1,8 @@
 .Exercise {
   display: grid;
-  grid-template-columns: 2fr repeat(3, 1fr);
+  grid-template-columns: calc(155px + 48px + 5px) repeat(3, 1fr);
+  /* grid-template-columns: 2fr repeat(3, 1fr); */
+  /* grid-template-columns: 48px 155px repeat(3, 1fr); */
   grid-gap: 5px;
   justify-items: center;
   align-items: center;
@@ -13,7 +15,7 @@
 }
 
 .Exercise.editing {
-  grid-template-columns: 48px 155px repeat(3, 1fr);
+  /* grid-template-columns: 48px 155px repeat(3, 1fr); */
   grid-gap: 10px;
   margin-bottom: 5px;
   overflow-x: scroll;

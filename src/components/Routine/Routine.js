@@ -59,8 +59,9 @@ class Routine extends Component {
     const dayOfWeek = this.props.dayOfWeek;
     const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
     const workoutDateFormatted = this.props.userObj.getWorkoutDate(dayOfWeek);
-    const workoutStarted = this.isTodaysWorkoutStarted(workoutDateFormatted);
-    const workoutStartedClassName = workoutStarted ? 'workout-started' : '';
+    const workoutStartedToday = this.isTodaysWorkoutStarted(workoutDateFormatted);
+    const workoutStartedClassName = workoutStartedToday ? 'workout-started' : '';
+    const didWorkout = typeof workoutDateFormatted !== 'undefined';
 
     return (
       <div className={`Routine ${workoutStartedClassName}`}>
@@ -72,7 +73,7 @@ class Routine extends Component {
           {workoutDateFormatted && 
             <div className='subtitle'>{workoutDateFormatted}</div>
           }
-          {!workoutStarted &&
+          {!workoutStartedToday &&
             <button onClick={this.handleStartWorkout} className='start-workout-button'>Start Workout</button>
           }
         </div>
@@ -90,8 +91,8 @@ class Routine extends Component {
                 <div className='header'>
                   <div className='workout-name'>{workout.name}</div>
                   <span className='weight'>Time</span>
-                  <span className='reps'>Distance</span>
-                  <span className='sets'>Kcal</span>
+                  <span className='reps'>Dist.</span>
+                  <span className='sets'>Kcal.</span>
                 </div>
               )}
               {workout.exercises.map (exercise =>
@@ -103,7 +104,8 @@ class Routine extends Component {
                   saveMode={this.props.saveMode}
                   handleUserChange={this.props.handleUserChange} 
                   displayMessage={this.displayMessage}
-                  workoutStarted={workoutStarted}
+                  didWorkout={didWorkout}
+                  workoutStartedToday={workoutStartedToday}
                   routine={routine}
                   routineType={routineType.type}
                   workout={workout}
