@@ -91,12 +91,8 @@
     font-size: 12px;
   }
 
-  /* .Routine.workout-started .header {
-    grid-template-columns: 1fr repeat(3, 40px);
-  } */
-
   .Routine .group .header {
-    grid-template-columns: 1fr repeat(3, 30px);
+    grid-template-columns: 3fr repeat(3, 1fr);
   }
 
   .Routine .group .header .workout-name {
