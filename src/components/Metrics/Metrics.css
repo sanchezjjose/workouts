@@ -1,4 +1,10 @@
-.Metric {
+.Metrics {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  align-items: center;
+}
+
+.Metrics input {
   background: var(--main-bg-color);
   font-size: 16px;
   height: 30px;
@@ -8,7 +14,14 @@
   outline: 0;
 }
 
-.editing .Metric {
+.Metrics .metric-unit {
+  color: var(--secondary-txt-color);
+  font-size: 14px;  
+  padding-top: 4px;
+  padding-left: 2px;
+}
+
+.editing .Metrics input {
   border-bottom: 0.5px solid #000;
   width: 32px;
 }

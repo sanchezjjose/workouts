@@ -148,15 +148,21 @@ class Metrics extends Component {
   render() {
     const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
+    const metricUnit = this.props.metricUnit;
 
     return (
-      <input type='text' name={metricType} className={`Metric ${metricType}`}
-        value={metricValue} 
-        onTouchStart={this.handleTouchStart} 
-        onTouchEnd={this.handleTouchEnd} 
-        onClick={this.handleOnClick}
-        onChange={this.handleOnChange} 
-        readOnly={!this.props.editMode} />
+      <div className='Metrics'>
+        <input type='text' name={metricType} className={`${metricType}`}
+          value={metricValue} 
+          onTouchStart={this.handleTouchStart} 
+          onTouchEnd={this.handleTouchEnd} 
+          onClick={this.handleOnClick}
+          onChange={this.handleOnChange} 
+          readOnly={!this.props.editMode} />
+        {(metricUnit !== '-' && metricValue !== '-') &&
+          <span className='metric-unit'>{metricUnit}</span>
+        }
+      </div>
     );
   }
 }
