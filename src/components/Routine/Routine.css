@@ -83,12 +83,18 @@
 /* Apple Watch */
 @media only screen and (max-width: 319px) {
 
+  .Routine .routine-heading {
+    text-align: center;
+  }
+
   .Routine .routine-heading .weekday {
     font-size: 18px;
   }
 
   .Routine .start-workout-button {
     font-size: 12px;
+    height: 40px;
+    width: 110px;
   }
 
   .Routine .group .header {
