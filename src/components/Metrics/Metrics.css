@@ -1,10 +1,11 @@
 .Metrics {
   display: grid;
-  align-items: center;
+  justify-items: center;
+  /* align-items: center; */
 }
 
 .Metrics.with-units {
-  grid-template-columns: 35px 1fr;
+  /* grid-template-columns: 35px 1fr; */
 }
 
 .Metrics input {
