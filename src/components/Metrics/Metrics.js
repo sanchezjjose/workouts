@@ -149,9 +149,11 @@ class Metrics extends Component {
     const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;
+    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-' && metricValue !== '-') && !this.props.editMode;
+    const hasUnitsClassName = showMetricUnit ? 'with-units' : '';
 
     return (
-      <div className='Metrics'>
+      <div className={`Metrics ${hasUnitsClassName}`}>
         <input type='text' name={metricType} className={`${metricType}`}
           value={metricValue} 
           onTouchStart={this.handleTouchStart} 
@@ -159,7 +161,7 @@ class Metrics extends Component {
           onClick={this.handleOnClick}
           onChange={this.handleOnChange} 
           readOnly={!this.props.editMode} />
-        {(metricUnit !== '-' && metricValue !== '-') &&
+        {showMetricUnit &&
           <span className='metric-unit'>{metricUnit}</span>
         }
       </div>

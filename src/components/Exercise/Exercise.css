@@ -4,13 +4,13 @@
   grid-gap: 5px;
   justify-items: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 10px;
 }
 
 .Exercise.workout-started,
 .Exercise.editing {
-  grid-template-columns: 48px 2fr repeat(3, 1fr);
+  grid-template-columns: 0.5fr 2.5fr repeat(3, 1fr);
 }
 
 .Exercise.editing {
@@ -37,10 +37,6 @@
   }
 
   .Routine .group .Exercise .name {
-    font-size: 10px;
-  }
-
-  .Routine .group .Exercise input {
     font-size: 10px;
   }
 

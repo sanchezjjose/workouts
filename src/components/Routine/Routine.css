@@ -50,11 +50,10 @@
 }
 
 .Routine.workout-started .header {
-  grid-template-columns: calc(48px + 2fr) repeat(3, 1fr);
+  /* grid-template-columns: calc(48px + 2fr) repeat(3, 1fr); */
 }
 
 .Routine .workout-name {
-  display: inline-block;
   justify-self: left;
   font-size: 22px;
   font-weight: 600;
@@ -62,7 +61,7 @@
 }
 
 .Routine .header span {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .Routine .group {

@@ -1,12 +1,15 @@
 .Metrics {
   display: grid;
-  grid-template-columns: 45px 1fr;
   align-items: center;
+}
+
+.Metrics.with-units {
+  grid-template-columns: 35px 1fr;
 }
 
 .Metrics input {
   background: var(--main-bg-color);
-  font-size: 16px;
+  font-size: 15px;
   height: 30px;
   width: 100%;
   text-align: center;
@@ -16,12 +19,28 @@
 
 .Metrics .metric-unit {
   color: var(--secondary-txt-color);
-  font-size: 14px;  
-  padding-top: 4px;
-  padding-left: 2px;
+  font-size: 13px;
+  padding-top: 2px;
 }
 
 .editing .Metrics input {
   border-bottom: 0.5px solid #000;
   width: 32px;
+}
+
+/* Apple Watch */
+@media only screen and (max-width: 319px) {
+
+  .Metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .Metrics input {
+    font-size: 10px;
+  }
+
+  .Metrics .metric-unit {
+    display: none;
+    /* font-size: 8px; */
+  }
 }
