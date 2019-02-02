@@ -86,13 +86,13 @@
 						},
 						"Pushups": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "25", "unit": "-" },
 							"sets": { "value": "4", "unit": "-" }
 						},
 						"Dips": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "10", "unit": "-" },
 							"sets": { "value": "4", "unit": "-" }
 						}
@@ -143,13 +143,13 @@
 					"Biceps": {
 						"Curls (bands)": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "10", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Chin-Up": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
@@ -163,7 +163,7 @@
 					"Back": {
 						"Pull Ups": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "8", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
@@ -195,7 +195,7 @@
 					"Triceps": {
 						"Dips": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "20", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
@@ -255,8 +255,8 @@
 						"Sauna": {
 							"done": false,
 							"time": { "value": "10", "unit": "min" },
-							"distance": { "value": "-", "unit": "-" },
-							"kcal": { "value": "-", "unit": "-" }
+							"distance": { "value": "0", "unit": "-" },
+							"kcal": { "value": "0", "unit": "-" }
 						}
 					}
 				}
@@ -276,13 +276,13 @@
 						},
 						"Pushups": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "25", "unit": "-" },
 							"sets": { "value": "4", "unit": "-" }
 						},
 						"Dips": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "10", "unit": "-" },
 							"sets": { "value": "4", "unit": "-" }
 						}
@@ -333,13 +333,13 @@
 					"Biceps": {
 						"Curls (bands)": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "10", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
 						"Chin-Up": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "5", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
@@ -353,7 +353,7 @@
 					"Back": {
 						"Pull Ups": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "8", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
@@ -385,7 +385,7 @@
 					"Triceps": {
 						"Dips": {
 							"done": false,
-							"weight": { "value": "-", "unit": "lbs" },
+							"weight": { "value": "0", "unit": "lbs" },
 							"reps": { "value": "20", "unit": "-" },
 							"sets": { "value": "3", "unit": "-" }
 						},
@@ -445,8 +445,8 @@
 						"Sauna": {
 							"done": false,
 							"time": { "value": "10", "unit": "min" },
-							"distance": { "value": "-", "unit": "-" },
-							"kcal": { "value": "-", "unit": "-" }
+							"distance": { "value": "0", "unit": "-" },
+							"kcal": { "value": "0", "unit": "-" }
 						}
 					}
 				}

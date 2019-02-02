@@ -22,9 +22,4 @@
   .Metrics input {
     font-size: 10px;
   }
-
-  .Metrics .metric-unit {
-    display: none;
-    /* font-size: 8px; */
-  }
 }
