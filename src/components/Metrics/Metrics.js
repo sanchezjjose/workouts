@@ -161,9 +161,9 @@ class Metrics extends Component {
           onClick={this.handleOnClick}
           onChange={this.handleOnChange} 
           readOnly={!this.props.editMode} />
-        {/* {showMetricUnit &&
+        {showMetricUnit &&
           <span className='metric-unit'>{metricUnit}</span>
-        } */}
+        }
       </div>
     );
   }

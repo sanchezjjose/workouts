@@ -1,17 +1,16 @@
 .Metrics {
   display: grid;
-  justify-items: center;
-  /* align-items: center; */
+  /* justify-items: center; */
+  /* align-items: end; */
 }
 
 .Metrics.with-units {
-  /* grid-template-columns: 35px 1fr; */
+  grid-template-columns: 1fr 1fr;
 }
 
 .Metrics input {
   background: var(--main-bg-color);
   font-size: 15px;
-  height: 30px;
   width: 100%;
   text-align: center;
   border: 0;
@@ -20,19 +19,22 @@
 
 .Metrics .metric-unit {
   color: var(--secondary-txt-color);
-  font-size: 13px;
-  padding-top: 2px;
+  font-size: 12px;
+  /* justify-self: start; */
+  /* padding: 0 0 1px 1px; */
+  padding: 8px 0 0px 8px;
 }
 
 .editing .Metrics input {
   border-bottom: 0.5px solid #000;
+  height: 30px;
   width: 32px;
 }
 
 /* Apple Watch */
 @media only screen and (max-width: 319px) {
 
-  .Metrics {
+  .Metrics.with-units {
     grid-template-columns: 1fr;
   }
 
