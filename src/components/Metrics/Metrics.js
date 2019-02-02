@@ -147,29 +147,21 @@ class Metrics extends Component {
   }
 
   render() {
-    let metricValue = this.state.metricValue;
+    const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;
     const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-' && metricValue !== '-') && !this.props.editMode;
-    const hasUnitsClassName = showMetricUnit ? 'with-units' : '';
-
-    if (showMetricUnit) {
-      metricValue += ` ${metricUnit}`
-    }
+    const inputValue = showMetricUnit ? `${metricValue} ${metricUnit}` : metricValue;
 
     return (
-      // <div className={`Metrics ${hasUnitsClassName}`}>
       <div className={`Metrics`}>
         <input type='text' name={metricType} className={`${metricType}`}
-          value={metricValue} 
+          value={inputValue}
           onTouchStart={this.handleTouchStart} 
           onTouchEnd={this.handleTouchEnd} 
           onClick={this.handleOnClick}
           onChange={this.handleOnChange} 
           readOnly={!this.props.editMode} />
-        {/* {showMetricUnit &&
-          <span className='metric-unit'>{metricUnit}</span>
-        } */}
       </div>
     );
   }
