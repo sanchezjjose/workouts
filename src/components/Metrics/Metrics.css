@@ -1,11 +1,17 @@
 .Metrics {
   display: grid;
-  /* justify-items: center; */
-  /* align-items: end; */
+  justify-items: center;
 }
 
 .Metrics.with-units {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 3px;
+  justify-items: start;
+}
+
+.Metrics.with-units input {
+  text-align: end;
+  /* width: 35px; */
 }
 
 .Metrics input {
@@ -15,14 +21,14 @@
   text-align: center;
   border: 0;
   outline: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .Metrics .metric-unit {
   color: var(--secondary-txt-color);
   font-size: 12px;
-  /* justify-self: start; */
-  /* padding: 0 0 1px 1px; */
-  padding: 8px 0 0px 8px;
+  padding-top: 4px;
 }
 
 .editing .Metrics input {
