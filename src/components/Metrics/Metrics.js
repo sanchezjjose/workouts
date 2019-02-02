@@ -149,7 +149,7 @@ class Metrics extends Component {
     const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;
-    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-' && metricValue !== '-') && !this.props.editMode;
+    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-' && metricValue !== '-') && !this.props.editMode && window.innerWidth >= 320;
     const inputValue = showMetricUnit ? `${metricValue} ${metricUnit}` : metricValue;
 
     return (
