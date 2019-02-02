@@ -36,7 +36,6 @@ class Metrics extends Component {
 
     if (swipedHorizontal) {
       const increment = this.props.metricType === 'weight' ? 2.5 : 1;
-      // const initialValue = e.target.value;
       const initialValue = this.state.metricValue;
       const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
 
