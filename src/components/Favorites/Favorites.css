@@ -26,21 +26,21 @@
 }
 
 .Favorites h2 {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 600;
   padding-top: 20px;
 }
 
 .Favorites .exercises .workout-title {
   border-bottom: 1px #ddd solid;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
 }
 
 .Favorites .exercises .exercise-label {
-  color: var(--secondary-txt-color);
-  font-size: 18px;
-  font-weight: 400;
+  color: #000;
+  font-size: 16px;
+  font-weight: 300;
 }
 
 .Favorites .exercise-group {

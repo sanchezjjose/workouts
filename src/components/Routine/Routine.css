@@ -27,7 +27,7 @@
 
 .Routine .routine-heading .weekday {
   margin-bottom: 5px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 600;
 }
 
@@ -55,13 +55,14 @@
 
 .Routine .workout-name {
   justify-self: left;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   margin: 0;
 }
 
 .Routine .header span {
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .Routine .group {

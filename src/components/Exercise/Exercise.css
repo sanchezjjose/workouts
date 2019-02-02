@@ -4,7 +4,6 @@
   grid-gap: 5px;
   justify-items: center;
   align-items: center;
-  font-size: 15px;
   margin-bottom: 10px;
 }
 
@@ -27,6 +26,8 @@
 
 .Exercise .name {
   justify-self: left;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 /* Apple Watch */

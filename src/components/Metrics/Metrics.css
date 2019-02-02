@@ -16,7 +16,8 @@
 
 .Metrics input {
   background: var(--main-bg-color);
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 300;
   width: 100%;
   text-align: center;
   border: 0;

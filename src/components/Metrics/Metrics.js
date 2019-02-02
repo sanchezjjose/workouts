@@ -36,7 +36,8 @@ class Metrics extends Component {
 
     if (swipedHorizontal) {
       const increment = this.props.metricType === 'weight' ? 2.5 : 1;
-      const initialValue = e.target.value;
+      // const initialValue = e.target.value;
+      const initialValue = this.state.metricValue;
       const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
 
       if (!isNaN(finalValue) && finalValue >= 0) {
@@ -146,14 +147,19 @@ class Metrics extends Component {
   }
 
   render() {
-    const metricValue = this.state.metricValue;
+    let metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;
     const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-' && metricValue !== '-') && !this.props.editMode;
     const hasUnitsClassName = showMetricUnit ? 'with-units' : '';
 
+    if (showMetricUnit) {
+      metricValue += ` ${metricUnit}`
+    }
+
     return (
-      <div className={`Metrics ${hasUnitsClassName}`}>
+      // <div className={`Metrics ${hasUnitsClassName}`}>
+      <div className={`Metrics`}>
         <input type='text' name={metricType} className={`${metricType}`}
           value={metricValue} 
           onTouchStart={this.handleTouchStart} 
@@ -161,9 +167,9 @@ class Metrics extends Component {
           onClick={this.handleOnClick}
           onChange={this.handleOnChange} 
           readOnly={!this.props.editMode} />
-        {showMetricUnit &&
+        {/* {showMetricUnit &&
           <span className='metric-unit'>{metricUnit}</span>
-        }
+        } */}
       </div>
     );
   }
