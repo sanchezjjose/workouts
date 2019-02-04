@@ -61,6 +61,7 @@
 }
 
 .Routine .header span {
+  color: var(--secondary-txt-color);
   font-size: 15px;
   font-weight: 400;
 }
