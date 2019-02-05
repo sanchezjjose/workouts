@@ -97,7 +97,7 @@ class Routine extends Component {
               )}
               {workout.exercises.map (exercise =>
                 <Exercise
-                  key={exercise.name}
+                  key={`${dayOfWeek}-${exercise.name}`}
                   user={this.props.user}
                   userObj={this.props.userObj}
                   editMode={this.props.editMode}
@@ -106,6 +106,7 @@ class Routine extends Component {
                   displayMessage={this.displayMessage}
                   didWorkout={didWorkout}
                   workoutStartedToday={workoutStartedToday}
+                  dayOfWeek={dayOfWeek}
                   routine={routine}
                   routineType={routineType.type}
                   workout={workout}

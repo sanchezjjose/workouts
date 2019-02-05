@@ -67,6 +67,7 @@ class Exercise extends Component {
   }
 
   render() {
+    const dayOfWeek = this.props.dayOfWeek;
     const exercise = this.props.exercise;
     const modeClassName = this.props.editMode ? 'editing' : '';
     const workoutStartedClassName = this.props.didWorkout ? 'workout-started' : '';
@@ -88,13 +89,14 @@ class Exercise extends Component {
 
         {metricTypes.map(metricType =>
           <Metrics
-            key={metricType}
+            key={`${dayOfWeek}-${metricType}`}
             exercise={exercise}
             metricType={metricType}
             metricValue={exercise.metrics[metricType].value}
             metricUnit={exercise.metrics[metricType].unit}
             settingsUnit={this.props.user.settings.units[metricType]}
             user={this.props.user}
+            dayOfWeek={dayOfWeek}
             workout={this.props.workout}
             routine={this.props.routine}
             routineType={this.props.routineType}
