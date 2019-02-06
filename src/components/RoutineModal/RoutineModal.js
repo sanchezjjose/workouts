@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { saveRoutine } from '../../api/Routine';
+import { compareNames } from '../../lib/Util';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './RoutineModal.css';
@@ -91,10 +92,10 @@ class RoutineModal extends Component {
             </div>
           }
           {favoritesVm.map (favorite => 
-            favorite.workouts.map(workout => 
+            favorite.workouts.sort(compareNames).map(workout => 
               <div key={workout.name} className='exercises'>
                 <h3>{workout.name}</h3>
-                {workout.exercises.map(exercise =>
+                {workout.exercises.sort().map(exercise =>
                   <div onClick={e => this.addExercise(favorite.type, workout.name, exercise)} key={exercise} className='exercise-label'>{exercise}</div>
                 )}
               </div>

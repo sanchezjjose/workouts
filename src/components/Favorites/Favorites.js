@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FavoritesModal from '../FavoritesModal/FavoritesModal'
 import { removeFavoriteExercise } from '../../api/Favorites';
+import { compareNames } from '../../lib/Util';
 
 import './Favorites.css';
 
@@ -51,10 +52,10 @@ class Favorites extends Component {
           }
           <h2>Favorite Exercises</h2>
           {favoritesVm.map (favorite =>
-            favorite.workouts.map(workout =>
+            favorite.workouts.sort(compareNames).map(workout =>
               <div key={workout.name} className='exercises'>
                 <h3 className='workout-title'>{workout.name}</h3>
-                {workout.exercises.map(exercise =>
+                {workout.exercises.sort().map(exercise =>
                   <div key={exercise} className={`exercise-group ${editMode ? 'editing' : ''}`}>
                     {editMode &&
                       <button onClick={e => this.removeExercise(favorite.type, workout.name, exercise)} className="delete-button mdc-icon-button material-icons">clear</button>

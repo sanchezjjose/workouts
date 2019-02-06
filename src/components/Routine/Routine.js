@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Exercise from '../Exercise/Exercise';
 import RoutineModal from '../RoutineModal/RoutineModal';
+import { compareNames } from '../../lib/Util';
 import { saveRoutine } from '../../api/Routine';
 
 import './Routine.css';
@@ -78,7 +79,7 @@ class Routine extends Component {
           }
         </div>
         {routine.map (routineType =>
-          routineType.workouts.map (workout =>
+          routineType.workouts.sort(compareNames).map (workout =>
             <div key={workout.name} className='group'>
               {routineType.type === 'weight' ? (
                 <div className='header'>
@@ -95,7 +96,7 @@ class Routine extends Component {
                   <span className='sets'>Kcal.</span>
                 </div>
               )}
-              {workout.exercises.map (exercise =>
+              {workout.exercises.sort(compareNames).map (exercise =>
                 <Exercise
                   key={`${dayOfWeek}-${exercise.name}`}
                   user={this.props.user}
