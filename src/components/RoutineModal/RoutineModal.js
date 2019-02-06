@@ -27,29 +27,29 @@ class RoutineModal extends Component {
     const initialMetrics = routineType === 'weight' ?
       { 
         weight: {
-          value: '0',
+          value: 0,
           unit: this.props.user.settings.units['weight']
         }, 
         reps: {
-          value: '0',
+          value: 0,
           unit: '-'
         }, 
         sets: {
-          value: '0',
+          value: 0,
           unit: '-'
         },
         done: false
       } : { 
         time: {
-          value: '0',
+          value: 0,
           unit: this.props.user.settings.units['time']
         }, 
         distance: {
-          value: '0',
+          value: 0,
           unit: this.props.user.settings.units['distance']
         }, 
         kcal: {
-          value: '0',
+          value: 0,
           unit: '-'
         },
         done: false

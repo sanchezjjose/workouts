@@ -37,7 +37,7 @@ class Metrics extends Component {
     if (swipedHorizontal) {
       const increment = this.props.metricType === 'weight' ? 2.5 : 1;
       const initialValue = this.state.metricValue;
-      const finalValue = swipedLeft ? +initialValue + increment : +initialValue - increment;
+      const finalValue = swipedLeft ? initialValue + increment : initialValue - increment;
 
       if (!isNaN(finalValue) && finalValue >= 0) {
         this.setState({ metricValue: finalValue });
@@ -152,7 +152,7 @@ class Metrics extends Component {
         result = metricValue;
     }
 
-    return (Math.round(result*10)/10).toString();
+    return Math.round(result * 10) / 10;
   }
 
   render() {
