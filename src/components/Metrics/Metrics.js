@@ -56,7 +56,7 @@ class Metrics extends Component {
     e.preventDefault();
 
     this.setState({
-      metricValue: e.target.value,
+      metricValue: Number(e.target.value),
       edited: true
     });
   }
