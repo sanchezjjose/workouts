@@ -14,7 +14,10 @@ class Routine extends Component {
   }
 
   componentDidMount() {
-    this.setState({ transitionClassName: '' });
+    // Delay workaround to ensure transition is set on safari browser
+    setTimeout(() => {
+      this.setState({ transitionClassName: '' });
+    }, 100);
   }
 
   displayMessage = (message) => {
