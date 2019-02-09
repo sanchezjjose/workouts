@@ -53,8 +53,6 @@ class Metrics extends Component {
   }
 
   handleOnChange = (e) => {
-    e.preventDefault();
-
     this.setState({
       metricValue: Number(e.target.value),
       edited: true
@@ -156,10 +154,11 @@ class Metrics extends Component {
   }
 
   render() {
-    const metricValue = this.state.metricValue;
+    const cancelMode = !this.props.editMode && !this.props.saveMode;
+    const metricValue = (cancelMode) ? this.props.metricValue : this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;
-    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-' && metricValue !== '-') && !this.props.editMode && window.innerWidth >= 320;
+    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-') && !this.props.editMode && window.innerWidth >= 320;
     const inputValue = showMetricUnit ? `${metricValue} ${metricUnit}` : metricValue;
 
     return (
