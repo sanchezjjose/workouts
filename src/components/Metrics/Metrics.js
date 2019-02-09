@@ -82,6 +82,11 @@ class Metrics extends Component {
     if (shouldSave) {
       this.setState({ edited: false });
       this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
+    } else {
+      // Reset to initial value if edited but changes cancelled
+      if (!inEditMode && metricValueEdited) {
+        this.setState({ metricValue: this.props.metricValue });
+      }
     }
   }
 
@@ -154,8 +159,9 @@ class Metrics extends Component {
   }
 
   render() {
-    const cancelMode = !this.props.editMode && !this.props.saveMode;
-    const metricValue = (cancelMode) ? this.props.metricValue : this.state.metricValue;
+    // const cancelMode = !this.props.editMode && !this.props.saveMode;
+    // const metricValue = (cancelMode) ? this.props.metricValue : this.state.metricValue;
+    const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;
     const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-') && !this.props.editMode && window.innerWidth >= 320;
