@@ -9,7 +9,12 @@ import './Routine.css';
 class Routine extends Component {
 
   state = {
-    message: ''
+    message: '',
+    transitionClassName: 'hidden'
+  }
+
+  componentDidMount() {
+    this.setState({ transitionClassName: '' });
   }
 
   displayMessage = (message) => {
@@ -65,7 +70,7 @@ class Routine extends Component {
     const didWorkout = typeof workoutDateFormatted !== 'undefined';
 
     return (
-      <div className={`Routine ${workoutStartedClassName}`}>
+      <div className={`Routine ${this.state.transitionClassName} ${workoutStartedClassName}`}>
         {this.state.message.length > 0 &&
           <div className={`success-banner`}>{this.state.message}</div>
         }
