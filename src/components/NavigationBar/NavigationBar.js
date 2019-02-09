@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { MDCRipple } from '@material/ripple';
 import SettingsModal from '../SettingsModal/SettingsModal';
 
 import './NavigationBar.css';
@@ -8,6 +9,13 @@ class NavigationBar extends Component {
   state = {
     menuOpen: false,
     settingsOpen: false
+  }
+
+  componentDidUpdate() {
+    const btnSelector = document.querySelector('.menu-drop-down .mdc-top-app-bar__action-item');
+    if (btnSelector) {
+      new MDCRipple(btnSelector);
+    }
   }
 
   handleEditClick = () => {
@@ -53,9 +61,7 @@ class NavigationBar extends Component {
             </section>
           )}
           <div className={`menu-drop-down ${this.state.menuOpen ? 'open' : ''}`}>
-            <button onClick={this.handleMenuClick} className='material-icons mdc-top-app-bar__action-item'>
-              {this.state.menuOpen ? 'more_vert' : 'more_horiz' }
-            </button>
+            <button onClick={this.handleMenuClick} className='mdc-icon-button material-icons mdc-top-app-bar__action-item'>more_horiz</button>
             {this.state.menuOpen &&
               <ul className='menu-items'>
                 <li onClick={this.handleSettingsOpen} className='menu-preferences'>

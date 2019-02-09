@@ -53,6 +53,12 @@
 
 .NavigationBar .menu-drop-down button {
   font-size: 24px;
+  height: 24px;
+  width: 24px;
+}
+
+.NavigationBar .menu-drop-down button:before {
+  visibility: hidden;
 }
 
 .NavigationBar .menu-drop-down .menu-items {
