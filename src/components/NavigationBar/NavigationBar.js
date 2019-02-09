@@ -61,7 +61,7 @@ class NavigationBar extends Component {
             </section>
           )}
           <div className={`menu-drop-down ${this.state.menuOpen ? 'open' : ''}`}>
-            <button onClick={this.handleMenuClick} className='mdc-icon-button material-icons mdc-top-app-bar__action-item'>more_horiz</button>
+            <button onClick={this.handleMenuClick} className='mdc-icon-button material-icons mdc-top-app-bar__action-item'>more_vert</button>
             {this.state.menuOpen &&
               <ul className='menu-items'>
                 <li onClick={this.handleSettingsOpen} className='menu-preferences'>
