@@ -76,13 +76,13 @@ class Metrics extends Component {
   componentDidUpdate = (prevProps, prevState, prevContext) => {
     // const metricValueChanged = this.state.metricValue !== prevState.metricValue;
     const shouldSave = this.state.swiped || (this.state.edited && this.props.saveMode);
-    const shouldCancel = this.state.edited && !this.props.editMode;
+    const shouldReset = this.state.edited && !this.props.editMode;
 
     if (shouldSave) {
       this.setState({ edited: false, swiped: false });
       this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
 
-    } else if (shouldCancel) {
+    } else if (shouldReset) {
       this.setState({ metricValue: this.props.metricValue, edited: false });
     }
   }
