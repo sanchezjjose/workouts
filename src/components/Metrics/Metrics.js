@@ -54,8 +54,10 @@ class Metrics extends Component {
   }
 
   handleOnChange = (e) => {
+    const metricValue = e.target.value === '' ? '' : Number(e.target.value);
+
     this.setState({
-      metricValue: Number(e.target.value),
+      metricValue: metricValue,
       edited: true
     });
   }
@@ -75,10 +77,11 @@ class Metrics extends Component {
 
   componentDidUpdate = (prevProps, prevState, prevContext) => {
     // const metricValueChanged = this.state.metricValue !== prevState.metricValue;
+    const isNumber = typeof this.state.metricValue === 'number';
     const shouldSave = this.state.swiped || (this.state.edited && this.props.saveMode);
     const shouldReset = this.state.edited && !this.props.editMode;
 
-    if (shouldSave) {
+    if (shouldSave && isNumber) {
       this.setState({ edited: false, swiped: false });
       this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
 
