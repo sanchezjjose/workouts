@@ -7,6 +7,7 @@ class Metrics extends Component {
 
   state = {
     metricValue: this.props.metricValue,
+    swiped: false,
     edited: false // represents in draft mode
   }
 
@@ -40,7 +41,7 @@ class Metrics extends Component {
       const finalValue = swipedLeft ? initialValue + increment : initialValue - increment;
 
       if (!isNaN(finalValue) && finalValue >= 0) {
-        this.setState({ metricValue: finalValue });
+        this.setState({ metricValue: finalValue, swiped: true });
         this.props.displayMessage(`Changed ${this.props.exercise.name} ${this.props.metricType} value from ${initialValue} to ${finalValue}.`);
       }
     }
@@ -73,20 +74,16 @@ class Metrics extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState, prevContext) => {
-    const metricValueChanged = this.state.metricValue !== prevState.metricValue;
-    const metricValueEdited = this.state.edited;
-    const saveButtonClicked = this.props.saveMode;
-    const inEditMode = this.props.editMode;
-    const shouldSave = (metricValueChanged && !inEditMode) || (metricValueEdited && saveButtonClicked);
+    // const metricValueChanged = this.state.metricValue !== prevState.metricValue;
+    const shouldSave = this.state.swiped || (this.state.edited && this.props.saveMode);
+    const shouldCancel = this.state.edited && !this.props.editMode;
 
     if (shouldSave) {
-      this.setState({ edited: false });
+      this.setState({ edited: false, swiped: false });
       this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
-    } else {
-      // Reset to initial value if edited but changes cancelled
-      if (!inEditMode && metricValueEdited) {
-        this.setState({ metricValue: this.props.metricValue });
-      }
+
+    } else if (shouldCancel) {
+      this.setState({ metricValue: this.props.metricValue, edited: false });
     }
   }
 
@@ -159,8 +156,6 @@ class Metrics extends Component {
   }
 
   render() {
-    // const cancelMode = !this.props.editMode && !this.props.saveMode;
-    // const metricValue = (cancelMode) ? this.props.metricValue : this.state.metricValue;
     const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;

@@ -100,6 +100,7 @@ class Exercise extends Component {
             workout={this.props.workout}
             routine={this.props.routine}
             routineType={this.props.routineType}
+            cancelMode={this.props.cancelMode}
             editMode={this.props.editMode}
             saveMode={this.props.saveMode}
             displayMessage={this.props.displayMessage}

@@ -20,7 +20,8 @@ class App extends Component {
     userObj: {},
     dayOfWeek: today,
     editMode: false,
-    saveMode: false
+    saveMode: false,
+    cancelMode: false
   };
 
   componentDidMount() {
@@ -40,12 +41,13 @@ class App extends Component {
     }
   }
 
-  handleUserChange = (user, editMode = false, saveMode = false) => {
+  handleUserChange = (user, editMode = false, saveMode = false, cancelMode = false) => {
     this.setState({
       user: user,
       userObj: new User(user),
       editMode: editMode,
-      saveMode: saveMode
+      saveMode: saveMode,
+      cancelMode: cancelMode
     });
   }
 
@@ -66,7 +68,6 @@ class App extends Component {
                 handleUserChange={this.handleUserChange}
                 dayOfWeek={this.state.dayOfWeek}
                 editMode={this.state.editMode}
-                saveMode={this.state.saveMode}
               />
               {this.state.user.routines ?
                 <Home
@@ -77,6 +78,7 @@ class App extends Component {
                   dayOfWeek={this.state.dayOfWeek}
                   editMode={this.state.editMode}
                   saveMode={this.state.saveMode}
+                  cancelMode={this.state.cancelMode}
                 /> :
                 <div>Loading...</div>
               }

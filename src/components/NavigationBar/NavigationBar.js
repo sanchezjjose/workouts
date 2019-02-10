@@ -27,7 +27,7 @@ class NavigationBar extends Component {
   }
 
   handleCancelClick = () => {
-    this.props.handleUserChange(this.props.user, false, false);
+    this.props.handleUserChange(this.props.user, false, false, true);
   }
 
   handleMenuClick = () => {

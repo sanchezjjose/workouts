@@ -25,6 +25,7 @@ class Routine extends Component {
       message: message 
     });
 
+    // TODO: Remove message state variable. Causes a re-render of all metrics when message banner dissapears.
     setTimeout(() => {
       this.setState({ message: '' });
     }, 3000);
@@ -109,6 +110,7 @@ class Routine extends Component {
                   key={`${dayOfWeek}-${exercise.name}`}
                   user={this.props.user}
                   userObj={this.props.userObj}
+                  cancelMode={this.props.cancelMode}
                   editMode={this.props.editMode}
                   saveMode={this.props.saveMode}
                   handleUserChange={this.props.handleUserChange} 

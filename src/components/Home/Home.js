@@ -20,6 +20,7 @@ class Home extends Component {
               userObj={this.props.userObj}
               handleUserChange={this.props.handleUserChange}
               dayOfWeek={this.props.dayOfWeek}
+              cancelMode={this.props.cancelMode}
               editMode={this.props.editMode}
               saveMode={this.props.saveMode} />
           </div>
