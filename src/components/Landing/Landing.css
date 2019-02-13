@@ -4,6 +4,7 @@
   justify-items: center;
   background: var(--main-bg-color);
   height: 100vh;
+  width: 100%;
 }
 
 .Landing .content {
