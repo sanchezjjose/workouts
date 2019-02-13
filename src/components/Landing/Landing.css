@@ -3,9 +3,13 @@
   grid-template-rows: 100px 1fr;
   justify-items: center;
   background: var(--main-bg-color);
-  background-image: url('./background.png');
-  background-size: cover;
+  /* background-image: url('./background.png'); */
+  /* background-size: cover; */
   height: 100vh;
+}
+
+.Landing .content {
+  z-index: 999;
 }
 
 .Landing .title {

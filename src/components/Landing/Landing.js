@@ -6,6 +6,8 @@ import './Landing.css';
 
 class Landing extends Component {
 
+  particles = Particles.init({ selector: '.background', connectParticles: true, speed: 0.1, maxParticles: 70 });
+
   state = {
     username: '',
     fullName: '',
