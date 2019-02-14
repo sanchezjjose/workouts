@@ -9,6 +9,24 @@
   visibility: hidden;
 }
 
+.Routine .message {
+  color: var(--secondary-txt-color);
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.Routine .message a {
+  color: var(--main-link-color);
+  text-decoration: none;
+}
+
+.Routine .message a:visited {
+  color: var(--main-link-color);
+}
+
 .Routine .success-banner {
   box-sizing: border-box;
   display: grid;

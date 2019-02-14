@@ -69,9 +69,12 @@ class Routine extends Component {
     const dayOfWeek = this.props.dayOfWeek;
     const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
     const workoutDateFormatted = this.props.userObj.getWorkoutDate(dayOfWeek);
-    const workoutStartedToday = this.isTodaysWorkoutStarted(workoutDateFormatted);
+    const workoutStartedToday = this.isTodaysWorkoutStarted();
     const workoutStartedClassName = workoutStartedToday ? 'workout-started' : '';
     const didWorkout = typeof workoutDateFormatted !== 'undefined';
+    const hasWorkouts = (routine[0].workouts.length + routine[1].workouts.length) > 0;
+    const showStartWorkoutButton = hasWorkouts && !workoutStartedToday;
+    const showWorkoutDate = hasWorkouts && typeof workoutDateFormatted === 'string';
 
     return (
       <div className={`Routine ${this.state.transitionClassName} ${workoutStartedClassName}`}>
@@ -80,13 +83,23 @@ class Routine extends Component {
         }
         <div className={`routine-heading ${this.props.editMode ? 'save-mode' : ''}`}>
           <div className='weekday'>{routine.day} Routine</div>
-          {workoutDateFormatted && 
+          {showWorkoutDate && 
             <div className='subtitle'>{workoutDateFormatted}</div>
           }
-          {!workoutStartedToday &&
+          {showStartWorkoutButton &&
             <button onClick={this.handleStartWorkout} className='start-workout-button'>Start Workout</button>
           }
         </div>
+        {!hasWorkouts &&
+          <p className='message'>
+            Enjoy a well deserved day off. <br/>
+            Otherwise, get motived! <br/><br/>
+
+            <a target='_blank' href='https://www.youtube.com/watch?v=z3ScszkzJqk'>Jocko Willink Motivation.</a> <br/>
+            <a target='_blank' href='https://www.youtube.com/watch?v=eClN__7Avuk'>David Goggins Motivation.</a> <br/>
+            <a target='_blank' href='https://www.youtube.com/watch?v=X6_O-zOFBFg'>Joe Rogan Motivation.</a>
+          </p>
+        }
         {routine.map (routineType =>
           routineType.workouts.sort(compareNames).map (workout =>
             <div key={workout.name} className='group'>
