@@ -60,7 +60,7 @@ class Landing extends Component {
 
   componentDidMount() {
     if (typeof window.Particles === 'object' && window.innerWidth >= 320) {
-      window.Particles.init({ selector: '.Landing .background', connectParticles: true, speed: 0.3, maxParticles: 70 })
+      window.Particles.init({ selector: '.Landing .background', connectParticles: true, speed: 0.3, maxParticles: 50 })
     }
   }
 
