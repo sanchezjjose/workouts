@@ -58,9 +58,16 @@ class Landing extends Component {
     }
   }
 
+  componentDidMount() {
+    if (typeof window.Particles === 'object') {
+      window.Particles.init({ selector: '.Landing .background', connectParticles: true, speed: 0.3, maxParticles: 70 })
+    }
+  }
+
   render() {
     return (
       <div className='Landing'>
+        <canvas className="background"></canvas>
         <div className='title'>Workouts</div>
         <div className='content'>
           <div className='auth'>
