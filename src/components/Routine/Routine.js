@@ -88,7 +88,7 @@ class Routine extends Component {
             <button className={`start-workout-button ${workoutButtonClassName}`} onClick={this.handleStartWorkout}>Start Workout</button>
           </div>
         ) : (
-          <div className='message'>
+          <div className='empty-routine-message'>
             Enjoy a well deserved day off. <br/>
             Otherwise, get motived! <br/><br/>
             <div className='motivation-links'>

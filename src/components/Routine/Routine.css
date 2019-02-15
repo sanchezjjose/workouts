@@ -9,8 +9,8 @@
   visibility: hidden;
 }
 
-.Routine .message {
-  color: var(--secondary-txt-color);
+.Routine .empty-routine-message {
+  color: #000;
   font-weight: 300;
   font-size: 18px;
   letter-spacing: 2px;
@@ -18,12 +18,12 @@
   margin-top: 50px;
 }
 
-.Routine .message a {
+.Routine .empty-routine-message a {
   color: var(--main-link-color);
   text-decoration: none;
 }
 
-.Routine .message a:visited {
+.Routine .empty-routine-message a:visited {
   color: var(--main-link-color);
 }
 

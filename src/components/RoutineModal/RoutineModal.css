@@ -58,14 +58,17 @@
 .RoutineModal .description {
   box-sizing: border-box;
   display: grid;
-  padding: 20px;
+  grid-gap: 30px;
   justify-items: center;
-  height: 100%;
+  margin-top: 40px;
 }
 
-.RoutineModal .description .message {
-  align-self: end;
-  margin-bottom: 50px;
+.RoutineModal .description .no-favorites-message {
+  color: #000;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .RoutineModal .description .link-favorites {

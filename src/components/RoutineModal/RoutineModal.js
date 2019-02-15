@@ -82,12 +82,11 @@ class RoutineModal extends Component {
         <div className={`content ${this.state.show ? 'show' : ''}`}>
           {!hasFavorites &&
             <div className='description'>
-              <p className='message'>
-                This will show a list of exercises to add to your routine
-                from your Favorites list.
+              <p className='no-favorites-message'>
+                This will show a list of your favorite exercises to add to your routine.
               </p>
               <div>
-              <a className='link-favorites' href={`${this.props.user.id}/favorites`}>ADD FAVORITE EXERCISES</a>
+              <a className='link-favorites' href={`${this.props.user.id}/favorites`}>CREATE FAVORITES</a>
               </div>
             </div>
           }
