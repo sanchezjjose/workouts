@@ -50,13 +50,8 @@
 
 }
 
-.Routine .routine-heading.hide {
-  display: none;
-}
-
 .Routine .routine-heading {
   align-items: center;
-  text-align: center;
   margin-top: 30px;
 }
 

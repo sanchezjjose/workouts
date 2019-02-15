@@ -72,9 +72,8 @@ class Routine extends Component {
     const workoutStartedToday = this.isTodaysWorkoutStarted(workoutDateFormatted);
     const didWorkout = typeof workoutDateFormatted !== 'undefined';
     const hasWorkouts = (routine[0].workouts.length + routine[1].workouts.length) > 0;
-    const headingClassName = hasWorkouts ? 'show' : 'hide';
-    const workoutDateClassName = (hasWorkouts && typeof workoutDateFormatted === 'string') ? 'show' : 'hide';
-    const workoutButtonClassName = (hasWorkouts && !workoutStartedToday) ? 'show' : 'hide';
+    const workoutDateClassName = (typeof workoutDateFormatted === 'string') ? 'show' : 'hide';
+    const workoutButtonClassName = (!workoutStartedToday) ? 'show' : 'hide';
     const workoutStartedClassName = workoutStartedToday ? 'workout-started' : '';
 
     return (
@@ -82,12 +81,13 @@ class Routine extends Component {
         {this.state.message.length > 0 &&
           <div className={`success-banner`}>{this.state.message}</div>
         }
-        <div className={`routine-heading ${headingClassName}`}>
-          <div className='weekday'>{routine.day} Routine</div>
-          <div className={`subtitle ${workoutDateClassName}`}>{workoutDateFormatted}</div>
-          <button className={`start-workout-button ${workoutButtonClassName}`} onClick={this.handleStartWorkout}>Start Workout</button>
-        </div>
-        {!hasWorkouts &&
+        {hasWorkouts ? (
+          <div className={`routine-heading`}>
+            <div className='weekday'>{routine.day} Routine</div>
+            <div className={`subtitle ${workoutDateClassName}`}>{workoutDateFormatted}</div>
+            <button className={`start-workout-button ${workoutButtonClassName}`} onClick={this.handleStartWorkout}>Start Workout</button>
+          </div>
+        ) : (
           <div className='message'>
             Enjoy a well deserved day off. <br/>
             Otherwise, get motived! <br/><br/>
@@ -97,7 +97,7 @@ class Routine extends Component {
               <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=X6_O-zOFBFg'>Joe Rogan Motivation.</a>
             </div>
           </div>
-        }
+        )}
         {routine.map (routineType =>
           routineType.workouts.sort(compareNames).map (workout =>
             <div key={workout.name} className='group'>
