@@ -69,36 +69,34 @@ class Routine extends Component {
     const dayOfWeek = this.props.dayOfWeek;
     const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
     const workoutDateFormatted = this.props.userObj.getWorkoutDate(dayOfWeek);
-    const workoutStartedToday = this.isTodaysWorkoutStarted();
-    const workoutStartedClassName = workoutStartedToday ? 'workout-started' : '';
+    const workoutStartedToday = this.isTodaysWorkoutStarted(workoutDateFormatted);
     const didWorkout = typeof workoutDateFormatted !== 'undefined';
     const hasWorkouts = (routine[0].workouts.length + routine[1].workouts.length) > 0;
-    const showStartWorkoutButton = hasWorkouts && !workoutStartedToday;
-    const showWorkoutDate = hasWorkouts && typeof workoutDateFormatted === 'string';
+    const headingClassName = hasWorkouts ? 'show' : 'hide';
+    const workoutDateClassName = (hasWorkouts && typeof workoutDateFormatted === 'string') ? 'show' : 'hide';
+    const workoutButtonClassName = (hasWorkouts && !workoutStartedToday) ? 'show' : 'hide';
+    const workoutStartedClassName = workoutStartedToday ? 'workout-started' : '';
 
     return (
       <div className={`Routine ${this.state.transitionClassName} ${workoutStartedClassName}`}>
         {this.state.message.length > 0 &&
           <div className={`success-banner`}>{this.state.message}</div>
         }
-        <div className={`routine-heading ${this.props.editMode ? 'save-mode' : ''}`}>
+        <div className={`routine-heading ${headingClassName}`}>
           <div className='weekday'>{routine.day} Routine</div>
-          {showWorkoutDate && 
-            <div className='subtitle'>{workoutDateFormatted}</div>
-          }
-          {showStartWorkoutButton &&
-            <button onClick={this.handleStartWorkout} className='start-workout-button'>Start Workout</button>
-          }
+          <div className={`subtitle ${workoutDateClassName}`}>{workoutDateFormatted}</div>
+          <button className={`start-workout-button ${workoutButtonClassName}`} onClick={this.handleStartWorkout}>Start Workout</button>
         </div>
         {!hasWorkouts &&
-          <p className='message'>
+          <div className='message'>
             Enjoy a well deserved day off. <br/>
             Otherwise, get motived! <br/><br/>
-
-            <a target='_blank' href='https://www.youtube.com/watch?v=z3ScszkzJqk'>Jocko Willink Motivation.</a> <br/>
-            <a target='_blank' href='https://www.youtube.com/watch?v=eClN__7Avuk'>David Goggins Motivation.</a> <br/>
-            <a target='_blank' href='https://www.youtube.com/watch?v=X6_O-zOFBFg'>Joe Rogan Motivation.</a>
-          </p>
+            <div className='motivation-links'>
+              <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=z3ScszkzJqk'>Jocko Willink Motivation.</a> <br/>
+              <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=eClN__7Avuk'>David Goggins Motivation.</a> <br/>
+              <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=X6_O-zOFBFg'>Joe Rogan Motivation.</a>
+            </div>
+          </div>
         }
         {routine.map (routineType =>
           routineType.workouts.sort(compareNames).map (workout =>

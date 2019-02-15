@@ -50,8 +50,13 @@
 
 }
 
+.Routine .routine-heading.hide {
+  display: none;
+}
+
 .Routine .routine-heading {
   align-items: center;
+  text-align: center;
   margin-top: 30px;
 }
 
@@ -65,6 +70,10 @@
   font-size: 16px;
   font-weight: 300;
   color: var(--secondary-txt-color);
+}
+
+.Routine .routine-heading .subtitle.hide {
+  display: none;
 }
 
 .Routine .header {
@@ -108,15 +117,15 @@
   margin-top: 20px;
   text-decoration: none;
   height: 45px;
-  width: 140px;
+  width: 150px;
+}
+
+.Routine .start-workout-button.hide {
+  display: none;
 }
 
 /* Apple Watch */
 @media only screen and (max-width: 319px) {
-
-  .Routine .routine-heading {
-    text-align: center;
-  }
 
   .Routine .routine-heading .weekday {
     font-size: 18px;
