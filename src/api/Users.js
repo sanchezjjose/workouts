@@ -47,8 +47,11 @@ const createUser = (userId, fullName) => {
             'id':  userId,
             'name': fullName,
             'settings': {
-              'units': 'pounds',
-              'time': 'minutes'
+              "units": {
+                "weight": "lbs",
+                "time": "min",
+                "distance": "mi"
+              }
             },
             'favorites':  {
               'weight': {},
