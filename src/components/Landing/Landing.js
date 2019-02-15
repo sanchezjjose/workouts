@@ -73,10 +73,21 @@ class Landing extends Component {
           <div className='auth'>
             <div className='credentials'>
               <input className='username-input' placeholder='Username' onChange={this.handleUsernameOnChange} type='text' value={this.state.username} />
+              {this.state.showRegister &&
+                <input className='full-name-input' placeholder='Full Name' onChange={this.handleFullNameOnChange} type='text' value={this.state.fullName} />
+              }
             </div>
-            <div className='submit'>
-              <button className='mdc-button--unelevated button signin-button' onClick={this.handleSignin}>Sign In</button>
-            </div>
+            {this.state.showRegister ? (
+              <div className='submit'>
+                <button className='mdc-button--unelevated button register-button' onClick={this.handleRegistration}>Register</button>
+                <a className='link signin-link' onClick={this.handleSigninLinkClick} href='/'>Sign in</a>
+              </div>
+            ) : (
+              <div className='submit'>
+                <button className='mdc-button--unelevated button signin-button' onClick={this.handleSignin}>Sign In</button>
+                <a className='link register-link' onClick={this.handleRegisterLinkClick} href='/'>Register</a>
+              </div>
+            )}
           </div>
         </div>
       </div>
