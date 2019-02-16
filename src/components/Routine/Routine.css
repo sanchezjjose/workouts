@@ -119,6 +119,19 @@
   display: none;
 }
 
+.Routine .motivation-video {
+  margin-bottom: 20px;
+}
+
+.Routine .motivation-video .embedded {
+  margin-top: 10px;
+  display: none;
+}
+
+.Routine .motivation-video .embedded.visible {
+  display: block;
+}
+
 /* Apple Watch */
 @media only screen and (max-width: 319px) {
 
@@ -142,5 +155,9 @@
 
   .Routine .group .header span {
     font-size: 10px;
+  }
+
+  .Routine .motivation-links {
+    display: none;
   }
 }

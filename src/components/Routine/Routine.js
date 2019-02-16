@@ -10,6 +10,7 @@ class Routine extends Component {
 
   state = {
     message: '',
+    activeVideo: '',
     transitionClassName: 'hidden'
   }
 
@@ -58,6 +59,11 @@ class Routine extends Component {
       });
   }
 
+  handleVideoClick = (e) => {
+    e.preventDefault();
+    this.setState({ activeVideo: e.target.name });
+  }
+
   isTodaysWorkoutStarted = (workoutDateFormatted) => {
     const today = new Date();
     const todayDateFormatted = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
@@ -92,9 +98,21 @@ class Routine extends Component {
             Enjoy a well deserved day off. <br/>
             Otherwise, get motived! <br/><br/>
             <div className='motivation-links'>
-              <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=z3ScszkzJqk'>Jocko Willink Motivation.</a> <br/>
-              <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=eClN__7Avuk'>David Goggins Motivation.</a> <br/>
-              <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=X6_O-zOFBFg'>Joe Rogan Motivation.</a>
+              <div className='motivation-video'>
+                <a onClick={this.handleVideoClick} name='jocko' href='https://www.youtube.com/watch?v=z3ScszkzJqk'>Jocko Willink Motivation.</a>
+                <iframe className={`embedded ${this.state.activeVideo === 'jocko' ? 'visible': ''}`} width="100%" height="315" src="https://www.youtube.com/embed/z3ScszkzJqk"
+                  frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              </div>
+              <div className='motivation-video'>
+                <a onClick={this.handleVideoClick} name='goggins' href='https://www.youtube.com/watch?v=eClN__7Avuk'>David Goggins Motivation.</a>
+                <iframe className={`embedded ${this.state.activeVideo === 'goggins' ? 'visible': ''}`} width="100%" height="315" src="https://www.youtube.com/embed/eClN__7Avuk"
+                  frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              </div>
+              <div className='motivation-video'>
+                <a onClick={this.handleVideoClick} name='rogan' href='https://www.youtube.com/watch?v=X6_O-zOFBFg'>Joe Rogan Motivation.</a>
+                <iframe className={`embedded ${this.state.activeVideo === 'rogan' ? 'visible': ''}`} width="100%" height="315" src="https://www.youtube.com/embed/X6_O-zOFBFg"
+                  frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              </div>
             </div>
           </div>
         )}
