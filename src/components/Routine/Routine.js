@@ -101,17 +101,17 @@ class Routine extends Component {
               <div className='motivation-video'>
                 <a onClick={this.handleVideoClick} name='jocko' href='https://www.youtube.com/watch?v=z3ScszkzJqk'>Jocko Willink Motivation.</a>
                 <iframe className={`embedded ${this.state.activeVideo === 'jocko' ? 'visible': ''}`} width="100%" height="315" src="https://www.youtube.com/embed/z3ScszkzJqk"
-                  frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                  title="Jocko Motivation" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
               <div className='motivation-video'>
                 <a onClick={this.handleVideoClick} name='goggins' href='https://www.youtube.com/watch?v=eClN__7Avuk'>David Goggins Motivation.</a>
                 <iframe className={`embedded ${this.state.activeVideo === 'goggins' ? 'visible': ''}`} width="100%" height="315" src="https://www.youtube.com/embed/eClN__7Avuk"
-                  frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                  title="Goggins Motivation" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
               <div className='motivation-video'>
                 <a onClick={this.handleVideoClick} name='rogan' href='https://www.youtube.com/watch?v=X6_O-zOFBFg'>Joe Rogan Motivation.</a>
                 <iframe className={`embedded ${this.state.activeVideo === 'rogan' ? 'visible': ''}`} width="100%" height="315" src="https://www.youtube.com/embed/X6_O-zOFBFg"
-                  frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                  title="Rogan Motivation" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
           </div>
