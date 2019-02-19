@@ -1,7 +1,21 @@
 class Favorites {
 
-  constructor() {
+  constructor(favorites) {
+    this.favorites = favorites;
+  }
 
+  get () {
+    return Object.entries(this.favorites).map(favorite => {
+      return {
+        type: favorite[0],
+        workouts: Object.entries(favorite[1]).map(workout => {
+          return {
+            name: workout[0],
+            exercises: workout[1]
+          };
+        })
+      };
+    });
   }
 }
 

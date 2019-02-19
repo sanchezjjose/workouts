@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getUser } from '../api/Users';
 import User from '../models/User';
+import UserFavorites from '../models/Favorites';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
@@ -18,6 +19,7 @@ class App extends Component {
   state = {
     user: {},
     userObj: {},
+    favorites: {},
     dayOfWeek: today,
     editMode: false,
     saveMode: false,
@@ -32,7 +34,8 @@ class App extends Component {
         .then(user => {
           this.setState({
             user: user,
-            userObj: new User(user)
+            userObj: new User(user),
+            favorites: new UserFavorites(user.favorites)
           });
         })
         .catch(err => {
@@ -49,6 +52,10 @@ class App extends Component {
       saveMode: saveMode,
       cancelMode: cancelMode
     });
+  }
+
+  handleFavoritesChange = (favorites) => {
+    this.setState({ favorites: new UserFavorites(favorites) });
   }
 
   handleDayChange = (dayOfWeek) => {
@@ -96,9 +103,13 @@ class App extends Component {
               />
               {this.state.user.favorites ?
                 <Favorites
+                  userId={this.state.user.id}
+                  favorites={this.state.favorites}
+                  handleFavoritesChange={this.handleFavoritesChange}
+                  editMode={this.state.editMode}
+
                   user={this.state.user}
                   userObj={this.state.userObj}
-                  editMode={this.state.editMode}
                   handleUserChange={this.handleUserChange}
                 /> :
                 <div>Loading...</div>

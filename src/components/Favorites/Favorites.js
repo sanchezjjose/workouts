@@ -8,6 +8,7 @@ import './Favorites.css';
 class Favorites extends Component {
 
   state = {
+    // TODO: remove from state, causes re-render
     message: ''
   }
 
@@ -22,26 +23,27 @@ class Favorites extends Component {
   }
 
   removeExercise(routineType, workoutName, exercise) {
-    const user = this.props.user;
-    const exercises = user.favorites[routineType][workoutName];
+    const props = this.props;
+    const exercises = props.favorites[routineType][workoutName];
     const updatedExercises = exercises.filter(e => e !== exercise);
 
-    user.favorites[routineType][workoutName] = updatedExercises;
+    props.favorites[routineType][workoutName] = updatedExercises;
 
     if (updatedExercises.length === 0) {
-      delete user.favorites[routineType][workoutName];
+      delete props.favorites[routineType][workoutName];
     }
 
-    removeFavoriteExercise(user.id, routineType, workoutName, updatedExercises)
+    removeFavoriteExercise(props.userId, routineType, workoutName, updatedExercises)
       .then(() => {
-        this.props.handleUserChange(user, this.props.editMode);
+        this.props.handleFavoritesChange(props.favorites);
         this.displayMessage(`Deleted ${exercise} from favorites.`);
       });
   }
 
   render() {
-    const favoritesVm = this.props.userObj.getFavorites();
-    const editMode = this.props.editMode;
+    const props = this.props;
+    const favoritesVm = props.favorites.get();
+    const editMode = props.editMode;
 
     return (
       <div className='Favorites'>
@@ -68,7 +70,13 @@ class Favorites extends Component {
           )}
           </div>
         </div>
-        <FavoritesModal user={this.props.user} handleUserChange={this.props.handleUserChange} displayMessage={this.displayMessage} />
+        <FavoritesModal
+          user={props.user}
+
+          userId={props.userId}
+          favorites={favoritesVm}
+          handleFavoritesChange={props.handleFavoritesChange}
+          displayMessage={this.displayMessage} />
       </div>
     );
   }
