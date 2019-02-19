@@ -4,6 +4,10 @@ class Favorites {
     this.favorites = favorites;
   }
 
+  set (routineType, workout) {
+    this.favorites[routineType][workout] = this.favorites[routineType][workout] || [];
+  }
+
   get () {
     return Object.entries(this.favorites).map(favorite => {
       return {

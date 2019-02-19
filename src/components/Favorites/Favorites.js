@@ -74,7 +74,7 @@ class Favorites extends Component {
           user={props.user}
 
           userId={props.userId}
-          favorites={favoritesVm}
+          favoritesVm={favoritesVm}
           handleFavoritesChange={props.handleFavoritesChange}
           displayMessage={this.displayMessage} />
       </div>
