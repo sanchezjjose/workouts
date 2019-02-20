@@ -23,19 +23,13 @@ class Favorites extends Component {
   }
 
   removeExercise(routineType, workoutName, exercise) {
-    const props = this.props;
-    const exercises = props.favorites[routineType][workoutName];
-    const updatedExercises = exercises.filter(e => e !== exercise);
+    this.props.favorites.removeExercise(routineType, workoutName, exercise);
 
-    props.favorites[routineType][workoutName] = updatedExercises;
+    const updatedExercises = this.props.favorites.getExercises(routineType, workoutName) || [];
 
-    if (updatedExercises.length === 0) {
-      delete props.favorites[routineType][workoutName];
-    }
-
-    removeFavoriteExercise(props.userId, routineType, workoutName, updatedExercises)
+    removeFavoriteExercise(this.props.userId, routineType, workoutName, updatedExercises)
       .then(() => {
-        this.props.handleFavoritesChange(props.favorites);
+        this.props.handleFavoritesChange(this.props.favorites);
         this.displayMessage(`Deleted ${exercise} from favorites.`);
       });
   }
