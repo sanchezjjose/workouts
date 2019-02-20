@@ -55,7 +55,7 @@ class App extends Component {
   }
 
   handleFavoritesChange = (favorites) => {
-    this.setState({ favorites: new UserFavorites(favorites) });
+    this.setState({ favorites: favorites });
   }
 
   handleDayChange = (dayOfWeek) => {

@@ -42,7 +42,7 @@ class Favorites extends Component {
 
   render() {
     const props = this.props;
-    const favoritesVm = props.favorites.get();
+    const favoritesVm = props.favorites.getViewModel();
     const editMode = props.editMode;
 
     return (
@@ -71,10 +71,8 @@ class Favorites extends Component {
           </div>
         </div>
         <FavoritesModal
-          user={props.user}
-
           userId={props.userId}
-          favoritesVm={favoritesVm}
+          favorites={props.favorites}
           handleFavoritesChange={props.handleFavoritesChange}
           displayMessage={this.displayMessage} />
       </div>

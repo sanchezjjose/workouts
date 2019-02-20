@@ -48,15 +48,15 @@ class FavoritesModal extends Component {
     const routineType = this.state.routineType;
     const workout = this.state.workout;
     const exerciseName = this.state.exerciseName;
-    const favoritesVm = props.favoritesVm;
+    const favorites = props.favorites;
 
-    favoritesVm.set(routineType, workout);
+    favorites.addWorkout(routineType, workout);
 
-    if (favoritesVm[routineType][workout].indexOf(exerciseName) === -1) {
+    if (favorites.getExercises(routineType, workout).indexOf(exerciseName) === -1) {
       saveFavoriteExercise(props.userId, routineType, workout, exerciseName)
         .then(() => {
-          favoritesVm[routineType][workout].push(exerciseName);
-          props.handleFavoritesChange(favoritesVm);
+          favorites.addExercise(routineType, workout, exerciseName);
+          props.handleFavoritesChange(favorites);
           props.displayMessage(`Added ${exerciseName} to favorites.`);
         })
         .catch(err => { 

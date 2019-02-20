@@ -4,11 +4,27 @@ class Favorites {
     this.favorites = favorites;
   }
 
-  set (routineType, workout) {
-    this.favorites[routineType][workout] = this.favorites[routineType][workout] || [];
+  addWorkout (routineType, workout) {
+    const workouts = this.favorites[routineType];
+
+    if (!workouts.hasOwnProperty(workout)) {
+      workouts[workout] = [];
+    }
   }
 
-  get () {
+  addExercise (routineType, workout, exercise) {
+    const exercises = this.favorites[routineType][workout];
+
+    if (typeof exercises.find(e => e === exercise) === 'undefined') {
+      exercises.push(exercise);
+    }
+  }
+
+  getExercises (routineType, workout) {
+    return this.favorites[routineType][workout];
+  }
+
+  getViewModel () {
     return Object.entries(this.favorites).map(favorite => {
       return {
         type: favorite[0],
