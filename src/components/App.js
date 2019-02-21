@@ -55,6 +55,7 @@ class App extends Component {
   }
 
   handleFavoritesChange = (favorites) => {
+    // TODO: May not need this. 'favorites' object already updated, just need to for re-render after adding / deleting a favorite exercise.
     this.setState({ favorites: favorites });
   }
 

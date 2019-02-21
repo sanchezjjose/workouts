@@ -1,21 +1,19 @@
 const AWS = require('./aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const saveFavoriteExercise = (userId, workoutType, workout, exercise) => {
-  const createMuscleEntry = new Promise((resolve, reject) => {
+const saveFavoriteExercise = (userId, exercises) => {
+  return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #f.#t.#w = if_not_exists(#f.#t.#w, :e)",
+      UpdateExpression: "SET #f = :e",
       ExpressionAttributeNames: {
-        "#f": "favorites",
-        "#t": workoutType,
-        "#w": workout
+        "#f": "favorites"
       },
       ExpressionAttributeValues: {
-        ":e": []
+        ":e": exercises
       },
       ReturnValues:"ALL_NEW"
 
@@ -28,35 +26,6 @@ const saveFavoriteExercise = (userId, workoutType, workout, exercise) => {
       resolve(data);
     });
   });
-
-  const createMuscleExercises = new Promise((resolve, reject) => {
-    docClient.update({
-      TableName: 'Workouts',
-      Key: {
-        'id': userId
-      },
-      UpdateExpression: "SET #f.#t.#w = list_append(#f.#t.#w, :e)",
-      ExpressionAttributeNames: {
-        "#f": "favorites",
-        "#t": workoutType,
-        "#w": workout
-      },
-      ExpressionAttributeValues: {
-        ":e": [ exercise ]
-      },
-      ReturnValues:"ALL_NEW"
-
-    }, (err, data) => {
-      if (err) {
-        console.error(err);
-        return reject('Error JSON:', JSON.stringify(err, null, 2));
-      }
-
-      resolve(data);
-    });
-  });
-
-  return Promise.all([createMuscleEntry, createMuscleExercises]);
 };
 
 const removeFavoriteExercise = (userId, workoutType, workout, exercises) => {

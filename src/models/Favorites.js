@@ -5,10 +5,11 @@ class Favorites {
   }
 
   addWorkout (routineType, workout) {
-    const workouts = this.favorites[routineType];
-
-    if (!workouts.hasOwnProperty(workout)) {
-      workouts[workout] = [];
+    if (!this.favorites.hasOwnProperty(routineType)) {
+      this.favorites[routineType] = {};
+    }
+    if (!this.favorites[routineType].hasOwnProperty(workout)) {
+      this.favorites[routineType][workout] = [];
     }
   }
 
@@ -32,7 +33,10 @@ class Favorites {
   }
 
   getExercises (routineType, workout) {
-    return this.favorites[routineType][workout];
+    const workouts = this.favorites[routineType] || [];
+    const exercises = workouts[workout] || [];
+
+    return exercises;
   }
 
   getViewModel () {
