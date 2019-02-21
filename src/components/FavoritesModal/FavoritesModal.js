@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { saveFavoriteExercise } from '../../api/Favorites';
+import { saveFavorites } from '../../api/Favorites';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './FavoritesModal.css';
@@ -55,9 +55,9 @@ class FavoritesModal extends Component {
       favorites.addWorkout(routineType, workout);
       favorites.addExercise(routineType, workout, exerciseName);
 
-      const updatedFavoriteExercises = favorites.getExercises(routineType, workout);
+      const updatedFavorites = favorites.get();
 
-      saveFavoriteExercise(props.userId, updatedFavoriteExercises)
+      saveFavorites(props.userId, updatedFavorites)
         .then(() => {
           props.handleFavoritesChange(favorites);
           props.displayMessage(`Added ${exerciseName} to favorites.`);

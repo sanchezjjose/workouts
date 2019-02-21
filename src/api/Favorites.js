@@ -1,19 +1,19 @@
 const AWS = require('./aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const saveFavoriteExercise = (userId, exercises) => {
+const saveFavorites = (userId, favorites) => {
   return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #f = :e",
+      UpdateExpression: "SET #f = :f",
       ExpressionAttributeNames: {
         "#f": "favorites"
       },
       ExpressionAttributeValues: {
-        ":e": exercises
+        ":f": favorites
       },
       ReturnValues:"ALL_NEW"
 
@@ -65,6 +65,6 @@ const removeFavoriteExercise = (userId, workoutType, workout, exercises) => {
 }
 
 module.exports = { 
-  saveFavoriteExercise: saveFavoriteExercise,
+  saveFavorites: saveFavorites,
   removeFavoriteExercise: removeFavoriteExercise
 };

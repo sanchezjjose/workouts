@@ -32,6 +32,10 @@ class Favorites {
     }
   }
 
+  get () {
+    return this.favorites;
+  }
+
   getExercises (routineType, workout) {
     const workouts = this.favorites[routineType] || [];
     const exercises = workouts[workout] || [];
