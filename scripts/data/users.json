@@ -43,7 +43,7 @@
 				],
 				"Biceps": [
 					"Curls (bands)",
-					"Chin-Up",
+					"Chin-Ups",
 					"Dumbbell Curls"
 				],
 				"Chest": [
@@ -148,7 +148,7 @@
 							"reps": { "value": 10, "unit": "-" },
 							"sets": { "value": 3, "unit": "-" }
 						},
-						"Chin-Up": {
+						"Chin-Ups": {
 							"done": false,
 							"weight": { "value": 0, "unit": "lbs" },
 							"reps": { "value": 5, "unit": "-" },
@@ -338,7 +338,7 @@
 							"reps": { "value": 10, "unit": "-" },
 							"sets": { "value": 3, "unit": "-" }
 						},
-						"Chin-Up": {
+						"Chin-Ups": {
 							"done": false,
 							"weight": { "value": 0, "unit": "lbs" },
 							"reps": { "value": 5, "unit": "-" },
@@ -421,12 +421,6 @@
 							"reps": { "value": 5, "unit": "-" },
 							"sets": { "value": 1, "unit": "-" }
 						},
-						"Hip Hinge": {
-							"done": false,
-							"weight": { "value": 100, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
 						"Leg Extensions": {
 							"done": false,
 							"weight": { "value": 130, "unit": "lbs" },
@@ -465,67 +459,6 @@
 			}
 		},
 		"favorites": {
-			"time": {
-				"Abs": [
-					"Plank"
-				],
-				"Other": [
-					"Sauna"
-				],
-				"Running": [
-					"Treadmill",
-					"Elliptical"
-				],
-				"Stretching": [
-					"Inner Thighs",
-					"Outer Thighs",
-					"Chest",
-					"Lower Back",
-					"Calf"
-				]
-			},
-			"weight": {
-				"Abs": [
-					"Crunches"
-				],
-				"Back": [
-					"Pull Ups",
-					"Bent-Over Barbell Row",
-					"Wide-Grip Seated Cable Row",
-					"Close-Grip Pull Down",
-					"Single-Arm Dumbbell Row"
-				],
-				"Biceps": [
-					"Curls (bands)",
-					"Chin-Up",
-					"Dumbbell Curls"
-				],
-				"Chest": [
-					"Barbell Bench Press",
-					"Push Ups",
-					"Dips"
-				],
-				"Legs": [
-					"Barbell Deadlift",
-					"Hip Hinge",
-					"Leg Extensions",
-					"Seated Calf Raise"
-				],
-				"Shoulders": [
-					"Upright Cable Row",
-					"Lateral Raise Machine",
-					"Reverse Machine Flies",
-					"Barbell Military Press",
-					"Front Two-Dumbbell Raise",
-					"Shrugs"
-				],
-				"Triceps": [
-					"Tricep Pushdown (rope)",
-					"Overhead Extension Machine",
-					"EZ-Bar Standing Overhead",
-					"Dips"
-				]
-			}
 		},
 		"history": {
 		},
