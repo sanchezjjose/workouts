@@ -20,6 +20,17 @@ class Favorites {
     }
   }
 
+  removeExercise (routineType, workout, exercise) {
+    const exercises = this.favorites[routineType][workout];
+    const updatedExercises = exercises.filter(e => e !== exercise);
+
+    this.favorites[routineType][workout] = updatedExercises;
+
+    if (updatedExercises.length === 0) {
+      delete this.favorites[routineType][workout];
+    }
+  }
+
   getExercises (routineType, workout) {
     return this.favorites[routineType][workout];
   }
