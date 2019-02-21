@@ -40,20 +40,6 @@ class User {
 
     return result;
   }
-
-  getFavorites() {
-    return Object.entries(this.favorites).map(favorite => {
-      return {
-        type: favorite[0],
-        workouts: Object.entries(favorite[1]).map(workout => {
-          return {
-            name: workout[0],
-            exercises: workout[1]
-          };
-        })
-      };
-    });
-  }
 }
 
 export default User;

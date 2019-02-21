@@ -17,6 +17,7 @@ class Home extends Component {
             <Routine
               key={`${this.props.dayOfWeek}-routine`}
               user={this.props.user}
+              favorites={this.props.favorites}
               userObj={this.props.userObj}
               handleUserChange={this.props.handleUserChange}
               dayOfWeek={this.props.dayOfWeek}

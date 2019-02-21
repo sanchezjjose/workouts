@@ -56,6 +56,13 @@ class Favorites {
       };
     });
   }
+
+  hasWorkouts () {
+    const weightWorkouts = Object.entries(this.favorites['weight'] || {});
+    const timeWorkouts = Object.entries(this.favorites['time'] || {});
+
+    return weightWorkouts.length + timeWorkouts.length > 0;
+  }
 }
 
 export default Favorites;

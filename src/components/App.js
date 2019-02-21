@@ -81,6 +81,7 @@ class App extends Component {
                 <Home
                   user={this.state.user}
                   userObj={this.state.userObj}
+                  favorites={this.state.favorites}
                   handleUserChange={this.handleUserChange}
                   handleDayChange={this.handleDayChange}
                   dayOfWeek={this.state.dayOfWeek}

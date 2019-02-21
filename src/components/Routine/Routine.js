@@ -158,6 +158,7 @@ class Routine extends Component {
         <RoutineModal 
           user={this.props.user}
           userObj={this.props.userObj}
+          favorites={this.props.favorites}
           dayOfWeek={routine.day}
           handleUserChange={this.props.handleUserChange}
           displayMessage={this.displayMessage} />
