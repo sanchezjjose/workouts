@@ -12,8 +12,9 @@ users.forEach (user => {
       'id':  user.id,
       'name': user.name,
       'settings': user.settings,
-      'favorites':  user.favorites,
+      'workouts':  user.workouts,
       'history':  user.history,
+      'favorites':  user.favorites,
       'routines':  user.routines,
     }
   };
