@@ -53,11 +53,12 @@ const createUser = (userId, fullName) => {
                 "distance": "mi"
               }
             },
+            'history':  {},
+            'workouts': {},
             'favorites':  {
               'weight': {},
               'time': {}
             },
-            'history':  {},
             'routines':  {
               'Monday': {
                 'weight': {},
