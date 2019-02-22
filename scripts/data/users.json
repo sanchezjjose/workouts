@@ -75,6 +75,20 @@
 		},
 		"history": {
 		},
+		"workouts": {
+			"chest-barbell-bench-press": {
+				"type": "weight",
+				"days": ["Sunday", "Wednesday"],
+				"name": "Barbell Bench Press",
+				"group": "Chest",
+				"metrics": {
+					"done": false,
+					"weight": { "value": 135, "unit": "lbs" },
+					"reps": { "value": 5, "unit": "-" },
+					"sets": { "value": 3, "unit": "-" }
+				}
+			}
+		},
 		"routines": {
 			"Monday": {
 				"weight": {
