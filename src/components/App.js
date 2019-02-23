@@ -64,6 +64,10 @@ class App extends Component {
     this.setState({ favorites: favorites });
   }
 
+  handleWorkoutsChange = (workouts) => {
+    this.setState({ workouts: workouts });
+  }
+
   handleDayChange = (dayOfWeek) => {
     this.setState({ dayOfWeek: dayOfWeek });
   }
@@ -112,6 +116,7 @@ class App extends Component {
                 <Favorites
                   userId={this.state.user.id}
                   workouts={this.state.workouts}
+                  handleWorkoutsChange={this.handleWorkoutsChange}
 
                   favorites={this.state.favorites}
                   handleFavoritesChange={this.handleFavoritesChange}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FavoritesModal from '../FavoritesModal/FavoritesModal'
-import { removeFavoriteExercise } from '../../api/Favorites';
-import { compareNames } from '../../lib/Util';
+import { deleteWorkout } from '../../api/Workouts';
 
 import './Favorites.css';
 
@@ -22,22 +21,22 @@ class Favorites extends Component {
     }, 3000);
   }
 
-  removeExercise(routineType, workoutName, exercise) {
-    this.props.favorites.removeExercise(routineType, workoutName, exercise);
-
-    const updatedExercises = this.props.favorites.getExercises(routineType, workoutName) || [];
-
-    removeFavoriteExercise(this.props.userId, routineType, workoutName, updatedExercises)
+  removeWorkout(workout) {
+    deleteWorkout(this.props.userId, workout.id)
       .then(() => {
-        this.props.handleFavoritesChange(this.props.favorites);
-        this.displayMessage(`Deleted ${exercise} from favorites.`);
+        const workouts = this.props.workouts;
+        workouts.deleteWorkout(workout.id);
+        this.props.handleWorkoutsChange(workouts);
+        this.displayMessage(`Deleted ${workout.name}.`);
       });
   }
 
   render() {
     const props = this.props;
-    const favoritesVm = props.favorites.getViewModel();
+    // const favoritesVm = props.favorites.getViewModel();
     const editMode = props.editMode;
+
+    const favoritesVm = props.workouts.getViewModel();
 
     return (
       <div className='Favorites'>
@@ -48,27 +47,27 @@ class Favorites extends Component {
           }
           <h2>Favorite Exercises</h2>
           {favoritesVm.map (favorite =>
-            favorite.workouts.sort(compareNames).map(workout =>
-              <div key={workout.name} className='exercises'>
-                <h3 className='workout-title'>{workout.name}</h3>
-                {workout.exercises.sort().map(exercise =>
-                  <div key={exercise} className={`exercise-group ${editMode ? 'editing' : ''}`}>
+            // favorite.workouts.sort(compareNames).map(workout =>
+              <div key={favorite.name} className='exercises'>
+                <h3 className='workout-title'>{favorite.name}</h3>
+                {favorite.exercises.map(exercise =>
+                  <div key={exercise.id} className={`exercise-group ${editMode ? 'editing' : ''}`}>
                     {editMode &&
-                      <button onClick={e => this.removeExercise(favorite.type, workout.name, exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
+                      <button onClick={e => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
                     }
-                    <div key={exercise} className='exercise-label'>{exercise}</div>
+                    <div key={exercise.id} className='exercise-label'>{exercise.name}</div>
                   </div>
                 )}
               </div>
-            )
+            // )
           )}
           </div>
         </div>
-        <FavoritesModal
+        {/* <FavoritesModal
           userId={props.userId}
           favorites={props.favorites}
           handleFavoritesChange={props.handleFavoritesChange}
-          displayMessage={this.displayMessage} />
+          displayMessage={this.displayMessage} /> */}
       </div>
     );
   }
