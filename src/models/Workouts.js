@@ -15,7 +15,7 @@ class Workouts {
   }
 
   addWorkout(group, workoutName, type) {
-    const id = `${group}-${workoutName}`.toLowerCase().replace(' ', '-');
+    const id = `${group}-${workoutName}-${type}`.toLowerCase().replace(' ', '-');
 
     const metrics = type === 'weight' ? {
       'done': false,
@@ -37,11 +37,17 @@ class Workouts {
       'metrics': metrics 
     };
 
-    this.workouts[id] = template;
+    if (typeof this.workouts[id] === 'undefined') {
+      this.workouts[id] = template;
+    }
   }
 
   deleteWorkout(id) {
     delete this.workouts[id];
+  }
+
+  get() {
+    return this.workouts;
   }
 
   getViewModel() {

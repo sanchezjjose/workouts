@@ -49,24 +49,16 @@ class FavoritesModal extends Component {
     const workout = this.state.workout;
     const workoutType = this.state.workoutType;
 
-    const favorites = props.favorites;
-    const favoriteExercises = favorites.getExercises(workoutType, group);
+    props.workouts.addWorkout(group, workout, workoutType);
 
-    if (favoriteExercises.indexOf(workout) === -1) {
-      favorites.addWorkout(workoutType, group);
-      favorites.addExercise(workoutType, group, workout);
-
-      const updatedFavorites = favorites.get();
-
-      saveWorkout(props.userId, updatedFavorites)
-        .then(() => {
-          props.forceGlobalUpdate();
-          props.displayMessage(`Added ${workout} to favorites.`);
-        })
-        .catch(err => { 
-          console.error(`Error adding ${workout} to favorites.`, err);
-        });
-    }
+    saveWorkout(props.userId, props.workouts.get())
+      .then(() => {
+        props.forceGlobalUpdate();
+        props.displayMessage(`Added ${workout} to favorites.`);
+      })
+      .catch(err => { 
+        console.error(`Error adding ${workout} to favorites.`, err);
+      });
   }
 
   render() {

@@ -76,7 +76,8 @@
 		"history": {
 		},
 		"workouts": {
-			"chest-barbell-bench-press": {
+			"chest-barbell-bench-press-weight": {
+				"id": "chest-barbell-bench-press-weight",
 				"type": "weight",
 				"days": ["Sunday", "Wednesday"],
 				"name": "Barbell Bench Press",
@@ -88,7 +89,8 @@
 					"sets": { "value": 3, "unit": "-" }
 				}
 			},
-			"chest-dips": {
+			"chest-dips-weight": {
+				"id": "chest-dips-weight",
 				"type": "weight",
 				"days": ["Monday", "Friday"],
 				"name": "Dips",
@@ -100,7 +102,8 @@
 					"sets": { "value": 0, "unit": "-" }
 				}
 			},
-			"stretching-hip-flexor-lunges": {
+			"stretching-hip-flexor-lunges-time": {
+				"id": "stretching-hip-flexor-lunges-time",
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
 				"name": "Dips",
@@ -112,7 +115,8 @@
 					"kcal": { "value": 0, "unit": "-" }
 				}
 			},
-			"running-treadmill": {
+			"running-treadmill-time": {
+				"id": "running-treadmill-time",
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
 				"name": "Treadmill",
