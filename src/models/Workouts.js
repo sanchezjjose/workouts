@@ -51,24 +51,28 @@ class Workouts {
     return this.workouts;
   }
 
-  getViewModel() {
+  getViewModel(dayOpt) {
     const workoutsArr = Object.entries(this.workouts).map(w => w[1]);
-    const groupedWorkouts = groupBy('group', workoutsArr);
-    const resultArr = Object.entries(groupedWorkouts).map(r => { 
+    const filteredWorkouts = dayOpt ? workoutsArr.filter(w => w.days.indexOf(dayOpt) > -1) : workoutsArr;
+    const groupedWorkouts = groupBy('type', filteredWorkouts);
+    const resultArr = Object.entries(groupedWorkouts).map(r => {
+      const type = r[0];
+      const sortedWorkouts = r[1].sort(compareNames);
+      const groupedWorkoutsArr = groupBy('group', sortedWorkouts);
+      const workouts = Object.entries(groupedWorkoutsArr).map(w => {
+        return {
+          group: w[0], 
+          exercises: w[1]
+        }
+      });
+
       return {
-        name: r[0],
-        workouts: r[1].sort(compareNames)
+        type: type,
+        workouts: workouts
       }
     });
 
-    return resultArr.sort(compareNames);
-  }
-
-  getWorkoutsByDay(day) {
-    const workoutsArr = Object.entries(this.workouts).map(w => w[1]);
-    const result = workoutsArr.filter(w => w.days.indexOf(day) > -1).flat();
-
-    return result;
+    return resultArr;
   }
 }
 

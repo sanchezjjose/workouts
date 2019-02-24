@@ -463,12 +463,40 @@
 		"history": {
 		},
 		"workouts": {
+			"abs-plank-weight": {
+				"id": "abs-plank-weight",
+				"group": "Abs",
+				"name": "Plank",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"history": [],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 45, "unit": "lbs" },
+					"reps": { "value": 1, "unit": "-" },
+					"sets": { "value": 3, "unit": "-" }
+				}
+			},
+			"abs-plank-time": {
+				"id": "abs-plank-time",
+				"group": "Abs",
+				"name": "Plank",
+				"type": "time",
+				"days": ["Monday", "Friday"],
+				"history": [],
+				"metrics": {
+					"done": false,
+					"time": { "value": 3, "unit": "min" },
+					"distance": { "value": 0, "unit": "mi" },
+					"kcal": { "value": 0, "unit": "-" }
+				}
+			},
 			"chest-barbell-bench-press-weight": {
 				"id": "chest-barbell-bench-press-weight",
 				"group": "Chest",
 				"name": "Barbell Bench Press",
 				"type": "weight",
-				"days": ["Sunday", "Wednesday"],
+				"days": ["Monday", "Friday"],
 				"history": [],
 				"metrics": {
 					"done": false,
@@ -491,10 +519,24 @@
 					"sets": { "value": 0, "unit": "-" }
 				}
 			},
+			"triceps-dips-weight": {
+				"id": "triceps-dips-weight",
+				"group": "Triceps",
+				"name": "Dips",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"history": [],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 0, "unit": "lbs" },
+					"reps": { "value": 0, "unit": "-" },
+					"sets": { "value": 0, "unit": "-" }
+				}
+			},
 			"stretching-hip-flexor-lunges-time": {
 				"id": "stretching-hip-flexor-lunges-time",
 				"group": "Stretching",
-				"name": "Dips",
+				"name": "Hip Flexor Lunges",
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
 				"history": [],

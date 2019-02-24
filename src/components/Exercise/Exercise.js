@@ -90,6 +90,10 @@ class Exercise extends Component {
         {metricTypes.map(metricType =>
           <Metrics
             key={`${dayOfWeek}-${metricType}`}
+            userId={this.props.user.id}
+            workouts={this.props.workouts}
+            forceGlobalUpdate={this.props.forceGlobalUpdate}
+
             exercise={exercise}
             metricType={metricType}
             metricValue={exercise.metrics[metricType].value}

@@ -89,15 +89,20 @@ class App extends Component {
               />
               {this.state.user.routines ?
                 <Home
-                  user={this.state.user}
-                  userObj={this.state.userObj}
-                  favorites={this.state.favorites}
-                  handleUserChange={this.handleUserChange}
+                  userId={this.state.user.id}
+                  workouts={this.state.workouts}
+                  forceGlobalUpdate={this.forceGlobalUpdate}
+
                   handleDayChange={this.handleDayChange}
                   dayOfWeek={this.state.dayOfWeek}
                   editMode={this.state.editMode}
                   saveMode={this.state.saveMode}
                   cancelMode={this.state.cancelMode}
+
+                  user={this.state.user}
+                  userObj={this.state.userObj}
+                  favorites={this.state.favorites}
+                  handleUserChange={this.handleUserChange}
                 /> :
                 <div>Loading...</div>
               }
