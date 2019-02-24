@@ -465,10 +465,11 @@
 		"workouts": {
 			"chest-barbell-bench-press-weight": {
 				"id": "chest-barbell-bench-press-weight",
+				"group": "Chest",
+				"name": "Barbell Bench Press",
 				"type": "weight",
 				"days": ["Sunday", "Wednesday"],
-				"name": "Barbell Bench Press",
-				"group": "Chest",
+				"history": [],
 				"metrics": {
 					"done": false,
 					"weight": { "value": 135, "unit": "lbs" },
@@ -478,10 +479,11 @@
 			},
 			"chest-dips-weight": {
 				"id": "chest-dips-weight",
+				"group": "Chest",
+				"name": "Dips",
 				"type": "weight",
 				"days": ["Monday", "Friday"],
-				"name": "Dips",
-				"group": "Chest",
+				"history": [],
 				"metrics": {
 					"done": false,
 					"weight": { "value": 0, "unit": "lbs" },
@@ -491,10 +493,11 @@
 			},
 			"stretching-hip-flexor-lunges-time": {
 				"id": "stretching-hip-flexor-lunges-time",
+				"group": "Stretching",
+				"name": "Dips",
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
-				"name": "Dips",
-				"group": "Stretching",
+				"history": [],
 				"metrics": {
 					"done": false,
 					"time": { "value": 3, "unit": "min" },
@@ -504,10 +507,11 @@
 			},
 			"running-treadmill-time": {
 				"id": "running-treadmill-time",
+				"group": "Running",
+				"name": "Treadmill",
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
-				"name": "Treadmill",
-				"group": "Running",
+				"history": [],
 				"metrics": {
 					"done": false,
 					"time": { "value": 10, "unit": "min" },
