@@ -1,4 +1,4 @@
-import { compareNames } from '../lib/Util';
+import { compareNames, compareGroupNames } from '../lib/Util';
 
 const groupBy = (key, array) => {
   return array.reduce((objectsByKeyValue, obj) => {
@@ -12,6 +12,14 @@ class Workouts {
 
   constructor(workouts) {
     this.workouts = workouts;
+  }
+
+  addWorkoutDay(id, day) {
+    this.workouts[id].days.push(day);
+  }
+
+  removeWorkoutDay(id, day) {
+    this.workouts[id].days = this.workouts[id].days.filter(d => d !== day);
   }
 
   addWorkout(group, workoutName, type) {
@@ -68,7 +76,7 @@ class Workouts {
 
       return {
         type: type,
-        workouts: workouts
+        workouts: workouts.sort(compareGroupNames)
       }
     });
 

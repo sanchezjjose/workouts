@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { saveRoutine } from '../../api/Routine';
-import { compareNames } from '../../lib/Util';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './RoutineModal.css';
@@ -20,67 +19,35 @@ class RoutineModal extends Component {
     this.setState({ show: false });
   }
 
-  addExercise = (routineType, workoutName, exercise) => {
-    const props = this.props;
-    const user = props.user;
-    const dayOfWeek = props.dayOfWeek;
-    const exercises = user.routines[dayOfWeek][routineType][workoutName] || {};
-    const initialMetrics = routineType === 'weight' ?
-      { 
-        weight: {
-          value: 0,
-          unit: this.props.user.settings.units['weight']
-        }, 
-        reps: {
-          value: 0,
-          unit: '-'
-        }, 
-        sets: {
-          value: 0,
-          unit: '-'
-        },
-        done: false
-      } : { 
-        time: {
-          value: 0,
-          unit: this.props.user.settings.units['time']
-        }, 
-        distance: {
-          value: 0,
-          unit: this.props.user.settings.units['distance']
-        }, 
-        kcal: {
-          value: 0,
-          unit: '-'
-        },
-        done: false
-      };
+  addExercise = (id, name) => {
+    const day = this.props.dayOfWeek;
+    const userId = this.props.userId;
+    const workouts = this.props.workouts;
+    
+    workouts.addWorkoutDay(id, day);
 
-    // TODO: Move to object that has an addExerciseToRoutine() method.
-    // Then, pass object to parent to update state.
-    exercises[exercise] = initialMetrics;
-    user.routines[dayOfWeek][routineType][workoutName] = exercises;
+    const updatedDays = workouts.get()[id].days;
 
-    saveRoutine(user.id, user.routines[dayOfWeek], dayOfWeek)
+    saveRoutine(userId, id, updatedDays)
       .then(() => {
-        props.handleUserChange(user);
-        props.displayMessage(`Added ${exercise} to routine.`);
+        this.props.forceGlobalUpdate();
+        this.props.displayMessage(`Added ${name}.`);
 
       }).catch(err => {
-        console.error(`Error adding exercise to workout.`, err);
+        console.error(`Error adding exercise to routine.`, err);
       });
   }
 
   render() {
     const onClick = this.state.show ? this.closeModal : this.showModal;
     const label = this.state.show ? 'close' : 'add';
-    const favoritesVm = this.props.favorites.getViewModel();
-    const hasWorkouts = this.props.favorites.hasWorkouts();
+    const workouts = this.props.workouts;
+    const workoutsVm = workouts.getViewModel();
 
     return (
       <div className='RoutineModal'>
         <div className={`content ${this.state.show ? 'show' : ''}`}>
-          {!hasWorkouts &&
+          {!workoutsVm.length > 0 &&
             <div className='description'>
               <p className='no-favorites-message'>
                 This will show a list of your favorite exercises to add to your routine.
@@ -90,12 +57,12 @@ class RoutineModal extends Component {
               </div>
             </div>
           }
-          {favoritesVm.map (favorite => 
-            favorite.workouts.sort(compareNames).map(workout => 
-              <div key={workout.name} className='exercises'>
-                <h3>{workout.name}</h3>
-                {workout.exercises.sort().map(exercise =>
-                  <div onClick={e => this.addExercise(favorite.type, workout.name, exercise)} key={exercise} className='exercise-label'>{exercise}</div>
+          {workoutsVm.map (workoutVm => 
+            workoutVm.workouts.map(workout => 
+              <div key={workout.group} className='exercises'>
+                <h3>{workout.group}</h3>
+                {workout.exercises.map(exercise =>
+                  <div onClick={e => this.addExercise(exercise.id, exercise.name)} key={exercise.id} className='exercise-label'>{exercise.name}</div>
                 )}
               </div>
             )

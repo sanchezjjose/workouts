@@ -65,7 +65,6 @@ class App extends Component {
   }
 
   forceGlobalUpdate = () => {
-    // this.setState({ workouts: workouts });
     this.forceUpdate();
   }
 

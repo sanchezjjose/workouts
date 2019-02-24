@@ -7,4 +7,13 @@ const compareNames = (a, b) => {
   return 0;
 }
 
-export { compareNames };
+const compareGroupNames = (a, b) => {
+  const nameA = a.group.toUpperCase(); 
+  const nameB = b.group.toUpperCase(); 
+
+  if (nameA < nameB) return -1;
+  if (nameA > nameB) return 1;
+  return 0;
+}
+
+export { compareNames, compareGroupNames };

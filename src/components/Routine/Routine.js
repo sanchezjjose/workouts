@@ -131,9 +131,9 @@ class Routine extends Component {
               ) : (
                 <div className='header'>
                   <div className='workout-name'>{workout.group}</div>
-                  <span className='weight'>Time</span>
-                  <span className='reps'>Dist.</span>
-                  <span className='sets'>Kcal.</span>
+                  <span className='time'>Time</span>
+                  <span className='dist'>Dist.</span>
+                  <span className='kcal'>Kcal.</span>
                 </div>
               )}
               {workout.exercises.map (exercise =>
@@ -162,11 +162,15 @@ class Routine extends Component {
             </div>
           )
         )}
-        <RoutineModal 
+        <RoutineModal
+          userId={this.props.user.id}
+          workouts={this.props.workouts}
+          forceGlobalUpdate={this.props.forceGlobalUpdate}
+          dayOfWeek={dayOfWeek}
+
           user={this.props.user}
           userObj={this.props.userObj}
           favorites={this.props.favorites}
-          dayOfWeek={routine.day}
           handleUserChange={this.props.handleUserChange}
           displayMessage={this.displayMessage} />
       </div>

@@ -1,20 +1,19 @@
 const AWS = require('./aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const saveRoutine = (userId, routine, dayOfWeek) => {
+const saveRoutine = (userId, workoutId, days) => {
   return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #r.#d = :routine",
+      UpdateExpression: "SET workouts.#id.days = :days",
       ExpressionAttributeNames: {
-        "#r": "routines",
-        "#d": dayOfWeek
+        "#id": workoutId
       },
       ExpressionAttributeValues: {
-        ":routine": routine 
+        ":days": days
       },
       ReturnValues:"ALL_NEW"
     }, (err, data) => {
