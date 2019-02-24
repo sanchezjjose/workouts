@@ -52,12 +52,7 @@ class Workouts {
   }
 
   getViewModel() {
-    const workoutsArr = Object.entries(this.workouts).map(w => {
-      const workoutId = w[0];
-      const workoutData = w[1];
-      workoutData.id = workoutId;
-      return workoutData;
-    });
+    const workoutsArr = Object.entries(this.workouts).map(w => w[1]);
     const groupedWorkouts = groupBy('group', workoutsArr);
     const resultArr = Object.entries(groupedWorkouts).map(r => { 
       return {
@@ -65,6 +60,7 @@ class Workouts {
         exercises: r[1].sort(compareNames)
       }
     });
+
     return resultArr.sort(compareNames);
   }
 
