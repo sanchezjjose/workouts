@@ -118,14 +118,7 @@ class App extends Component {
                   userId={this.state.user.id}
                   workouts={this.state.workouts}
                   forceGlobalUpdate={this.forceGlobalUpdate}
-
-                  favorites={this.state.favorites}
-                  handleFavoritesChange={this.handleFavoritesChange}
                   editMode={this.state.editMode}
-
-                  user={this.state.user}
-                  userObj={this.state.userObj}
-                  handleUserChange={this.handleUserChange}
                 /> :
                 <div>Loading...</div>
               }

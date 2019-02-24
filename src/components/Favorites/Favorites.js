@@ -33,10 +33,8 @@ class Favorites extends Component {
 
   render() {
     const props = this.props;
-    // const favoritesVm = props.favorites.getViewModel();
     const editMode = props.editMode;
-
-    const favoritesVm = props.workouts.getViewModel();
+    const workoutsVm = props.workouts.getViewModel();
 
     return (
       <div className='Favorites'>
@@ -46,20 +44,18 @@ class Favorites extends Component {
             <div className={`success-banner`}>{this.state.message}</div>
           }
           <h2>Favorite Exercises</h2>
-          {favoritesVm.map (favorite =>
-            // favorite.workouts.sort(compareNames).map(workout =>
-              <div key={favorite.name} className='exercises'>
-                <h3 className='workout-title'>{favorite.name}</h3>
-                {favorite.exercises.map(exercise =>
-                  <div key={exercise.id} className={`exercise-group ${editMode ? 'editing' : ''}`}>
-                    {editMode &&
-                      <button onClick={e => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
-                    }
-                    <div key={exercise.id} className='exercise-label'>{exercise.name}</div>
-                  </div>
-                )}
-              </div>
-            // )
+          {workoutsVm.map (favorite =>
+            <div key={favorite.name} className='exercises'>
+              <h3 className='workout-title'>{favorite.name}</h3>
+              {favorite.exercises.map(exercise =>
+                <div key={exercise.id} className={`exercise-group ${editMode ? 'editing' : ''}`}>
+                  {editMode &&
+                    <button onClick={e => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
+                  }
+                  <div key={exercise.id} className='exercise-label'>{exercise.name}</div>
+                </div>
+              )}
+            </div>
           )}
           </div>
         </div>
@@ -67,10 +63,7 @@ class Favorites extends Component {
           userId={props.userId}
           workouts={props.workouts}
           forceGlobalUpdate={props.forceGlobalUpdate}
-          displayMessage={this.displayMessage}
-
-          favorites={props.favorites}
-          handleFavoritesChange={props.handleFavoritesChange} />
+          displayMessage={this.displayMessage} />
       </div>
     );
   }
