@@ -43,16 +43,16 @@ class Favorites extends Component {
           {this.state.message.length > 0 &&
             <div className={`success-banner`}>{this.state.message}</div>
           }
-          <h2>Favorite Exercises</h2>
+          <h2>Favorites</h2>
           {workoutsVm.map (favorite =>
-            <div key={favorite.name} className='exercises'>
+            <div key={favorite.name} className='workouts'>
               <h3 className='workout-title'>{favorite.name}</h3>
-              {favorite.exercises.map(exercise =>
-                <div key={exercise.id} className={`exercise-group ${editMode ? 'editing' : ''}`}>
+              {favorite.workouts.map(workout =>
+                <div key={workout.id} className={`workout-group ${editMode ? 'editing' : ''}`}>
                   {editMode &&
-                    <button onClick={e => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
+                    <button onClick={e => this.removeWorkout(workout)} className="delete-button mdc-icon-button material-icons">clear</button>
                   }
-                  <div key={exercise.id} className='exercise-label'>{exercise.name}</div>
+                  <div key={workout.id} className='workout-label'>{workout.name}</div>
                 </div>
               )}
             </div>

@@ -57,7 +57,7 @@ class Workouts {
     const resultArr = Object.entries(groupedWorkouts).map(r => { 
       return {
         name: r[0],
-        exercises: r[1].sort(compareNames)
+        workouts: r[1].sort(compareNames)
       }
     });
 
