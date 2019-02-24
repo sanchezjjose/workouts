@@ -494,7 +494,7 @@
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
 				"name": "Dips",
-				"exercise": "Stretching",
+				"group": "Stretching",
 				"metrics": {
 					"done": false,
 					"time": { "value": 3, "unit": "min" },
@@ -507,7 +507,7 @@
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
 				"name": "Treadmill",
-				"exercise": "Running",
+				"group": "Running",
 				"metrics": {
 					"done": false,
 					"time": { "value": 10, "unit": "min" },

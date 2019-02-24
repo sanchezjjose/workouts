@@ -30,11 +30,12 @@ class Workouts {
     };
 
     const template = {
-      'type': type,
-      'days': [],
-      'name': workoutName,
+      'id': id,
       'group': group,
-      'metrics': metrics 
+      'name': workoutName,
+      'type': type,
+      'metrics': metrics,
+      'days': []
     };
 
     if (typeof this.workouts[id] === 'undefined') {
