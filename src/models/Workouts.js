@@ -1,14 +1,3 @@
-
-// Private methods
-// const groupBySlow = (key => {
-//   return (array) => {
-//     array.reduce((objectsByKeyValue, obj) => ({
-//       ...objectsByKeyValue,
-//       [obj[key]]: (objectsByKeyValue[obj[key]] || []).concat(obj)
-//     }), {});
-//   }
-// });
-
 import { compareNames } from '../lib/Util';
 
 const groupBy = (key, array) => {
@@ -23,6 +12,32 @@ class Workouts {
 
   constructor(workouts) {
     this.workouts = workouts;
+  }
+
+  addWorkout(group, workoutName, type) {
+    const id = `${group}-${workoutName}`.toLowerCase().replace(' ', '-');
+
+    const metrics = type === 'weight' ? {
+      'done': false,
+      'weight': { 'value': 0, 'unit': 'lbs' },
+      'reps': { 'value': 0, 'unit': '-' },
+      'sets': { 'value': 0, 'unit': '-' }
+    } : {
+      'done': false,
+      'time': { 'value': 0, 'unit': 'min' },
+      'distance': { 'value': 0, 'unit': 'mi' },
+      'kcal': { 'value': 0, 'unit': '-' }
+    };
+
+    const template = {
+      'type': type,
+      'days': [],
+      'name': workoutName,
+      'group': group,
+      'metrics': metrics 
+    };
+
+    this.workouts[id] = template;
   }
 
   deleteWorkout(id) {

@@ -26,7 +26,7 @@ class Favorites extends Component {
       .then(() => {
         const workouts = this.props.workouts;
         workouts.deleteWorkout(workout.id);
-        this.props.handleWorkoutsChange(workouts);
+        this.props.forceGlobalUpdate();
         this.displayMessage(`Deleted ${workout.name}.`);
       });
   }
@@ -63,11 +63,14 @@ class Favorites extends Component {
           )}
           </div>
         </div>
-        {/* <FavoritesModal
+        <FavoritesModal
           userId={props.userId}
+          workouts={props.workouts}
+          forceGlobalUpdate={props.forceGlobalUpdate}
+          displayMessage={this.displayMessage}
+
           favorites={props.favorites}
-          handleFavoritesChange={props.handleFavoritesChange}
-          displayMessage={this.displayMessage} /> */}
+          handleFavoritesChange={props.handleFavoritesChange} />
       </div>
     );
   }
