@@ -16,4 +16,8 @@ const compareGroupNames = (a, b) => {
   return 0;
 }
 
-export { compareNames, compareGroupNames };
+const formatDate = (date) => {
+  return `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`;
+}
+
+export { compareNames, compareGroupNames, formatDate };

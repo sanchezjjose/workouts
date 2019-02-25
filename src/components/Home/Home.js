@@ -18,6 +18,7 @@ class Home extends Component {
               key={`${this.props.dayOfWeek}-routine`}
               userId={this.props.user.id}
               workouts={this.props.workouts}
+              history={this.props.history}
               forceGlobalUpdate={this.props.forceGlobalUpdate}
 
               user={this.props.user}

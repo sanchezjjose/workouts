@@ -4,6 +4,7 @@ import { getUser } from '../api/Users';
 import User from '../models/User';
 import UserFavorites from '../models/Favorites';
 import UserWorkouts from '../models/Workouts';
+import UserHistory from '../models/History';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
@@ -20,6 +21,7 @@ class App extends Component {
   state = {
     user: {},
     workouts: {},
+    history: {},
 
     userObj: {},
     favorites: {},
@@ -38,6 +40,7 @@ class App extends Component {
           this.setState({
             user: user,
             workouts: new UserWorkouts(user.workouts),
+            history: new UserHistory(user.history),
 
             userObj: new User(user),
             favorites: new UserFavorites(user.favorites)
@@ -90,6 +93,7 @@ class App extends Component {
                 <Home
                   userId={this.state.user.id}
                   workouts={this.state.workouts}
+                  history={this.state.history}
                   forceGlobalUpdate={this.forceGlobalUpdate}
 
                   handleDayChange={this.handleDayChange}

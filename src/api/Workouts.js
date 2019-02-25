@@ -25,7 +25,7 @@ const saveWorkout = (userId, workouts) => {
   });
 };
 
-const deleteWorkout = (userId, exerciseId) => {
+const deleteWorkout = (userId, workoutId) => {
   return new Promise((resolve, reject) => {
     const params = {
       TableName: 'Workouts',
@@ -34,7 +34,7 @@ const deleteWorkout = (userId, exerciseId) => {
       },
       UpdateExpression: `REMOVE workouts.#id`,
       ExpressionAttributeNames: {
-        "#id": exerciseId
+        "#id": workoutId
       },
       ReturnValues:"ALL_NEW"
     };

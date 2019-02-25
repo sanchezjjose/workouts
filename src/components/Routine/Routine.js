@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Exercise from '../Exercise/Exercise';
 import RoutineModal from '../RoutineModal/RoutineModal';
-import { saveRoutine } from '../../api/Routine';
+import { saveDates } from '../../api/History';
+import { formatDate } from '../../lib/Util';
 
 import './Routine.css';
 
@@ -31,43 +32,33 @@ class Routine extends Component {
     }, 3000);
   }
 
-  handleStartWorkout = (e) => {
-    e.preventDefault();
-
-    const dayOfWeek = this.props.dayOfWeek;
-    const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
-    const today = new Date();
-    const todayDateFormatted = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
-    const user = this.props.user;
-
-    // Set date on workout for historical purposes
-    user.routines[dayOfWeek].date = todayDateFormatted;
-
-    // Reset all exercise status
-    routine.forEach(routineType => {
-      routineType.workouts.forEach(workout => {
-        workout.exercises.forEach(exercise => {
-          user.routines[dayOfWeek][routineType.type][workout.name][exercise.name].done = false;
-        });
-      });
-    });
-
-    saveRoutine(user.id, user.routines[dayOfWeek], dayOfWeek)
-      .then(() => {
-        this.props.handleUserChange(user, false, false);
-      });
-  }
-
   handleVideoClick = (e) => {
     e.preventDefault();
     this.setState({ activeVideo: e.target.name });
   }
 
-  isTodaysWorkoutStarted = (workoutDateFormatted) => {
-    const today = new Date();
-    const todayDateFormatted = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
+  handleStartWorkout = (e) => {
+    e.preventDefault();
 
-    return todayDateFormatted === workoutDateFormatted;
+    const today = formatDate(new Date());
+    const userId = this.props.userId;
+    const history = this.props.history;
+
+    history.addDate(today);
+
+    // TODO: Reset all exercise status
+
+    saveDates(userId, history.getDates())
+      .then(() => {
+        this.props.forceGlobalUpdate();
+      });
+  }
+
+  isTodaysWorkoutStarted = () => {
+    const today = formatDate(new Date());
+    const history = this.props.history;
+
+    return history.hasDate(today);
   }
 
   render() {
@@ -75,14 +66,14 @@ class Routine extends Component {
     const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
     const workoutDateFormatted = this.props.userObj.getWorkoutDate(dayOfWeek);
     const workoutStartedToday = this.isTodaysWorkoutStarted(workoutDateFormatted);
-    const didWorkout = typeof workoutDateFormatted !== 'undefined';
-    // const hasWorkouts = (routine[0].workouts.length + routine[1].workouts.length) > 0;
     const workoutDateClassName = (typeof workoutDateFormatted === 'string') ? 'show' : 'hide';
     const workoutButtonClassName = (!workoutStartedToday) ? 'show' : 'hide';
     const workoutStartedClassName = workoutStartedToday ? 'workout-started' : '';
 
     const workouts = this.props.workouts;
     const workoutsVm = workouts.getViewModel(dayOfWeek);
+    const history = this.props.history;
+    const workoutStarted = history.hasDate(formatDate(new Date()));
 
     return (
       <div className={`Routine ${this.state.transitionClassName} ${workoutStartedClassName}`}>

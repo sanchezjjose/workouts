@@ -18,6 +18,14 @@ class Workouts {
     this.workouts[id].days.push(day);
   }
 
+  addWorkoutDate(id, date) {
+    this.workouts[id].dates.push(date);
+  }
+
+  removeWorkoutDate(id, date) {
+    this.workouts[id].dates = this.workouts[id].dates.filter(d => d !== date);
+  }
+
   removeWorkoutDay(id, day) {
     this.workouts[id].days = this.workouts[id].days.filter(d => d !== day);
   }
