@@ -8,6 +8,10 @@ class History {
     return this.history;
   }
 
+  getDate(dayOfWeek) {
+    return this.history.recent[dayOfWeek];
+  }
+
   getDates() {
     return this.history.dates;
   }
@@ -16,9 +20,10 @@ class History {
     return this.history.dates.indexOf(date) > -1;
   }
 
-  addDate(date) {
+  addDate(date, dayOfWeek) {
     if (this.history.dates.indexOf(date) === -1) {
       this.history.dates.push(date);
+      this.history[dayOfWeek] = date;
     }
   }
 

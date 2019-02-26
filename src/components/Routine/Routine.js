@@ -41,10 +41,11 @@ class Routine extends Component {
     e.preventDefault();
 
     const today = formatDate(new Date());
+    const dayOfWeek = this.props.dayOfWeek;
     const userId = this.props.userId;
     const history = this.props.history;
 
-    history.addDate(today);
+    history.addDate(today, dayOfWeek);
 
     // TODO: Reset all exercise status
 
@@ -63,28 +64,32 @@ class Routine extends Component {
 
   render() {
     const dayOfWeek = this.props.dayOfWeek;
-    const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
-    const workoutDateFormatted = this.props.userObj.getWorkoutDate(dayOfWeek);
-    const workoutStartedToday = this.isTodaysWorkoutStarted(workoutDateFormatted);
-    const workoutDateClassName = (typeof workoutDateFormatted === 'string') ? 'show' : 'hide';
-    const workoutButtonClassName = (!workoutStartedToday) ? 'show' : 'hide';
-    const workoutStartedClassName = workoutStartedToday ? 'workout-started' : '';
-
     const workouts = this.props.workouts;
-    const workoutsVm = workouts.getViewModel(dayOfWeek);
     const history = this.props.history;
-    const workoutStarted = history.hasDate(formatDate(new Date()));
+
+    const workoutsVm = workouts.getViewModel(dayOfWeek);
+    // const workoutStarted = history.hasDate(formatDate(new Date()));
+    // const workoutDate = history.getDate(dayOfWeek);
+
+    const today = formatDate(new Date());
+    const workoutDate = history.getDate(dayOfWeek);
+    const workoutInProgress = today === workoutDate;
+
+    const showWorkoutDate = (typeof workoutDate === 'string') ? 'show' : 'hide';
+    const showStartWorkoutButton = workoutInProgress ? 'hide' : 'show';
+
+    // const workoutStartedClassName = workoutStarted ? 'workout-started' : '';
 
     return (
-      <div className={`Routine ${this.state.transitionClassName} ${workoutStartedClassName}`}>
+      <div className={`Routine ${this.state.transitionClassName}`}>
         {this.state.message.length > 0 &&
           <div className={`success-banner`}>{this.state.message}</div>
         }
         {workoutsVm.length > 0 ? (
           <div className={`routine-heading`}>
-            <div className='weekday'>{routine.day} Routine</div>
-            <div className={`subtitle ${workoutDateClassName}`}>{workoutDateFormatted}</div>
-            <button className={`start-workout-button ${workoutButtonClassName}`} onClick={this.handleStartWorkout}>Start Workout</button>
+            <div className='weekday'>{dayOfWeek} Routine</div>
+            <div className={`subtitle ${showWorkoutDate}`}>{workoutDate}</div>
+            <button className={`start-workout-button ${showStartWorkoutButton}`} onClick={this.handleStartWorkout}>Start Workout</button>
           </div>
         ) : (
           <div className='empty-routine-message'>

@@ -461,7 +461,8 @@
 		"favorites": {
 		},
 		"history": {
-			"dates": []
+			"dates": [],
+			"recent": { "Monday": "02-18-2019", "Tuesday": "02-26-2019"}
 		},
 		"workouts": {
 			"abs-plank-weight": {

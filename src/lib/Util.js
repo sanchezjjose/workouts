@@ -17,7 +17,10 @@ const compareGroupNames = (a, b) => {
 }
 
 const formatDate = (date) => {
-  return `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`;
+  const month = `${date.getMonth()+1}`;
+  const monthFormatted = month.length === 1 ? '0' + month : month;
+
+  return `${monthFormatted}-${date.getDate()}-${date.getFullYear()}`;
 }
 
 export { compareNames, compareGroupNames, formatDate };
