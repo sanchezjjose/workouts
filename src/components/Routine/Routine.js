@@ -68,17 +68,12 @@ class Routine extends Component {
     const history = this.props.history;
 
     const workoutsVm = workouts.getViewModel(dayOfWeek);
-    // const workoutStarted = history.hasDate(formatDate(new Date()));
-    // const workoutDate = history.getDate(dayOfWeek);
-
     const today = formatDate(new Date());
     const workoutDate = history.getDate(dayOfWeek);
-    const workoutInProgress = today === workoutDate;
 
+    const workoutInProgress = today === workoutDate;
     const showWorkoutDate = (typeof workoutDate === 'string') ? 'show' : 'hide';
     const showStartWorkoutButton = workoutInProgress ? 'hide' : 'show';
-
-    // const workoutStartedClassName = workoutStarted ? 'workout-started' : '';
 
     return (
       <div className={`Routine ${this.state.transitionClassName}`}>
