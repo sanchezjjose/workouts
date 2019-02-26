@@ -55,13 +55,6 @@ class Routine extends Component {
       });
   }
 
-  isTodaysWorkoutStarted = () => {
-    const today = formatDate(new Date());
-    const history = this.props.history;
-
-    return history.hasDate(today);
-  }
-
   render() {
     const dayOfWeek = this.props.dayOfWeek;
     const workouts = this.props.workouts;
