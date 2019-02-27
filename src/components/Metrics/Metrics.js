@@ -103,7 +103,8 @@ class Metrics extends Component {
         console.debug(`Changed ${metricType} metric for ${exercise.name} from ${prevMetricValue} ${prevSettingsUnit} to ${metricValue} ${settingsUnit}.`);
 
         if (this.props.saveMode === true) {
-          this.props.handleUserChange(this.props.user, false, false);
+          // this.props.handleUserChange(this.props.user, false, false);
+          this.props.forceGlobalUpdate();
         }
       })
       .catch(err => {
@@ -117,7 +118,8 @@ class Metrics extends Component {
       unit: settingsUnit
     };
 
-    this.props.handleUserChange(this.props.user);
+    // this.props.handleUserChange(this.props.user);
+    this.props.forceGlobalUpdate();
   }
 
   convertMetricValue = () => {

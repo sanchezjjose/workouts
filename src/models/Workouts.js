@@ -22,14 +22,6 @@ class Workouts {
     this.workouts[id].dates.push(date);
   }
 
-  removeWorkoutDate(id, date) {
-    this.workouts[id].dates = this.workouts[id].dates.filter(d => d !== date);
-  }
-
-  removeWorkoutDay(id, day) {
-    this.workouts[id].days = this.workouts[id].days.filter(d => d !== day);
-  }
-
   addWorkout(group, workoutName, type) {
     const id = `${group}-${workoutName}-${type}`.toLowerCase().replace(' ', '-');
 
@@ -59,8 +51,20 @@ class Workouts {
     }
   }
 
+  removeWorkoutDate(id, date) {
+    this.workouts[id].dates = this.workouts[id].dates.filter(d => d !== date);
+  }
+
+  removeWorkoutDay(id, day) {
+    this.workouts[id].days = this.workouts[id].days.filter(d => d !== day);
+  }
+
   deleteWorkout(id) {
     delete this.workouts[id];
+  }
+
+  setStatus(id, status) {
+    this.workouts[id].metrics.done = status;
   }
 
   get() {

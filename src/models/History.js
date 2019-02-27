@@ -16,6 +16,10 @@ class History {
     return this.history.dates;
   }
 
+  getWorkouts() {
+    return this.history.workouts;
+  }
+
   hasDate(date) {
     return this.history.dates.indexOf(date) > -1;
   }
@@ -26,6 +30,14 @@ class History {
     }
 
     this.history.recent[dayOfWeek] = date;
+  }
+
+  addWorkout(workout) {
+    this.history.workouts[workout.id] = workout;
+  }
+
+  deleteWorkout(id) {
+    delete this.history.workouts[id];
   }
 
   removeDate(date) {

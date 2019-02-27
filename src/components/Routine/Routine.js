@@ -49,7 +49,7 @@ class Routine extends Component {
 
     // TODO: Reset all exercise status
 
-    saveDates(userId, history.get())
+    saveDates(userId, history.getDates())
       .then(() => {
         this.props.forceGlobalUpdate();
       });
@@ -125,6 +125,8 @@ class Routine extends Component {
                   key={`${dayOfWeek}-${exercise.name}`}
                   userId={this.props.user.id}
                   workouts={this.props.workouts}
+                  history={this.props.history}
+                  exercise={exercise}
                   forceGlobalUpdate={this.props.forceGlobalUpdate}
                   workoutInProgress={workoutInProgress}
 
@@ -137,7 +139,7 @@ class Routine extends Component {
                   displayMessage={this.displayMessage}
                   dayOfWeek={dayOfWeek}
                   workout={workout}
-                  exercise={exercise} />
+                />
               )}
             </div>
           )

@@ -7,7 +7,7 @@
   margin-bottom: 10px;
 }
 
-.Exercise.workout-started,
+.Exercise.in-progress,
 .Exercise.editing {
   grid-template-columns: 0.5fr 2.5fr repeat(3, 1fr);
 }
@@ -33,7 +33,7 @@
 /* Apple Watch */
 @media only screen and (max-width: 319px) {
 
-  .Routine .group .Exercise.workout-started {
+  .Routine .group .Exercise.in-progress {
     grid-template-columns: 18px 2fr repeat(3, 1fr);
   }
 
