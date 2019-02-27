@@ -121,27 +121,23 @@ class Routine extends Component {
                 </div>
               )}
               {workout.exercises.map (exercise =>
-                <div>{exercise.name}</div>
-                // <Exercise
-                //   key={`${dayOfWeek}-${exercise.name}`}
-                //   userId={this.props.user.id}
-                //   workouts={this.props.workouts}
-                //   forceGlobalUpdate={this.props.forceGlobalUpdate}
+                <Exercise
+                  key={`${dayOfWeek}-${exercise.name}`}
+                  userId={this.props.user.id}
+                  workouts={this.props.workouts}
+                  forceGlobalUpdate={this.props.forceGlobalUpdate}
+                  workoutInProgress={workoutInProgress}
 
-                //   user={this.props.user}
-                //   userObj={this.props.userObj}
-                //   cancelMode={this.props.cancelMode}
-                //   editMode={this.props.editMode}
-                //   saveMode={this.props.saveMode}
-                //   handleUserChange={this.props.handleUserChange} 
-                //   displayMessage={this.displayMessage}
-                //   didWorkout={didWorkout}
-                //   workoutStartedToday={workoutStartedToday}
-                //   dayOfWeek={dayOfWeek}
-                //   routine={routine}
-                //   routineType={routineType.type}
-                //   workout={workout}
-                //   exercise={exercise} />
+                  user={this.props.user}
+                  userObj={this.props.userObj}
+                  cancelMode={this.props.cancelMode}
+                  editMode={this.props.editMode}
+                  saveMode={this.props.saveMode}
+                  handleUserChange={this.props.handleUserChange} 
+                  displayMessage={this.displayMessage}
+                  dayOfWeek={dayOfWeek}
+                  workout={workout}
+                  exercise={exercise} />
               )}
             </div>
           )

@@ -70,7 +70,7 @@ class Exercise extends Component {
     const dayOfWeek = this.props.dayOfWeek;
     const exercise = this.props.exercise;
     const modeClassName = this.props.editMode ? 'editing' : '';
-    const workoutStartedClassName = this.props.didWorkout ? 'workout-started' : '';
+    const workoutStartedClassName = this.props.workoutInProgress ? 'workout-started' : '';
     // const workoutStartedClassName = this.props.workoutStartedToday ? 'workout-started' : '';
     const metricTypes = this.props.routineType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
 
@@ -78,7 +78,7 @@ class Exercise extends Component {
       <div className={`Exercise ${modeClassName} ${workoutStartedClassName}`}>
         {this.props.editMode ?
           <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button> :
-          (this.props.didWorkout &&
+          (this.props.workoutInProgress &&
             (exercise.metrics.done ? 
               <img className='status-button' onClick={() => this.handleExerciseStatus(false)} src={checkCircleFilled} alt="done" /> :
               <img className='status-button' onClick={() => this.handleExerciseStatus(true)} src={checkCircleOutline} alt="not-done" />
@@ -87,7 +87,7 @@ class Exercise extends Component {
         }
         <div className='name'>{exercise.name}</div>
 
-        {metricTypes.map(metricType =>
+        {/* {metricTypes.map(metricType =>
           <Metrics
             key={`${dayOfWeek}-${metricType}`}
             userId={this.props.user.id}
@@ -110,7 +110,7 @@ class Exercise extends Component {
             displayMessage={this.props.displayMessage}
             handleUserChange={this.props.handleUserChange}
           />
-        )}
+        )} */}
       </div>
     );
   }

@@ -461,7 +461,7 @@
 		"favorites": {
 		},
 		"history": {
-			"dates": [],
+			"dates": ["02-18-2019", "02-26-2019"],
 			"recent": { "Monday": "02-18-2019", "Tuesday": "02-26-2019"}
 		},
 		"workouts": {
@@ -497,12 +497,15 @@
 				"name": "Barbell Bench Press",
 				"type": "weight",
 				"days": ["Monday", "Friday"],
-				"metrics": {
-					"done": false,
-					"weight": { "value": 135, "unit": "lbs" },
-					"reps": { "value": 5, "unit": "-" },
-					"sets": { "value": 3, "unit": "-" }
-				}
+				"metrics": [
+					{
+						"date": "02-26-2019",
+						"done": true,
+						"weight": { "value": 135, "unit": "lbs" },
+						"reps": { "value": 5, "unit": "-" },
+						"sets": { "value": 3, "unit": "-" }
+					}
+				]
 			},
 			"chest-dips-weight": {
 				"id": "chest-dips-weight",
