@@ -23,8 +23,9 @@ class History {
   addDate(date, dayOfWeek) {
     if (this.history.dates.indexOf(date) === -1) {
       this.history.dates.push(date);
-      this.history[dayOfWeek] = date;
     }
+
+    this.history.recent[dayOfWeek] = date;
   }
 
   removeDate(date) {

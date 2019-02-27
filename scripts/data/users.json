@@ -471,7 +471,6 @@
 				"name": "Plank",
 				"type": "weight",
 				"days": ["Monday", "Friday"],
-				"dates": [],
 				"metrics": {
 					"done": false,
 					"weight": { "value": 45, "unit": "lbs" },
@@ -485,7 +484,6 @@
 				"name": "Plank",
 				"type": "time",
 				"days": ["Monday", "Friday"],
-				"dates": [],
 				"metrics": {
 					"done": false,
 					"time": { "value": 3, "unit": "min" },
@@ -499,7 +497,6 @@
 				"name": "Barbell Bench Press",
 				"type": "weight",
 				"days": ["Monday", "Friday"],
-				"dates": [],
 				"metrics": {
 					"done": false,
 					"weight": { "value": 135, "unit": "lbs" },
@@ -513,7 +510,6 @@
 				"name": "Dips",
 				"type": "weight",
 				"days": ["Monday", "Friday"],
-				"dates": [],
 				"metrics": {
 					"done": false,
 					"weight": { "value": 0, "unit": "lbs" },
@@ -527,7 +523,6 @@
 				"name": "Dips",
 				"type": "weight",
 				"days": ["Tuesday", "Saturday"],
-				"dates": [],
 				"metrics": {
 					"done": false,
 					"weight": { "value": 0, "unit": "lbs" },
@@ -541,7 +536,6 @@
 				"name": "Hip Flexor Lunges",
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
-				"dates": [],
 				"metrics": {
 					"done": false,
 					"time": { "value": 3, "unit": "min" },
@@ -555,7 +549,6 @@
 				"name": "Treadmill",
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
-				"dates": [],
 				"metrics": {
 					"done": false,
 					"time": { "value": 10, "unit": "min" },

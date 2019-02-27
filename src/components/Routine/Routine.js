@@ -49,7 +49,7 @@ class Routine extends Component {
 
     // TODO: Reset all exercise status
 
-    saveDates(userId, history.getDates())
+    saveDates(userId, history.get())
       .then(() => {
         this.props.forceGlobalUpdate();
       });
