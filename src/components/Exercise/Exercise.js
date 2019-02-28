@@ -72,7 +72,7 @@ class Exercise extends Component {
     const dayOfWeek = this.props.dayOfWeek;
     const exercise = this.props.exercise;
     const modeClassName = this.props.editMode ? 'editing' : '';
-    const metricTypes = this.props.routineType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
+    const metricTypes = exercise.type === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
 
     return (
       <div className={`Exercise ${modeClassName} ${this.props.workoutInProgress ? 'in-progress' : ''}`}>
@@ -86,31 +86,32 @@ class Exercise extends Component {
           )
         }
         <div className='name'>{exercise.name}</div>
-
-        {/* {metricTypes.map(metricType =>
+        {metricTypes.map(metricType =>
           <Metrics
             key={`${dayOfWeek}-${metricType}`}
-            userId={this.props.user.id}
+            userId={this.props.userId}
             workouts={this.props.workouts}
             forceGlobalUpdate={this.props.forceGlobalUpdate}
 
+            dayOfWeek={dayOfWeek}
             exercise={exercise}
             metricType={metricType}
             metricValue={exercise.metrics[metricType].value}
             metricUnit={exercise.metrics[metricType].unit}
             settingsUnit={this.props.user.settings.units[metricType]}
-            user={this.props.user}
-            dayOfWeek={dayOfWeek}
-            workout={this.props.workout}
-            routine={this.props.routine}
-            routineType={this.props.routineType}
+
             cancelMode={this.props.cancelMode}
             editMode={this.props.editMode}
             saveMode={this.props.saveMode}
             displayMessage={this.props.displayMessage}
+
+            user={this.props.user}
+            workout={this.props.workout}
+            routine={this.props.routine}
+            routineType={this.props.routineType}
             handleUserChange={this.props.handleUserChange}
           />
-        )} */}
+        )}
       </div>
     );
   }

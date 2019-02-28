@@ -16,7 +16,7 @@ class Home extends Component {
               handleDayChange={this.props.handleDayChange} />
             <Routine
               key={`${this.props.dayOfWeek}-routine`}
-              userId={this.props.user.id}
+              userId={this.props.userId}
               workouts={this.props.workouts}
               history={this.props.history}
               forceGlobalUpdate={this.props.forceGlobalUpdate}

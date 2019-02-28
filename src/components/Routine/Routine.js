@@ -123,7 +123,7 @@ class Routine extends Component {
               {workout.exercises.map (exercise =>
                 <Exercise
                   key={`${dayOfWeek}-${exercise.name}`}
-                  userId={this.props.user.id}
+                  userId={this.props.userId}
                   workouts={this.props.workouts}
                   history={this.props.history}
                   exercise={exercise}
