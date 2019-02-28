@@ -32,12 +32,16 @@ class History {
     this.history.dates.recent[dayOfWeek] = date;
   }
 
-  addWorkout(workout) {
-    this.history.workouts[workout.id] = workout;
+  addWorkout(date, workout) {
+    if (typeof this.history.workouts[date] === 'undefined') {
+      this.history.workouts[date] = {};
+    }
+    
+    this.history.workouts[date][workout.id] = workout;
   }
 
-  deleteWorkout(id) {
-    delete this.history.workouts[id];
+  deleteWorkout(date, workoutId) {
+    delete this.history.workouts[date][workoutId];
   }
 
   removeDate(date) {

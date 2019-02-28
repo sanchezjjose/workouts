@@ -45,15 +45,16 @@ const saveWorkouts = (userId, workouts) => {
   });
 };
 
-const deleteWorkout = (userId, id) => {
+const deleteWorkout = (userId, date, id) => {
   return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: "REMOVE history.workouts.#id",
+      UpdateExpression: "REMOVE history.workouts.#date.#id",
       ExpressionAttributeNames: {
+        "#date": date,
         "#id": id
       },
       ReturnValues:"ALL_NEW"

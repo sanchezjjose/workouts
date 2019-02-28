@@ -18,6 +18,7 @@ class Exercise extends Component {
     const workouts = this.props.workouts;
     const history = this.props.history;
     const exercise = this.props.exercise;
+    const workoutDate = history.getDate(this.props.dayOfWeek);
 
     workouts.setStatus(exercise.id, status);
     this.props.forceGlobalUpdate();
@@ -26,14 +27,14 @@ class Exercise extends Component {
 
     if (status) {
       // TODO: consider if model should also save to the database.. (MVC pattern research)
-      history.addWorkout(exercise);
+      history.addWorkout(workoutDate, exercise);
       // TODO: change to historyDB.saveWorkout(...)
       promise = saveWorkouts(userId, history.getWorkouts());
 
     } else {
-      history.deleteWorkout(exercise.id);
+      history.deleteWorkout(workoutDate, exercise.id);
       // TODO: change to historyDB.deleteWorkout(...)
-      promise = deleteWorkout(userId, exercise.id);
+      promise = deleteWorkout(userId, workoutDate, exercise.id);
     }
 
     promise
