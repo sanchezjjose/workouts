@@ -31,7 +31,7 @@ class Exercise extends Component {
       promise = saveWorkouts(userId, history.getWorkouts());
 
     } else {
-      history.removeWorkout(exercise.id);
+      history.deleteWorkout(exercise.id);
       // TODO: change to historyDB.deleteWorkout(...)
       promise = deleteWorkout(userId, exercise.id);
     }
