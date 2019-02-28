@@ -24,6 +24,11 @@ class History {
     return this.history.dates.all.indexOf(date) > -1;
   }
 
+  hasWorkout(date, workoutId) {
+    return typeof this.history.workouts[date] === 'object' &&
+      typeof this.history.workouts[date][workoutId] === 'object';
+  }
+
   addDate(date, dayOfWeek) {
     if (this.history.dates.all.indexOf(date) === -1) {
       this.history.dates.all.push(date);

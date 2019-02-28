@@ -70,17 +70,21 @@ class Exercise extends Component {
   }
 
   render() {
-    const dayOfWeek = this.props.dayOfWeek;
     const exercise = this.props.exercise;
     const modeClassName = this.props.editMode ? 'editing' : '';
     const metricTypes = exercise.type === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
+    const dayOfWeek = this.props.dayOfWeek;
+
+    const history = this.props.history;
+    const workoutDate = history.getDate(dayOfWeek);
+    const exerciseDone = history.hasWorkout(workoutDate, exercise.id);
 
     return (
       <div className={`Exercise ${modeClassName} ${this.props.workoutInProgress ? 'in-progress' : ''}`}>
         {this.props.editMode ?
           <button onClick={this.handleRemove} className="delete-button mdc-icon-button material-icons">clear</button> :
           (this.props.workoutInProgress &&
-            (exercise.metrics.done ? 
+            (exerciseDone ?
               <img className='status-button' onClick={() => this.handleStatusChange(false)} src={checkCircleFilled} alt="done" /> :
               <img className='status-button' onClick={() => this.handleStatusChange(true)} src={checkCircleOutline} alt="not-done" />
             )
