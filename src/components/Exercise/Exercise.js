@@ -37,10 +37,10 @@ class Exercise extends Component {
     }
 
     promise
-      .then(
-        // TODO: change to workoutDB.save(...)
-        saveWorkout(userId, workouts.get())
-      )
+      .then(() => {
+          // TODO: change to workoutDB.save(...)
+          saveWorkout(userId, workouts.get())
+      })
       .catch(e => {
         alert('There was a problem with updating exercise status.');
         console.error(e);
@@ -61,10 +61,11 @@ class Exercise extends Component {
     this.props.forceGlobalUpdate();
     this.props.displayMessage(`Deleted ${exercise.name}.`);
 
-    saveWorkout(userId, workouts.get()).catch(e => {
-      alert('There was a problem with deleting exercise.');
-      console.error(e);
-    });
+    saveWorkout(userId, workouts.get())
+      .catch(e => {
+        alert('There was a problem with deleting exercise.');
+        console.error(e);
+      });
   }
 
   render() {
