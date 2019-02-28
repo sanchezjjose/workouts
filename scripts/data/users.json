@@ -461,8 +461,10 @@
 		"favorites": {
 		},
 		"history": {
-			"dates": ["02-18-2019", "02-26-2019"],
-			"recent": { "Monday": "02-18-2019", "Tuesday": "02-26-2019"},
+			"dates": {
+				"all": ["02-18-2019", "02-26-2019"],
+				"recent": { "Monday": "02-18-2019", "Tuesday": "02-26-2019"}
+			},
 			"workouts": {}
 		},
 		"workouts": {

@@ -51,26 +51,20 @@ class Exercise extends Component {
       });
   }
 
-  handleRemove = (e) => {
+  handleRemove = () => {
     const userId = this.props.userId;
     const workouts = this.props.workouts;
-    const id = this.props.exercise.id;
+    const exercise = this.props.exercise;
 
-    workouts.removeWorkoutDay(id, this.props.dayOfWeek);
+    workouts.removeWorkoutDay(exercise.id, this.props.dayOfWeek);
 
-    // TODO: Delete from DB
     this.props.forceGlobalUpdate();
+    this.props.displayMessage(`Deleted ${exercise.name}.`);
 
-    saveWorkout(userId, workouts.get());
-
-    // saveRoutine(user.id, todaysRoutine, dayOfWeek)
-    //   .then(() => {
-    //     this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
-    //     this.props.displayMessage(`Deleted ${exerciseName} from ${workoutName} workout.`);
-    //   })
-    //   .catch(e => {
-    //     console.log(e);
-    //   })
+    saveWorkout(userId, workouts.get()).catch(e => {
+      alert('There was a problem with deleting exercise.');
+      console.error(e);
+    });
   }
 
   render() {

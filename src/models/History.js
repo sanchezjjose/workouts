@@ -9,7 +9,7 @@ class History {
   }
 
   getDate(dayOfWeek) {
-    return this.history.recent[dayOfWeek];
+    return this.history.dates.recent[dayOfWeek];
   }
 
   getDates() {
@@ -21,15 +21,15 @@ class History {
   }
 
   hasDate(date) {
-    return this.history.dates.indexOf(date) > -1;
+    return this.history.dates.all.indexOf(date) > -1;
   }
 
   addDate(date, dayOfWeek) {
-    if (this.history.dates.indexOf(date) === -1) {
-      this.history.dates.push(date);
+    if (this.history.dates.all.indexOf(date) === -1) {
+      this.history.dates.all.push(date);
     }
 
-    this.history.recent[dayOfWeek] = date;
+    this.history.dates.recent[dayOfWeek] = date;
   }
 
   addWorkout(workout) {
@@ -41,7 +41,7 @@ class History {
   }
 
   removeDate(date) {
-    this.history.dates = this.history.dates.filter(d => d !== date);
+    this.history.dates.all = this.history.dates.all.filter(d => d !== date);
   }
 }
 
