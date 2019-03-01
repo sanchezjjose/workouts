@@ -79,8 +79,7 @@ class NavigationBar extends Component {
             user={this.props.user}
             userObj={this.props.userObj}
             settings={this.props.userObj.settings}
-            handleSettingsClose={this.handleSettingsClose}
-            handleUserChange={this.props.handleUserChange} />
+            handleSettingsClose={this.handleSettingsClose} />
         }
       </header>
     );

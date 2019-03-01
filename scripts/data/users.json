@@ -458,8 +458,6 @@
 				"distance": "mi"
 			}
 		},
-		"favorites": {
-		},
 		"history": {
 			"dates": {
 				"all": ["02-18-2019", "02-26-2019"],
@@ -557,50 +555,6 @@
 					"time": { "value": 10, "unit": "min" },
 					"distance": { "value": 1, "unit": "mi" },
 					"kcal": { "value": 115, "unit": "-" }
-				}
-			}
-		},
-		"routines": {
-			"Monday": {
-				"weight": {
-				},
-				"time": {
-				}
-			},
-			"Tuesday": {
-				"weight": {
-				},
-				"time": {
-				}
-			},
-			"Wednesday": {
-				"weight": {
-				},
-				"time": {
-				}
-			},
-			"Thursday": {
-				"weight": {
-				},
-				"time": {
-				}
-			},
-			"Friday": {
-				"weight": {
-				},
-				"time": {
-				}
-			},
-			"Saturday": {
-				"weight": {
-				},
-				"time": {
-				}
-			},
-			"Sunday": {
-				"weight": {
-				},
-				"time": {
 				}
 			}
 		}

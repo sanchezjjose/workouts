@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getUser } from '../api/Users';
-import User from '../models/User';
-import UserFavorites from '../models/Favorites';
 import UserWorkouts from '../models/Workouts';
 import UserHistory from '../models/History';
 import Landing from './Landing/Landing';
@@ -22,9 +20,6 @@ class App extends Component {
     user: {},
     workouts: {},
     history: {},
-
-    userObj: {},
-    favorites: {},
     dayOfWeek: today,
     editMode: false,
     saveMode: false,
@@ -41,30 +36,12 @@ class App extends Component {
             user: user,
             workouts: new UserWorkouts(user.workouts),
             history: new UserHistory(user.history),
-
-            userObj: new User(user),
-            favorites: new UserFavorites(user.favorites)
           });
         })
         .catch(err => {
           window.location = '/';
         });
     }
-  }
-
-  handleUserChange = (user, editMode = false, saveMode = false, cancelMode = false) => {
-    this.setState({
-      user: user,
-      userObj: new User(user),
-      editMode: editMode,
-      saveMode: saveMode,
-      cancelMode: cancelMode
-    });
-  }
-
-  handleFavoritesChange = (favorites) => {
-    // TODO: May not need this. 'favorites' object already updated, just need to for re-render after adding / deleting a favorite exercise.
-    this.setState({ favorites: favorites });
   }
 
   forceGlobalUpdate = () => {
@@ -84,28 +61,20 @@ class App extends Component {
             <div className='container home'>
               <NavigationBar 
                 user={this.state.user}
-                userObj={this.state.userObj}
-                handleUserChange={this.handleUserChange}
                 dayOfWeek={this.state.dayOfWeek}
                 editMode={this.state.editMode}
               />
-              {this.state.user.routines ?
+              {typeof this.state.user.id === 'string' ?
                 <Home
                   userId={this.state.user.id}
                   workouts={this.state.workouts}
                   history={this.state.history}
                   forceGlobalUpdate={this.forceGlobalUpdate}
-
                   handleDayChange={this.handleDayChange}
                   dayOfWeek={this.state.dayOfWeek}
                   editMode={this.state.editMode}
                   saveMode={this.state.saveMode}
                   cancelMode={this.state.cancelMode}
-
-                  user={this.state.user}
-                  userObj={this.state.userObj}
-                  favorites={this.state.favorites}
-                  handleUserChange={this.handleUserChange}
                 /> :
                 <div>Loading...</div>
               }
@@ -116,12 +85,10 @@ class App extends Component {
             <div className='container favorites'>
               <NavigationBar
                 user={this.state.user}
-                userObj={this.state.userObj}
-                handleUserChange={this.handleUserChange}
                 editMode={this.state.editMode}
                 saveMode={this.state.saveMode}
               />
-              {this.state.user.favorites ?
+              {typeof this.state.user.id === 'string' ?
                 <Favorites
                   userId={this.state.user.id}
                   workouts={this.state.workouts}

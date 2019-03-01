@@ -53,7 +53,7 @@ class RoutineModal extends Component {
                 This will show a list of your favorite exercises to add to your routine.
               </p>
               <div>
-              <a className='link-favorites' href={`${this.props.user.id}/favorites`}>CREATE FAVORITES</a>
+              <a className='link-favorites' href={`${this.props.userId}/favorites`}>CREATE FAVORITES</a>
               </div>
             </div>
           }

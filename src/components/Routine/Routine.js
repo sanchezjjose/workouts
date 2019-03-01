@@ -129,15 +129,13 @@ class Routine extends Component {
                   exercise={exercise}
                   forceGlobalUpdate={this.props.forceGlobalUpdate}
                   workoutInProgress={workoutInProgress}
-
-                  user={this.props.user}
-                  userObj={this.props.userObj}
                   cancelMode={this.props.cancelMode}
                   editMode={this.props.editMode}
                   saveMode={this.props.saveMode}
-                  handleUserChange={this.props.handleUserChange} 
                   displayMessage={this.displayMessage}
                   dayOfWeek={dayOfWeek}
+
+                  // TODO: Maybe pass this down instead of workouts?
                   workout={workout}
                 />
               )}
@@ -145,15 +143,10 @@ class Routine extends Component {
           )
         )}
         <RoutineModal
-          userId={this.props.user.id}
+          userId={this.props.userId}
           workouts={this.props.workouts}
           forceGlobalUpdate={this.props.forceGlobalUpdate}
           dayOfWeek={dayOfWeek}
-
-          user={this.props.user}
-          userObj={this.props.userObj}
-          favorites={this.props.favorites}
-          handleUserChange={this.props.handleUserChange}
           displayMessage={this.displayMessage} />
       </div>
     );

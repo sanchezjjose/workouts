@@ -20,11 +20,6 @@ class Home extends Component {
               workouts={this.props.workouts}
               history={this.props.history}
               forceGlobalUpdate={this.props.forceGlobalUpdate}
-
-              user={this.props.user}
-              favorites={this.props.favorites}
-              userObj={this.props.userObj}
-              handleUserChange={this.props.handleUserChange}
               dayOfWeek={this.props.dayOfWeek}
               cancelMode={this.props.cancelMode}
               editMode={this.props.editMode}

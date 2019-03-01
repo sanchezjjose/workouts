@@ -97,24 +97,22 @@ class Exercise extends Component {
             userId={this.props.userId}
             workouts={this.props.workouts}
             forceGlobalUpdate={this.props.forceGlobalUpdate}
-
             dayOfWeek={dayOfWeek}
             exercise={exercise}
             metricType={metricType}
             metricValue={exercise.metrics[metricType].value}
             metricUnit={exercise.metrics[metricType].unit}
-            settingsUnit={this.props.user.settings.units[metricType]}
+
+            // TODO: Replace w/ Settings object
+            // settingsUnit={this.props.user.settings.units[metricType]}
 
             cancelMode={this.props.cancelMode}
             editMode={this.props.editMode}
             saveMode={this.props.saveMode}
             displayMessage={this.props.displayMessage}
 
-            user={this.props.user}
+            // TODO: Maybe use this instead of workouts?
             workout={this.props.workout}
-            routine={this.props.routine}
-            routineType={this.props.routineType}
-            handleUserChange={this.props.handleUserChange}
           />
         )}
       </div>
