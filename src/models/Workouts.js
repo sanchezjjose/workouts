@@ -11,7 +11,7 @@ const groupBy = (key, array) => {
 class Workouts {
 
   constructor(workouts) {
-    this.workouts = workouts;
+    this.workouts = workouts || {};
   }
 
   addWorkoutDay(id, day) {

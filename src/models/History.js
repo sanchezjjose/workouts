@@ -1,7 +1,10 @@
 class History {
 
   constructor(history) {
-    this.history = history;
+    this.history = history || {};
+    this.history.dates = history.dates || {};
+    this.history.dates.recent = history.dates.recent || [];
+    this.history.workouts = history.workouts || {};
   }
 
   get() {
