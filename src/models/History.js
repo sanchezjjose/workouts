@@ -3,7 +3,8 @@ class History {
   constructor(history) {
     this.history = history || {};
     this.history.dates = history.dates || {};
-    this.history.dates.recent = history.dates.recent || [];
+    this.history.dates.recent = history.dates.recent || {};
+    this.history.dates.all = history.dates.all || [];
     this.history.workouts = history.workouts || {};
   }
 
