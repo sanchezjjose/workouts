@@ -16,12 +16,12 @@ class SettingsModal extends Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value }, () => {
       const settings = { units: this.state };
-      const user = this.props.user;
+      const userId = this.props.userId;
 
-      // TODO: replace with userObj.setSettings method
-      user['settings'] = settings;
+      // TODO: replace with settings.set(....)
+      // user['settings'] = settings;
 
-      saveSettings(user.id, settings)
+      saveSettings(userId, settings)
         .then(() => {
           window.location.reload();  
         });

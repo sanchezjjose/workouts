@@ -60,8 +60,7 @@ class App extends Component {
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container home'>
               <NavigationBar 
-                user={this.state.user}
-                dayOfWeek={this.state.dayOfWeek}
+                userId={this.state.user.id}
                 editMode={this.state.editMode}
               />
               {typeof this.state.user.id === 'string' ?
@@ -84,9 +83,8 @@ class App extends Component {
           <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container favorites'>
               <NavigationBar
-                user={this.state.user}
+                userId={this.state.user.id}
                 editMode={this.state.editMode}
-                saveMode={this.state.saveMode}
               />
               {typeof this.state.user.id === 'string' ?
                 <Favorites

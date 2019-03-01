@@ -76,9 +76,8 @@ class NavigationBar extends Component {
         </section>
         {this.state.settingsOpen &&
           <SettingsModal 
-            user={this.props.user}
-            userObj={this.props.userObj}
-            settings={this.props.userObj.settings}
+            userId={this.props.userId}
+            settings={this.props.settings}
             handleSettingsClose={this.handleSettingsClose} />
         }
       </header>

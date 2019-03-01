@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { saveRoutine } from '../../api/Routine';
+import { saveWorkout } from '../../api/Workouts';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './RoutineModal.css';
@@ -26,9 +26,7 @@ class RoutineModal extends Component {
     
     workouts.addWorkoutDay(id, day);
 
-    const updatedDays = workouts.get()[id].days;
-
-    saveRoutine(userId, id, updatedDays)
+    saveWorkout(userId, workouts.get())
       .then(() => {
         this.props.forceGlobalUpdate();
         this.props.displayMessage(`Added ${name}.`);
