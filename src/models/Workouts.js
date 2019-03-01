@@ -67,6 +67,14 @@ class Workouts {
     this.workouts[id].metrics.done = status;
   }
 
+  setMetricValue(id, metricType, metricValue) {
+    this.workouts[id].metrics[metricType].value = metricValue;
+  }
+
+  setMetricUnit(id, metricType, metricUnit) {
+    this.workouts[id].metrics[metricType].unit = metricUnit;
+  }
+
   get() {
     return this.workouts;
   }

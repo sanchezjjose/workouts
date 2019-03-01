@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { saveExerciseMetrics } from '../../api/ExerciseMetrics';
+
+// TODO: change from ../../api => ../../db
+import { saveWorkout } from '../../api/Workouts';
 
 import './Metrics.css';
 
@@ -36,13 +38,16 @@ class Metrics extends Component {
     const swipedHorizontal = Math.abs(diffX) > Math.abs(diffY);
 
     if (swipedHorizontal) {
-      const increment = this.props.metricType === 'weight' ? 2.5 : 1;
+      const name = this.props.exercise.name;
+      const metricType = this.props.metricType;
+
+      const increment = metricType === 'weight' ? 2.5 : 1;
       const initialValue = this.state.metricValue;
       const finalValue = swipedLeft ? initialValue + increment : initialValue - increment;
 
       if (!isNaN(finalValue) && finalValue >= 0) {
         this.setState({ metricValue: finalValue, swiped: true });
-        this.props.displayMessage(`Changed ${this.props.exercise.name} ${this.props.metricType} value from ${initialValue} to ${finalValue}.`);
+        this.props.displayMessage(`Changed ${name} ${metricType} value from ${initialValue} to ${finalValue}.`);
       }
     }
   }
@@ -91,35 +96,27 @@ class Metrics extends Component {
   }
 
   saveMetric(prevMetricValue, prevSettingsUnit, metricValue, settingsUnit) {
-    const id = this.props.user.id;
-    const routineType = this.props.routineType;
-    const dayOfWeek = this.props.routine.day;
-    const workoutName = this.props.workout.name;
+    const userId = this.props.userId;
+    const workouts = this.props.workouts;
     const exercise = this.props.exercise;
     const metricType = this.props.metricType;
 
-    saveExerciseMetrics(id, dayOfWeek, routineType, workoutName, exercise.name, metricType, metricValue, settingsUnit)
+    workouts.setMetricValue(exercise.id, metricType, metricValue);
+    workouts.setMetricUnit(exercise.id, metricType, settingsUnit);
+
+    saveWorkout(userId, workouts.get())
       .then(() => {
         console.debug(`Changed ${metricType} metric for ${exercise.name} from ${prevMetricValue} ${prevSettingsUnit} to ${metricValue} ${settingsUnit}.`);
 
-        if (this.props.saveMode === true) {
-          // this.props.handleUserChange(this.props.user, false, false);
-          this.props.forceGlobalUpdate();
-        }
+        // if (this.props.saveMode === true) {
+        //   this.props.forceGlobalUpdate();
+        // }
       })
-      .catch(err => {
+      .catch(err => { 
         console.error(err);
-        this.setState(prevState => ({ metricValue: prevState.metricValue }));
+        // Reset?
+        // this.setState(prevState => ({ metricValue: prevState.metricValue }));
       });
-
-    // Update user props and bubble up to parent component
-    this.props.user.routines[dayOfWeek][routineType][workoutName][exercise.name][this.props.metricType] = {
-      value: metricValue,
-      unit: settingsUnit
-    };
-
-    // this.props.handleUserChange(this.props.user);
-    this.props.forceGlobalUpdate();
   }
 
   convertMetricValue = () => {
