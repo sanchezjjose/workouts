@@ -51,6 +51,10 @@ class App extends Component {
     this.forceUpdate();
   }
 
+  handleModeChange = (edit, save, cancel) => {
+    this.setState({ editMode: edit, saveMode: save, cancelMode: cancel });
+  }
+
   handleDayChange = (dayOfWeek) => {
     this.setState({ dayOfWeek: dayOfWeek });
   }
@@ -66,6 +70,7 @@ class App extends Component {
                 userId={this.state.user.id}
                 editMode={this.state.editMode}
                 settings={this.state.settings}
+                handleModeChange={this.handleModeChange}
               />
               {typeof this.state.user.id === 'string' ?
                 <Home

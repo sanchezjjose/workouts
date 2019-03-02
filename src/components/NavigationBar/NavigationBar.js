@@ -19,15 +19,15 @@ class NavigationBar extends Component {
   }
 
   handleEditClick = () => {
-    this.props.handleUserChange(this.props.user, true, false);
+    this.props.handleModeChange(true, false, false);
   }
 
   handleSaveClick = () => {
-    this.props.handleUserChange(this.props.user, false, true);
+    this.props.handleModeChange(false, true, false);
   }
 
   handleCancelClick = () => {
-    this.props.handleUserChange(this.props.user, false, false, true);
+    this.props.handleModeChange(false, false, true);
   }
 
   handleMenuClick = () => {
