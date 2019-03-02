@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getUser } from '../api/Users';
 import UserWorkouts from '../models/Workouts';
 import UserHistory from '../models/History';
+import UserSettings from '../models/Settings';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
@@ -18,6 +19,7 @@ class App extends Component {
 
   state = {
     user: {},
+    settings: {},
     workouts: {},
     history: {},
     dayOfWeek: today,
@@ -34,6 +36,7 @@ class App extends Component {
         .then(user => {
           this.setState({
             user: user,
+            settings: new UserSettings(user.settings),
             workouts: new UserWorkouts(user.workouts),
             history: new UserHistory(user.history),
           });
@@ -62,6 +65,7 @@ class App extends Component {
               <NavigationBar 
                 userId={this.state.user.id}
                 editMode={this.state.editMode}
+                settings={this.state.settings}
               />
               {typeof this.state.user.id === 'string' ?
                 <Home
@@ -85,6 +89,7 @@ class App extends Component {
               <NavigationBar
                 userId={this.state.user.id}
                 editMode={this.state.editMode}
+                settings={this.state.settings}
               />
               {typeof this.state.user.id === 'string' ?
                 <Favorites
