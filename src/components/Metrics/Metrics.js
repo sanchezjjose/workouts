@@ -53,7 +53,7 @@ class Metrics extends Component {
   }
 
   handleOnClick = (e) => {
-    if (this.props.editMode && e.target.value === '-') {
+    if (this.props.editMode) {
       e.target.value = '';
     }
   }
@@ -81,9 +81,9 @@ class Metrics extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState, prevContext) => {
-    // const metricValueChanged = this.state.metricValue !== prevState.metricValue;
+    const metricValueChanged = this.state.metricValue !== prevState.metricValue;
     const isNumber = typeof this.state.metricValue === 'number';
-    const shouldSave = this.state.swiped || (this.state.edited && this.props.saveMode);
+    const shouldSave = this.state.swiped || (this.state.edited && this.props.saveMode) || metricValueChanged;
     const shouldReset = this.state.edited && !this.props.editMode;
 
     if (shouldSave && isNumber) {
@@ -161,7 +161,7 @@ class Metrics extends Component {
     const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;
-    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricUnit !== '-') && !this.props.editMode && window.innerWidth >= 320;
+    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricValue > 0) && !this.props.editMode && window.innerWidth >= 320;
     const inputValue = showMetricUnit ? `${metricValue} ${metricUnit}` : metricValue;
 
     return (

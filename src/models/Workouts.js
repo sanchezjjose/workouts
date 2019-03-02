@@ -28,13 +28,13 @@ class Workouts {
     const metrics = type === 'weight' ? {
       'done': false,
       'weight': { 'value': 0, 'unit': 'lbs' },
-      'reps': { 'value': 0, 'unit': '-' },
-      'sets': { 'value': 0, 'unit': '-' }
+      'reps': { 'value': 0 },
+      'sets': { 'value': 0 }
     } : {
       'done': false,
       'time': { 'value': 0, 'unit': 'min' },
       'distance': { 'value': 0, 'unit': 'mi' },
-      'kcal': { 'value': 0, 'unit': '-' }
+      'kcal': { 'value': 0 }
     };
 
     const template = {
