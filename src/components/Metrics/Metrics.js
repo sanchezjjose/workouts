@@ -45,7 +45,7 @@ class Metrics extends Component {
       const initialValue = this.state.metricValue;
       const finalValue = swipedLeft ? initialValue + increment : initialValue - increment;
 
-      if (!isNaN(finalValue) && finalValue >= 0) {
+      if (typeof finalValue === 'number' && finalValue >= 0) {
         this.setState({ metricValue: finalValue, swiped: true });
         this.props.displayMessage(`Changed ${name} ${metricType} value from ${initialValue} to ${finalValue}.`);
       }
@@ -72,7 +72,7 @@ class Metrics extends Component {
     const settingsUnit = this.props.settingsUnit;
     const shouldConvert = settingsUnit !== metricUnit
       && typeof settingsUnit !== 'undefined'
-      && !isNaN(this.state.metricValue);
+      && typeof this.state.metricValue === 'number';
 
     // Unit settings unchanged or don't exist
     if (shouldConvert) {
