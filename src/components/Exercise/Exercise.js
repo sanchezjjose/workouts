@@ -79,6 +79,8 @@ class Exercise extends Component {
     const workoutDate = history.getDate(dayOfWeek);
     const exerciseDone = history.hasWorkout(workoutDate, exercise.id);
 
+    const settings = this.props.settings;
+
     return (
       <div className={`Exercise ${modeClassName} ${this.props.workoutInProgress ? 'in-progress' : ''}`}>
         {this.props.editMode ?
@@ -102,10 +104,7 @@ class Exercise extends Component {
             metricType={metricType}
             metricValue={exercise.metrics[metricType].value}
             metricUnit={exercise.metrics[metricType].unit}
-
-            // TODO: Replace w/ Settings object
-            // settingsUnit={this.props.user.settings.units[metricType]}
-
+            settingsUnit={settings.getUnit(metricType)}
             cancelMode={this.props.cancelMode}
             editMode={this.props.editMode}
             saveMode={this.props.saveMode}

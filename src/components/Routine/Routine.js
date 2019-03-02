@@ -125,6 +125,7 @@ class Routine extends Component {
                   key={`${dayOfWeek}-${exercise.name}`}
                   userId={this.props.userId}
                   workouts={this.props.workouts}
+                  settings={this.props.settings}
                   history={this.props.history}
                   exercise={exercise}
                   forceGlobalUpdate={this.props.forceGlobalUpdate}

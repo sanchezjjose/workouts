@@ -71,6 +71,7 @@ class App extends Component {
                 <Home
                   userId={this.state.user.id}
                   workouts={this.state.workouts}
+                  settings={this.state.settings}
                   history={this.state.history}
                   forceGlobalUpdate={this.forceGlobalUpdate}
                   handleDayChange={this.handleDayChange}
