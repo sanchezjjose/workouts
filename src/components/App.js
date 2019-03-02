@@ -60,6 +60,11 @@ class App extends Component {
   }
 
   render() {
+
+    if (typeof this.state.history.fill === 'function') {
+      this.state.history.fill();
+    }
+
     return (
       <Router>
         <div className='App'>

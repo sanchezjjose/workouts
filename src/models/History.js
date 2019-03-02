@@ -1,3 +1,5 @@
+import { formatDate } from '../lib/Util';
+
 class History {
 
   constructor(history) {
@@ -55,6 +57,36 @@ class History {
 
   removeDate(date) {
     this.history.dates.all = this.history.dates.all.filter(d => d !== date);
+  }
+
+  fill() {
+    function addDays(date, days) {
+      const initialDate = new Date(date);
+      const result = initialDate.setDate(initialDate.getDate() + days);
+      return new Date(result);
+    }
+
+    function skipDate(date) {
+      const month = date.getMonth();
+      const dayOfMonth = date.getDate();
+      return (month === 11 && dayOfMonth > 20) || (month === 0 && dayOfMonth < 20);
+    }
+
+    const today = new Date();
+    const start = new Date(2018, 8, 10);
+    const end = new Date(today.getFullYear(), today.getDate(), today.getMonth());
+
+    for (let i = 0; true; i++) {
+      let date = addDays(start, i);
+
+      if (formatDate(date) === formatDate(end)) {
+        break;
+      }
+
+      if (!this.hasDate(date) && !skipDate(date)) {
+        this.history.dates.all.push(formatDate(date));
+      }
+    }
   }
 }
 
