@@ -1,13 +1,11 @@
-import { formatDate } from '../lib/Util';
-
 class History {
 
   constructor(history) {
     this.history = history || {};
-    this.history.dates = history.dates || {};
-    this.history.dates.recent = history.dates.recent || {};
-    this.history.dates.all = history.dates.all || [];
-    this.history.workouts = history.workouts || {};
+    this.history.dates = this.history.dates || {};
+    this.history.dates.recent = this.history.dates.recent || {};
+    this.history.dates.all = this.history.dates.all || [];
+    this.history.workouts = this.history.workouts || {};
   }
 
   get() {
@@ -35,12 +33,13 @@ class History {
       typeof this.history.workouts[date][workoutId] === 'object';
   }
 
-  addDate(date, dayOfWeek) {
+  addDate(date, dayOfWeekOpt) {
     if (this.history.dates.all.indexOf(date) === -1) {
       this.history.dates.all.push(date);
     }
-
-    this.history.dates.recent[dayOfWeek] = date;
+    if (typeof dayOfWeekOpt === 'string') {
+      this.history.dates.recent[dayOfWeekOpt] = date;
+    }
   }
 
   addWorkout(date, workout) {
@@ -58,36 +57,7 @@ class History {
   removeDate(date) {
     this.history.dates.all = this.history.dates.all.filter(d => d !== date);
   }
-
-  fill() {
-    function addDays(date, days) {
-      const initialDate = new Date(date);
-      const result = initialDate.setDate(initialDate.getDate() + days);
-      return new Date(result);
-    }
-
-    function skipDate(date) {
-      const month = date.getMonth();
-      const dayOfMonth = date.getDate();
-      return (month === 11 && dayOfMonth > 20) || (month === 0 && dayOfMonth < 20);
-    }
-
-    const today = new Date();
-    const start = new Date(2018, 8, 10);
-    const end = new Date(today.getFullYear(), today.getDate(), today.getMonth());
-
-    for (let i = 0; true; i++) {
-      let date = addDays(start, i);
-
-      if (formatDate(date) === formatDate(end)) {
-        break;
-      }
-
-      if (!this.hasDate(date) && !skipDate(date)) {
-        this.history.dates.all.push(formatDate(date));
-      }
-    }
-  }
 }
 
-export default History;
+// export default History;
+module.exports = History;

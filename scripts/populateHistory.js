@@ -1,3 +1,6 @@
+// Run Command:
+// NODE_ENV=development REACT_APP_AWS_ACCESS_KEY_ID=XXX REACT_APP_AWS_SECRET_ACCESS_KEY=XXX node scripts/populateHistory.js
+
 const formatDate = require('../src/lib/Util').formatDate;
 const History = require('../src/models/History');
 const HistoryDB = require('../src/api/History');
@@ -33,8 +36,6 @@ for (let i = 0; true; i++) {
   }
 }
 
-// console.log(history.getDates().all);
-console.log(history.getDates())
-
-// TODO: Save to database.
-HistoryDB.saveDates('joses', history.getDates());
+HistoryDB
+  .saveDates('joses', history.getDates())
+  .catch(e => console.log(e));

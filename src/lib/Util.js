@@ -25,4 +25,9 @@ const formatDate = (date) => {
   return `${monthFormatted}-${dayFormatted}-${date.getFullYear()}`;
 }
 
-export { compareNames, compareGroupNames, formatDate };
+// export { compareNames, compareGroupNames, formatDate };
+module.exports = {
+  compareNames: compareNames,
+  compareGroupNames: compareGroupNames,
+  formatDate: formatDate
+}

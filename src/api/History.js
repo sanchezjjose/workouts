@@ -15,7 +15,7 @@ const saveDates = (userId, dates) => {
       ReturnValues:"ALL_NEW"
     }, (err, data) => {
       if (err) {
-        return reject('Error JSON:', JSON.stringify(err, null, 2));
+        return reject(err);
       }
 
       resolve(data);
@@ -37,7 +37,7 @@ const saveWorkouts = (userId, workouts) => {
       ReturnValues:"ALL_NEW"
     }, (err, data) => {
       if (err) {
-        return reject('Error JSON:', JSON.stringify(err, null, 2));
+        return reject(err);
       }
 
       resolve(data);
@@ -60,7 +60,7 @@ const deleteWorkout = (userId, date, id) => {
       ReturnValues:"ALL_NEW"
     }, (err, data) => {
       if (err) {
-        return reject('Error JSON:', JSON.stringify(err, null, 2));
+        return reject(err);
       }
 
       resolve(data);
