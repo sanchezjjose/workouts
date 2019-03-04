@@ -163,10 +163,11 @@ class Metrics extends Component {
     const metricUnit = this.props.metricUnit;
     const showMetricUnit = (typeof metricUnit !== 'undefined' && metricValue > 0) && !this.props.editMode && window.innerWidth >= 320;
     const inputValue = showMetricUnit ? `${metricValue} ${metricUnit}` : metricValue;
+    const inputType = showMetricUnit ? 'text' : 'number';
 
     return (
       <div className={`Metrics`}>
-        <input type='text' name={metricType} className={`${metricType}`}
+        <input type={inputType} name={metricType} className={`${metricType}`}
           value={inputValue}
           onTouchStart={this.handleTouchStart} 
           onTouchEnd={this.handleTouchEnd} 
