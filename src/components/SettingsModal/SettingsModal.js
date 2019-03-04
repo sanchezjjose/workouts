@@ -7,32 +7,25 @@ import "@material/form-field/dist/mdc.form-field.min.css";
 
 class SettingsModal extends Component {
 
-  state = {
-    weight: this.props.settings.units.weight,
-    time: this.props.settings.units.time,
-    distance: this.props.settings.units.distance
-  }
-
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value }, () => {
-      const settings = { units: this.state };
-      const user = this.props.user;
+    const userId = this.props.userId;
+    const settings = this.props.settings;
+    const type = e.target.name;
+    const value = e.target.value;
 
-      // TODO: replace with userObj.setSettings method
-      user['settings'] = settings;
-      this.props.handleUserChange(user);
+    settings.setUnit(type, value);
 
-      saveSettings(user.id, settings)
-        .then(() => {
-          window.location.reload();  
-        });
-    });
+    saveSettings(userId, settings.get())
+      .then(() => {
+        window.location.reload();  
+      });
   }
 
   render() {
-    const weightUnit = this.state.weight;
-    const timeUnit = this.state.time;
-    const distanceUnit = this.state.distance;
+    const units = this.props.settings.getUnits();
+    const weightUnit = units.weight;
+    const timeUnit = units.time;
+    const distanceUnit = units.distance;
 
     return (
       <div className='SettingsModal'>

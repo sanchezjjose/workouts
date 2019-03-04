@@ -1,19 +1,16 @@
 const AWS = require('./aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-const saveFavorites = (userId, favorites) => {
+const saveWorkout = (userId, workouts) => {
   return new Promise((resolve, reject) => {
     docClient.update({
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: "SET #f = :f",
-      ExpressionAttributeNames: {
-        "#f": "favorites"
-      },
+      UpdateExpression: "SET workouts = :w",
       ExpressionAttributeValues: {
-        ":f": favorites
+        ":w": workouts
       },
       ReturnValues:"ALL_NEW"
 
@@ -28,29 +25,19 @@ const saveFavorites = (userId, favorites) => {
   });
 };
 
-const removeFavoriteExercise = (userId, workoutType, workout, exercises) => {
+const deleteWorkout = (userId, workoutId) => {
   return new Promise((resolve, reject) => {
     const params = {
       TableName: 'Workouts',
       Key: {
         'id': userId
       },
-      UpdateExpression: `SET #f.#t.#w = :e`,
+      UpdateExpression: `REMOVE workouts.#id`,
       ExpressionAttributeNames: {
-        "#f": "favorites",
-        "#t": workoutType,
-        "#w": workout
-      },
-      ExpressionAttributeValues: {
-        ":e": exercises
+        "#id": workoutId
       },
       ReturnValues:"ALL_NEW"
     };
-
-    if (exercises.length === 0) {
-      params.UpdateExpression = 'Remove #f.#t.#w';
-      delete params.ExpressionAttributeValues;
-    }
 
     docClient.update(params, (err, data) => {
       if (err) {
@@ -64,7 +51,7 @@ const removeFavoriteExercise = (userId, workoutType, workout, exercises) => {
   });
 }
 
-module.exports = { 
-  saveFavorites: saveFavorites,
-  removeFavoriteExercise: removeFavoriteExercise
+module.exports = {
+  saveWorkout: saveWorkout,
+  deleteWorkout: deleteWorkout
 };

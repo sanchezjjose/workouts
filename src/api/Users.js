@@ -53,41 +53,8 @@ const createUser = (userId, fullName) => {
                 "distance": "mi"
               }
             },
-            'favorites':  {
-              'weight': {},
-              'time': {}
-            },
             'history':  {},
-            'routines':  {
-              'Monday': {
-                'weight': {},
-                'time': {}
-              },
-              'Tuesday': {
-                'weight': {},
-                'time': {}
-              },
-              'Wednesday': {
-                'weight': {},
-                'time': {}
-              },
-              'Thursday': {
-                'weight': {},
-                'time': {}
-              },
-              'Friday': {
-                'weight': {},
-                'time': {}
-              },
-              'Saturday': {
-                'weight': {},
-                'time': {}
-              },
-              'Sunday': {
-                'weight': {},
-                'time': {}
-              }
-            }
+            'workouts': {}
           }
         };
 

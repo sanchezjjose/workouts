@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { saveFavorites } from '../../api/Favorites';
+import { saveWorkout } from '../../api/Workouts';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
 import './FavoritesModal.css';
@@ -9,9 +9,9 @@ class FavoritesModal extends Component {
 
   state = {
     show: false,
+    group: '',
     workout: '',
-    exerciseName: '',
-    routineType: 'weight'
+    workoutType: 'weight'
   }
 
   showModal = () => {
@@ -29,43 +29,36 @@ class FavoritesModal extends Component {
     });
   }
 
+  onGroupChange = (e) => {
+    this.setState({ group: e.target.value });
+  }
+
   onWorkoutChange = (e) => {
     this.setState({ workout: e.target.value });
   }
 
-  onExerciseNameChange = (e) => {
-    this.setState({ exerciseName: e.target.value });
+  onWorkoutTypeChange = (e) => {
+    this.setState({ workoutType: e.target.value });
   }
 
-  onRoutineTypeChange = (e) => {
-    this.setState({ routineType: e.target.value });
-  }
-
-  saveExercise = (e) => {
+  saveWorkout = (e) => {
     e.preventDefault();
 
     const props = this.props;
-    const routineType = this.state.routineType;
+    const group = this.state.group;
     const workout = this.state.workout;
-    const exerciseName = this.state.exerciseName;
-    const favorites = props.favorites;
-    const favoriteExercises = favorites.getExercises(routineType, workout);
+    const workoutType = this.state.workoutType;
 
-    if (favoriteExercises.indexOf(exerciseName) === -1) {
-      favorites.addWorkout(routineType, workout);
-      favorites.addExercise(routineType, workout, exerciseName);
+    props.workouts.addWorkout(group, workout, workoutType);
 
-      const updatedFavorites = favorites.get();
-
-      saveFavorites(props.userId, updatedFavorites)
-        .then(() => {
-          props.handleFavoritesChange(favorites);
-          props.displayMessage(`Added ${exerciseName} to favorites.`);
-        })
-        .catch(err => { 
-          console.error('Error adding exercise to favorites.', err);
-        });
-    }
+    saveWorkout(props.userId, props.workouts.get())
+      .then(() => {
+        props.forceGlobalUpdate();
+        props.displayMessage(`Added ${workout} to favorites.`);
+      })
+      .catch(err => { 
+        console.error(`Error adding ${workout} to favorites.`, err);
+      });
   }
 
   render() {
@@ -77,27 +70,27 @@ class FavoritesModal extends Component {
         <div className={`content ${this.state.show ? 'show' : ''}`}>
           <span onClick={this.closeModal} className='close'>&times;</span>
           <div className='metric'>
-            <div className='label'>Workout</div>
-            <input onChange={this.onWorkoutChange} type='text' name='workout' placeholder='e.g, Chest, Running, Abs, Other'></input>
+            <div className='label'>Group</div>
+            <input onChange={this.onGroupChange} type='text' name='group' placeholder='e.g, Chest, Running, Abs, Other'></input>
           </div>
           <div className='metric'>
-            <div className='label'>Exercise Name</div>
-            <input onChange={this.onExerciseNameChange} type='text' name='exerciseName' placeholder='e.g, Push Ups, Treadmill, Plank, Sauna'></input>
+            <div className='label'>Workout</div>
+            <input onChange={this.onWorkoutChange} type='text' name='workout' placeholder='e.g, Push Ups, Treadmill, Plank, Sauna'></input>
           </div>
           <div className='metric type'>
             <div className='label'>Type</div>
             <div className='options'>
               <div>
-                <input onChange={this.onRoutineTypeChange} type='radio' value='weight' checked={this.state.routineType === 'weight'} />
+                <input onChange={this.onWorkoutTypeChange} type='radio' value='weight' checked={this.state.workoutType === 'weight'} />
                 <label htmlFor='weight'>Weight Training</label>
               </div>
               <div>
-                <input onChange={this.onRoutineTypeChange} type='radio' value='time' checked={this.state.routineType === 'time'} />
+                <input onChange={this.onWorkoutTypeChange} type='radio' value='time' checked={this.state.workoutType === 'time'} />
                 <label htmlFor='time'>Time Based</label>
               </div>
             </div>
           </div>
-          <button onClick={this.saveExercise} className="save-exercise-button mdc-button">Save</button>
+          <button onClick={this.saveWorkout} className="save-workout-button mdc-button">Save</button>
         </div>
         <Fab handleClick={onClick} label={label} />
       </div>

@@ -31,32 +31,32 @@
   padding-top: 20px;
 }
 
-.Favorites .exercises .workout-title {
+.Favorites .workouts .workout-title {
   border-bottom: 1px #ddd solid;
   font-size: 20px;
   font-weight: 600;
 }
 
-.Favorites .exercises .exercise-label {
+.Favorites .workouts .workout-label {
   color: #000;
   font-size: 16px;
   font-weight: 300;
 }
 
-.Favorites .exercise-group {
+.Favorites .workout-group {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   height: 24px;
 }
 
-.Favorites .exercise-group.editing {
+.Favorites .workout-group.editing {
   grid-template-columns: 60px 1fr;
   height: 48px;
   margin-bottom: 5px;
 }
 
-.Favorites .exercise-group .delete-button {
+.Favorites .workout-group .delete-button {
   background: var(--main-red-color);
   color: #fff;
   padding: 0;

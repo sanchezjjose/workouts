@@ -9,491 +9,344 @@
 				"distance": "mi"
 			}
 		},
-		"favorites": {
-			"time": {
-				"Abs": [
-					"Plank"
-				],
-				"Other": [
-					"Sauna"
-				],
-				"Running": [
-					"Treadmill",
-					"Elliptical"
-				],
-				"Stretching": [
-					"Inner Thighs",
-					"Outer Thighs",
-					"Chest",
-					"Lower Back",
-					"Hip Flexor Lunges",
-					"Downward Dog"
-				]
-			},
-			"weight": {
-				"Abs": [
-					"Crunches"
-				],
-				"Back": [
-					"Pull Ups",
-					"Bent-Over Barbell Row",
-					"Wide-Grip Seated Cable Row",
-					"Close-Grip Pull Down",
-					"Single-Arm Dumbbell Row"
-				],
-				"Biceps": [
-					"Curls (bands)",
-					"Chin-Ups",
-					"Dumbbell Curls"
-				],
-				"Chest": [
-					"Barbell Bench Press",
-					"Push Ups",
-					"Dips"
-				],
-				"Legs": [
-					"Barbell Deadlift",
-					"Hip Hinge",
-					"Leg Extensions",
-					"Seated Calf Raise"
-				],
-				"Shoulders": [
-					"Upright Cable Row",
-					"Lateral Raise Machine",
-					"Reverse Machine Flies",
-					"Barbell Military Press",
-					"Front Two-Dumbbell Raise",
-					"Shrugs"
-				],
-				"Triceps": [
-					"Tricep Pushdown (rope)",
-					"Overhead Extension Machine",
-					"EZ-Bar Standing Overhead",
-					"Dips"
-				]
-			}
-		},
-		"history": {
-		},
+		"history": {},
 		"workouts": {
 			"chest-barbell-bench-press": {
-				"type": "weight",
-				"days": ["Sunday", "Wednesday"],
-				"name": "Barbell Bench Press",
+				"id": "chest-barbell-bench-press",
 				"group": "Chest",
+				"name": "Barbell Bench Press",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
 				"metrics": {
 					"done": false,
 					"weight": { "value": 135, "unit": "lbs" },
-					"reps": { "value": 5, "unit": "-" },
-					"sets": { "value": 3, "unit": "-" }
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
 				}
 			},
-			"chest-dips": {
+			"chest-pushups": {
+				"id": "chest-pushups",
+				"group": "Chest",
+				"name": "Pushups",
 				"type": "weight",
 				"days": ["Monday", "Friday"],
-				"name": "Dips",
-				"group": "Chest",
 				"metrics": {
 					"done": false,
 					"weight": { "value": 0, "unit": "lbs" },
-					"reps": { "value": 0, "unit": "-" },
-					"sets": { "value": 0, "unit": "-" }
+					"reps": { "value": 25 },
+					"sets": { "value": 4 }
 				}
 			},
-			"stretching-hip-flexor-lunges": {
-				"type": "time",
-				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
+			"chest-dips": {
+				"id": "chest-dips",
+				"group": "Chest",
 				"name": "Dips",
-				"exercise": "Stretching",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
 				"metrics": {
 					"done": false,
-					"time": { "value": 3, "unit": "min" },
-					"distance": { "value": 0, "unit": "mi" },
-					"kcal": { "value": 0, "unit": "-" }
+					"weight": { "value": 0, "unit": "lbs" },
+					"reps": { "value": 10 },
+					"sets": { "value": 4 }
 				}
 			},
-			"running-treadmill": {
+			"shoulders-upright-cable-row": {
+				"id": "shoulders-upright-cable-row",
+				"group": "Shoulders",
+				"name": "Upright Cable Row",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 120, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"shoulders-lateral-raise-machine": {
+				"id": "shoulders-lateral-raise-machine",
+				"group": "Shoulders",
+				"name": "Lateral Raise Machine",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 80, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"shoulders-reverse-machine-flies": {
+				"id": "shoulders-reverse-machine-flies",
+				"group": "Shoulders",
+				"name": "Reverse Machine Flies",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 115, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"shoulders-barbell-military-press": {
+				"id": "shoulders-barbell-military-press",
+				"group": "Shoulders",
+				"name": "Barbell Military Press",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 105, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"shoulders-front-two-dumbbell-raise": {
+				"id": "shoulders-front-two-dumbbell-raise",
+				"group": "Shoulders",
+				"name": "Front Two Dumbbell Raise",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 25, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"shoulders-shrugs": {
+				"id": "shoulders-shrugs",
+				"group": "Shoulders",
+				"name": "Shrugs",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 50, "unit": "lbs" },
+					"reps": { "value": 20 },
+					"sets": { "value": 3 }
+				}
+			},
+			"biceps-curls-bands": {
+				"id": "biceps-curls-bands",
+				"group": "Biceps",
+				"name": "Curls (bands)",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 0, "unit": "lbs" },
+					"reps": { "value": 10 },
+					"sets": { "value": 3 }
+				}
+			},
+			"biceps-chin-ups": {
+				"id": "biceps-chin-ups",
+				"group": "Biceps",
+				"name": "Chin Ups",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 0, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"biceps-dumbbell-curls": {
+				"id": "biceps-dumbbell-curls",
+				"group": "Biceps",
+				"name": "Dumbbell Curls",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 30, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"back-pull-ups": {
+				"id": "back-pull-ups",
+				"group": "Back",
+				"name": "Pull Ups",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 0, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"back-bent-over-barbell-row": {
+				"id": "back-bent-over-barbell-row",
+				"group": "Back",
+				"name": "Bent Over Barbell Row",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 95, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"back-wide-grip-seated-cable-row": {
+				"id": "back-wide-grip-seated-cable-row",
+				"group": "Back",
+				"name": "Wide Grip Seated Cable Row",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 140, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"back-close-grip-pull-down": {
+				"id": "back-close-grip-pull-down",
+				"group": "Back",
+				"name": "Close Grip Pull Down",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 140, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"back-single-arm-dumbbell-row": {
+				"id": "back-single-arm-dumbbell-row",
+				"group": "Back",
+				"name": "Single Arm Dumbbell Row",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 60, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"triceps-dips": {
+				"id": "triceps-dips",
+				"group": "Triceps",
+				"name": "Dips",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 0, "unit": "lbs" },
+					"reps": { "value": 20 },
+					"sets": { "value": 3 }
+				}
+			},
+			"triceps-pushdown-rope": {
+				"id": "triceps-pushdown-rope",
+				"group": "Triceps",
+				"name": "Pushdown (rope)",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 110, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"triceps-ez-bar-standing-overhead": {
+				"id": "triceps-ez-bar-standing-overhead",
+				"group": "Triceps",
+				"name": "EZ-Bar Standing Overhead",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 70, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"legs-barbell-squat": {
+				"id": "legs-barbell-squat",
+				"group": "Legs",
+				"name": "Barbell Squat",
+				"type": "weight",
+				"days": ["Wednesday", "Sunday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 135, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"legs-barbell-deadlift": {
+				"id": "legs-barbell-deadlift",
+				"group": "Legs",
+				"name": "Barbell Deadlift",
+				"type": "weight",
+				"days": ["Wednesday", "Sunday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 135, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"legs-leg-extensions": {
+				"id": "legs-leg-extensions",
+				"group": "Legs",
+				"name": "Leg Extensions",
+				"type": "weight",
+				"days": ["Wednesday", "Sunday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 130, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"legs-standing-calf-raise": {
+				"id": "legs-standing-calf-raise",
+				"group": "Legs",
+				"name": "Standing Calf Raise",
+				"type": "weight",
+				"days": ["Wednesday", "Sunday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 260, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
+				}
+			},
+			"other-sauna": {
+				"id": "other-sauna",
+				"group": "Other",
+				"name": "Sauna",
+				"type": "time",
+				"days": ["Wednesday", "Sunday"],
+				"metrics": {
+					"done": false,
+					"time": { "value": 30, "unit": "min" },
+					"distance": { "value": 0 },
+					"kcal": { "value": 50 }
+				}
+			},
+			"running-treadmill-time": {
+				"id": "running-treadmill-time",
+				"group": "Running",
+				"name": "Treadmill",
 				"type": "time",
 				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
-				"name": "Treadmill",
-				"exercise": "Running",
 				"metrics": {
 					"done": false,
 					"time": { "value": 10, "unit": "min" },
 					"distance": { "value": 1, "unit": "mi" },
-					"kcal": { "value": 115, "unit": "-" }
-				}
-			}
-		},
-		"routines": {
-			"Monday": {
-				"weight": {
-					"Chest": {
-						"Barbell Bench Press": {
-							"done": false,
-							"weight": { "value": 165, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Pushups": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 25, "unit": "-" },
-							"sets": { "value": 4, "unit": "-" }
-						},
-						"Dips": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 10, "unit": "-" },
-							"sets": { "value": 4, "unit": "-" }
-						}
-					},
-					"Shoulders": {
-						"Upright Cable Row": {
-							"done": false,
-							"weight": { "value": 120, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Lateral Raise Machine": {
-							"done": false,
-							"weight": { "value": 80, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Reverse Machine Flies": {
-							"done": false,
-							"weight": { "value": 115, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Barbell Military Press": {
-							"done": false,
-							"weight": { "value": 105, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Front Two-Dumbbell Raise": {
-							"done": false,
-							"weight": { "value": 25, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Shrugs": {
-							"done": false,
-							"weight": { "value": 70, "unit": "lbs" },
-							"reps": { "value": 20, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						}
-					}
-				},
-				"time": {}
-			},
-			"Tuesday": {
-				"weight": {
-					"Biceps": {
-						"Curls (bands)": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 10, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Chin-Ups": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Dumbbell Curls": {
-							"done": false,
-							"weight": { "value": 30, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						}
-					},
-					"Back": {
-						"Pull Ups": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 8, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Bent-Over Barbell Row": {
-							"done": false,
-							"weight": { "value": 125, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Wide-Grip Seated Cable Row": {
-							"done": false,
-							"weight": { "value": 140, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Close-Grip Pull Down": {
-							"done": false,
-							"weight": { "value": 140, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Single-Arm Dumbbell Row": {
-							"done": false,
-							"weight": { "value": 65, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						}
-					},
-					"Triceps": {
-						"Dips": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 20, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Tricep Pushdown (rope)": {
-							"done": false,
-							"weight": { "value": 110, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"EZ-Bar Standing Overhead": {
-							"done": false,
-							"weight": { "value": 70, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						}
-					}
-				},
-				"time": {}
-			},
-			"Wednesday": {
-				"weight": {
-					"Legs": {
-						"Barbell Squat": {
-							"done": false,
-							"weight": { "value": 195, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 5, "unit": "-" }
-						},
-						"Barbell Deadlift": {
-							"done": false,
-							"weight": { "value": 150, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 1, "unit": "-" }
-						},
-						"Hip Hinge": {
-							"done": false,
-							"weight": { "value": 100, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Leg Extensions": {
-							"done": false,
-							"weight": { "value": 130, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 4, "unit": "-" }
-						},
-						"Seated Calf Raise": {
-							"done": false,
-							"weight": { "value": 260, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 4, "unit": "-" }
-						}
-					}
-				},
-				"time": {
-					"Other": {
-						"Sauna": {
-							"done": false,
-							"time": { "value": 10, "unit": "min" },
-							"distance": { "value": 0, "unit": "-" },
-							"kcal": { "value": 0, "unit": "-" }
-						}
-					}
-				}
-			},
-			"Thursday": {
-				"weight": {},
-				"time": {}
-			},
-			"Friday": {
-				"weight": {
-					"Chest": {
-						"Barbell Bench Press": {
-							"done": false,
-							"weight": { "value": 165, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Pushups": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 25, "unit": "-" },
-							"sets": { "value": 4, "unit": "-" }
-						},
-						"Dips": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 10, "unit": "-" },
-							"sets": { "value": 4, "unit": "-" }
-						}
-					},
-					"Shoulders": {
-						"Upright Cable Row": {
-							"done": false,
-							"weight": { "value": 120, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Lateral Raise Machine": {
-							"done": false,
-							"weight": { "value": 80, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Reverse Machine Flies": {
-							"done": false,
-							"weight": { "value": 115, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Barbell Military Press": {
-							"done": false,
-							"weight": { "value": 105, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Front Two-Dumbbell Raise": {
-							"done": false,
-							"weight": { "value": 25, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Shrugs": {
-							"done": false,
-							"weight": { "value": 70, "unit": "lbs" },
-							"reps": { "value": 20, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						}
-					}
-				},
-				"time": {}
-			},
-			"Saturday": {
-				"weight": {
-					"Biceps": {
-						"Curls (bands)": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 10, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Chin-Ups": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Dumbbell Curls": {
-							"done": false,
-							"weight": { "value": 30, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						}
-					},
-					"Back": {
-						"Pull Ups": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 8, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Bent-Over Barbell Row": {
-							"done": false,
-							"weight": { "value": 125, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Wide-Grip Seated Cable Row": {
-							"done": false,
-							"weight": { "value": 140, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Close-Grip Pull Down": {
-							"done": false,
-							"weight": { "value": 140, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Single-Arm Dumbbell Row": {
-							"done": false,
-							"weight": { "value": 65, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						}
-					},
-					"Triceps": {
-						"Dips": {
-							"done": false,
-							"weight": { "value": 0, "unit": "lbs" },
-							"reps": { "value": 20, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"Tricep Pushdown (rope)": {
-							"done": false,
-							"weight": { "value": 110, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						},
-						"EZ-Bar Standing Overhead": {
-							"done": false,
-							"weight": { "value": 70, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 3, "unit": "-" }
-						}
-					}
-				},
-				"time": {}
-			},
-			"Sunday": {
-				"weight": {
-					"Legs": {
-						"Barbell Squat": {
-							"done": false,
-							"weight": { "value": 195, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 5, "unit": "-" }
-						},
-						"Barbell Deadlift": {
-							"done": false,
-							"weight": { "value": 150, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 1, "unit": "-" }
-						},
-						"Leg Extensions": {
-							"done": false,
-							"weight": { "value": 130, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 4, "unit": "-" }
-						},
-						"Seated Calf Raise": {
-							"done": false,
-							"weight": { "value": 260, "unit": "lbs" },
-							"reps": { "value": 5, "unit": "-" },
-							"sets": { "value": 4, "unit": "-" }
-						}
-					}
-				},
-				"time": {
-					"Other": {
-						"Sauna": {
-							"done": false,
-							"time": { "value": 10, "unit": "min" },
-							"distance": { "value": 0, "unit": "-" },
-							"kcal": { "value": 0, "unit": "-" }
-						}
-					}
+					"kcal": { "value": 115 }
 				}
 			}
 		}
@@ -508,51 +361,103 @@
 				"distance": "mi"
 			}
 		},
-		"favorites": {
-		},
 		"history": {
+			"dates": {
+				"all": ["02-18-2019", "02-26-2019"],
+				"recent": { "Monday": "02-18-2019", "Tuesday": "02-26-2019"}
+			},
+			"workouts": {}
 		},
-		"routines": {
-			"Monday": {
-				"weight": {
-				},
-				"time": {
+		"workouts": {
+			"abs-plank-weight": {
+				"id": "abs-plank-weight",
+				"group": "Abs",
+				"name": "Plank",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 45, "unit": "lbs" },
+					"reps": { "value": 1 },
+					"sets": { "value": 3 }
 				}
 			},
-			"Tuesday": {
-				"weight": {
-				},
-				"time": {
+			"abs-plank-time": {
+				"id": "abs-plank-time",
+				"group": "Abs",
+				"name": "Plank",
+				"type": "time",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"time": { "value": 3, "unit": "min" },
+					"distance": { "value": 0, "unit": "mi" },
+					"kcal": { "value": 0 }
 				}
 			},
-			"Wednesday": {
-				"weight": {
-				},
-				"time": {
+			"chest-barbell-bench-press-weight": {
+				"id": "chest-barbell-bench-press-weight",
+				"group": "Chest",
+				"name": "Barbell Bench Press",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 135, "unit": "lbs" },
+					"reps": { "value": 5 },
+					"sets": { "value": 3 }
 				}
 			},
-			"Thursday": {
-				"weight": {
-				},
-				"time": {
+			"chest-dips-weight": {
+				"id": "chest-dips-weight",
+				"group": "Chest",
+				"name": "Dips",
+				"type": "weight",
+				"days": ["Monday", "Friday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 0, "unit": "lbs" },
+					"reps": { "value": 0 },
+					"sets": { "value": 0 }
 				}
 			},
-			"Friday": {
-				"weight": {
-				},
-				"time": {
+			"triceps-dips-weight": {
+				"id": "triceps-dips-weight",
+				"group": "Triceps",
+				"name": "Dips",
+				"type": "weight",
+				"days": ["Tuesday", "Saturday"],
+				"metrics": {
+					"done": false,
+					"weight": { "value": 0, "unit": "lbs" },
+					"reps": { "value": 0 },
+					"sets": { "value": 0 }
 				}
 			},
-			"Saturday": {
-				"weight": {
-				},
-				"time": {
+			"stretching-hip-flexor-lunges-time": {
+				"id": "stretching-hip-flexor-lunges-time",
+				"group": "Stretching",
+				"name": "Hip Flexor Lunges",
+				"type": "time",
+				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
+				"metrics": {
+					"done": false,
+					"time": { "value": 3, "unit": "min" },
+					"distance": { "value": 0, "unit": "mi" },
+					"kcal": { "value": 0 }
 				}
 			},
-			"Sunday": {
-				"weight": {
-				},
-				"time": {
+			"running-treadmill-time": {
+				"id": "running-treadmill-time",
+				"group": "Running",
+				"name": "Treadmill",
+				"type": "time",
+				"days": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"],
+				"metrics": {
+					"done": false,
+					"time": { "value": 10, "unit": "min" },
+					"distance": { "value": 1, "unit": "mi" },
+					"kcal": { "value": 115 }
 				}
 			}
 		}

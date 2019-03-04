@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Exercise from '../Exercise/Exercise';
 import RoutineModal from '../RoutineModal/RoutineModal';
-import { compareNames } from '../../lib/Util';
-import { saveRoutine } from '../../api/Routine';
+import { saveDates } from '../../api/History';
+import { formatDate } from '../../lib/Util';
 
 import './Routine.css';
 
@@ -32,66 +32,52 @@ class Routine extends Component {
     }, 3000);
   }
 
-  handleStartWorkout = (e) => {
-    e.preventDefault();
-
-    const dayOfWeek = this.props.dayOfWeek;
-    const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
-    const today = new Date();
-    const todayDateFormatted = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
-    const user = this.props.user;
-
-    // Set date on workout for historical purposes
-    user.routines[dayOfWeek].date = todayDateFormatted;
-
-    // Reset all exercise status
-    routine.forEach(routineType => {
-      routineType.workouts.forEach(workout => {
-        workout.exercises.forEach(exercise => {
-          user.routines[dayOfWeek][routineType.type][workout.name][exercise.name].done = false;
-        });
-      });
-    });
-
-    saveRoutine(user.id, user.routines[dayOfWeek], dayOfWeek)
-      .then(() => {
-        this.props.handleUserChange(user, false, false);
-      });
-  }
-
   handleVideoClick = (e) => {
     e.preventDefault();
     this.setState({ activeVideo: e.target.name });
   }
 
-  isTodaysWorkoutStarted = (workoutDateFormatted) => {
-    const today = new Date();
-    const todayDateFormatted = `${today.getMonth()+1}-${today.getDate()}-${today.getFullYear()}`;
+  handleStartWorkout = (e) => {
+    e.preventDefault();
 
-    return todayDateFormatted === workoutDateFormatted;
+    const today = formatDate(new Date());
+    const dayOfWeek = this.props.dayOfWeek;
+    const userId = this.props.userId;
+    const history = this.props.history;
+
+    history.addDate(today, dayOfWeek);
+
+    // TODO: Reset all exercise status
+
+    saveDates(userId, history.getDates())
+      .then(() => {
+        this.props.forceGlobalUpdate();
+      });
   }
 
   render() {
     const dayOfWeek = this.props.dayOfWeek;
-    const routine = this.props.userObj.getRoutineByDay(dayOfWeek);
-    const workoutDateFormatted = this.props.userObj.getWorkoutDate(dayOfWeek);
-    const workoutStartedToday = this.isTodaysWorkoutStarted(workoutDateFormatted);
-    const didWorkout = typeof workoutDateFormatted !== 'undefined';
-    const hasWorkouts = (routine[0].workouts.length + routine[1].workouts.length) > 0;
-    const workoutDateClassName = (typeof workoutDateFormatted === 'string') ? 'show' : 'hide';
-    const workoutButtonClassName = (!workoutStartedToday) ? 'show' : 'hide';
-    const workoutStartedClassName = workoutStartedToday ? 'workout-started' : '';
+    const workouts = this.props.workouts;
+    const history = this.props.history;
+
+    const workoutsVm = workouts.getViewModel(dayOfWeek);
+    const today = formatDate(new Date());
+    const workoutDate = history.getDate(dayOfWeek);
+
+    const workoutInProgress = today === workoutDate;
+    const showWorkoutDate = (typeof workoutDate === 'string') ? 'show' : 'hide';
+    const showStartWorkoutButton = workoutInProgress ? 'hide' : 'show';
 
     return (
-      <div className={`Routine ${this.state.transitionClassName} ${workoutStartedClassName}`}>
+      <div className={`Routine ${this.state.transitionClassName}`}>
         {this.state.message.length > 0 &&
           <div className={`success-banner`}>{this.state.message}</div>
         }
-        {hasWorkouts ? (
+        {workoutsVm.length > 0 ? (
           <div className={`routine-heading`}>
-            <div className='weekday'>{routine.day} Routine</div>
-            <div className={`subtitle ${workoutDateClassName}`}>{workoutDateFormatted}</div>
-            <button className={`start-workout-button ${workoutButtonClassName}`} onClick={this.handleStartWorkout}>Start Workout</button>
+            <div className='weekday'>{dayOfWeek} Routine</div>
+            <div className={`subtitle ${showWorkoutDate}`}>{workoutDate}</div>
+            <button className={`start-workout-button ${showStartWorkoutButton}`} onClick={this.handleStartWorkout}>Start Workout</button>
           </div>
         ) : (
           <div className='empty-routine-message'>
@@ -116,51 +102,52 @@ class Routine extends Component {
             </div>
           </div>
         )}
-        {routine.map (routineType =>
-          routineType.workouts.sort(compareNames).map (workout =>
-            <div key={workout.name} className='group'>
-              {routineType.type === 'weight' ? (
+        {workoutsVm.map (workoutVm =>
+          workoutVm.workouts.map (workout =>
+            <div key={workout.group} className='group'>
+              {workoutVm.type === 'weight' ? (
                 <div className='header'>
-                  <div className='workout-name'>{workout.name}</div>
+                  <div className='workout-name'>{workout.group}</div>
                   <span className='weight'>Weight</span>
                   <span className='reps'>Reps</span>
                   <span className='sets'>Sets</span>
                 </div>
               ) : (
                 <div className='header'>
-                  <div className='workout-name'>{workout.name}</div>
-                  <span className='weight'>Time</span>
-                  <span className='reps'>Dist.</span>
-                  <span className='sets'>Kcal.</span>
+                  <div className='workout-name'>{workout.group}</div>
+                  <span className='time'>Time</span>
+                  <span className='dist'>Dist.</span>
+                  <span className='kcal'>Kcal.</span>
                 </div>
               )}
-              {workout.exercises.sort(compareNames).map (exercise =>
+              {workout.exercises.map (exercise =>
                 <Exercise
                   key={`${dayOfWeek}-${exercise.name}`}
-                  user={this.props.user}
-                  userObj={this.props.userObj}
+                  userId={this.props.userId}
+                  workouts={this.props.workouts}
+                  settings={this.props.settings}
+                  history={this.props.history}
+                  exercise={exercise}
+                  forceGlobalUpdate={this.props.forceGlobalUpdate}
+                  workoutInProgress={workoutInProgress}
                   cancelMode={this.props.cancelMode}
                   editMode={this.props.editMode}
                   saveMode={this.props.saveMode}
-                  handleUserChange={this.props.handleUserChange} 
                   displayMessage={this.displayMessage}
-                  didWorkout={didWorkout}
-                  workoutStartedToday={workoutStartedToday}
                   dayOfWeek={dayOfWeek}
-                  routine={routine}
-                  routineType={routineType.type}
+
+                  // TODO: Maybe pass this down instead of workouts?
                   workout={workout}
-                  exercise={exercise} />
+                />
               )}
             </div>
           )
         )}
-        <RoutineModal 
-          user={this.props.user}
-          userObj={this.props.userObj}
-          favorites={this.props.favorites}
-          dayOfWeek={routine.day}
-          handleUserChange={this.props.handleUserChange}
+        <RoutineModal
+          userId={this.props.userId}
+          workouts={this.props.workouts}
+          forceGlobalUpdate={this.props.forceGlobalUpdate}
+          dayOfWeek={dayOfWeek}
           displayMessage={this.displayMessage} />
       </div>
     );

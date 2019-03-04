@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Metrics from '../Metrics/Metrics';
-import { saveExerciseHistory, removeExerciseHistory } from '../../api/WorkoutHistory';
-import { saveExerciseStatus } from '../../api/ExerciseStatus';
-import { saveRoutine } from '../../api/Routine';
+
+// TODO: change from ../../api => ../../db
+import { saveWorkout } from '../../api/Workouts';
+import { saveWorkouts, deleteWorkout } from '../../api/History';
 
 import checkCircleFilled from './check_circle-24px.svg';
 import checkCircleOutline from './check_circle_outline-24px.svg';
@@ -12,99 +13,105 @@ import "@material/icon-button/dist/mdc.icon-button.min.css";
 
 class Exercise extends Component {
 
-  handleExerciseStatus = (exerciseComplete) => {
-    const user = this.props.user;
-    const dayOfWeek = this.props.routine.day;
-    const routineType = this.props.routineType;
-    const date = user.routines[dayOfWeek].date;
-    const workoutName = this.props.workout.name;
+  handleStatusChange = (status) => {
+    const userId = this.props.userId;
+    const workouts = this.props.workouts;
+    const history = this.props.history;
     const exercise = this.props.exercise;
-    const updateExerciseHistory = exerciseComplete ? saveExerciseHistory : removeExerciseHistory;
+    const workoutDate = history.getDate(this.props.dayOfWeek);
 
-    // Optimistic update
-    user.routines[dayOfWeek][routineType][workoutName][exercise.name].done = exerciseComplete;
-    this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
+    workouts.setStatus(exercise.id, status);
+    this.props.forceGlobalUpdate();
 
-    updateExerciseHistory(user.id, date, exercise, workoutName)
-      .then(
-        saveExerciseStatus(user.id, dayOfWeek, routineType, workoutName, exercise.name, exerciseComplete)
-      )
+    let promise = {};
+
+    if (status) {
+      // TODO: consider if model should also save to the database.. (MVC pattern research)
+      history.addWorkout(workoutDate, exercise);
+      // TODO: change to historyDB.saveWorkout(...)
+      promise = saveWorkouts(userId, history.getWorkouts());
+
+    } else {
+      history.deleteWorkout(workoutDate, exercise.id);
+      // TODO: change to historyDB.deleteWorkout(...)
+      promise = deleteWorkout(userId, workoutDate, exercise.id);
+    }
+
+    promise
+      .then(() => {
+          // TODO: change to workoutDB.save(...)
+          saveWorkout(userId, workouts.get())
+      })
       .catch(e => {
         alert('There was a problem with updating exercise status.');
         console.error(e);
 
-        // Reset update
-        user.routines[dayOfWeek][routineType][workoutName][exercise.name].done = !exerciseComplete;
-        this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
+        // Reset status
+        workouts.setStatus(exercise.id, !status);
+        this.props.forceGlobalUpdate();
       });
   }
 
-  handleExerciseDelete = (e) => {
-    e.preventDefault();
+  handleRemove = () => {
+    const userId = this.props.userId;
+    const workouts = this.props.workouts;
+    const exercise = this.props.exercise;
 
-    const user = this.props.user;
-    const dayOfWeek = this.props.routine.day;
-    const routineType = this.props.routineType;
-    const workoutName = this.props.workout.name;
-    const exerciseName = this.props.exercise.name;
-    const todaysRoutine = user.routines[dayOfWeek];
-    const exercises = todaysRoutine[routineType][workoutName];
+    workouts.removeWorkoutDay(exercise.id, this.props.dayOfWeek);
 
-    delete exercises[exerciseName];
+    this.props.forceGlobalUpdate();
+    this.props.displayMessage(`Deleted ${exercise.name}.`);
 
-    if (Object.keys(exercises).length === 0) {
-      delete todaysRoutine[routineType][workoutName];
-    }
-
-    saveRoutine(user.id, todaysRoutine, dayOfWeek)
-      .then(() => {
-        this.props.handleUserChange(user, this.props.editMode, this.props.saveMode);
-        this.props.displayMessage(`Deleted ${exerciseName} from ${workoutName} workout.`);
-      })
+    saveWorkout(userId, workouts.get())
       .catch(e => {
-        console.log(e);
-      })
+        alert('There was a problem with deleting exercise.');
+        console.error(e);
+      });
   }
 
   render() {
-    const dayOfWeek = this.props.dayOfWeek;
     const exercise = this.props.exercise;
     const modeClassName = this.props.editMode ? 'editing' : '';
-    const workoutStartedClassName = this.props.didWorkout ? 'workout-started' : '';
-    // const workoutStartedClassName = this.props.workoutStartedToday ? 'workout-started' : '';
-    const metricTypes = this.props.routineType === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
+    const metricTypes = exercise.type === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
+    const dayOfWeek = this.props.dayOfWeek;
+
+    const history = this.props.history;
+    const workoutDate = history.getDate(dayOfWeek);
+    const exerciseDone = history.hasWorkout(workoutDate, exercise.id);
+
+    const settings = this.props.settings;
 
     return (
-      <div className={`Exercise ${modeClassName} ${workoutStartedClassName}`}>
+      <div className={`Exercise ${modeClassName} ${this.props.workoutInProgress ? 'in-progress' : ''}`}>
         {this.props.editMode ?
-          <button onClick={this.handleExerciseDelete} className="delete-button mdc-icon-button material-icons">clear</button> :
-          (this.props.didWorkout &&
-            (exercise.metrics.done ? 
-              <img className='status-button' onClick={() => this.handleExerciseStatus(false)} src={checkCircleFilled} alt="done" /> :
-              <img className='status-button' onClick={() => this.handleExerciseStatus(true)} src={checkCircleOutline} alt="not-done" />
+          <button onClick={this.handleRemove} className="delete-button mdc-icon-button material-icons">clear</button> :
+          (this.props.workoutInProgress &&
+            (exerciseDone ?
+              <img className='status-button' onClick={() => this.handleStatusChange(false)} src={checkCircleFilled} alt="done" /> :
+              <img className='status-button' onClick={() => this.handleStatusChange(true)} src={checkCircleOutline} alt="not-done" />
             )
           )
         }
         <div className='name'>{exercise.name}</div>
-
         {metricTypes.map(metricType =>
           <Metrics
             key={`${dayOfWeek}-${metricType}`}
+            userId={this.props.userId}
+            workouts={this.props.workouts}
+            forceGlobalUpdate={this.props.forceGlobalUpdate}
+            dayOfWeek={dayOfWeek}
             exercise={exercise}
             metricType={metricType}
             metricValue={exercise.metrics[metricType].value}
             metricUnit={exercise.metrics[metricType].unit}
-            settingsUnit={this.props.user.settings.units[metricType]}
-            user={this.props.user}
-            dayOfWeek={dayOfWeek}
-            workout={this.props.workout}
-            routine={this.props.routine}
-            routineType={this.props.routineType}
+            settingsUnit={settings.getUnit(metricType)}
             cancelMode={this.props.cancelMode}
             editMode={this.props.editMode}
             saveMode={this.props.saveMode}
             displayMessage={this.props.displayMessage}
-            handleUserChange={this.props.handleUserChange}
+
+            // TODO: Maybe use this instead of workouts?
+            workout={this.props.workout}
           />
         )}
       </div>

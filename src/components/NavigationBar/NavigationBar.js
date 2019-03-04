@@ -19,15 +19,15 @@ class NavigationBar extends Component {
   }
 
   handleEditClick = () => {
-    this.props.handleUserChange(this.props.user, true, false);
+    this.props.handleModeChange(true, false, false);
   }
 
   handleSaveClick = () => {
-    this.props.handleUserChange(this.props.user, false, true);
+    this.props.handleModeChange(false, true, false);
   }
 
   handleCancelClick = () => {
-    this.props.handleUserChange(this.props.user, false, false, true);
+    this.props.handleModeChange(false, false, true);
   }
 
   handleMenuClick = () => {
@@ -76,11 +76,9 @@ class NavigationBar extends Component {
         </section>
         {this.state.settingsOpen &&
           <SettingsModal 
-            user={this.props.user}
-            userObj={this.props.userObj}
-            settings={this.props.userObj.settings}
-            handleSettingsClose={this.handleSettingsClose}
-            handleUserChange={this.props.handleUserChange} />
+            userId={this.props.userId}
+            settings={this.props.settings}
+            handleSettingsClose={this.handleSettingsClose} />
         }
       </header>
     );
