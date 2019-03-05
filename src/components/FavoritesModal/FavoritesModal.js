@@ -22,10 +22,10 @@ class FavoritesModal extends Component {
     this.setState({ show: false });
   }
 
-  clearInput = (e) => {
-    e.target.value = '';
+  clearInput = (inputName) => {
+    this.refs[inputName].value = '';
     this.setState({
-      [e.target.name]: ''
+      [inputName]: ''
     });
   }
 
@@ -41,24 +41,26 @@ class FavoritesModal extends Component {
     this.setState({ workoutType: e.target.value });
   }
 
-  saveWorkout = (e) => {
-    e.preventDefault();
-
+  saveWorkout = () => {
     const props = this.props;
     const group = this.state.group;
     const workout = this.state.workout;
     const workoutType = this.state.workoutType;
 
-    props.workouts.addWorkout(group, workout, workoutType);
 
-    saveWorkout(props.userId, props.workouts.get())
-      .then(() => {
-        props.forceGlobalUpdate();
-        props.displayMessage(`Added ${workout} to favorites.`);
-      })
-      .catch(err => { 
-        console.error(`Error adding ${workout} to favorites.`, err);
-      });
+    if (group.length > 0 && workout.length > 0) {
+      props.workouts.addWorkout(group, workout, workoutType);
+
+      saveWorkout(props.userId, props.workouts.get())
+        .then(() => {
+          props.forceGlobalUpdate();
+          props.displayMessage(`Added ${workout} to favorites.`);
+          this.clearInput('workout');
+        })
+        .catch(err => {
+          console.error(`Error adding ${workout} to favorites.`, err);
+        });
+    }
   }
 
   render() {
@@ -71,11 +73,11 @@ class FavoritesModal extends Component {
           <span onClick={this.closeModal} className='close'>&times;</span>
           <div className='metric'>
             <div className='label'>Group</div>
-            <input onChange={this.onGroupChange} type='text' name='group' placeholder='e.g, Chest, Running, Abs, Other'></input>
+            <input onChange={this.onGroupChange} type='text' name='group' placeholder='Chest, Running, Abs, Other'></input>
           </div>
           <div className='metric'>
             <div className='label'>Workout</div>
-            <input onChange={this.onWorkoutChange} type='text' name='workout' placeholder='e.g, Push Ups, Treadmill, Plank, Sauna'></input>
+            <input onChange={this.onWorkoutChange} type='text' ref='workout' name='workout' placeholder='Push Ups, Treadmill, Plank, Sauna'></input>
           </div>
           <div className='metric type'>
             <div className='label'>Type</div>

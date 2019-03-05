@@ -72,9 +72,9 @@ class Landing extends Component {
         <div className='content'>
           <div className='auth'>
             <div className='credentials'>
-              <input className='username-input' placeholder='Username' onChange={this.handleUsernameOnChange} type='text' value={this.state.username} />
+              <input type='text' className='username-input' placeholder='Username' onChange={this.handleUsernameOnChange} value={this.state.username} />
               {this.state.showRegister &&
-                <input className='full-name-input' placeholder='Full Name' onChange={this.handleFullNameOnChange} type='text' value={this.state.fullName} />
+                <input type='text' className='full-name-input' placeholder='Full Name' onChange={this.handleFullNameOnChange} value={this.state.fullName} />
               }
             </div>
             {this.state.showRegister ? (
