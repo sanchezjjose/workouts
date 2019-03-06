@@ -90,6 +90,23 @@ class App extends Component {
               <Footer userId={this.state.user.id} activeTab='home' />
             </div>
           )}/>
+          <Route exact={true} path='/:user_id/progress' render={() => (
+            <div className='container progress'>
+              <NavigationBar 
+                userId={this.state.user.id}
+                editMode={this.state.editMode}
+                settings={this.state.settings}
+                handleModeChange={this.handleModeChange}
+              />
+              {typeof this.state.user.id === 'string' ?
+                <div>
+                  Coming soon!
+                </div> :
+                <div>Loading...</div>
+              }
+              <Footer userId={this.state.user.id} activeTab='progress' />
+            </div>
+          )}/>
           <Route exact={true} path='/:user_id/favorites' render={() => (
             <div className='container favorites'>
               <NavigationBar

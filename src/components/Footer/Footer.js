@@ -13,6 +13,7 @@ class Footer extends Component {
   render() {
     const userId = this.props.userId;
     const homeTabActive = this.props.activeTab === 'home';
+    const progressTabActive = this.props.activeTab === 'progress';
     const favTabActive = this.props.activeTab === 'favorites';
 
     return (
@@ -24,6 +25,14 @@ class Footer extends Component {
                 <img src={homeNavIcon} className="tab-icon" alt="home" />
               }
               <span className='footer-text'>home</span>
+          </div>
+        </Link>
+        <Link onClick={() => this.handleClick('progress')} className={`link-progress ${progressTabActive ? 'active' : '' }`} to={`/${userId}/progress`}>
+          <div className='footer-button'>
+              <button className="tab-icon mdc-icon-button material-icons">
+                {progressTabActive ? 'insert_chart' : 'insert_chart_outlined'}
+              </button>
+              <span className='footer-text'>progress</span>
           </div>
         </Link>
         <Link onClick={() => this.handleClick('favorites')} className={`link-favorites ${favTabActive ? 'active' : '' }`} to={`/${userId}/favorites`}>
