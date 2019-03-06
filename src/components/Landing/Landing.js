@@ -31,6 +31,8 @@ class Landing extends Component {
   }
 
   handleRegistration = (e) => {
+    e.preventDefault();
+
     if (this.state.username.length > 0) {
       createUser(this.state.username, this.state.fullName)
         .then(() => window.location = `/${this.state.username}`)
@@ -42,6 +44,8 @@ class Landing extends Component {
   }
 
   handleSignin = (e) => {
+    e.preventDefault();
+
     if (this.state.username.length > 0) {
       getUser(this.state.username)
         .then((user) => {
@@ -70,25 +74,28 @@ class Landing extends Component {
         <canvas className="background"></canvas>
         <div className='title'>Workouts</div>
         <div className='content'>
-          <div className='auth'>
-            <div className='credentials'>
-              <input type='text' className='username-input' placeholder='Username' onChange={this.handleUsernameOnChange} value={this.state.username} />
-              {this.state.showRegister &&
+          {this.state.showRegister ? (
+            <form className='auth' onSubmit={this.handleRegistration}>
+              <div className='credentials'>
+                <input type='text' className='username-input' placeholder='Username' onChange={this.handleUsernameOnChange} value={this.state.username} />
                 <input type='text' className='full-name-input' placeholder='Full Name' onChange={this.handleFullNameOnChange} value={this.state.fullName} />
-              }
-            </div>
-            {this.state.showRegister ? (
+              </div>
               <div className='submit'>
-                <button className='mdc-button--unelevated button register-button' onClick={this.handleRegistration}>Register</button>
+                <input type='submit' className='mdc-button--unelevated button register-button' value='Register'/>
                 <a className='link signin-link' onClick={this.handleSigninLinkClick} href='/'>Sign in</a>
               </div>
-            ) : (
+            </form>
+          ) : (
+            <form className='auth' onSubmit={this.handleSignin}>
+              <div className='credentials'>
+                <input type='text' className='username-input' placeholder='Username' onChange={this.handleUsernameOnChange} value={this.state.username} />
+              </div>
               <div className='submit'>
-                <button className='mdc-button--unelevated button signin-button' onClick={this.handleSignin}>Sign In</button>
+                <input type='submit' className='mdc-button--unelevated button signin-button' value='Sign In'/>
                 <a className='link register-link' onClick={this.handleRegisterLinkClick} href='/'>Register</a>
               </div>
-            )}
-          </div>
+            </form>
+          )}
         </div>
       </div>
     );
