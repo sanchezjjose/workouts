@@ -6,6 +6,7 @@ import UserHistory from '../models/History';
 import UserSettings from '../models/Settings';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
+import Progress from './Progress/Progress';
 import Favorites from './Favorites/Favorites';
 import NavigationBar from './NavigationBar/NavigationBar';
 import Footer from './Footer/Footer';
@@ -100,7 +101,7 @@ class App extends Component {
               />
               {typeof this.state.user.id === 'string' ?
                 <div>
-                  Coming soon!
+                  <Progress />
                 </div> :
                 <div>Loading...</div>
               }

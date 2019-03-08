@@ -10,6 +10,7 @@
     "@material/radio": "^0.43.0",
     "@material/ripple": "^0.41.0",
     "aws-sdk": "^2.358.0",
+    "chart.js": "^2.7.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
