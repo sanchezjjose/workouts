@@ -26,7 +26,18 @@ class ProgressCharts {
   }
 
   workoutsByMonth() {
-    return [6, 8, 8, 10, 7, 18, 22, 24, 15, 16, 18, 6];
+    const workouts = this.workoutsByMonthLabels().map(month => { 
+      return { month: month, workouts: 0 };
+    });
+
+    this.history.getDates().all.forEach(date => {
+      const formattedDate = date.replace('-', '/'); // Safari workaround. Remove this.
+      const workoutMonth = this.months[new Date(formattedDate).getMonth()];
+
+      workouts.find(w => w.month === workoutMonth).workouts += 1;
+    });
+
+    return workouts.map(w => w.workouts);
   }
 }
 

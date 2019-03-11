@@ -22,7 +22,7 @@ const history = new History();
 
 const today = new Date();
 const start = new Date(2018, 8, 10);
-const end = new Date(today.getFullYear(), today.getDate(), today.getMonth());
+const end = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
 for (let i = 0; true; i++) {
   let currDate = addDays(start, i);
