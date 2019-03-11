@@ -101,7 +101,7 @@ class App extends Component {
               />
               {typeof this.state.user.id === 'string' ?
                 <div>
-                  <Progress />
+                  <Progress history={this.state.history} />
                 </div> :
                 <div>Loading...</div>
               }

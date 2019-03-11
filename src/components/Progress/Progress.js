@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-import { chartMonths } from '../../lib/Util';
+import ProgressCharts from '../../models/ProgressCharts';
 
 class Progress extends Component {
 
   componentDidMount() {
     const ctx = document.getElementById("progress");
+    const progress = new ProgressCharts(this.props.history);
     
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: chartMonths('March'),
+            labels: progress.workoutsByMonthLabels(),
             datasets: [{
                 label: '# of Workouts',
-                data: [6, 8, 8, 10, 7, 18, 22, 24, 15, 16, 18, 6],
+                data: progress.workoutsByMonth(),
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 0.2)',
                 // backgroundColor: [
