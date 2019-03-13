@@ -39,6 +39,10 @@ class ProgressCharts {
 
     return workouts.map(w => w.workouts);
   }
+
+  workoutsByWeightLabels() {
+    
+  }
 }
 
 export default ProgressCharts;

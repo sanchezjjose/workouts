@@ -363,10 +363,56 @@
 		},
 		"history": {
 			"dates": {
-				"all": ["02-18-2019", "02-26-2019"],
-				"recent": { "Monday": "02-18-2019", "Tuesday": "02-26-2019"}
+				"all": ["02-18-2019", "02-26-2019", "03-13-2019"],
+				"recent": { "Monday": "02-18-2019", "Tuesday": "02-26-2019", "Wednesday": "03-13-2019"}
 			},
-			"workouts": {}
+			"workouts": {
+				"02-18-2019": {
+					"chest-barbell-bench-press-weight": {
+						"id": "chest-barbell-bench-press-weight",
+						"group": "Chest",
+						"name": "Barbell Bench Press",
+						"type": "weight",
+						"days": ["Monday", "Friday"],
+						"metrics": {
+							"done": false,
+							"weight": { "value": 135, "unit": "lbs" },
+							"reps": { "value": 5 },
+							"sets": { "value": 3 }
+						}
+					}
+				},
+				"02-26-2019": {
+					"chest-barbell-bench-press-weight": {
+						"id": "chest-barbell-bench-press-weight",
+						"group": "Chest",
+						"name": "Barbell Bench Press",
+						"type": "weight",
+						"days": ["Monday", "Friday"],
+						"metrics": {
+							"done": false,
+							"weight": { "value": 155, "unit": "lbs" },
+							"reps": { "value": 5 },
+							"sets": { "value": 3 }
+						}
+					}
+				},
+				"03-13-2019": {
+					"chest-barbell-bench-press-weight": {
+						"id": "chest-barbell-bench-press-weight",
+						"group": "Chest",
+						"name": "Barbell Bench Press",
+						"type": "weight",
+						"days": ["Monday", "Friday"],
+						"metrics": {
+							"done": false,
+							"weight": { "value": 195, "unit": "lbs" },
+							"reps": { "value": 5 },
+							"sets": { "value": 3 }
+						}
+					}
+				}
+			}
 		},
 		"workouts": {
 			"abs-plank-weight": {
