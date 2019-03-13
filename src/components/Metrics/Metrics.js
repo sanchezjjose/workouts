@@ -8,9 +8,7 @@ import './Metrics.css';
 class Metrics extends Component {
 
   state = {
-    metricValue: this.props.metricValue,
-    swiped: false,
-    edited: false // represents in draft mode
+    metricValue: this.props.metricValue
   }
 
   touchStartX = 0;
@@ -46,7 +44,7 @@ class Metrics extends Component {
       const finalValue = swipedLeft ? initialValue + increment : initialValue - increment;
 
       if (typeof finalValue === 'number' && finalValue >= 0) {
-        this.setState({ metricValue: finalValue, swiped: true });
+        this.setState({ metricValue: finalValue });
         this.props.displayMessage(`Changed ${name} ${metricType} value from ${initialValue} to ${finalValue}.`);
       }
     }
@@ -62,8 +60,7 @@ class Metrics extends Component {
     const metricValue = e.target.value === '' ? '' : Number(e.target.value);
 
     this.setState({
-      metricValue: metricValue,
-      edited: true
+      metricValue: metricValue
     });
   }
 
@@ -81,17 +78,23 @@ class Metrics extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState, prevContext) => {
-    const metricValueChanged = this.state.metricValue !== prevState.metricValue;
+    const editMode = this.props.editMode;
+    const saveMode = this.props.saveMode;
+    const cancelMode = this.props.cancelMode;
+
+    const metricValueChanged = this.state.metricValue !== this.props.metricValue;
     const isNumber = typeof this.state.metricValue === 'number';
-    const shouldSave = this.state.swiped || (this.state.edited && this.props.saveMode) || metricValueChanged;
-    const shouldReset = this.state.edited && !this.props.editMode;
 
-    if (shouldSave && isNumber) {
-      this.setState({ edited: false, swiped: false });
+    const shouldSave = isNumber && metricValueChanged && (saveMode || !editMode) && !cancelMode;
+    const shouldReset = metricValueChanged && cancelMode;
+
+    if (shouldReset) {
+      this.setState({ metricValue: this.props.metricValue });
+      this.props.handleModeChange(false, false, false);
+
+    } else if (shouldSave) {
       this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
-
-    } else if (shouldReset) {
-      this.setState({ metricValue: this.props.metricValue, edited: false });
+      this.props.handleModeChange(false, false, false);
     }
   }
 

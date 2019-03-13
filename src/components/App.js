@@ -81,6 +81,7 @@ class App extends Component {
                   history={this.state.history}
                   forceGlobalUpdate={this.forceGlobalUpdate}
                   handleDayChange={this.handleDayChange}
+                  handleModeChange={this.handleModeChange}
                   dayOfWeek={this.state.dayOfWeek}
                   editMode={this.state.editMode}
                   saveMode={this.state.saveMode}

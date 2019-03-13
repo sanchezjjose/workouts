@@ -129,6 +129,7 @@ class Routine extends Component {
                   history={this.props.history}
                   exercise={exercise}
                   forceGlobalUpdate={this.props.forceGlobalUpdate}
+                  handleModeChange={this.props.handleModeChange}
                   workoutInProgress={workoutInProgress}
                   cancelMode={this.props.cancelMode}
                   editMode={this.props.editMode}

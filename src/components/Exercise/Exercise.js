@@ -99,6 +99,7 @@ class Exercise extends Component {
             userId={this.props.userId}
             workouts={this.props.workouts}
             forceGlobalUpdate={this.props.forceGlobalUpdate}
+            handleModeChange={this.props.handleModeChange}
             dayOfWeek={dayOfWeek}
             exercise={exercise}
             metricType={metricType}

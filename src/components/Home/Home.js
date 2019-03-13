@@ -21,6 +21,7 @@ class Home extends Component {
               settings={this.props.settings}
               history={this.props.history}
               forceGlobalUpdate={this.props.forceGlobalUpdate}
+              handleModeChange={this.props.handleModeChange}
               dayOfWeek={this.props.dayOfWeek}
               cancelMode={this.props.cancelMode}
               editMode={this.props.editMode}
