@@ -25,9 +25,45 @@ const formatDate = (date) => {
   return `${monthFormatted}-${dayFormatted}-${date.getFullYear()}`;
 }
 
+const convertMetric = (value, unit) => {
+  let result;
+
+  switch (unit) {
+    case 'lbs':
+      result = value / 2.205;
+      break;
+
+    case 'kg':
+      result = value * 2.205;
+      break;
+
+    case 'mi':
+      result = value * 1.609;
+      break;
+
+    case 'km':
+      result = value / 1.609;
+      break;
+
+    case 'min':
+      result = value * 60;
+      break;
+
+    case 'sec':
+      result = value / 60;
+      break;
+
+    default:
+      result = value;
+  }
+
+  return Math.round(result * 10) / 10;
+}
+
 // export { compareNames, compareGroupNames, formatDate };
 module.exports = {
   compareNames: compareNames,
   compareGroupNames: compareGroupNames,
-  formatDate: formatDate
-}
+  formatDate: formatDate,
+  convertMetric: convertMetric
+};

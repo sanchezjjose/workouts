@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // TODO: change from ../../api => ../../db
 import { saveWorkout } from '../../api/Workouts';
+import { convertMetric } from '../../lib/Util';
 
 import './Metrics.css';
 
@@ -56,24 +57,50 @@ class Metrics extends Component {
     }
   }
 
+  // TODO: Move to Util.js
+  // TODO: When calling, check if metricType === 'time'
+  convertTimeToDecimal = (metricValue, unit) => {
+    if (typeof metricValue !== 'string') {
+      return metricValue;
+    }
+
+    const timeUnits = metricValue.split(':');
+    const numTimeUnits = timeUnits.length;
+
+    if (numTimeUnits === 1) {
+      return Number(metricValue);
+    }
+
+    if (numTimeUnits > 3) {
+      return alert(
+        'Acceptable values are numbers, decimals, or time format separated by ":".' +
+        'For example, 01:10:15 for 1 hour, 10 minutes and 15 seconds.'
+      );
+    }
+
+    let [ hrs, mins, secs ] = [ 0, 0, 0 ];
+    let result = metricValue;
+
+    if (numTimeUnits === 2) {
+      [ mins, secs ] = timeUnits.map(num => Number(num));
+
+    } else if (numTimeUnits === 3) {
+      [ hrs, mins, secs ] = timeUnits(num => Number(num));
+    }
+
+    if (unit === 'min') {
+      result = (hrs * 60) + mins + (secs / 60)
+
+    } else if (unit === 'sec') {
+      result = (hrs * 3600) + (mins * 60) + secs;
+    }
+
+    return Number(result);
+  }
+
   handleOnChange = (e) => {
-    const metricValue = e.target.value === '' ? '' : Number(e.target.value);
-
-    // const metricValue = e.target.value;
-    // const metricType = this.props.metricType; // time
-
-    // const isText = typeof metricValue === 'string'; 
-
-    // let finalMetricValue = metricValue;
-
-    // if (isText) {
-    //   const metricTimes = metricValue.split(':');
-    //   // const [ hours, minutes, seconds ] = 
-    // }
-    
-
-    // m = (hours * 60) + minutes + (seconds / 60)
-    // s = (hours * 3600) + (minutes * 60) + seconds
+    // const metricValue = e.target.value === '' ? '' : Number(e.target.value);
+    const metricValue = e.target.value;
 
     this.setState({
       metricValue: metricValue
@@ -89,7 +116,7 @@ class Metrics extends Component {
 
     // Unit settings unchanged or don't exist
     if (shouldConvert) {
-      this.setState({ metricValue: this.convertMetricValue() });
+      this.setState({ metricValue: convertMetric(this.props.metricValue, this.props.metricUnit) });
     }
   }
 
@@ -101,7 +128,8 @@ class Metrics extends Component {
     const metricValueChanged = this.state.metricValue !== this.props.metricValue;
     const isNumber = typeof this.state.metricValue === 'number';
 
-    const shouldSave = isNumber && metricValueChanged && (saveMode || !editMode) && !cancelMode;
+
+    const shouldSave = /*isNumber && */metricValueChanged && (saveMode || !editMode) && !cancelMode;
     const shouldReset = metricValueChanged && cancelMode;
 
     if (shouldReset) {
@@ -109,6 +137,11 @@ class Metrics extends Component {
       this.props.handleModeChange(false, false, false);
 
     } else if (shouldSave) {
+      let formattedTime = '';
+      if (this.props.metricType === 'time') {
+        formattedTime = this.convertTimeToDecimal(this.state.metricValue, this.props.metricUnit);
+      }
+
       this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
       this.props.handleModeChange(false, false, false);
     }
@@ -136,44 +169,6 @@ class Metrics extends Component {
         // Reset?
         // this.setState(prevState => ({ metricValue: prevState.metricValue }));
       });
-  }
-
-  convertMetricValue = () => {
-    const metricValue = this.props.metricValue;
-    const metricUnit = this.props.metricUnit;
-
-    let result;
-
-    switch (metricUnit) {
-      case 'lbs':
-        result = metricValue / 2.205;
-        break;
-
-      case 'kg':
-        result = metricValue * 2.205;
-        break;
-
-      case 'mi':
-        result = metricValue * 1.609;
-        break;
-
-      case 'km':
-        result = metricValue / 1.609;
-        break;
-
-      case 'min':
-        result = metricValue * 60;
-        break;
-
-      case 'sec':
-        result = metricValue / 60;
-        break;
-
-      default:
-        result = metricValue;
-    }
-
-    return Math.round(result * 10) / 10;
   }
 
   render() {
