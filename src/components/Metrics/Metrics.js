@@ -59,6 +59,22 @@ class Metrics extends Component {
   handleOnChange = (e) => {
     const metricValue = e.target.value === '' ? '' : Number(e.target.value);
 
+    // const metricValue = e.target.value;
+    // const metricType = this.props.metricType; // time
+
+    // const isText = typeof metricValue === 'string'; 
+
+    // let finalMetricValue = metricValue;
+
+    // if (isText) {
+    //   const metricTimes = metricValue.split(':');
+    //   // const [ hours, minutes, seconds ] = 
+    // }
+    
+
+    // m = (hours * 60) + minutes + (seconds / 60)
+    // s = (hours * 3600) + (minutes * 60) + seconds
+
     this.setState({
       metricValue: metricValue
     });
@@ -166,7 +182,7 @@ class Metrics extends Component {
     const metricUnit = this.props.metricUnit;
     const showMetricUnit = (typeof metricUnit !== 'undefined' && metricValue > 0) && !this.props.editMode && window.innerWidth >= 320;
     const inputValue = showMetricUnit ? `${metricValue} ${metricUnit}` : metricValue;
-    const inputType = showMetricUnit ? 'text' : 'number';
+    const inputType = showMetricUnit || metricType === 'time' ? 'text' : 'number';
 
     return (
       <div className={`Metrics`}>
