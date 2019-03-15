@@ -45,6 +45,14 @@ class Progress extends Component {
           borderColor: '#58b6f4',
           borderWidth: 1,
           fill: false
+        },
+        {
+          label: 'Barbell Squats',
+          data: ['135', '150', '155', '165'],
+          backgroundColor: '#d32f2f',
+          borderColor: '#d32f2f',
+          borderWidth: 1,
+          fill: false
         }]
       },
       options: {
