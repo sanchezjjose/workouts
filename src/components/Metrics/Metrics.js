@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // TODO: change from ../../api => ../../db
 import { saveWorkout } from '../../api/Workouts';
-import { convertMetric } from '../../lib/Util';
+import { convertMetric, convertTimeToDecimal } from '../../lib/Util';
 
 import './Metrics.css';
 
@@ -57,50 +57,22 @@ class Metrics extends Component {
     }
   }
 
-  // TODO: Move to Util.js
-  // TODO: When calling, check if metricType === 'time'
-  convertTimeToDecimal = (metricValue, unit) => {
-    if (typeof metricValue !== 'string') {
-      return metricValue;
-    }
-
-    const timeUnits = metricValue.split(':');
-    const numTimeUnits = timeUnits.length;
-
-    if (numTimeUnits === 1) {
-      return Number(metricValue);
-    }
-
-    if (numTimeUnits > 3) {
-      return alert(
-        'Acceptable values are numbers, decimals, or time format separated by ":".' +
-        'For example, 01:10:15 for 1 hour, 10 minutes and 15 seconds.'
-      );
-    }
-
-    let [ hrs, mins, secs ] = [ 0, 0, 0 ];
-    let result = metricValue;
-
-    if (numTimeUnits === 2) {
-      [ mins, secs ] = timeUnits.map(num => Number(num));
-
-    } else if (numTimeUnits === 3) {
-      [ hrs, mins, secs ] = timeUnits(num => Number(num));
-    }
-
-    if (unit === 'min') {
-      result = (hrs * 60) + mins + (secs / 60)
-
-    } else if (unit === 'sec') {
-      result = (hrs * 3600) + (mins * 60) + secs;
-    }
-
-    return Number(result);
-  }
-
   handleOnChange = (e) => {
-    // const metricValue = e.target.value === '' ? '' : Number(e.target.value);
     const metricValue = e.target.value;
+    const isTimeMetric = this.props.metricType === 'time';
+
+    if (isTimeMetric) {
+      const colonsExceeded = metricValue.split(':').length > 3;
+      const isInvalid = colonsExceeded || (isNaN(metricValue) && metricValue.indexOf(':') === -1);
+
+      if (isInvalid) {
+        alert(
+          `${metricValue} is not a valid input. Please use numbers or a : symbol. \n` +
+          'Examples are 10, 10:25 or 01:10:35.'
+        );
+        return;
+      }
+    }
 
     this.setState({
       metricValue: metricValue
@@ -126,10 +98,7 @@ class Metrics extends Component {
     const cancelMode = this.props.cancelMode;
 
     const metricValueChanged = this.state.metricValue !== this.props.metricValue;
-    const isNumber = typeof this.state.metricValue === 'number';
-
-
-    const shouldSave = /*isNumber && */metricValueChanged && (saveMode || !editMode) && !cancelMode;
+    const shouldSave = metricValueChanged && (saveMode || !editMode) && !cancelMode;
     const shouldReset = metricValueChanged && cancelMode;
 
     if (shouldReset) {
@@ -137,11 +106,6 @@ class Metrics extends Component {
       this.props.handleModeChange(false, false, false);
 
     } else if (shouldSave) {
-      let formattedTime = '';
-      if (this.props.metricType === 'time') {
-        formattedTime = this.convertTimeToDecimal(this.state.metricValue, this.props.metricUnit);
-      }
-
       this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
       this.props.handleModeChange(false, false, false);
     }
@@ -153,21 +117,23 @@ class Metrics extends Component {
     const exercise = this.props.exercise;
     const metricType = this.props.metricType;
 
+    if (this.props.metricType === 'time') {
+      metricValue = convertTimeToDecimal(metricValue, settingsUnit);
+
+      this.setState({
+        metricValue: metricValue
+      });
+    }
+
     workouts.setMetricValue(exercise.id, metricType, metricValue);
     workouts.setMetricUnit(exercise.id, metricType, settingsUnit);
 
     saveWorkout(userId, workouts.get())
       .then(() => {
         console.debug(`Changed ${metricType} metric for ${exercise.name} from ${prevMetricValue} ${prevSettingsUnit} to ${metricValue} ${settingsUnit}.`);
-
-        // if (this.props.saveMode === true) {
-        //   this.props.forceGlobalUpdate();
-        // }
       })
       .catch(err => { 
         console.error(err);
-        // Reset?
-        // this.setState(prevState => ({ metricValue: prevState.metricValue }));
       });
   }
 

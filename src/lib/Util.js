@@ -60,10 +60,38 @@ const convertMetric = (value, unit) => {
   return Math.round(result * 10) / 10;
 }
 
+const convertTimeToDecimal = (metricValue, unit) => {
+  const timeUnits = metricValue.split(':');
+  const numTimeUnits = timeUnits.length;
+
+  let [ hrs, mins, secs ] = [ 0, 0, 0 ];
+  let result = metricValue;
+
+  if (numTimeUnits === 1) {
+    return Number(metricValue);
+
+  } else if (numTimeUnits === 2) {
+    [ mins, secs ] = timeUnits.map(num => Number(num));
+
+  } else if (numTimeUnits === 3) {
+    [ hrs, mins, secs ] = timeUnits.map(num => Number(num));
+  }
+
+  if (unit === 'min') {
+    result = (hrs * 60) + mins + (secs / 60)
+
+  } else if (unit === 'sec') {
+    result = (hrs * 3600) + (mins * 60) + secs;
+  }
+
+  return Math.round(result * 10) / 10;
+}
+
 // export { compareNames, compareGroupNames, formatDate };
 module.exports = {
   compareNames: compareNames,
   compareGroupNames: compareGroupNames,
   formatDate: formatDate,
-  convertMetric: convertMetric
+  convertMetric: convertMetric,
+  convertTimeToDecimal: convertTimeToDecimal
 };
