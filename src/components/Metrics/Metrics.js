@@ -148,6 +148,7 @@ class Metrics extends Component {
     return (
       <div className={`Metrics`}>
         <input type={inputType} name={metricType} className={`${metricType}`}
+          placeholder={metricType === 'time' ? '15:45' : ''}
           value={inputValue}
           onTouchStart={this.handleTouchStart} 
           onTouchEnd={this.handleTouchEnd} 
