@@ -32,6 +32,10 @@ class Progress extends Component {
       }
     });
 
+    progress.workoutsByWeightLabels();
+
+    // [ { label: ‘Barbell Bench Press’, data: [ 
+
     new Chart(ctx2, {
       type: 'line',
       data: {
@@ -41,17 +45,17 @@ class Progress extends Component {
         datasets: [{
           label: 'Barbell Bench Press',
           data: ['40', '75', '100', '80'],
-          backgroundColor: '#58b6f4',
-          borderColor: '#58b6f4',
-          borderWidth: 1,
+          // backgroundColor: '#58b6f4',
+          // borderColor: '#58b6f4',
+          // borderWidth: 1,
           fill: false
         },
         {
           label: 'Barbell Squats',
           data: ['135', '150', '155', '165'],
-          backgroundColor: '#d32f2f',
-          borderColor: '#d32f2f',
-          borderWidth: 1,
+          // backgroundColor: '#d32f2f',
+          // borderColor: '#d32f2f',
+          // borderWidth: 1,
           fill: false
         }]
       },

@@ -41,7 +41,7 @@ class ProgressCharts {
   }
 
   workoutsByWeightLabels() {
-    
+    this.history.getWorkouts();
   }
 }
 
