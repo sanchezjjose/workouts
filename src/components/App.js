@@ -61,9 +61,12 @@ class App extends Component {
   }
 
   render() {
+    const settings = this.state.settings;
+    const colorMode = typeof settings.getMode === 'function' ? settings.getMode() : '';
+
     return (
       <Router>
-        <div className='App'>
+        <div className={`App ${colorMode}`}>
           <Route exact path="/" component={Landing}/> 
           <Route exact={true} path='/:user_id' render={() => (
             <div className='container home'>

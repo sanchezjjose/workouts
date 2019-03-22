@@ -8,6 +8,12 @@ class Settings {
     return this.settings;
   }
 
+  getMode() {
+    // Initialize if doesn't exist.
+    this.settings.mode = this.settings.mode || 'light';
+    return this.settings.mode;
+  }
+
   getUnit(type) {
     return this.settings.units[type];
   }
