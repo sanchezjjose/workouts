@@ -26,13 +26,15 @@
 }
 
 .Favorites h2 {
+  color: var(--main-txt-color);
   font-size: 28px;
   font-weight: 600;
   padding-top: 20px;
 }
 
 .Favorites .workouts .workout-title {
-  border-bottom: 1px var(--main-border-color) solid;
+  color: var(--main-txt-color);
+  border-bottom: 1px var(--secondary-border-color) solid;
   font-size: 20px;
   font-weight: 600;
 }

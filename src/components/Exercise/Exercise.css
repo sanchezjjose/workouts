@@ -25,6 +25,7 @@
 }
 
 .Exercise .name {
+  color: var(--main-txt-color);
   justify-self: left;
   font-size: 14px;
   font-weight: 300;

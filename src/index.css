@@ -42,15 +42,15 @@ textarea:focus {
 
 :root .dark {
   --main-bg-color: rgb(30,30,30);
-  --main-border-color: #000;
+  --main-border-color: #e6e6e6;
   --main-link-color: #58b6f4;
   --main-txt-color: #fff;
   --main-red-color: #d32f2f;
   --main-green-color: #02ee7d;
-  --secondary-txt-color: #fff;
-  --secondary-bg-color: rgba(51,51,51);
-  --secondary-border-color: #fff;
+  --secondary-txt-color: #757575;
+  --secondary-bg-color: rgba(58,59,60);
+  --secondary-border-color: #757575;
   --tertiary-txt-color: #000;
   --tertiary-bg-color: #fff;
-  --tertiary-border-color: #000;
+  --tertiary-border-color: #757575;
 }

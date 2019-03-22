@@ -1,5 +1,6 @@
 .Metrics input {
   background: var(--main-bg-color);
+  color: var(--main-txt-color);
   font-size: 14px;
   font-weight: 300;
   width: 100%;

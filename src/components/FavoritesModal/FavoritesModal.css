@@ -5,6 +5,7 @@
 }
 
 .FavoritesModal .content {
+  color: var(--secondary-txt-color);
   box-sizing: border-box;
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
   padding: 20px;
@@ -15,8 +16,8 @@
   height: 55vh;
   width: 75vw;
   overflow: auto;
-  background-color: var(--secondary-bg-color);
-  border: 1px solid var(--main-border-color);
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--secondary-border-color);
   transform: scale(0.8);
   opacity: 0;
   /* will-change: transform,opacity; */
@@ -58,6 +59,13 @@
 .FavoritesModal .metric {
   display: grid;
   margin: 10px 0;
+}
+
+.FavoritesModal .metric input {
+  color: var(--main-txt-color);
+  background-color: var(--secondary-bg-color);
+  border: 0;
+  padding: 5px;
 }
 
 .FavoritesModal .metric .options {
