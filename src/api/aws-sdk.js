@@ -6,7 +6,10 @@ AWS.config.update({
   region: 'us-east-1'
 });
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
+  console.log('Setting production endpoint.');
+
+} else {
   console.log('Setting localhost endpoint.');
 
   AWS.config.update({
