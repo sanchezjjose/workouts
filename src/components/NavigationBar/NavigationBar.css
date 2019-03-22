@@ -1,10 +1,10 @@
 .NavigationBar {
   align-items: center;
-  background: #fff;
+  background: var(--secondary-bg-color);
   border-bottom: 1px solid var(--secondary-border-color);
   /* box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12); */
   box-sizing: border-box;
-  color: #000;
+  color: var(--main-txt-color);
   display: grid;
   height: 65px;
   grid-template-columns: 150px 1fr;
@@ -41,7 +41,7 @@
 .NavigationBar .top-app-bar__section--align-end button {
   background: none;
   border: none;
-  color: #000;
+  color: var(--main-txt-color);
   padding: 0;
   font-size: 16px;
   text-decoration: none;
@@ -62,7 +62,7 @@
 }
 
 .NavigationBar .menu-drop-down .menu-items {
-  background: #fafafa;
+  background: var(--main-bg-color);
   border-radius: 4px;
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
   display: grid;
@@ -82,6 +82,6 @@
 }
 
 .NavigationBar .menu-drop-down .menu-items li a {
-  color: #000;
+  color: var(--main-txt-color);
   text-decoration: none;
 }

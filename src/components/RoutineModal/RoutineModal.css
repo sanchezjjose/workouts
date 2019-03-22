@@ -14,8 +14,8 @@
   height: 50vh;
   width: 75vw;
   overflow: auto;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--secondary-bg-color);
+  border: 1px solid var(--main-border-color);
   -webkit-overflow-scrolling: touch;
   transform: scale(0.8);
   opacity: 0;
@@ -44,7 +44,7 @@
 }
 
 .RoutineModal .exercises .exercise-label, .RoutineModal .exercises h3 {
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px var(--main-border-color) solid;
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
@@ -52,7 +52,7 @@
 }
 
 .RoutineModal .exercises h3 {
-  background: #fafafa;
+  background: var(--main-bg-color);
 }
 
 .RoutineModal .description {
@@ -64,7 +64,7 @@
 }
 
 .RoutineModal .description .no-favorites-message {
-  color: #000;
+  color: var(--main-txt-color);
   font-weight: 300;
   font-size: 18px;
   letter-spacing: 2px;
@@ -72,8 +72,8 @@
 }
 
 .RoutineModal .description .link-favorites {
-  color: #000;
-  border: 1px #000 solid;
+  color: var(--main-txt-color);
+  border: 1px var(--tertiary-border-color) solid;
   padding: 10px;
   text-decoration: none;
 }

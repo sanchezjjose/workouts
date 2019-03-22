@@ -21,7 +21,7 @@
 .Exercise.editing .delete-button {
   padding: 0;
   background: var(--main-red-color);
-  color: #fff;
+  color: var(--tertiary-txt-color);
 }
 
 .Exercise .name {

@@ -14,8 +14,8 @@
   word-break: break-all;
   padding: 0 10px;
   overflow: hidden;
-  background-color: #02ee7d;
-  color: #000;
+  background-color: var(--main-green-color);
+  color: var(--main-txt-color);
   font-weight: 400;
   font-size: 18px;
   transition: all 1s ease;
@@ -32,13 +32,13 @@
 }
 
 .Favorites .workouts .workout-title {
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px var(--main-border-color) solid;
   font-size: 20px;
   font-weight: 600;
 }
 
 .Favorites .workouts .workout-label {
-  color: #000;
+  color: var(--main-txt-color);
   font-size: 16px;
   font-weight: 300;
 }
@@ -58,7 +58,7 @@
 
 .Favorites .workout-group .delete-button {
   background: var(--main-red-color);
-  color: #fff;
+  color: var(--tertiary-txt-color);
   padding: 0;
   margin-bottom: 5px;
 }

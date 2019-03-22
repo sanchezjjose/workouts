@@ -1,5 +1,5 @@
 .Fab.mdc-fab {
-  color: #fff;
+  color: var(--tertiary-txt-color);
   background-color: var(--main-red-color);
   position: fixed;
   margin-top: 12px;

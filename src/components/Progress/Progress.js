@@ -34,45 +34,78 @@ class Progress extends Component {
 
     progress.workoutsByWeightLabels();
 
-    // [ { label: ‘Barbell Bench Press’, data: [ 
+    // https://www.chartjs.org/docs/latest/axes/cartesian/time.html
+    // labels: 
+    // [ { label: ‘Barbell Bench Press’, data: ['40', '75', '100', '100', '80 ], backgroundColor: ... }, { label: 'Dips', data: ... } ] 
 
     new Chart(ctx2, {
       type: 'line',
       data: {
-        // TODO: limit to last 12 months.
-        // TODO: change these to months, and make data points the dates.
-        labels: ["02-18-2019", "02-26-2019", '03-01-2019', "03-13-2019"],
+        label: 'Blah Blah',
         datasets: [{
-          label: 'Barbell Bench Press',
-          data: ['40', '75', '100', '80'],
-          // backgroundColor: '#58b6f4',
-          // borderColor: '#58b6f4',
-          // borderWidth: 1,
-          fill: false
-        },
-        {
-          label: 'Barbell Squats',
-          data: ['135', '150', '155', '165'],
-          // backgroundColor: '#d32f2f',
-          // borderColor: '#d32f2f',
-          // borderWidth: 1,
-          fill: false
-        }]
+          data: [{
+            t: new Date('02-18-2019'),
+            y: 1
+          }, {
+            t: new Date('03-01-2019'),
+            y: 10
+          }]
+        }],
       },
       options: {
-        elements: {
-          line: {
-            tension: 0, // disables bezier curves
-          }
-        },
         scales: {
-          yAxes: [{
+          xAxes: [{
+            type: 'time',
+            distribution: 'series',
             ticks: {
-              beginAtZero:true
+              source: 'data',
+              autoSkip: true
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Weight (lbs)'
             }
           }]
         }
       }
+
+      // data: {
+      //   // TODO: limit to last 12 months.
+      //   // TODO: change these to months, and make data points the dates.
+      //   labels: ["02-18-2019", "02-26-2019", '03-01-2019', "03-13-2019"],
+      //   datasets: [{
+      //     label: 'Barbell Bench Press',
+      //     data: ['40', '75', '100', '80'],
+      //     backgroundColor: '#58b6f4',
+      //     borderColor: '#58b6f4',
+      //     borderWidth: 1,
+      //     fill: false
+      //   },
+      //   {
+      //     label: 'Barbell Squats',
+      //     data: ['135', '150', '150', '165'],
+      //     backgroundColor: '#d32f2f',
+      //     borderColor: '#d32f2f',
+      //     borderWidth: 1,
+      //     fill: false
+      //   }]
+      // },
+      // options: {
+      //   elements: {
+      //     line: {
+      //       tension: 0, // disables bezier curves
+      //     }
+      //   },
+      //   scales: {
+      //     yAxes: [{
+      //       ticks: {
+      //         beginAtZero:true
+      //       }
+      //     }]
+      //   }
+      // }
     });
   }
 

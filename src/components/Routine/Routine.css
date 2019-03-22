@@ -10,7 +10,7 @@
 }
 
 .Routine .empty-routine-message {
-  color: #000;
+  color: var(--main-txt-color);
   font-weight: 300;
   font-size: 18px;
   letter-spacing: 2px;
@@ -38,7 +38,7 @@
   padding: 0 10px;
   overflow: hidden;
   background-color: var(--main-green-color);
-  color: #000;
+  color: var(--main-txt-color);
   font-weight: 400;
   font-size: 18px;
   transition: all 1s ease;
@@ -78,7 +78,7 @@
   justify-items: center;
   align-items: end;
   text-align: center;
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px var(--main-border-color) solid;
   margin: 10px 0;
   padding-bottom: 5px;
 }
@@ -105,9 +105,9 @@
 }
 
 .Routine .start-workout-button {
-  color: #fff;
-  background: #000;
-  border: 1px #000 solid;
+  color: var(--tertiary-txt-color);
+  background: var(--tertiary-bg-color);
+  border: 1px var(--tertiary-border-color) solid;
   font-size: 16px;
   margin-top: 20px;
   text-decoration: none;

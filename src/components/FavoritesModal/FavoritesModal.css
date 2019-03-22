@@ -15,8 +15,8 @@
   height: 55vh;
   width: 75vw;
   overflow: auto;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--secondary-bg-color);
+  border: 1px solid var(--main-border-color);
   transform: scale(0.8);
   opacity: 0;
   /* will-change: transform,opacity; */
@@ -48,8 +48,9 @@
 }
 
 .FavoritesModal .save-workout-button {
-  background-color: #dddddd;
-  color: #000;
+  background-color: var(--tertiary-bg-color);
+  color: var(--tertiary-txt-color);
+  border: 1px var(--tertiary-border-color) solid;
   font-weight: 600;
   margin-top: 20px;
 }

@@ -29,7 +29,7 @@
   display: grid;
   align-items: center;
   justify-items: center;
-  background: #fff;
+  background: var(--secondary-bg-color);
   border: 1px var(--main-border-color) solid;
   margin-top: 20px;
   width: 300px;
@@ -61,7 +61,7 @@
 }
 
 .Landing .auth .submit .button {
-  background-color: #000;
+  background-color: var(--main-txt-color);
   border: 0;
   font-family: Roboto;
   font-size: 16px;
