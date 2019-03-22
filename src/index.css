@@ -1,6 +1,6 @@
-html {
+/* html {
   background: var(--main-bg-color);
-}
+} */
 
 body {
   margin: 0;
@@ -41,16 +41,16 @@ textarea:focus {
 }
 
 :root .dark {
-  --main-bg-color: #fafafa;
-  --main-border-color: #e6e6e6;
+  --main-bg-color: rgb(30,30,30);
+  --main-border-color: #000;
   --main-link-color: #58b6f4;
   --main-txt-color: #fff;
   --main-red-color: #d32f2f;
   --main-green-color: #02ee7d;
   --secondary-txt-color: #fff;
-  --secondary-bg-color: rgba(46,48,50);
-  --secondary-border-color:rgba(0,0,0,.0975);
-  --tertiary-txt-color: #fff;
-  --tertiary-bg-color: #ddd;
-  --tertiary-border-color: #fff;
+  --secondary-bg-color: rgba(51,51,51);
+  --secondary-border-color: #fff;
+  --tertiary-txt-color: #000;
+  --tertiary-bg-color: #fff;
+  --tertiary-border-color: #000;
 }
