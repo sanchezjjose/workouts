@@ -23,17 +23,20 @@ class RoutineModal extends Component {
     const day = this.props.dayOfWeek;
     const userId = this.props.userId;
     const workouts = this.props.workouts;
-    
-    workouts.addWorkoutDay(id, day);
+    const isNew = workouts.get()[id].days.indexOf(day) === -1;
+   
+    if (isNew) {
+      workouts.addWorkoutDay(id, day);
 
-    saveWorkout(userId, workouts.get())
-      .then(() => {
-        this.props.forceGlobalUpdate();
-        this.props.displayMessage(`Added ${name}.`);
+      saveWorkout(userId, workouts.get())
+        .then(() => {
+          this.props.forceGlobalUpdate();
+          this.props.displayMessage(`Added ${name}.`);
 
-      }).catch(err => {
-        console.error(`Error adding exercise to routine.`, err);
-      });
+        }).catch(err => {
+          console.error(`Error adding exercise to routine.`, err);
+        });
+    }
   }
 
   render() {

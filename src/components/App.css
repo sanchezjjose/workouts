@@ -1,13 +1,13 @@
 .App {
   background: var(--main-bg-color);
   font-family: 'Roboto', sans-serif;
-  height: 110vh;
+  height: 100%;
 }
 
 .App .container {
   background: var(--main-bg-color);
   margin-top: 65px;
-  margin-bottom: 150px
+  padding-bottom: 150px;
 }
 
 /* Apple Watch */
@@ -15,7 +15,7 @@
 
   .App .container {
     margin: 0;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
   }
 
   .App .container .NavigationBar,

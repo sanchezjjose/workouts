@@ -2,6 +2,10 @@
   background: var(--main-bg-color);
 } */
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -23,6 +27,10 @@ button:focus,
 input:focus,
 textarea:focus {
   outline: none;
+}
+
+#root {
+  height: 100%;
 }
 
 :root {
