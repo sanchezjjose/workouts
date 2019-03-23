@@ -78,6 +78,7 @@ class NavigationBar extends Component {
           <SettingsModal 
             userId={this.props.userId}
             settings={this.props.settings}
+            forceGlobalUpdate={this.props.forceGlobalUpdate}
             handleSettingsClose={this.handleSettingsClose} />
         }
       </header>

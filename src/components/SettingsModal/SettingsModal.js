@@ -21,7 +21,21 @@ class SettingsModal extends Component {
       });
   }
 
+  handleModeChange = (e) => {
+    const userId = this.props.userId;
+    const settings = this.props.settings;
+    const value = e.target.value;
+
+    settings.setMode(value);
+
+    saveSettings(userId, settings.get())
+      .then(() => {
+        this.props.forceGlobalUpdate();  
+      });
+  }
+
   render() {
+    const colorMode = this.props.settings.getMode();
     const units = this.props.settings.getUnits();
     const weightUnit = units.weight;
     const timeUnit = units.time;
@@ -30,6 +44,26 @@ class SettingsModal extends Component {
     return (
       <div className='SettingsModal'>
         <div onClick={this.props.handleSettingsClose} className='close-modal'>&times;</div>
+
+        <div className='form-field-heading'>Mode</div>
+        <div className="mdc-form-field">
+          <div className="mdc-radio">
+            <input onChange={this.handleModeChange} className="mdc-radio__native-control" type="radio" id="radio-light" name="mode" value="light" checked={colorMode === 'light'} />
+            <div className="mdc-radio__background">
+              <div className="mdc-radio__outer-circle"></div>
+              <div className="mdc-radio__inner-circle"></div>
+            </div>
+          </div>
+          <label htmlFor="radio-sec">Light</label>
+          <div className="mdc-radio">
+            <input onChange={this.handleModeChange} className="mdc-radio__native-control" type="radio" id="radio-dark" name="mode" value="dark" checked={colorMode === 'dark'} />
+            <div className="mdc-radio__background">
+              <div className="mdc-radio__outer-circle"></div>
+              <div className="mdc-radio__inner-circle"></div>
+            </div>
+          </div>
+          <label htmlFor="radio-min">Dark</label>
+        </div>
 
         <div className='form-field-heading'>Weight</div>
         <div className="mdc-form-field">
@@ -90,6 +124,7 @@ class SettingsModal extends Component {
           </div>
           <label htmlFor="radio-min">Kilometers</label>
         </div>
+
       </div>
     );
   }

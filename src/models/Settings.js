@@ -29,6 +29,10 @@ class Settings {
   setUnits(units) {
     this.settings.units = units;
   }
+
+  setMode(mode) {
+    this.settings.mode = mode;
+  }
 }
 
 export default Settings;
