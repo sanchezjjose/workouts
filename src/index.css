@@ -36,7 +36,7 @@ textarea:focus {
 :root {
   --main-bg-color: #fafafa;
   --main-border-color: #e6e6e6;
-  --main-link-color: #58b6f4;
+  --main-link-color: rgb(29,124,228);
   --main-txt-color: #000;
   --main-red-color: #d32f2f;
   --main-green-color: #02ee7d;
@@ -51,7 +51,7 @@ textarea:focus {
 :root .dark {
   --main-bg-color: rgb(30,30,30);
   --main-border-color: #e6e6e6;
-  --main-link-color: #58b6f4;
+  --main-link-color: rgb(29,124,228);
   --main-txt-color: #fff;
   --main-red-color: #d32f2f;
   --main-green-color: #02ee7d;
