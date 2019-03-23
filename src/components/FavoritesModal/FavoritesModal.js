@@ -43,10 +43,9 @@ class FavoritesModal extends Component {
 
   saveWorkout = () => {
     const props = this.props;
-    const group = this.state.group;
-    const workout = this.state.workout;
+    const group = this.state.group.trim();
+    const workout = this.state.workout.trim();
     const workoutType = this.state.workoutType;
-
 
     if (group.length > 0 && workout.length > 0) {
       props.workouts.addWorkout(group, workout, workoutType);

@@ -121,6 +121,7 @@ class App extends Component {
                 editMode={this.state.editMode}
                 settings={this.state.settings}
                 handleModeChange={this.handleModeChange}
+                forceGlobalUpdate={this.forceGlobalUpdate}
               />
               {typeof this.state.user.id === 'string' ?
                 <Favorites
