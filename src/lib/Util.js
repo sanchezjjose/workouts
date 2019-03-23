@@ -61,6 +61,10 @@ const convertMetric = (value, unit) => {
 }
 
 const convertTimeToDecimal = (metricValue, unit) => {
+  if (typeof metricValue === 'number') {
+    return metricValue;
+  }
+
   const timeUnits = metricValue.split(':');
   const numTimeUnits = timeUnits.length;
 
