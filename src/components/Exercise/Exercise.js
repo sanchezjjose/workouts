@@ -5,8 +5,8 @@ import Metrics from '../Metrics/Metrics';
 import { saveWorkout } from '../../api/Workouts';
 import { saveWorkouts, deleteWorkout } from '../../api/History';
 
-import checkCircleFilled from './check_circle-24px.svg';
-import checkCircleOutline from './check_circle_outline-24px.svg';
+// import checkCircleFilled from './check_circle-24px.svg';
+// import checkCircleOutline from './check_circle_outline-24px.svg';
 
 import './Exercise.css';
 import "@material/icon-button/dist/mdc.icon-button.min.css";
@@ -87,8 +87,10 @@ class Exercise extends Component {
           <button onClick={this.handleRemove} className="delete-button mdc-icon-button material-icons">clear</button> :
           (this.props.workoutInProgress &&
             (exerciseDone ?
-              <img className='status-button' onClick={() => this.handleStatusChange(false)} src={checkCircleFilled} alt="done" /> :
-              <img className='status-button' onClick={() => this.handleStatusChange(true)} src={checkCircleOutline} alt="not-done" />
+              <button onClick={() => this.handleStatusChange(false)} className="status-button mdc-icon-button material-icons fill">check_circle</button> :
+              <button onClick={() => this.handleStatusChange(true)} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
+              // <img className='status-button' onClick={() => this.handleStatusChange(false)} src={checkCircleFilled} alt="done" /> :
+              // <img className='status-button' onClick={() => this.handleStatusChange(true)} src={checkCircleOutline} alt="not-done" />
             )
           )
         }

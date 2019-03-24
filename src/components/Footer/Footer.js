@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import homeNavIcon from './outline-home-24px.svg';
 import './Footer.css';
 
 class Footer extends Component {
@@ -20,10 +19,9 @@ class Footer extends Component {
       <div className='Footer'>
         <Link onClick={() => this.handleClick('home')} className={`link-home ${homeTabActive ? 'active' : '' }`} to={`/${userId}`}>
           <div className='footer-button'>
-              {homeTabActive ?
-                <button className="tab-icon mdc-icon-button material-icons">home</button> :
-                <img src={homeNavIcon} className="tab-icon" alt="home" />
-              }
+              <button className="tab-icon mdc-icon-button material-icons">
+                {homeTabActive ? 'fitness_center' : 'fitness_center'}
+              </button>
               <span className='footer-text'>home</span>
           </div>
         </Link>

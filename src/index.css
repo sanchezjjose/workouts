@@ -38,6 +38,7 @@ textarea:focus {
   --main-border-color: #e6e6e6;
   --main-link-color: rgb(29,124,228);
   --main-txt-color: #000;
+  --main-fill-color: #000;
   --main-red-color: #d32f2f;
   --main-green-color: #02ee7d;
   --secondary-txt-color: #757575;
@@ -54,6 +55,7 @@ textarea:focus {
   --main-border-color: #000;
   --main-link-color: rgb(29,124,228);
   --main-txt-color: #fff;
+  --main-fill-color: #76FF03;
   --main-red-color: #d32f2f;
   --main-green-color: #02ee7d;
   --secondary-txt-color: #757575;

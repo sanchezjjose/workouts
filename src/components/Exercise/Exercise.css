@@ -31,6 +31,14 @@
   font-weight: 300;
 }
 
+.Exercise .status-button {
+  color: var(--main-txt-color);
+}
+
+.Exercise .status-button.fill {
+  color: var(--main-fill-color);
+}
+
 /* Apple Watch */
 @media only screen and (max-width: 319px) {
 
