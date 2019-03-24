@@ -1,5 +1,5 @@
 .RoutineDayPicker {
-  border-bottom: 1px var(--main-border-color) solid;
+  border-bottom: 1px var(--secondary-border-color) solid;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   align-items: center;
@@ -11,7 +11,7 @@
   display: grid;
   justify-items: center;
   align-items: center; 
-  color: var(--main-txt-color);
+  color: var(--secondary-txt-color);
   font-size: 12px;
   width: 30px;
   height: 30px;
