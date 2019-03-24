@@ -8,6 +8,8 @@ class Progress extends Component {
     const ctx1 = document.getElementById("progress-workouts-by-month");
     const ctx2 = document.getElementById("progress-workouts-by-weight");
     const progress = new ProgressCharts(this.props.history);
+
+    Chart.defaults.global.defaultFontColor = '#fff';
     
     new Chart(ctx1, {
       type: 'bar',
@@ -16,8 +18,8 @@ class Progress extends Component {
         datasets: [{
           label: '# of Workouts',
           data: progress.workoutsByMonth(),
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 0.2)',
+          backgroundColor: '#EF5350',
+          borderColor: '#EF5350',
           borderWidth: 1
         }]
       },
