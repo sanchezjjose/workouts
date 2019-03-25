@@ -4,14 +4,37 @@ import ProgressCharts from '../../models/ProgressCharts';
 
 class Progress extends Component {
 
+  constructor() {
+    super();
+
+    this.progressByMonthChart = {};
+    this.progressByWorkoutChart = {};
+  }
+
+  componentDidUpdate() {
+    const colorMode = this.props.settings.getMode();
+
+    if (colorMode === 'dark') {
+      Chart.defaults.global.defaultFontColor = '#fff';
+    } else {
+      Chart.defaults.global.defaultFontColor = '#000';
+    }
+
+    this.progressByMonthChart.update();
+    this.progressByWorkoutChart.update();
+  }
+
   componentDidMount() {
     const ctx1 = document.getElementById("progress-workouts-by-month");
     const ctx2 = document.getElementById("progress-workouts-by-weight");
     const progress = new ProgressCharts(this.props.history);
+    const colorMode = this.props.settings.getMode();
 
-    Chart.defaults.global.defaultFontColor = '#fff';
-    
-    new Chart(ctx1, {
+    if (colorMode === 'dark') {
+      Chart.defaults.global.defaultFontColor = '#fff';
+    }
+
+    this.progressByMonthChart = new Chart(ctx1, {
       type: 'bar',
       data: {
         labels: progress.workoutsByMonthLabels(),
@@ -25,7 +48,15 @@ class Progress extends Component {
       },
       options: {
         scales: {
+          xAxes: [{
+            gridLines: {
+              color: '#757575'
+            }
+          }],
           yAxes: [{
+            gridLines: {
+              color: '#757575'
+            },
             ticks: {
               beginAtZero:true
             }
@@ -40,7 +71,7 @@ class Progress extends Component {
     // labels: 
     // [ { label: ‘Barbell Bench Press’, data: ['40', '75', '100', '100', '80 ], backgroundColor: ... }, { label: 'Dips', data: ... } ] 
 
-    new Chart(ctx2, {
+    this.progressByWorkoutChart = new Chart(ctx2, {
       type: 'line',
       data: {
         label: 'Blah Blah',
@@ -72,42 +103,6 @@ class Progress extends Component {
           }]
         }
       }
-
-      // data: {
-      //   // TODO: limit to last 12 months.
-      //   // TODO: change these to months, and make data points the dates.
-      //   labels: ["02-18-2019", "02-26-2019", '03-01-2019', "03-13-2019"],
-      //   datasets: [{
-      //     label: 'Barbell Bench Press',
-      //     data: ['40', '75', '100', '80'],
-      //     backgroundColor: '#58b6f4',
-      //     borderColor: '#58b6f4',
-      //     borderWidth: 1,
-      //     fill: false
-      //   },
-      //   {
-      //     label: 'Barbell Squats',
-      //     data: ['135', '150', '150', '165'],
-      //     backgroundColor: '#d32f2f',
-      //     borderColor: '#d32f2f',
-      //     borderWidth: 1,
-      //     fill: false
-      //   }]
-      // },
-      // options: {
-      //   elements: {
-      //     line: {
-      //       tension: 0, // disables bezier curves
-      //     }
-      //   },
-      //   scales: {
-      //     yAxes: [{
-      //       ticks: {
-      //         beginAtZero:true
-      //       }
-      //     }]
-      //   }
-      // }
     });
   }
 

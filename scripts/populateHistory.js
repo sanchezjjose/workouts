@@ -37,5 +37,5 @@ for (let i = 0; true; i++) {
 }
 
 HistoryDB
-  .saveDates('joses', history.getDates())
+  .saveDates(process.env.USER_ID || 'test', history.getDates())
   .catch(e => console.log(e));
