@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Chart from 'chart.js';
+import moment from 'moment';
 import ProgressCharts from '../../models/ProgressCharts';
 
 class Progress extends Component {
@@ -69,21 +70,49 @@ class Progress extends Component {
 
     // https://www.chartjs.org/docs/latest/axes/cartesian/time.html
     // labels: 
-    // [ { label: ‘Barbell Bench Press’, data: ['40', '75', '100', '100', '80 ], backgroundColor: ... }, { label: 'Dips', data: ... } ] 
+    // [ { label: ‘Barbell Bench Press’, data: ['40', '75', '100', '100', '80 ], backgroundColor: ... }, { label: 'Dips', data: ... } ]
+
+    window.chartColors = {
+      red: 'rgb(255, 99, 132)',
+      orange: 'rgb(255, 159, 64)',
+      yellow: 'rgb(255, 205, 86)',
+      green: 'rgb(75, 192, 192)',
+      blue: 'rgb(54, 162, 235)',
+      purple: 'rgb(153, 102, 255)',
+      grey: 'rgb(201, 203, 207)'
+    };
+
+    const color = Chart.helpers.color;
+    const dateFormat = 'MM-DD-YYYY';
+    const date1 = moment('02-11-2019', dateFormat);
+    const date2 = moment('02-20-2019', dateFormat);
+    const date3 = moment('03-05-2019', dateFormat);
 
     this.progressByWorkoutChart = new Chart(ctx2, {
-      type: 'line',
+      type: 'bar',
       data: {
-        label: 'Blah Blah',
+        label: 'Workout Progress',
         datasets: [{
-          data: [{
-            t: new Date('02-18-2019'),
-            y: 1
-          }, {
-            t: new Date('03-01-2019'),
-            y: 10
-          }]
-        }],
+					label: 'Barbell Bench Press',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					data: [{t: date1.valueOf(), y: '135'},{t: date2.valueOf(), y: '125'},{t: date3.valueOf(), y: '175'}],
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}, {
+					label: 'Running',
+					backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.yellow,
+					data: [{t: date1.valueOf(), y: '300'},{t: date2.valueOf(), y: '100'},{t: date3.valueOf(), y: '120'}],
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}]
       },
       options: {
         scales: {
@@ -96,12 +125,29 @@ class Progress extends Component {
             }
           }],
           yAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: 'Weight (lbs)'
+            // scaleLabel: {
+            //   display: true,
+            //   labelString: 'Weight / Time'
+            // },
+            ticks: {
+              beginAtZero:true
             }
           }]
-        }
+        },
+        tooltips: {
+					intersect: false,
+					mode: 'index',
+					callbacks: {
+						label: function(tooltipItem, myData) {
+							let label = myData.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += tooltipItem.yLabel;
+							return label;
+						}
+					}
+				}
       }
     });
   }
