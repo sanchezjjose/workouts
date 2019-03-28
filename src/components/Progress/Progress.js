@@ -87,26 +87,45 @@ class Progress extends Component {
     const date1 = moment('02-11-2019', dateFormat);
     const date2 = moment('02-20-2019', dateFormat);
     const date3 = moment('03-05-2019', dateFormat);
+    const date4 = moment('03-14-2019', dateFormat);
+    const date5 = moment('03-24-2019', dateFormat);
+
+    /*
+      // Filters: 
+        - date must be > 12 months ago
+        - must have > 1 workout
+      [
+        {
+          label: 'Barbell Bench Press',
+          data: [
+            {
+              t: date,
+              y: 135
+            }
+          ]
+        }
+      ]
+    */
 
     this.progressByWorkoutChart = new Chart(ctx2, {
       type: 'bar',
       data: {
         label: 'Workout Progress',
         datasets: [{
-					label: 'Barbell Bench Press',
+					label: 'Barbell Bench Press (lbs)',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.red,
-					data: [{t: date1.valueOf(), y: '135'},{t: date2.valueOf(), y: '125'},{t: date3.valueOf(), y: '175'}],
+					data: [{t: date1.valueOf(), y: 135},{t: date2.valueOf(), y: 125},{t: date3.valueOf(), y: 175},{t: date3.valueOf(), y: '155'}],
 					type: 'line',
 					pointRadius: 0,
 					fill: false,
 					lineTension: 0,
 					borderWidth: 2
 				}, {
-					label: 'Running',
+					label: 'Running (min)',
 					backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.yellow,
-					data: [{t: date1.valueOf(), y: '300'},{t: date2.valueOf(), y: '100'},{t: date3.valueOf(), y: '120'}],
+					data: [{t: date1.valueOf(), y: '300'},{t: date2.valueOf(), y: '100'},{t: date4.valueOf(), y: '120'}],
 					type: 'line',
 					pointRadius: 0,
 					fill: false,
