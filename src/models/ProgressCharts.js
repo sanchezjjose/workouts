@@ -61,7 +61,7 @@ class ProgressCharts {
     // TODO Filters: 
     // - date must be > 12 months ago
     // - must have > 1 workout
-    Object.entries(this.history.getWorkouts()).forEach(history => {
+    Object.entries(this.history.getWorkouts()).sort().forEach(history => {
       const date = moment(history[0], dateFormat);
       const workoutsOnDate = Object.entries(history[1]);
   
@@ -84,7 +84,7 @@ class ProgressCharts {
             backgroundColor: color(lineColor).alpha(0.5).rgbString(),
             borderColor: lineColor,
             type: 'line',
-            pointRadius: 0,
+            // pointRadius: 0,
             fill: false,
             lineTension: 0,
             borderWidth: 2

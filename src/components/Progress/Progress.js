@@ -66,7 +66,7 @@ class Progress extends Component {
     });
 
     this.progressByWorkoutChart = new Chart(ctx2, {
-      type: 'bar',
+      type: 'line',
       data: {
         label: 'Workout Progress',
         datasets: progress.workoutsByWeightLabels()
@@ -79,7 +79,7 @@ class Progress extends Component {
             ticks: {
               source: 'data',
               autoSkip: true,
-              beginAtZero: true
+              // beginAtZero: true
             }
           }],
           yAxes: [{
@@ -88,7 +88,7 @@ class Progress extends Component {
             //   labelString: 'Weight / Time'
             // },
             ticks: {
-              beginAtZero: true
+              // beginAtZero: true
             }
           }]
         },
@@ -114,8 +114,14 @@ class Progress extends Component {
   render() {
     return (
       <div className='Progress'>
-        <canvas id="progress-workouts-by-month" width="400" height="400"></canvas>
         <canvas id="progress-workouts-by-weight" width="400" height="400"></canvas>
+        <canvas id="progress-workouts-by-month" width="400" height="400"></canvas>
+        {/* <div style={{position: 'relative', height: 100 + 'vh', width: 100 + 'vw'}}>
+          <canvas id="progress-workouts-by-weight"></canvas>
+        </div>
+        <div style={{position: 'relative', height: 100 + 'vh', width: 100 + 'vw'}}>
+          <canvas id="progress-workouts-by-month"></canvas>
+        </div> */}
       </div>
     );
   }

@@ -369,7 +369,7 @@
 				"recent": { "Monday": "02-18-2019", "Tuesday": "02-26-2019", "Wednesday": "03-13-2019"}
 			},
 			"workouts": {
-				"02-18-2019": {
+				"03-13-2019": {
 					"chest-barbell-bench-press-weight": {
 						"id": "chest-barbell-bench-press-weight",
 						"group": "Chest",
@@ -378,13 +378,13 @@
 						"days": ["Monday", "Friday"],
 						"metrics": {
 							"done": false,
-							"weight": { "value": 135, "unit": "lbs" },
+							"weight": { "value": 145, "unit": "lbs" },
 							"reps": { "value": 5 },
 							"sets": { "value": 3 }
 						}
 					}
 				},
-				"02-26-2019": {
+				"03-18-2019": {
 					"chest-barbell-bench-press-weight": {
 						"id": "chest-barbell-bench-press-weight",
 						"group": "Chest",
@@ -399,7 +399,7 @@
 						}
 					}
 				},
-				"03-13-2019": {
+				"03-28-2019": {
 					"chest-barbell-bench-press-weight": {
 						"id": "chest-barbell-bench-press-weight",
 						"group": "Chest",
@@ -408,7 +408,7 @@
 						"days": ["Monday", "Friday"],
 						"metrics": {
 							"done": false,
-							"weight": { "value": 195, "unit": "lbs" },
+							"weight": { "value": 135, "unit": "lbs" },
 							"reps": { "value": 5 },
 							"sets": { "value": 3 }
 						}
