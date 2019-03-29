@@ -66,21 +66,21 @@ class Progress extends Component {
       }
     });
 
-    progress.workoutsByWeightLabels();
+    const progressDataset = progress.workoutsByWeightLabels();
 
     // https://www.chartjs.org/docs/latest/axes/cartesian/time.html
     // labels: 
     // [ { label: ‘Barbell Bench Press’, data: ['40', '75', '100', '100', '80 ], backgroundColor: ... }, { label: 'Dips', data: ... } ]
 
-    window.chartColors = {
-      red: 'rgb(255, 99, 132)',
-      orange: 'rgb(255, 159, 64)',
-      yellow: 'rgb(255, 205, 86)',
-      green: 'rgb(75, 192, 192)',
-      blue: 'rgb(54, 162, 235)',
-      purple: 'rgb(153, 102, 255)',
-      grey: 'rgb(201, 203, 207)'
-    };
+    window.chartColors = [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ];
 
     const color = Chart.helpers.color;
     const dateFormat = 'MM-DD-YYYY';
@@ -107,31 +107,34 @@ class Progress extends Component {
       ]
     */
 
+    console.log(progressDataset)
+
     this.progressByWorkoutChart = new Chart(ctx2, {
       type: 'bar',
       data: {
         label: 'Workout Progress',
-        datasets: [{
-					label: 'Barbell Bench Press (lbs)',
-					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.red,
-					data: [{t: date1.valueOf(), y: 135},{t: date2.valueOf(), y: 125},{t: date3.valueOf(), y: 175},{t: date3.valueOf(), y: '155'}],
-					type: 'line',
-					pointRadius: 0,
-					fill: false,
-					lineTension: 0,
-					borderWidth: 2
-				}, {
-					label: 'Running (min)',
-					backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.yellow,
-					data: [{t: date1.valueOf(), y: '300'},{t: date2.valueOf(), y: '100'},{t: date4.valueOf(), y: '120'}],
-					type: 'line',
-					pointRadius: 0,
-					fill: false,
-					lineTension: 0,
-					borderWidth: 2
-				}]
+        datasets: progressDataset
+        // datasets: [{
+				// 	label: 'Barbell Bench Press (lbs)',
+				// 	backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+				// 	borderColor: window.chartColors.red,
+				// 	data: [{t: date1.valueOf(), y: 135},{t: date2.valueOf(), y: 125},{t: date3.valueOf(), y: 175},{t: date3.valueOf(), y: '155'}],
+				// 	type: 'line',
+				// 	pointRadius: 0,
+				// 	fill: false,
+				// 	lineTension: 0,
+				// 	borderWidth: 2
+				// }, {
+				// 	label: 'Running (min)',
+				// 	backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
+				// 	borderColor: window.chartColors.yellow,
+				// 	data: [{t: date1.valueOf(), y: '300'},{t: date2.valueOf(), y: '100'},{t: date4.valueOf(), y: '120'}],
+				// 	type: 'line',
+				// 	pointRadius: 0,
+				// 	fill: false,
+				// 	lineTension: 0,
+				// 	borderWidth: 2
+				// }]
       },
       options: {
         scales: {

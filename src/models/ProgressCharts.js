@@ -1,3 +1,6 @@
+import Chart from 'chart.js';
+import moment from 'moment';
+
 class ProgressCharts {
 
   constructor(history) {
@@ -41,7 +44,48 @@ class ProgressCharts {
   }
 
   workoutsByWeightLabels() {
-    this.history.getWorkouts();
+    const dataset = [];
+    const color = Chart.helpers.color;
+    const dateFormat = 'MM-DD-YYYY';
+
+    window.dataset = Object.entries(this.history.getWorkouts()).forEach(history => {
+      var date = moment(history[0], dateFormat);
+      var workoutsOnDate = Object.entries(history[1]);
+  
+      workoutsOnDate.forEach(workout => {
+        var workoutName = workout[1].name;
+        var workoutType = workout[1].type;
+        var metrics = workout[1].metrics[workoutType];
+        var plot = { t: date.valueOf(), y: metrics.value };
+
+        if (dataset.some(d => d.label === workoutName)) {
+          dataset.find(d => d.label === workoutName).data.push(plot);
+
+        } else {
+          dataset.push({
+            label: workoutName,
+            metricType: workoutType,
+            metricUnit: metrics.unit,
+            data: [plot],
+
+            backgroundColor: color('rgb(255, 99, 132)').alpha(0.5).rgbString(),
+            borderColor: 'rgb(255, 99, 132)',
+
+            type: 'line',
+            pointRadius: 0,
+            fill: false,
+            lineTension: 0,
+            borderWidth: 2
+          });
+        }
+      });
+    });
+
+    window.dataset2 = dataset;
+
+    dataset[1].backgroundColor = 'green';
+
+    return dataset;
   }
 }
 
