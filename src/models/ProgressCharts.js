@@ -11,6 +11,16 @@ class ProgressCharts {
     ];
   }
 
+  chartColors = [
+    'rgb(255, 99, 132)',
+    'rgb(255, 159, 64)',
+    'rgb(255, 205, 86)',
+    'rgb(75, 192, 192)',
+    'rgb(54, 162, 235)',
+    'rgb(153, 102, 255)',
+    'rgb(201, 203, 207)'
+  ];
+
   workoutsByMonthLabels() {
     const chartLabel = [];
     const months = this.months;
@@ -48,15 +58,19 @@ class ProgressCharts {
     const color = Chart.helpers.color;
     const dateFormat = 'MM-DD-YYYY';
 
-    window.dataset = Object.entries(this.history.getWorkouts()).forEach(history => {
-      var date = moment(history[0], dateFormat);
-      var workoutsOnDate = Object.entries(history[1]);
+    // TODO Filters: 
+    // - date must be > 12 months ago
+    // - must have > 1 workout
+    Object.entries(this.history.getWorkouts()).forEach(history => {
+      const date = moment(history[0], dateFormat);
+      const workoutsOnDate = Object.entries(history[1]);
   
       workoutsOnDate.forEach(workout => {
-        var workoutName = workout[1].name;
-        var workoutType = workout[1].type;
-        var metrics = workout[1].metrics[workoutType];
-        var plot = { t: date.valueOf(), y: metrics.value };
+        const workoutName = workout[1].name;
+        const workoutType = workout[1].type;
+        const metrics = workout[1].metrics[workoutType];
+        const plot = { t: date.valueOf(), y: metrics.value };
+        const lineColor = this.chartColors[Math.floor(Math.random() * this.chartColors.length)];
 
         if (dataset.some(d => d.label === workoutName)) {
           dataset.find(d => d.label === workoutName).data.push(plot);
@@ -67,10 +81,8 @@ class ProgressCharts {
             metricType: workoutType,
             metricUnit: metrics.unit,
             data: [plot],
-
-            backgroundColor: color('rgb(255, 99, 132)').alpha(0.5).rgbString(),
-            borderColor: 'rgb(255, 99, 132)',
-
+            backgroundColor: color(lineColor).alpha(0.5).rgbString(),
+            borderColor: lineColor,
             type: 'line',
             pointRadius: 0,
             fill: false,
@@ -80,10 +92,6 @@ class ProgressCharts {
         }
       });
     });
-
-    window.dataset2 = dataset;
-
-    dataset[1].backgroundColor = 'green';
 
     return dataset;
   }
