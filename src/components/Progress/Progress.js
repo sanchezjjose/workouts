@@ -34,6 +34,7 @@ class Progress extends Component {
     const ctx1 = document.getElementById("progress-workouts-by-month");
     const ctx2 = document.getElementById("progress-workouts-by-weight");
     const progress = new ProgressCharts(this.props.history);
+    const color = Chart.helpers.color;
 
     this.setDefaults();
 
@@ -44,8 +45,8 @@ class Progress extends Component {
         datasets: [{
           label: '# of Workouts',
           data: progress.workoutsByMonth(),
-          backgroundColor: 'rgb(255, 99, 132, 0.5)',
-          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: color('#EF5350').alpha(0.5).rgbString(),
+          borderColor: '#EF5350',
           borderWidth: 1
         }]
       },

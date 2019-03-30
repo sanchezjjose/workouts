@@ -7,10 +7,10 @@ AWS.config.update({
 });
 
 if (process.env.NODE_ENV === 'production') {
-  console.log('Setting production endpoint.');
+  // console.log('Setting production endpoint.');
 
 } else {
-  console.log('Setting localhost endpoint.');
+  // console.log('Setting localhost endpoint.');
 
   AWS.config.update({
     endpoint: 'http://localhost:8000'
