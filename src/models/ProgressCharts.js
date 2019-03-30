@@ -12,13 +12,24 @@ class ProgressCharts {
   }
 
   chartColors = [
-    'rgb(255, 99, 132)',
-    'rgb(255, 159, 64)',
-    'rgb(255, 205, 86)',
-    'rgb(75, 192, 192)',
-    'rgb(54, 162, 235)',
-    'rgb(153, 102, 255)',
-    'rgb(201, 203, 207)'
+    '#EF5350',
+    '#EC407A',
+    '#EC407A',
+    '#5C6BC0',
+    '#7E57C2',
+    '#42A5F5',
+    '#29B6F6',
+    '#26C6DA',
+    '#26A69A',
+    '#66BB6A',
+    '#9CCC65',
+    '#D4E157',
+    '#FFEE58',
+    '#FFCA28',
+    '#FFA726',
+    '#FF7043',
+    '#FF7043',
+    '#78909C'
   ];
 
   workoutsByMonthLabels() {
@@ -65,12 +76,12 @@ class ProgressCharts {
       const date = moment(history[0], dateFormat);
       const workoutsOnDate = Object.entries(history[1]);
   
-      workoutsOnDate.forEach(workout => {
+      workoutsOnDate.forEach((workout, i) => {
         const workoutName = workout[1].name;
         const workoutType = workout[1].type;
         const metrics = workout[1].metrics[workoutType];
         const plot = { t: date.valueOf(), y: metrics.value };
-        const lineColor = this.chartColors[Math.floor(Math.random() * this.chartColors.length)];
+        const lineColor = this.chartColors[i] || this.chartColors[Math.floor(Math.random() * this.chartColors.length)];
 
         if (dataset.some(d => d.label === workoutName)) {
           dataset.find(d => d.label === workoutName).data.push(plot);
