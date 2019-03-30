@@ -13,23 +13,22 @@ class ProgressCharts {
 
   chartColors = [
     '#EF5350',
-    '#EC407A',
-    '#EC407A',
-    '#5C6BC0',
-    '#7E57C2',
-    '#42A5F5',
-    '#29B6F6',
+    '#78909C',
+    '#FF7043',
+    '#FFA726',
+    '#FFEE58',
+    '#D4E157',
     '#26C6DA',
-    '#26A69A',
     '#66BB6A',
     '#9CCC65',
-    '#D4E157',
-    '#FFEE58',
+    '#26A69A',
+    '#29B6F6',
+    '#42A5F5',
+    '#7E57C2',
     '#FFCA28',
-    '#FFA726',
-    '#FF7043',
-    '#FF7043',
-    '#78909C'
+    '#5C6BC0',
+    '#AB47BC',
+    '#EC407A',
   ];
 
   workoutsByMonthLabels() {
