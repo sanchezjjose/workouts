@@ -98,6 +98,7 @@ class ProgressCharts {
             } else {
               dataset.push({
                 label: workoutName,
+                hidden: dataset.length >= 3,
                 metricType: workoutType,
                 metricUnit: metrics.unit,
                 data: [plot],
