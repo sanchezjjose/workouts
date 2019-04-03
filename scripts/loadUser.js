@@ -3,7 +3,7 @@ const fs = require('fs');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const tableName = 'Workouts';
-const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
+const users = JSON.parse(fs.readFileSync('./scripts/data/users.json', 'utf8'));
 const user = users.find(u => u.id === process.env.USER_ID);
 
 const params = {
