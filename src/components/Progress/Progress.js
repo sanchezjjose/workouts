@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Chart from 'chart.js';
 import ProgressCharts from '../../models/ProgressCharts';
 
+import './Progress.css';
+
 class Progress extends Component {
 
   constructor() {
@@ -106,13 +108,9 @@ class Progress extends Component {
         <canvas id="progress-workouts-by-month" width="400" height="400"></canvas>
       </div>
 
-      // <div className='Progress' style={{width: '100%', height: '50%'}}>
-      //   <div style={{position: 'relative', height: 100 + 'vh', width: 100 + 'vw'}}>
-      //     <canvas id="progress-workouts-by-weight"></canvas>
-      //   </div>
-      //   <div style={{position: 'relative', height: 100 + 'vh', width: 100 + 'vw'}}>
-      //     <canvas id="progress-workouts-by-month"></canvas>
-      //   </div>
+      // <div className='Progress'>
+      //   <canvas id="progress-workouts-by-weight"></canvas>
+      //   <canvas id="progress-workouts-by-month"></canvas>
       // </div>
     );
   }
