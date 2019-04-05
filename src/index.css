@@ -1,12 +1,9 @@
-/* html {
-  background: var(--main-bg-color);
-} */
-
 html, body {
   height: 100%;
 }
 
 body {
+  background: var(--main-bg-color);
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -50,7 +47,6 @@ textarea:focus {
 }
 
 :root .dark {
-  /* --main-bg-color: #000; */
   --main-bg-color: rgb(36,35,34);
   --main-border-color: #000;
   --main-link-color: rgb(29,124,228);

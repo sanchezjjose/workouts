@@ -1,5 +1,10 @@
 .Progress {
-  /* position: relative;
-  height: 50vh;
-  width: 100vw; */
+  position: relative;
+  height: 80vh;
+  width: 90vw;
+  margin: auto;
+}
+
+.Progress canvas {
+  margin-bottom: 80px;
 }

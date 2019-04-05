@@ -64,6 +64,8 @@ class App extends Component {
     const settings = this.state.settings;
     const colorMode = typeof settings.getMode === 'function' ? settings.getMode() : '';
 
+    document.querySelector('body').classList = [colorMode];
+
     return (
       <Router>
         <div className={`App ${colorMode}`}>
@@ -106,9 +108,7 @@ class App extends Component {
                 forceGlobalUpdate={this.forceGlobalUpdate}
               />
               {typeof this.state.user.id === 'string' ?
-                <div>
-                  <Progress history={this.state.history} settings={this.state.settings} />
-                </div> :
+                <Progress history={this.state.history} settings={this.state.settings} /> :
                 <div>Loading...</div>
               }
               <Footer userId={this.state.user.id} activeTab='progress' />

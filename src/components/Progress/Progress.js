@@ -53,6 +53,7 @@ class Progress extends Component {
         }]
       },
       options: {
+        maintainAspectRatio: false,
         scales: {
           yAxes: [{
             ticks: {
@@ -70,6 +71,7 @@ class Progress extends Component {
         datasets: progress.workoutsByWeightLabels()
       },
       options: {
+        maintainAspectRatio: false,
         scales: {
           xAxes: [{
             type: 'time',
@@ -104,14 +106,9 @@ class Progress extends Component {
   render() {
     return (
       <div className='Progress'>
-        <canvas id="progress-workouts-by-weight" width="400" height="400"></canvas>
-        <canvas id="progress-workouts-by-month" width="400" height="400"></canvas>
+        <canvas id="progress-workouts-by-weight"></canvas>
+        <canvas id="progress-workouts-by-month"></canvas>
       </div>
-
-      // <div className='Progress'>
-      //   <canvas id="progress-workouts-by-weight"></canvas>
-      //   <canvas id="progress-workouts-by-month"></canvas>
-      // </div>
     );
   }
 }
