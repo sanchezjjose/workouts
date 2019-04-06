@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 import { MDCRipple } from '@material/ripple';
 import SettingsModal from '../SettingsModal/SettingsModal';
 
 import './NavigationBar.css';
 
 class NavigationBar extends Component {
+  static contextType = UserContext;
 
   state = {
     menuOpen: false,
@@ -19,15 +21,15 @@ class NavigationBar extends Component {
   }
 
   handleEditClick = () => {
-    this.props.handleModeChange(true, false, false);
+    this.context.updateMode(true, false, false);
   }
 
   handleSaveClick = () => {
-    this.props.handleModeChange(false, true, false);
+    this.context.updateMode(false, true, false);
   }
 
   handleCancelClick = () => {
-    this.props.handleModeChange(false, false, true);
+    this.context.updateMode(false, false, true);
   }
 
   handleMenuClick = () => {
@@ -49,8 +51,8 @@ class NavigationBar extends Component {
         <section className='top-app-bar__section--align-start'>
           <span className='title'>Workouts</span>
         </section>
-        <section className={`top-app-bar__section--align-end ${this.props.editMode ? 'editing' : ''}`}>
-          {this.props.editMode ? (
+        <section className={`top-app-bar__section--align-end ${this.context.editMode ? 'editing' : ''}`}>
+          {this.context.editMode ? (
             <section className='action-buttons'>
               <button onClick={this.handleSaveClick} className='mdc-top-app-bar__action-item'>Save</button>
               <button onClick={this.handleCancelClick} className='material-icons mdc-top-app-bar__action-item'>cancel</button>
@@ -75,11 +77,7 @@ class NavigationBar extends Component {
           </div>
         </section>
         {this.state.settingsOpen &&
-          <SettingsModal 
-            userId={this.props.userId}
-            settings={this.props.settings}
-            forceGlobalUpdate={this.props.forceGlobalUpdate}
-            handleSettingsClose={this.handleSettingsClose} />
+          <SettingsModal handleSettingsClose={this.handleSettingsClose} />
         }
       </header>
     );

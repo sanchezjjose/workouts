@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { UserContext } from './UserContext';
+
 import { getUser } from '../api/Users';
 import UserWorkouts from '../models/Workouts';
 import UserHistory from '../models/History';
@@ -18,6 +20,14 @@ const today = days[new Date().getDay()];
 
 class App extends Component {
 
+  updateSettings = (settings) => {
+    this.setState({ settings: settings });
+  }
+
+  updateMode = (edit, save, cancel) => {
+    this.setState({ editMode: edit, saveMode: save, cancelMode: cancel });
+  }
+
   state = {
     user: {},
     settings: {},
@@ -26,7 +36,10 @@ class App extends Component {
     dayOfWeek: today,
     editMode: false,
     saveMode: false,
-    cancelMode: false
+    cancelMode: false,
+
+    updateSettings: this.updateSettings,
+    updateMode: this.updateMode
   };
 
   componentDidMount() {
@@ -61,6 +74,7 @@ class App extends Component {
   }
 
   render() {
+    const isLoading = typeof this.state.user.id !== 'string';
     const settings = this.state.settings;
     const colorMode = typeof settings.getMode === 'function' ? settings.getMode() : '';
 
@@ -68,74 +82,55 @@ class App extends Component {
 
     return (
       <Router>
-        <div className={`App ${colorMode}`}>
-          <Route exact path="/" component={Landing}/> 
-          <Route exact={true} path='/:user_id' render={() => (
-            <div className='container home'>
-              <NavigationBar 
-                userId={this.state.user.id}
-                editMode={this.state.editMode}
-                settings={this.state.settings}
-                handleModeChange={this.handleModeChange}
-                forceGlobalUpdate={this.forceGlobalUpdate}
-              />
-              {typeof this.state.user.id === 'string' ?
-                <Home
-                  userId={this.state.user.id}
-                  workouts={this.state.workouts}
-                  settings={this.state.settings}
-                  history={this.state.history}
-                  forceGlobalUpdate={this.forceGlobalUpdate}
-                  handleDayChange={this.handleDayChange}
-                  handleModeChange={this.handleModeChange}
-                  dayOfWeek={this.state.dayOfWeek}
-                  editMode={this.state.editMode}
-                  saveMode={this.state.saveMode}
-                  cancelMode={this.state.cancelMode}
-                /> :
-                <div>Loading...</div>
-              }
-              <Footer userId={this.state.user.id} activeTab='home' />
-            </div>
-          )}/>
-          <Route exact={true} path='/:user_id/progress' render={() => (
-            <div className='container progress'>
-              <NavigationBar 
-                userId={this.state.user.id}
-                editMode={this.state.editMode}
-                settings={this.state.settings}
-                handleModeChange={this.handleModeChange}
-                forceGlobalUpdate={this.forceGlobalUpdate}
-              />
-              {typeof this.state.user.id === 'string' ?
-                <Progress history={this.state.history} settings={this.state.settings} /> :
-                <div>Loading...</div>
-              }
-              <Footer userId={this.state.user.id} activeTab='progress' />
-            </div>
-          )}/>
-          <Route exact={true} path='/:user_id/favorites' render={() => (
-            <div className='container favorites'>
-              <NavigationBar
-                userId={this.state.user.id}
-                editMode={this.state.editMode}
-                settings={this.state.settings}
-                handleModeChange={this.handleModeChange}
-                forceGlobalUpdate={this.forceGlobalUpdate}
-              />
-              {typeof this.state.user.id === 'string' ?
-                <Favorites
-                  userId={this.state.user.id}
-                  workouts={this.state.workouts}
-                  forceGlobalUpdate={this.forceGlobalUpdate}
-                  editMode={this.state.editMode}
-                /> :
-                <div>Loading...</div>
-              }
-              <Footer userId={this.state.user.id} activeTab='favorites' />
-            </div>
-          )}/>
-        </div>
+        <UserContext.Provider value={this.state}>
+          <div className={`App ${colorMode}`}>
+            <Route exact path="/" component={Landing}/> 
+            <Route exact={true} path='/:user_id' render={() => (
+              <div className='container home'>
+                <NavigationBar />
+                {isLoading ? <div>Loading...</div> :
+                  <Home
+                    userId={this.state.user.id}
+                    workouts={this.state.workouts}
+                    settings={this.state.settings}
+                    history={this.state.history}
+                    forceGlobalUpdate={this.forceGlobalUpdate}
+                    handleDayChange={this.handleDayChange}
+                    handleModeChange={this.handleModeChange}
+                    dayOfWeek={this.state.dayOfWeek}
+                    editMode={this.state.editMode}
+                    saveMode={this.state.saveMode}
+                    cancelMode={this.state.cancelMode}
+                  />
+                }
+                <Footer userId={this.state.user.id} activeTab='home' />
+              </div>
+            )}/>
+            <Route exact={true} path='/:user_id/progress' render={() => (
+              <div className='container progress'>
+                <NavigationBar />
+                {isLoading ? <div>Loading...</div> :
+                  <Progress history={this.state.history} settings={this.state.settings} />
+                }
+                <Footer userId={this.state.user.id} activeTab='progress' />
+              </div>
+            )}/>
+            <Route exact={true} path='/:user_id/favorites' render={() => (
+              <div className='container favorites'>
+                <NavigationBar />
+                {isLoading ? <div>Loading...</div> :
+                  <Favorites
+                    userId={this.state.user.id}
+                    workouts={this.state.workouts}
+                    forceGlobalUpdate={this.forceGlobalUpdate}
+                    editMode={this.state.editMode}
+                  />
+                }
+                <Footer userId={this.state.user.id} activeTab='favorites' />
+              </div>
+            )}/>
+          </div>
+        </UserContext.Provider>
       </Router>
     );
   }

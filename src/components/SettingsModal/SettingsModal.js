@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { saveSettings } from '../../api/Settings';
+import { UserContext } from '../UserContext';
 
 import './SettingsModal.css';
 import "@material/radio/dist/mdc.radio.min.css";
 import "@material/form-field/dist/mdc.form-field.min.css";
 
 class SettingsModal extends Component {
+  static contextType = UserContext;
 
   handleChange = (e) => {
-    const userId = this.props.userId;
-    const settings = this.props.settings;
+    const userId = this.context.user.id;
+    const settings = this.context.settings;
     const type = e.target.name;
     const value = e.target.value;
 
@@ -22,21 +24,21 @@ class SettingsModal extends Component {
   }
 
   handleModeChange = (e) => {
-    const userId = this.props.userId;
-    const settings = this.props.settings;
+    const userId = this.context.user.id;
+    const settings = this.context.settings;
     const value = e.target.value;
 
     settings.setMode(value);
 
     saveSettings(userId, settings.get())
       .then(() => {
-        this.props.forceGlobalUpdate();  
+        this.context.updateSettings(settings);
       });
   }
 
   render() {
-    const colorMode = this.props.settings.getMode();
-    const units = this.props.settings.getUnits();
+    const colorMode = this.context.settings.getMode();
+    const units = this.context.settings.getUnits();
     const weightUnit = units.weight;
     const timeUnit = units.time;
     const distanceUnit = units.distance;
