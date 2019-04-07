@@ -16,7 +16,6 @@ class Home extends Component {
             <RoutineDayPicker />
             <Routine
               key={`${this.context.dayOfWeek}-routine`}
-              userId={this.props.userId}
               workouts={this.props.workouts}
               settings={this.props.settings}
               history={this.props.history}

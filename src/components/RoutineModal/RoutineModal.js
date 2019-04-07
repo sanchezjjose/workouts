@@ -23,7 +23,7 @@ class RoutineModal extends Component {
 
   addExercise = (id, name) => {
     const day = this.context.dayOfWeek;
-    const userId = this.props.userId;
+    const userId = this.context.user.id;
     const workouts = this.props.workouts;
     const isNew = workouts.get()[id].days.indexOf(day) === -1;
    
@@ -56,7 +56,7 @@ class RoutineModal extends Component {
                 This will show a list of your favorite exercises to add to your routine.
               </p>
               <div>
-              <a className='link-favorites' href={`${this.props.userId}/favorites`}>CREATE FAVORITES</a>
+              <a className='link-favorites' href={`${this.context.user.id}/favorites`}>CREATE FAVORITES</a>
               </div>
             </div>
           }

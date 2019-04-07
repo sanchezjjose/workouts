@@ -32,6 +32,10 @@ class App extends Component {
     this.setState({ dayOfWeek: dayOfWeek });
   }
 
+  updateWorkouts = (workouts) => {
+    this.setState({ workouts: workouts });
+  }
+
   state = {
     user: {},
     settings: {},
@@ -44,7 +48,8 @@ class App extends Component {
 
     updateSettings: this.updateSettings,
     updateMode: this.updateMode,
-    updateDayOfWeek: this.updateDayOfWeek
+    updateDayOfWeek: this.updateDayOfWeek,
+    updateWorkouts: this.updateWorkouts
   };
 
   componentDidMount() {
@@ -71,8 +76,8 @@ class App extends Component {
   }
 
   render() {
-    const isLoading = typeof this.state.user.id !== 'string';
     const settings = this.state.settings;
+    const isLoading = typeof this.state.user.id !== 'string';
     const colorMode = typeof settings.getMode === 'function' ? settings.getMode() : '';
 
     document.querySelector('body').classList = [colorMode];
@@ -84,39 +89,34 @@ class App extends Component {
             <Route exact path="/" component={Landing}/> 
             <Route exact={true} path='/:user_id' render={() => (
               <div className='container home'>
-                <NavigationBar />
+                <NavigationBar/>
                 {isLoading ? <div>Loading...</div> :
                   <Home
-                    userId={this.state.user.id}
                     workouts={this.state.workouts}
                     settings={this.state.settings}
                     history={this.state.history}
                     forceGlobalUpdate={this.forceGlobalUpdate}
                   />
                 }
-                <Footer userId={this.state.user.id} activeTab='home' />
+                <Footer activeTab='home' />
               </div>
             )}/>
             <Route exact={true} path='/:user_id/progress' render={() => (
               <div className='container progress'>
-                <NavigationBar />
+                <NavigationBar/>
                 {isLoading ? <div>Loading...</div> :
                   <Progress history={this.state.history} settings={this.state.settings} />
                 }
-                <Footer userId={this.state.user.id} activeTab='progress' />
+                <Footer activeTab='progress' />
               </div>
             )}/>
             <Route exact={true} path='/:user_id/favorites' render={() => (
               <div className='container favorites'>
-                <NavigationBar />
+                <NavigationBar/>
                 {isLoading ? <div>Loading...</div> :
-                  <Favorites
-                    userId={this.state.user.id}
-                    workouts={this.state.workouts}
-                    forceGlobalUpdate={this.forceGlobalUpdate}
-                  />
+                  <Favorites/>
                 }
-                <Footer userId={this.state.user.id} activeTab='favorites' />
+                <Footer activeTab='favorites' />
               </div>
             )}/>
           </div>

@@ -16,7 +16,7 @@ class Exercise extends Component {
   static contextType = UserContext;
 
   handleStatusChange = (status) => {
-    const userId = this.props.userId;
+    const userId = this.context.user.id;
     const workouts = this.props.workouts;
     const history = this.props.history;
     const exercise = this.props.exercise;
@@ -55,7 +55,7 @@ class Exercise extends Component {
   }
 
   handleRemove = () => {
-    const userId = this.props.userId;
+    const userId = this.context.user.id;
     const workouts = this.props.workouts;
     const exercise = this.props.exercise;
 
@@ -100,7 +100,6 @@ class Exercise extends Component {
         {metricTypes.map(metricType =>
           <Metrics
             key={`${dayOfWeek}-${metricType}`}
-            userId={this.props.userId}
             workouts={this.props.workouts}
             forceGlobalUpdate={this.props.forceGlobalUpdate}
             exercise={exercise}

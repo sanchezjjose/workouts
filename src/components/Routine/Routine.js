@@ -44,7 +44,7 @@ class Routine extends Component {
 
     const today = formatDate(new Date());
     const dayOfWeek = this.context.dayOfWeek;
-    const userId = this.props.userId;
+    const userId = this.context.user.id;
     const history = this.props.history;
 
     history.addDate(today, dayOfWeek);
@@ -125,7 +125,6 @@ class Routine extends Component {
               {workout.exercises.map (exercise =>
                 <Exercise
                   key={`${dayOfWeek}-${exercise.name}`}
-                  userId={this.props.userId}
                   workouts={this.props.workouts}
                   settings={this.props.settings}
                   history={this.props.history}
@@ -142,7 +141,6 @@ class Routine extends Component {
           )
         )}
         <RoutineModal
-          userId={this.props.userId}
           workouts={this.props.workouts}
           forceGlobalUpdate={this.props.forceGlobalUpdate}
           displayMessage={this.displayMessage} />

@@ -24,19 +24,18 @@ class Favorites extends Component {
   }
 
   removeWorkout(workout) {
-    deleteWorkout(this.props.userId, workout.id)
+    deleteWorkout(this.context.user.id, workout.id)
       .then(() => {
-        const workouts = this.props.workouts;
+        const workouts = this.context.workouts;
         workouts.deleteWorkout(workout.id);
-        this.props.forceGlobalUpdate();
+        this.context.updateWorkouts(workouts);
         this.displayMessage(`Deleted ${workout.name}.`);
       });
   }
 
   render() {
-    const props = this.props;
     const editMode = this.context.editMode;
-    const workoutsVm = props.workouts.getViewModel();
+    const workoutsVm = this.context.workouts.getViewModel();
 
     return (
       <div className='Favorites'>
@@ -63,11 +62,7 @@ class Favorites extends Component {
           )}
           </div>
         </div>
-        <FavoritesModal
-          userId={props.userId}
-          workouts={props.workouts}
-          forceGlobalUpdate={props.forceGlobalUpdate}
-          displayMessage={this.displayMessage} />
+        <FavoritesModal displayMessage={this.displayMessage} />
       </div>
     );
   }

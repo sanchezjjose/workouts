@@ -114,7 +114,7 @@ class Metrics extends Component {
   }
 
   saveMetric(prevMetricValue, prevSettingsUnit, metricValue, settingsUnit) {
-    const userId = this.props.userId;
+    const userId = this.context.user.id;
     const workouts = this.props.workouts;
     const exercise = this.props.exercise;
     const metricType = this.props.metricType;

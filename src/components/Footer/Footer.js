@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 import { Link } from 'react-router-dom';
 
 import './Footer.css';
 
 class Footer extends Component {
+  static contextType = UserContext;
 
   handleClick = (tab) => {
     this.setState({ activeTab: tab });
   }
 
   render() {
-    const userId = this.props.userId;
+    const userId = this.context.user.id;
     const homeTabActive = this.props.activeTab === 'home';
     const progressTabActive = this.props.activeTab === 'progress';
     const favTabActive = this.props.activeTab === 'favorites';

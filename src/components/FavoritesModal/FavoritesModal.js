@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 import { saveWorkout } from '../../api/Workouts';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
@@ -6,6 +7,7 @@ import './FavoritesModal.css';
 import "@material/button/dist/mdc.button.min.css";
 
 class FavoritesModal extends Component {
+  static contextType = UserContext;
 
   state = {
     show: false,
@@ -48,11 +50,11 @@ class FavoritesModal extends Component {
     const workoutType = this.state.workoutType;
 
     if (group.length > 0 && workout.length > 0) {
-      props.workouts.addWorkout(group, workout, workoutType);
+      this.context.workouts.addWorkout(group, workout, workoutType);
 
-      saveWorkout(props.userId, props.workouts.get())
+      saveWorkout(this.context.user.id, this.context.workouts.get())
         .then(() => {
-          props.forceGlobalUpdate();
+          this.context.updateWorkouts(this.context.workouts);
           props.displayMessage(`Added ${workout} to favorites.`);
           this.clearInput('workout');
         })
