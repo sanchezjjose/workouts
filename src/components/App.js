@@ -28,6 +28,10 @@ class App extends Component {
     this.setState({ editMode: edit, saveMode: save, cancelMode: cancel });
   }
 
+  updateDayOfWeek = (dayOfWeek) => {
+    this.setState({ dayOfWeek: dayOfWeek });
+  }
+
   state = {
     user: {},
     settings: {},
@@ -39,7 +43,8 @@ class App extends Component {
     cancelMode: false,
 
     updateSettings: this.updateSettings,
-    updateMode: this.updateMode
+    updateMode: this.updateMode,
+    updateDayOfWeek: this.updateDayOfWeek
   };
 
   componentDidMount() {
@@ -65,14 +70,6 @@ class App extends Component {
     this.forceUpdate();
   }
 
-  handleModeChange = (edit, save, cancel) => {
-    this.setState({ editMode: edit, saveMode: save, cancelMode: cancel });
-  }
-
-  handleDayChange = (dayOfWeek) => {
-    this.setState({ dayOfWeek: dayOfWeek });
-  }
-
   render() {
     const isLoading = typeof this.state.user.id !== 'string';
     const settings = this.state.settings;
@@ -95,12 +92,6 @@ class App extends Component {
                     settings={this.state.settings}
                     history={this.state.history}
                     forceGlobalUpdate={this.forceGlobalUpdate}
-                    handleDayChange={this.handleDayChange}
-                    handleModeChange={this.handleModeChange}
-                    dayOfWeek={this.state.dayOfWeek}
-                    editMode={this.state.editMode}
-                    saveMode={this.state.saveMode}
-                    cancelMode={this.state.cancelMode}
                   />
                 }
                 <Footer userId={this.state.user.id} activeTab='home' />
@@ -123,7 +114,6 @@ class App extends Component {
                     userId={this.state.user.id}
                     workouts={this.state.workouts}
                     forceGlobalUpdate={this.forceGlobalUpdate}
-                    editMode={this.state.editMode}
                   />
                 }
                 <Footer userId={this.state.user.id} activeTab='favorites' />

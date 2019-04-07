@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 
 // TODO: change from ../../api => ../../db
 import { saveWorkout } from '../../api/Workouts';
@@ -7,6 +8,7 @@ import { convertMetric, convertTimeToDecimal } from '../../lib/Util';
 import './Metrics.css';
 
 class Metrics extends Component {
+  static contextType = UserContext;
 
   state = {
     metricValue: this.props.metricValue
@@ -25,7 +27,7 @@ class Metrics extends Component {
       return;
     }
 
-    if (this.props.editMode) {
+    if (this.context.editMode) {
       return;
     }
 
@@ -52,7 +54,7 @@ class Metrics extends Component {
   }
 
   handleOnClick = (e) => {
-    if (this.props.editMode) {
+    if (this.context.editMode) {
       e.target.value = '';
     }
   }
@@ -93,9 +95,9 @@ class Metrics extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState, prevContext) => {
-    const editMode = this.props.editMode;
-    const saveMode = this.props.saveMode;
-    const cancelMode = this.props.cancelMode;
+    const editMode = this.context.editMode;
+    const saveMode = this.context.saveMode;
+    const cancelMode = this.context.cancelMode;
 
     const metricValueChanged = this.state.metricValue !== this.props.metricValue;
     const shouldSave = metricValueChanged && (saveMode || !editMode) && !cancelMode;
@@ -103,11 +105,11 @@ class Metrics extends Component {
 
     if (shouldReset) {
       this.setState({ metricValue: this.props.metricValue });
-      this.props.handleModeChange(false, false, false);
+      this.context.updateMode(false, false, false);
 
     } else if (shouldSave) {
       this.saveMetric(prevState.metricValue, this.props.metricUnit, this.state.metricValue, this.props.settingsUnit);
-      this.props.handleModeChange(false, false, false);
+      this.context.updateMode(false, false, false);
     }
   }
 
@@ -141,7 +143,7 @@ class Metrics extends Component {
     const metricValue = this.state.metricValue;
     const metricType = this.props.metricType;
     const metricUnit = this.props.metricUnit;
-    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricValue > 0) && !this.props.editMode && window.innerWidth >= 320;
+    const showMetricUnit = (typeof metricUnit !== 'undefined' && metricValue > 0) && !this.context.editMode && window.innerWidth >= 320;
     const inputValue = showMetricUnit ? `${metricValue} ${metricUnit}` : metricValue;
     const inputType = showMetricUnit || metricType === 'time' ? 'text' : 'number';
 
@@ -154,7 +156,7 @@ class Metrics extends Component {
           onTouchEnd={this.handleTouchEnd} 
           onClick={this.handleOnClick}
           onChange={this.handleOnChange} 
-          readOnly={!this.props.editMode} />
+          readOnly={!this.context.editMode} />
       </div>
     );
   }

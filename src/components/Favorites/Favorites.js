@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 import FavoritesModal from '../FavoritesModal/FavoritesModal'
 import { deleteWorkout } from '../../api/Workouts';
 
 import './Favorites.css';
 
 class Favorites extends Component {
+  static contextType = UserContext;
 
   state = {
     // TODO: remove from state, causes re-render
@@ -33,7 +35,7 @@ class Favorites extends Component {
 
   render() {
     const props = this.props;
-    const editMode = props.editMode;
+    const editMode = this.context.editMode;
     const workoutsVm = props.workouts.getViewModel();
 
     return (

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 import { saveWorkout } from '../../api/Workouts';
 import Fab from '../FloatingActionButton/FloatingActionButton';
 
@@ -6,6 +7,7 @@ import './RoutineModal.css';
 import "@material/button/dist/mdc.button.min.css";
 
 class RoutineModal extends Component {
+  static contextType = UserContext;
 
   state = {
     show: false
@@ -20,7 +22,7 @@ class RoutineModal extends Component {
   }
 
   addExercise = (id, name) => {
-    const day = this.props.dayOfWeek;
+    const day = this.context.dayOfWeek;
     const userId = this.props.userId;
     const workouts = this.props.workouts;
     const isNew = workouts.get()[id].days.indexOf(day) === -1;

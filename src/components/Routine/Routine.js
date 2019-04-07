@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 import Exercise from '../Exercise/Exercise';
 import RoutineModal from '../RoutineModal/RoutineModal';
 import { saveDates } from '../../api/History';
@@ -7,6 +8,7 @@ import { formatDate } from '../../lib/Util';
 import './Routine.css';
 
 class Routine extends Component {
+  static contextType = UserContext;
 
   state = {
     message: '',
@@ -41,7 +43,7 @@ class Routine extends Component {
     e.preventDefault();
 
     const today = formatDate(new Date());
-    const dayOfWeek = this.props.dayOfWeek;
+    const dayOfWeek = this.context.dayOfWeek;
     const userId = this.props.userId;
     const history = this.props.history;
 
@@ -56,7 +58,7 @@ class Routine extends Component {
   }
 
   render() {
-    const dayOfWeek = this.props.dayOfWeek;
+    const dayOfWeek = this.context.dayOfWeek;
     const workouts = this.props.workouts;
     const history = this.props.history;
 
@@ -129,13 +131,8 @@ class Routine extends Component {
                   history={this.props.history}
                   exercise={exercise}
                   forceGlobalUpdate={this.props.forceGlobalUpdate}
-                  handleModeChange={this.props.handleModeChange}
                   workoutInProgress={workoutInProgress}
-                  cancelMode={this.props.cancelMode}
-                  editMode={this.props.editMode}
-                  saveMode={this.props.saveMode}
                   displayMessage={this.displayMessage}
-                  dayOfWeek={dayOfWeek}
 
                   // TODO: Maybe pass this down instead of workouts?
                   workout={workout}
@@ -148,7 +145,6 @@ class Routine extends Component {
           userId={this.props.userId}
           workouts={this.props.workouts}
           forceGlobalUpdate={this.props.forceGlobalUpdate}
-          dayOfWeek={dayOfWeek}
           displayMessage={this.displayMessage} />
       </div>
     );

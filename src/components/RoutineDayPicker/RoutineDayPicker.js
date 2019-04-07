@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 
 import './RoutineDayPicker.css';
 
 class RoutineDayPicker extends Component {
+  static contextType = UserContext;
 
   handleClick = (dayOfWeek) => {
-    this.props.handleDayChange(dayOfWeek);
+    this.context.updateDayOfWeek(dayOfWeek);
   }
 
   render() {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const today = days[new Date().getDay()];
-    const selectedDay = this.props.dayOfWeek;
+    const selectedDay = this.context.dayOfWeek;
 
     return (
       <div className='RoutineDayPicker'>
