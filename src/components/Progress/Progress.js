@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { UserContext } from '../UserContext';
 import Chart from 'chart.js';
 import ProgressCharts from '../../models/ProgressCharts';
 
 import './Progress.css';
 
 class Progress extends Component {
+  static contextType = UserContext;
 
   constructor() {
     super();
@@ -14,7 +16,7 @@ class Progress extends Component {
   }
 
   setDefaults() {
-    const colorMode = this.props.settings.getMode();
+    const colorMode = this.context.settings.getMode();
 
     if (colorMode === 'dark') {
       Chart.defaults.global.defaultFontColor = '#fff';
@@ -35,7 +37,7 @@ class Progress extends Component {
   componentDidMount() {
     const ctx1 = document.getElementById("progress-workouts-by-month");
     const ctx2 = document.getElementById("progress-workouts-by-weight");
-    const progress = new ProgressCharts(this.props.history);
+    const progress = new ProgressCharts(this.context.history);
     const color = Chart.helpers.color;
 
     this.setDefaults();

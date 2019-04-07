@@ -24,7 +24,7 @@ class RoutineModal extends Component {
   addExercise = (id, name) => {
     const day = this.context.dayOfWeek;
     const userId = this.context.user.id;
-    const workouts = this.props.workouts;
+    const workouts = this.context.workouts;
     const isNew = workouts.get()[id].days.indexOf(day) === -1;
    
     if (isNew) {
@@ -32,7 +32,7 @@ class RoutineModal extends Component {
 
       saveWorkout(userId, workouts.get())
         .then(() => {
-          this.props.forceGlobalUpdate();
+          this.context.updateWorkouts(workouts);
           this.props.displayMessage(`Added ${name}.`);
 
         }).catch(err => {
@@ -44,7 +44,7 @@ class RoutineModal extends Component {
   render() {
     const onClick = this.state.show ? this.closeModal : this.showModal;
     const label = this.state.show ? 'close' : 'add';
-    const workouts = this.props.workouts;
+    const workouts = this.context.workouts;
     const workoutsVm = workouts.getViewModel();
 
     return (

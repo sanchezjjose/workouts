@@ -14,13 +14,7 @@ class Home extends Component {
         <div className='content-wrapper'>
           <div className='content'>
             <RoutineDayPicker />
-            <Routine
-              key={`${this.context.dayOfWeek}-routine`}
-              workouts={this.props.workouts}
-              settings={this.props.settings}
-              history={this.props.history}
-              forceGlobalUpdate={this.props.forceGlobalUpdate}
-            />
+            <Routine key={`${this.context.dayOfWeek}-routine`}/>
           </div>
         </div>
       </div>

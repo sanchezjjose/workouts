@@ -17,13 +17,13 @@ class Exercise extends Component {
 
   handleStatusChange = (status) => {
     const userId = this.context.user.id;
-    const workouts = this.props.workouts;
-    const history = this.props.history;
+    const workouts = this.context.workouts;
+    const history = this.context.history;
     const exercise = this.props.exercise;
     const workoutDate = history.getDate(this.context.dayOfWeek);
 
     workouts.setStatus(exercise.id, status);
-    this.props.forceGlobalUpdate();
+    this.context.updateWorkouts(workouts);
 
     let promise = {};
 
@@ -50,18 +50,18 @@ class Exercise extends Component {
 
         // Reset status
         workouts.setStatus(exercise.id, !status);
-        this.props.forceGlobalUpdate();
+        this.context.updateWorkouts(workouts);
       });
   }
 
   handleRemove = () => {
     const userId = this.context.user.id;
-    const workouts = this.props.workouts;
+    const workouts = this.context.workouts;
     const exercise = this.props.exercise;
 
     workouts.removeWorkoutDay(exercise.id, this.context.dayOfWeek);
 
-    this.props.forceGlobalUpdate();
+    this.context.updateWorkouts(workouts);
     this.props.displayMessage(`Deleted ${exercise.name}.`);
 
     saveWorkout(userId, workouts.get())
@@ -77,11 +77,11 @@ class Exercise extends Component {
     const metricTypes = exercise.type === 'weight' ? ['weight', 'reps', 'sets'] : ['time', 'distance', 'kcal'];
     const dayOfWeek = this.context.dayOfWeek;
 
-    const history = this.props.history;
+    const history = this.context.history;
     const workoutDate = history.getDate(dayOfWeek);
     const exerciseDone = history.hasWorkout(workoutDate, exercise.id);
 
-    const settings = this.props.settings;
+    const settings = this.context.settings;
 
     return (
       <div className={`Exercise ${modeClassName} ${this.props.workoutInProgress ? 'in-progress' : ''}`}>
@@ -100,17 +100,13 @@ class Exercise extends Component {
         {metricTypes.map(metricType =>
           <Metrics
             key={`${dayOfWeek}-${metricType}`}
-            workouts={this.props.workouts}
-            forceGlobalUpdate={this.props.forceGlobalUpdate}
+            workout={this.props.workout}
             exercise={exercise}
             metricType={metricType}
             metricValue={exercise.metrics[metricType].value}
             metricUnit={exercise.metrics[metricType].unit}
             settingsUnit={settings.getUnit(metricType)}
             displayMessage={this.props.displayMessage}
-
-            // TODO: Maybe use this instead of workouts?
-            workout={this.props.workout}
           />
         )}
       </div>

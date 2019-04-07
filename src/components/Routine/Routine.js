@@ -45,7 +45,7 @@ class Routine extends Component {
     const today = formatDate(new Date());
     const dayOfWeek = this.context.dayOfWeek;
     const userId = this.context.user.id;
-    const history = this.props.history;
+    const history = this.context.history;
 
     history.addDate(today, dayOfWeek);
 
@@ -53,14 +53,14 @@ class Routine extends Component {
 
     saveDates(userId, history.getDates())
       .then(() => {
-        this.props.forceGlobalUpdate();
+        this.context.updateHistory(history);
       });
   }
 
   render() {
     const dayOfWeek = this.context.dayOfWeek;
-    const workouts = this.props.workouts;
-    const history = this.props.history;
+    const workouts = this.context.workouts;
+    const history = this.context.history;
 
     const workoutsVm = workouts.getViewModel(dayOfWeek);
     const today = formatDate(new Date());
@@ -125,11 +125,7 @@ class Routine extends Component {
               {workout.exercises.map (exercise =>
                 <Exercise
                   key={`${dayOfWeek}-${exercise.name}`}
-                  workouts={this.props.workouts}
-                  settings={this.props.settings}
-                  history={this.props.history}
                   exercise={exercise}
-                  forceGlobalUpdate={this.props.forceGlobalUpdate}
                   workoutInProgress={workoutInProgress}
                   displayMessage={this.displayMessage}
 
@@ -140,10 +136,7 @@ class Routine extends Component {
             </div>
           )
         )}
-        <RoutineModal
-          workouts={this.props.workouts}
-          forceGlobalUpdate={this.props.forceGlobalUpdate}
-          displayMessage={this.displayMessage} />
+        <RoutineModal displayMessage={this.displayMessage} />
       </div>
     );
   }
