@@ -36,3 +36,11 @@
 .RoutineDayPicker .routine-day.today {
   color: var(--main-red-color);
 }
+
+/* Apple Watch */
+@media only screen and (max-width: 319px) {
+
+  .RoutineDayPicker {
+    overflow: scroll;
+  }
+}
