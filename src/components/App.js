@@ -79,7 +79,7 @@ class App extends Component {
     const settings = this.state.settings;
     const colorMode = typeof settings.getMode === 'function' ? settings.getMode() : '';
     const isLoading = typeof this.state.user.id !== 'string';
-    const loadingDiv = <div>Loading...</div>;
+    const loadingIndicator = <div>Loading...</div>;
 
     document.querySelector('body').classList = [colorMode];
 
@@ -91,21 +91,21 @@ class App extends Component {
             <Route exact={true} path='/:user_id' render={() => (
               <div className='container home'>
                 <NavigationBar />
-                {isLoading ? loadingDiv : <Home />}
+                {isLoading ? loadingIndicator : <Home />}
                 <Footer activeTab='home' />
               </div>
             )}/>
             <Route exact={true} path='/:user_id/progress' render={() => (
               <div className='container progress'>
                 <NavigationBar />
-                {isLoading ? loadingDiv : <Progress />}
+                {isLoading ? loadingIndicator : <Progress />}
                 <Footer activeTab='progress' />
               </div>
             )}/>
             <Route exact={true} path='/:user_id/favorites' render={() => (
               <div className='container favorites'>
                 <NavigationBar />
-                {isLoading ? loadingDiv : <Favorites />}
+                {isLoading ? loadingIndicator : <Favorites />}
                 <Footer activeTab='favorites' />
               </div>
             )}/>
