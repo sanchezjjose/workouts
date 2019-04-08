@@ -89,8 +89,8 @@ class Exercise extends Component {
           <button onClick={this.handleRemove} className="delete-button mdc-icon-button material-icons">clear</button> :
           (this.props.workoutInProgress &&
             (exerciseDone ?
-              <button onClick={() => this.handleStatusChange(false)} className="status-button mdc-icon-button material-icons fill">check_circle</button> :
-              <button onClick={() => this.handleStatusChange(true)} className="status-button mdc-icon-button material-icons">check_circle_outline</button>
+              <button onClick={() => this.handleStatusChange(false)} className="status-button mdc-icon-button material-icons fill">check_box</button> :
+              <button onClick={() => this.handleStatusChange(true)} className="status-button mdc-icon-button material-icons">check_box_outline_blank</button>
               // <img className='status-button' onClick={() => this.handleStatusChange(false)} src={checkCircleFilled} alt="done" /> :
               // <img className='status-button' onClick={() => this.handleStatusChange(true)} src={checkCircleOutline} alt="not-done" />
             )
