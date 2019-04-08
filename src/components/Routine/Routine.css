@@ -74,8 +74,9 @@
 
 .Routine .header {
   display: grid;
-  grid-template-columns: 3fr repeat(3, 1fr);
-  grid-gap: 5px;
+  /* grid-template-columns: 3fr repeat(3, 1fr); */
+  grid-template-columns: 50% repeat(3, 1fr);
+  /* grid-gap: 5px; */
   justify-items: center;
   align-items: end;
   text-align: center;

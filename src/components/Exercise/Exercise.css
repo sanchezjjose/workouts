@@ -1,7 +1,8 @@
 .Exercise {
   display: grid;
-  grid-template-columns: 3fr repeat(3, 1fr);
-  grid-gap: 5px;
+  /* grid-template-columns: 3fr repeat(3, 1fr); */
+  grid-template-columns: 50% repeat(3, 1fr);
+  /* grid-gap: 5px; */
   justify-items: center;
   align-items: center;
   margin-bottom: 10px;
@@ -9,7 +10,8 @@
 
 .Exercise.in-progress,
 .Exercise.editing {
-  grid-template-columns: 0.5fr 2.5fr repeat(3, 1fr);
+  /* grid-template-columns: 0.5fr 2.5fr repeat(3, 1fr); */
+  grid-template-columns: minmax(min-content, 48px) calc(50% - 48px) repeat(3, 1fr);
 }
 
 .Exercise.editing {

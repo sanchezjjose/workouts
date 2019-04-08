@@ -145,7 +145,7 @@ class Metrics extends Component {
     const metricUnit = this.props.metricUnit;
     const showMetricUnit = (typeof metricUnit !== 'undefined' && metricValue > 0) && !this.context.editMode && window.innerWidth >= 320;
     const inputValue = showMetricUnit ? `${metricValue} ${metricUnit}` : metricValue;
-    const inputType = showMetricUnit || metricType === 'time' ? 'text' : 'number';
+    const inputType = showMetricUnit || metricType === 'time' || !this.context.editMode ? 'text' : 'number';
 
     return (
       <div className={`Metrics`}>
