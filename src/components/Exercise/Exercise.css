@@ -45,7 +45,7 @@
 @media only screen and (max-width: 319px) {
 
   .Routine .group .Exercise.in-progress {
-    grid-template-columns: 18px 2fr repeat(3, 1fr);
+    grid-template-columns: 24px 2fr repeat(3, 1fr);
   }
 
   .Routine .group .Exercise .name {
