@@ -1,12 +1,4 @@
-import { compareNames, compareGroupNames } from '../lib/Util';
-
-const groupBy = (key, array) => {
-  return array.reduce((objectsByKeyValue, obj) => {
-    const value = obj[key];
-    objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
-    return objectsByKeyValue;
-  }, {});
-};
+import { groupBy, compareNames, compareGroupNames } from '../lib/Util';
 
 class Workouts {
 

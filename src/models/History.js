@@ -1,3 +1,5 @@
+import { groupBy, compareNames, compareGroupNames } from '../lib/Util';
+
 class History {
 
   constructor(history) {
@@ -57,7 +59,31 @@ class History {
   removeDate(date) {
     this.history.dates.all = this.history.dates.all.filter(d => d !== date);
   }
+
+  getViewModel(workoutDate, dayOpt) {
+    const workoutsArr = Object.entries(this.history.workouts[workoutDate]).map(w => w[1]);
+    const filteredWorkouts = dayOpt ? workoutsArr.filter(w => w.days.indexOf(dayOpt) > -1) : workoutsArr;
+    const groupedWorkouts = groupBy('type', filteredWorkouts);
+    const resultArr = Object.entries(groupedWorkouts).map(r => {
+      const type = r[0];
+      const sortedWorkouts = r[1].sort(compareNames);
+      const groupedWorkoutsArr = groupBy('group', sortedWorkouts);
+      const workouts = Object.entries(groupedWorkoutsArr).map(w => {
+        return {
+          group: w[0], 
+          exercises: w[1]
+        }
+      });
+
+      return {
+        type: type,
+        workouts: workouts.sort(compareGroupNames)
+      }
+    });
+
+    return resultArr;
+  }
 }
 
-// export default History;
-module.exports = History;
+export default History;
+// module.exports = History;

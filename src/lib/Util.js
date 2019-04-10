@@ -16,6 +16,14 @@ const compareGroupNames = (a, b) => {
   return 0;
 }
 
+const groupBy = (key, array) => {
+  return array.reduce((objectsByKeyValue, obj) => {
+    const value = obj[key];
+    objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
+    return objectsByKeyValue;
+  }, {});
+};
+
 const formatDate = (date) => {
   const month = `${date.getMonth()+1}`;
   const dayOfMonth = `${date.getDate()}`;
@@ -95,6 +103,7 @@ const convertTimeToDecimal = (metricValue, unit) => {
 module.exports = {
   compareNames: compareNames,
   compareGroupNames: compareGroupNames,
+  groupBy: groupBy,
   formatDate: formatDate,
   convertMetric: convertMetric,
   convertTimeToDecimal: convertTimeToDecimal
