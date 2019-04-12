@@ -45,7 +45,7 @@ class SettingsModal extends Component {
 
     return (
       <div className='SettingsModal'>
-        <div onClick={this.props.handleSettingsClose} className='close-modal'>&times;</div>
+        <div onClick={this.props.handleClose} className='close-modal'>&times;</div>
 
         <div className='form-field-heading'>Mode</div>
         <div className="mdc-form-field">

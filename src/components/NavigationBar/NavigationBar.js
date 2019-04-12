@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { UserContext } from '../UserContext';
 import { MDCRipple } from '@material/ripple';
 import SettingsModal from '../SettingsModal/SettingsModal';
+import MotivationVideosModal from '../MotivationVideosModal/MotivationVideosModal'
 
 import './NavigationBar.css';
 
@@ -10,7 +11,8 @@ class NavigationBar extends Component {
 
   state = {
     menuOpen: false,
-    settingsOpen: false
+    settingsOpen: false,
+    motivationVideosOpen: false
   }
 
   componentDidUpdate() {
@@ -45,6 +47,15 @@ class NavigationBar extends Component {
     this.setState({ settingsOpen: false });
   }
 
+  handleMotivationVideosOpen = () => {
+    this.setState({ motivationVideosOpen: true });
+    this.setState({ menuOpen: false });
+  }
+
+  handleMotivationVideosClose = () => {
+    this.setState({ motivationVideosOpen: false });
+  }
+
   render() {
     return (
       <header className='NavigationBar top-app-bar'>
@@ -69,6 +80,9 @@ class NavigationBar extends Component {
                 <li onClick={this.handleSettingsOpen} className='menu-preferences'>
                   Settings
                 </li>
+                <li onClick={this.handleMotivationVideosOpen} className='menu-preferences'>
+                  Motivation
+                </li>
                 <li className='menu-logout'>
                   <a href='/'>Logout</a>
                 </li>
@@ -77,7 +91,10 @@ class NavigationBar extends Component {
           </div>
         </section>
         {this.state.settingsOpen &&
-          <SettingsModal handleSettingsClose={this.handleSettingsClose} />
+          <SettingsModal handleClose={this.handleSettingsClose} />
+        }
+        {this.state.motivationVideosOpen &&
+          <MotivationVideosModal handleClose={this.handleMotivationVideosClose} />
         }
       </header>
     );
