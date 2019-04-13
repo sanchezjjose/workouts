@@ -5,7 +5,7 @@ import './MotivationVideos.css';
 class MotivationVideos extends Component {
 
   state = {
-    activeVideo: '',
+    activeVideo: this.props.activeVideo || '',
   }
 
   handleVideoClick = (e) => {

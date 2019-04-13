@@ -68,8 +68,10 @@
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
   display: grid;
   position: fixed;
-  grid-template-rows: repeat(2, 50px);
+  grid-template-rows: repeat(3, 50px);
   align-items: center;
+  justify-items: center;
+  text-align: center;
   list-style-type: none;
   top: 56px;
   right: 20px;
@@ -79,7 +81,12 @@
 }
 
 .NavigationBar .menu-drop-down .menu-items li {
-  padding: 0 16px;
+  padding: 16px 0;
+  width: 80%;
+}
+
+.NavigationBar .menu-drop-down .menu-items li:not(:last-child) {
+  border-bottom: 1px solid var(--secondary-border-color);
 }
 
 .NavigationBar .menu-drop-down .menu-items li a {

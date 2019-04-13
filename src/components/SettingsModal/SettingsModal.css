@@ -10,12 +10,18 @@
   width: 75%;
   height: 50%;
   overflow: scroll;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
 }
 
 .SettingsModal .close-modal {
   margin: 10px;
   font-size: 24px;
+  width: 24px;
+}
+
+.SettingsModal h2 {
+  text-align: center;
+  margin: 0;
 }
 
 .SettingsModal .form-field-heading {

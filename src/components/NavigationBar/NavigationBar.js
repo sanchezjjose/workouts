@@ -77,13 +77,13 @@ class NavigationBar extends Component {
             <button onClick={this.handleMenuClick} className='mdc-icon-button material-icons mdc-top-app-bar__action-item'>more_vert</button>
             {this.state.menuOpen &&
               <ul className='menu-items'>
-                <li onClick={this.handleSettingsOpen} className='menu-preferences'>
+                <li onClick={this.handleSettingsOpen}>
                   Settings
                 </li>
-                <li onClick={this.handleMotivationVideosOpen} className='menu-preferences'>
+                <li onClick={this.handleMotivationVideosOpen}>
                   Motivation
                 </li>
-                <li className='menu-logout'>
+                <li>
                   <a href='/'>Logout</a>
                 </li>
               </ul>

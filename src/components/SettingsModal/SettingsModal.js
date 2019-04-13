@@ -46,8 +46,9 @@ class SettingsModal extends Component {
     return (
       <div className='SettingsModal'>
         <div onClick={this.props.handleClose} className='close-modal'>&times;</div>
-
+        <h2>Settings</h2>
         <div className='form-field-heading'>Mode</div>
+
         <div className="mdc-form-field">
           <div className="mdc-radio">
             <input onChange={this.handleModeChange} className="mdc-radio__native-control" type="radio" id="radio-light" name="mode" value="light" checked={colorMode === 'light'} />

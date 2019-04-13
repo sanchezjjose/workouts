@@ -18,15 +18,6 @@
   margin-top: 50px;
 }
 
-.Routine .empty-routine-message a {
-  color: var(--main-link-color);
-  text-decoration: none;
-}
-
-.Routine .empty-routine-message a:visited {
-  color: var(--main-link-color);
-}
-
 .Routine .success-banner {
   box-sizing: border-box;
   display: grid;

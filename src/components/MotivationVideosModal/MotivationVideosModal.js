@@ -1,11 +1,14 @@
 import React from 'react';
 import MotivationVideos from '../MotivationVideos/MotivationVideos';
 
+import './MotivationVideosModal.css';
+
 function MotivationVideosModal(props) {
   return (
     <div className='MotivationVideosModal'>
-      <div className='close-icon' onClick={props.handleClose}>(X)</div>
-      <MotivationVideos />
+      <div onClick={props.handleClose} className='close-modal'>&times;</div>
+      <h1>Motivation</h1>
+      <MotivationVideos activeVideo='muhammad-ali' />
     </div>
   )
 }
