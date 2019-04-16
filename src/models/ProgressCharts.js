@@ -73,7 +73,7 @@ class ProgressCharts {
     return workouts.map(w => w.workouts);
   }
 
-  workoutsByWeightLabels() {
+  workoutsByWeightLabels(workoutGroupFilter) {
     const dataset = [];
     const color = Chart.helpers.color;
     const dateFormat = 'MM-DD-YYYY';
@@ -86,6 +86,7 @@ class ProgressCharts {
 
       if (numDaysAgo < 365) {
         workoutsOnDate.forEach((workout, i) => {
+          const workoutGroup = workout[1].group;
           const workoutName = workout[1].name;
           const workoutType = workout[1].type;
           const metrics = workout[1].metrics[workoutType];
@@ -98,6 +99,7 @@ class ProgressCharts {
             } else {
               dataset.push({
                 label: workoutName,
+                workoutGroup: workoutGroup,
                 hidden: dataset.length >= 3,
                 metricType: workoutType,
                 metricUnit: metrics.unit,
@@ -114,12 +116,15 @@ class ProgressCharts {
       }
     });
 
-    return dataset.filter(ds => ds.data.length > 1).map((ds, i) => {
-      const lineColor = this.chartColors[i] || this.chartColors[Math.floor(Math.random() * this.chartColors.length)];
-      ds.backgroundColor = color(lineColor).alpha(0.5).rgbString();
-      ds.borderColor = lineColor;
-      return ds;
-    });
+    return dataset
+      .filter(ds => ds.data.length > 1)
+      .filter(ds => workoutGroupFilter ? workoutGroupFilter === ds.workoutGroup : true)
+      .map((ds, i) => {
+        const lineColor = this.chartColors[i] || this.chartColors[Math.floor(Math.random() * this.chartColors.length)];
+        ds.backgroundColor = color(lineColor).alpha(0.5).rgbString();
+        ds.borderColor = lineColor;
+        return ds;
+      });
   }
 }
 

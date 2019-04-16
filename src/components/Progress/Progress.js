@@ -8,12 +8,13 @@ import './Progress.css';
 class Progress extends Component {
   static contextType = UserContext;
 
-  constructor() {
-    super();
+  state = {
+    progress: new ProgressCharts(this.context.history),
+    workoutFilter: ''
+  };
 
-    this.progressByMonthChart = {};
-    this.progressByWorkoutChart = {};
-  }
+  progressByMonthChart = {};
+  progressByWorkoutChart = {};
 
   setDefaults() {
     const colorMode = this.context.settings.getMode();
@@ -35,20 +36,22 @@ class Progress extends Component {
   }
 
   componentDidMount() {
-    const ctx1 = document.getElementById("progress-workouts-by-month");
-    const ctx2 = document.getElementById("progress-workouts-by-weight");
-    const progress = new ProgressCharts(this.context.history);
+    this.setDefaults();
+    this.updateProgressByMonthChart();
+    this.updateProgressByWeightChart();
+  }
+
+  updateProgressByMonthChart = () => {
+    const ctx = document.getElementById("progress-workouts-by-month");
     const color = Chart.helpers.color;
 
-    this.setDefaults();
-
-    this.progressByMonthChart = new Chart(ctx1, {
+    this.progressByMonthChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: progress.workoutsByMonthLabels(),
+        labels: this.state.progress.workoutsByMonthLabels(),
         datasets: [{
           label: '# of Workouts',
-          data: progress.workoutsByMonth(),
+          data: this.state.progress.workoutsByMonth(),
           backgroundColor: color('#EF5350').alpha(0.5).rgbString(),
           borderColor: '#EF5350',
           borderWidth: 1
@@ -65,12 +68,16 @@ class Progress extends Component {
         }
       }
     });
+  }
 
-    this.progressByWorkoutChart = new Chart(ctx2, {
+  updateProgressByWeightChart = (workoutGroup) => {
+    const ctx = document.getElementById("progress-workouts-by-weight");
+
+    this.progressByWorkoutChart = new Chart(ctx, {
       type: 'line',
       data: {
         label: 'Workout Progress',
-        datasets: progress.workoutsByWeightLabels()
+        datasets: this.state.progress.workoutsByWeightLabels(workoutGroup)
       },
       options: {
         maintainAspectRatio: false,
@@ -105,9 +112,21 @@ class Progress extends Component {
     });
   }
 
+  filterWorkouts = (e) => {
+    const workoutGroup = e.target.innerText;
+
+    this.updateProgressByWeightChart(workoutGroup);
+    this.setState({ workoutFilter: e.target.innerText });
+  }
+
   render() {
     return (
       <div className='Progress'>
+        {/* <div className='workout-group'>
+          <div onClick={this.filterWorkouts} className='group-name'>Chest</div>
+          <div onClick={this.filterWorkouts} className='group-name'>Biceps</div>
+          <div onClick={this.filterWorkouts} className='group-name'>Legs</div>
+        </div> */}
         <canvas id="progress-workouts-by-weight"></canvas>
         <canvas id="progress-workouts-by-month"></canvas>
       </div>

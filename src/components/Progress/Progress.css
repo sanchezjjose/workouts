@@ -8,3 +8,13 @@
 .Progress canvas {
   padding-bottom: 80px;
 }
+
+.Progress .workout-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.Progress .workout-group .group-name {
+  border: 1px dotted red;
+  color: var(--main-txt-color);
+}
