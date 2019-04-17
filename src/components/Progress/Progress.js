@@ -120,14 +120,18 @@ class Progress extends Component {
   }
 
   render() {
-    const groups = this.progress.workoutsByWeightLabels().map(w => w.workoutGroup);
+    const groups = [...new Set(this.progress.workoutsByWeightLabels().map(w => w.workoutGroup))];
 
     return (
       <div className='Progress'>
         <div className='workout-group'>
           {groups.map (group => 
-            <div onClick={this.filterWorkouts} className='group-name'>{group}</div>
+            <div key={group} onClick={this.filterWorkouts} className='group-name'>{group}</div>
           )}
+            <div onClick={this.filterWorkouts} className='group-name'>test</div>
+            <div onClick={this.filterWorkouts} className='group-name'>test</div>
+            <div onClick={this.filterWorkouts} className='group-name'>test</div>
+            <div onClick={this.filterWorkouts} className='group-name'>test</div>
         </div>
         <canvas id="progress-workouts-by-weight"></canvas>
         <canvas id="progress-workouts-by-month"></canvas>

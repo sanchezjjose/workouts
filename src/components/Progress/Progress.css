@@ -10,11 +10,18 @@
 }
 
 .Progress .workout-group {
+  display: grid;
+  /* grid-template-rows: 30px; */
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+  grid-gap: 5px;
+  align-items: center;
+  justify-items: center;
   overflow: scroll;
 }
 
 .Progress .workout-group .group-name {
   display: inline-block;
-  border: 1px dotted red;
+  /* border: 1px dotted red; */
   color: var(--main-txt-color);
 }
