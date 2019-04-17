@@ -10,11 +10,11 @@
 }
 
 .Progress .workout-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  overflow: scroll;
 }
 
 .Progress .workout-group .group-name {
+  display: inline-block;
   border: 1px dotted red;
   color: var(--main-txt-color);
 }

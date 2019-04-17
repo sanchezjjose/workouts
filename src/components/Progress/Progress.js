@@ -9,10 +9,10 @@ class Progress extends Component {
   static contextType = UserContext;
 
   state = {
-    progress: new ProgressCharts(this.context.history),
     workoutFilter: ''
   };
 
+  progress = new ProgressCharts(this.context.history);
   progressByMonthChart = {};
   progressByWorkoutChart = {};
 
@@ -29,11 +29,11 @@ class Progress extends Component {
     }
   }
 
-  componentDidUpdate() {
-    this.setDefaults();
-    this.progressByMonthChart.update();
-    this.progressByWorkoutChart.update();
-  }
+  // componentDidUpdate() {
+  //   this.setDefaults();
+  //   this.progressByMonthChart.update();
+  //   this.progressByWorkoutChart.update();
+  // }
 
   componentDidMount() {
     this.setDefaults();
@@ -48,10 +48,10 @@ class Progress extends Component {
     this.progressByMonthChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: this.state.progress.workoutsByMonthLabels(),
+        labels: this.progress.workoutsByMonthLabels(),
         datasets: [{
           label: '# of Workouts',
-          data: this.state.progress.workoutsByMonth(),
+          data: this.progress.workoutsByMonth(),
           backgroundColor: color('#EF5350').alpha(0.5).rgbString(),
           borderColor: '#EF5350',
           borderWidth: 1
@@ -77,7 +77,7 @@ class Progress extends Component {
       type: 'line',
       data: {
         label: 'Workout Progress',
-        datasets: this.state.progress.workoutsByWeightLabels(workoutGroup)
+        datasets: this.progress.workoutsByWeightLabels(workoutGroup)
       },
       options: {
         maintainAspectRatio: false,
@@ -120,13 +120,15 @@ class Progress extends Component {
   }
 
   render() {
+    const groups = this.progress.workoutsByWeightLabels().map(w => w.workoutGroup);
+
     return (
       <div className='Progress'>
-        {/* <div className='workout-group'>
-          <div onClick={this.filterWorkouts} className='group-name'>Chest</div>
-          <div onClick={this.filterWorkouts} className='group-name'>Biceps</div>
-          <div onClick={this.filterWorkouts} className='group-name'>Legs</div>
-        </div> */}
+        <div className='workout-group'>
+          {groups.map (group => 
+            <div onClick={this.filterWorkouts} className='group-name'>{group}</div>
+          )}
+        </div>
         <canvas id="progress-workouts-by-weight"></canvas>
         <canvas id="progress-workouts-by-month"></canvas>
       </div>
