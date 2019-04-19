@@ -8,13 +8,14 @@ import './Progress.css';
 class Progress extends Component {
   static contextType = UserContext;
 
-  state = {
-    workoutFilter: ''
-  };
-
   progress = new ProgressCharts(this.context.history);
+  workoutGroups = [...new Set(this.progress.workoutsByWeightLabels().map(w => w.workoutGroup))];
   progressByMonthChart = {};
   progressByWorkoutChart = {};
+
+  state = {
+    workoutFilter: this.workoutGroups[0]
+  };
 
   setDefaults() {
     const colorMode = this.context.settings.getMode();
@@ -29,11 +30,11 @@ class Progress extends Component {
     }
   }
 
-  // componentDidUpdate() {
-  //   this.setDefaults();
-  //   this.progressByMonthChart.update();
-  //   this.progressByWorkoutChart.update();
-  // }
+  componentDidUpdate() {
+    this.setDefaults();
+    this.progressByMonthChart.update();
+    this.progressByWorkoutChart.update();
+  }
 
   componentDidMount() {
     this.setDefaults();
@@ -70,14 +71,14 @@ class Progress extends Component {
     });
   }
 
-  updateProgressByWeightChart = (workoutGroup) => {
+  updateProgressByWeightChart = () => {
     const ctx = document.getElementById("progress-workouts-by-weight");
 
     this.progressByWorkoutChart = new Chart(ctx, {
       type: 'line',
       data: {
         label: 'Workout Progress',
-        datasets: this.progress.workoutsByWeightLabels(workoutGroup)
+        datasets: this.progress.workoutsByWeightLabels(this.state.workoutFilter)
       },
       options: {
         maintainAspectRatio: false,
@@ -113,25 +114,19 @@ class Progress extends Component {
   }
 
   filterWorkouts = (e) => {
-    const workoutGroup = e.target.innerText;
-
-    this.updateProgressByWeightChart(workoutGroup);
-    this.setState({ workoutFilter: e.target.innerText });
+    this.setState({ workoutFilter: e.target.innerText }, () => {
+      this.progressByWorkoutChart.destroy();
+      this.updateProgressByWeightChart();
+    });
   }
 
   render() {
-    const groups = [...new Set(this.progress.workoutsByWeightLabels().map(w => w.workoutGroup))];
-
     return (
       <div className='Progress'>
         <div className='workout-group'>
-          {groups.map (group => 
-            <div key={group} onClick={this.filterWorkouts} className='group-name'>{group}</div>
+          {this.workoutGroups.map (group =>
+            <div key={group} onClick={this.filterWorkouts} className={`group-name ${group === this.state.workoutFilter ? 'selected' : ''}`}>{group}</div>
           )}
-            <div onClick={this.filterWorkouts} className='group-name'>test</div>
-            <div onClick={this.filterWorkouts} className='group-name'>test</div>
-            <div onClick={this.filterWorkouts} className='group-name'>test</div>
-            <div onClick={this.filterWorkouts} className='group-name'>test</div>
         </div>
         <canvas id="progress-workouts-by-weight"></canvas>
         <canvas id="progress-workouts-by-month"></canvas>
