@@ -123,11 +123,13 @@ class Progress extends Component {
   render() {
     return (
       <div className='Progress'>
-        <div className='workout-group'>
-          {this.workoutGroups.map (group =>
-            <div key={group} onClick={this.filterWorkouts} className={`group-name ${group === this.state.workoutFilter ? 'selected' : ''}`}>{group}</div>
-          )}
-        </div>
+        {this.workoutGroups.length > 1 &&
+          <div className='workout-group'>
+            {this.workoutGroups.map (group =>
+              <div key={group} onClick={this.filterWorkouts} className={`group-name ${group === this.state.workoutFilter ? 'selected' : ''}`}>{group}</div>
+            )}
+          </div>
+        }
         <canvas id="progress-workouts-by-weight"></canvas>
         <canvas id="progress-workouts-by-month"></canvas>
       </div>
