@@ -1,50 +1,49 @@
 import Chart from 'chart.js';
 import moment from 'moment';
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
+const chartColors = [
+  '#EF5350',
+  '#78909C',
+  '#FF7043',
+  '#FFA726',
+  '#FFEE58',
+  '#D4E157',
+  '#26C6DA',
+  '#66BB6A',
+  '#9CCC65',
+  '#26A69A',
+  '#29B6F6',
+  '#42A5F5',
+  '#7E57C2',
+  '#FFCA28',
+  '#5C6BC0',
+  '#AB47BC',
+  '#EC407A',
+];
+
 class ProgressCharts {
 
   constructor(history) {
     this.history = history;
   }
-  
-  months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
 
-  chartColors = [
-    '#EF5350',
-    '#78909C',
-    '#FF7043',
-    '#FFA726',
-    '#FFEE58',
-    '#D4E157',
-    '#26C6DA',
-    '#66BB6A',
-    '#9CCC65',
-    '#26A69A',
-    '#29B6F6',
-    '#42A5F5',
-    '#7E57C2',
-    '#FFCA28',
-    '#5C6BC0',
-    '#AB47BC',
-    '#EC407A',
-  ];
-
-  workoutsByMonthLabels() {
+  workoutsByMonthLabels = () => {
     const chartLabel = [];
-    const months = this.months;
     const currentMonth = months[new Date().getMonth()];
     const startIndex = months.indexOf(currentMonth);
 
@@ -58,14 +57,14 @@ class ProgressCharts {
     return chartLabel.reverse();
   }
 
-  workoutsByMonth() {
-    const workouts = this.workoutsByMonthLabels().map(month => { 
+  workoutsByMonth = () => {
+    const workouts = this.workoutsByMonthLabels().map(month => {
       return { month: month, workouts: 0 };
     });
 
     this.history.getDates().all.forEach(date => {
       const formattedDate = date.replace('-', '/'); // Safari workaround. Remove this.
-      const workoutMonth = this.months[new Date(formattedDate).getMonth()];
+      const workoutMonth = months[new Date(formattedDate).getMonth()];
 
       workouts.find(w => w.month === workoutMonth).workouts += 1;
     });
@@ -73,7 +72,7 @@ class ProgressCharts {
     return workouts.map(w => w.workouts);
   }
 
-  workoutsByWeightLabels(workoutGroupFilter) {
+  workoutsByWeightLabels = (workoutGroupFilter) => {
     const dataset = [];
     const color = Chart.helpers.color;
     const dateFormat = 'MM-DD-YYYY';
@@ -120,11 +119,82 @@ class ProgressCharts {
       .filter(ds => ds.data.length > 1)
       .filter(ds => workoutGroupFilter ? workoutGroupFilter === ds.workoutGroup : true)
       .map((ds, i) => {
-        const lineColor = this.chartColors[i] || this.chartColors[Math.floor(Math.random() * this.chartColors.length)];
+        const lineColor = chartColors[i] || chartColors[Math.floor(Math.random() * chartColors.length)];
         ds.backgroundColor = color(lineColor).alpha(0.5).rgbString();
         ds.borderColor = lineColor;
         return ds;
       });
+  }
+
+  initProgressByWeightChart = (workoutFilter) => {
+    const ctx = document.getElementById("progress-workouts-by-weight");
+
+    return new Chart(ctx, {
+      type: 'line',
+      data: {
+        label: 'Workout Progress',
+        datasets: this.workoutsByWeightLabels(workoutFilter)
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'series',
+            ticks: {
+              source: 'data',
+              autoSkip: true,
+              beginAtZero: true
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        tooltips: {
+					intersect: false,
+					mode: 'index',
+					callbacks: {
+						label: function(tooltipItem, data) {
+							const label = data.datasets[tooltipItem.datasetIndex].label;
+              const unit = data.datasets[tooltipItem.datasetIndex].metricUnit;
+							return `${label}: ${tooltipItem.yLabel} ${unit}`;
+						}
+					}
+				}
+      }
+    });
+  }
+
+  initProgressByMonthChart = () => {
+    const ctx = document.getElementById("progress-workouts-by-month");
+    const color = Chart.helpers.color;
+
+    return new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: this.workoutsByMonthLabels(),
+        datasets: [{
+          label: '# of Workouts',
+          data: this.workoutsByMonth(),
+          backgroundColor: color('#EF5350').alpha(0.5).rgbString(),
+          borderColor: '#EF5350',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
   }
 }
 
