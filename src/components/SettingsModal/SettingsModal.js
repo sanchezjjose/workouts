@@ -66,6 +66,14 @@ class SettingsModal extends Component {
             </div>
           </div>
           <label htmlFor="radio-min">Dark</label>
+          <div className="mdc-radio">
+            <input onChange={this.handleModeChange} className="mdc-radio__native-control" type="radio" id="radio-midnight" name="mode" value="midnight" checked={colorMode === 'midnight'} />
+            <div className="mdc-radio__background">
+              <div className="mdc-radio__outer-circle"></div>
+              <div className="mdc-radio__inner-circle"></div>
+            </div>
+          </div>
+          <label htmlFor="radio-min">Midnight</label>
         </div>
 
         <div className='form-field-heading'>Weight</div>

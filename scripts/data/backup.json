@@ -170,14 +170,24 @@
         "03-29-2019",
         "03-30-2019",
         "03-31-2019",
-        "04-02-2019"
+        "04-02-2019",
+        "04-05-2019",
+        "04-07-2019",
+        "04-08-2019",
+        "04-09-2019",
+        "04-12-2019",
+        "04-13-2019",
+        "04-17-2019",
+        "04-19-2019",
+        "04-28-2019"
       ],
       "recent": {
-        "Friday": "03-29-2019",
-        "Monday": "03-27-2019",
-        "Saturday": "03-30-2019",
-        "Sunday": "03-31-2019",
-        "Tuesday": "04-02-2019"
+        "Friday": "04-28-2019",
+        "Monday": "04-17-2019",
+        "Saturday": "04-28-2019",
+        "Sunday": "04-28-2019",
+        "Tuesday": "04-09-2019",
+        "Wednesday": "04-12-2019"
       }
     },
     "workouts": {
@@ -1520,6 +1530,1658 @@
           "name": "Pushdown (rope)",
           "type": "weight"
         }
+      },
+      "04-05-2019": {
+        "chest-dips": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Chest",
+          "id": "chest-dips",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 10
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Dips",
+          "type": "weight"
+        },
+        "shoulders-barbell-military-press": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-barbell-military-press",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "95"
+            }
+          },
+          "name": "Barbell Military Press",
+          "type": "weight"
+        },
+        "shoulders-front-two-dumbbell-raise": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-front-two-dumbbell-raise",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "20"
+            }
+          },
+          "name": "Front Two Dumbbell Raise",
+          "type": "weight"
+        },
+        "shoulders-lateral-raise-machine": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-lateral-raise-machine",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 90
+            }
+          },
+          "name": "Lateral Raise Machine",
+          "type": "weight"
+        },
+        "shoulders-reverse-machine-flies": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-reverse-machine-flies",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 125
+            }
+          },
+          "name": "Reverse Machine Flies",
+          "type": "weight"
+        },
+        "shoulders-shrugs": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-shrugs",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 20
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 60
+            }
+          },
+          "name": "Shrugs",
+          "type": "weight"
+        },
+        "shoulders-upright-cable-row": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-upright-cable-row",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "110"
+            }
+          },
+          "name": "Upright Cable Row",
+          "type": "weight"
+        }
+      },
+      "04-07-2019": {
+        "core-plank-time": {
+          "days": [
+            "Saturday",
+            "Sunday"
+          ],
+          "group": "Core",
+          "id": "core-plank-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 0
+            },
+            "time": {
+              "unit": "min",
+              "value": 3
+            }
+          },
+          "name": "Plank",
+          "type": "time"
+        },
+        "legs-barbell-deadlift": {
+          "days": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-barbell-deadlift",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "135"
+            }
+          },
+          "name": "Barbell Deadlift",
+          "type": "weight"
+        },
+        "legs-glute-drive-weight": {
+          "days": [
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-glute-drive-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 8
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "70"
+            }
+          },
+          "name": "Glute Drive",
+          "type": "weight"
+        },
+        "legs-leg-curl-weight": {
+          "days": [
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-leg-curl-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "5"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 25
+            }
+          },
+          "name": "Leg Curl",
+          "type": "weight"
+        },
+        "legs-leg-extensions": {
+          "days": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-leg-extensions",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "5"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "120"
+            }
+          },
+          "name": "Leg Extensions",
+          "type": "weight"
+        },
+        "legs-standing-calf-raise": {
+          "days": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-standing-calf-raise",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "25"
+            },
+            "sets": {
+              "value": "4"
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "170"
+            }
+          },
+          "name": "Standing Calf Raise",
+          "type": "weight"
+        },
+        "other-sauna": {
+          "days": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "group": "Other",
+          "id": "other-sauna",
+          "metrics": {
+            "distance": {
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 50
+            },
+            "time": {
+              "unit": "min",
+              "value": 25
+            }
+          },
+          "name": "Sauna",
+          "type": "time"
+        },
+        "other-stretching-time": {
+          "days": [
+            "Saturday",
+            "Sunday",
+            "Friday"
+          ],
+          "group": "Other",
+          "id": "other-stretching-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 0
+            },
+            "time": {
+              "unit": "min",
+              "value": 15
+            }
+          },
+          "name": "Stretching",
+          "type": "time"
+        },
+        "running-treadmill-time": {
+          "days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "group": "Running",
+          "id": "running-treadmill-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": "1.18"
+            },
+            "done": true,
+            "kcal": {
+              "value": "120"
+            },
+            "time": {
+              "unit": "min",
+              "value": 10
+            }
+          },
+          "name": "Treadmill",
+          "type": "time"
+        }
+      },
+      "04-08-2019": {
+        "chest-dips": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Chest",
+          "id": "chest-dips",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 10
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Dips",
+          "type": "weight"
+        },
+        "chest-pushups": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Chest",
+          "id": "chest-pushups",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "25"
+            },
+            "sets": {
+              "value": "4"
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Pushups",
+          "type": "weight"
+        },
+        "shoulders-barbell-military-press": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-barbell-military-press",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 100
+            }
+          },
+          "name": "Barbell Military Press",
+          "type": "weight"
+        },
+        "shoulders-front-two-dumbbell-raise": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-front-two-dumbbell-raise",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 15
+            }
+          },
+          "name": "Front Two Dumbbell Raise",
+          "type": "weight"
+        },
+        "shoulders-lateral-raise-machine": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-lateral-raise-machine",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 95
+            }
+          },
+          "name": "Lateral Raise Machine",
+          "type": "weight"
+        },
+        "shoulders-reverse-machine-flies": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-reverse-machine-flies",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 130
+            }
+          },
+          "name": "Reverse Machine Flies",
+          "type": "weight"
+        },
+        "shoulders-shrugs": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-shrugs",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 20
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 65
+            }
+          },
+          "name": "Shrugs",
+          "type": "weight"
+        },
+        "shoulders-upright-cable-row": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-upright-cable-row",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 6
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "110"
+            }
+          },
+          "name": "Upright Cable Row",
+          "type": "weight"
+        }
+      },
+      "04-09-2019": {
+        "back-close-grip-pull-down": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-close-grip-pull-down",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 150
+            }
+          },
+          "name": "Close Grip Pull Down",
+          "type": "weight"
+        },
+        "back-pull-ups": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-pull-ups",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Pull Ups",
+          "type": "weight"
+        },
+        "back-single-arm-dumbbell-row": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-single-arm-dumbbell-row",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 70
+            }
+          },
+          "name": "Single Arm Dumbbell Row",
+          "type": "weight"
+        },
+        "back-wide-grip-seated-cable-row": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-wide-grip-seated-cable-row",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 150
+            }
+          },
+          "name": "Wide Grip Seated Cable Row",
+          "type": "weight"
+        },
+        "biceps-arm-curl machine-weight": {
+          "days": [
+            "Tuesday"
+          ],
+          "group": "Biceps",
+          "id": "biceps-arm-curl machine-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "6"
+            },
+            "sets": {
+              "value": "3"
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "85"
+            }
+          },
+          "name": "Arm Curl Machine",
+          "type": "weight"
+        },
+        "biceps-dumbbell-curls": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Biceps",
+          "id": "biceps-dumbbell-curls",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "8"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 30
+            }
+          },
+          "name": "Dumbbell Curls",
+          "type": "weight"
+        },
+        "triceps-dips": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Triceps",
+          "id": "triceps-dips",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 10
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Dips",
+          "type": "weight"
+        },
+        "triceps-pushdown-rope": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Triceps",
+          "id": "triceps-pushdown-rope",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "8"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "100"
+            }
+          },
+          "name": "Pushdown (rope)",
+          "type": "weight"
+        }
+      },
+      "04-12-2019": {
+        "core-plank-time": {
+          "days": [
+            "Saturday",
+            "Sunday",
+            "Wednesday"
+          ],
+          "group": "Core",
+          "id": "core-plank-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 0
+            },
+            "time": {
+              "unit": "min",
+              "value": 3
+            }
+          },
+          "name": "Plank",
+          "type": "time"
+        },
+        "legs-barbell-deadlift": {
+          "days": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-barbell-deadlift",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 2
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 135
+            }
+          },
+          "name": "Barbell Deadlift",
+          "type": "weight"
+        },
+        "legs-glute-drive-weight": {
+          "days": [
+            "Sunday",
+            "Wednesday"
+          ],
+          "group": "Legs",
+          "id": "legs-glute-drive-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 8
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "80"
+            }
+          },
+          "name": "Glute Drive",
+          "type": "weight"
+        },
+        "legs-leg-curl-weight": {
+          "days": [
+            "Sunday",
+            "Wednesday"
+          ],
+          "group": "Legs",
+          "id": "legs-leg-curl-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "5"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 30
+            }
+          },
+          "name": "Leg Curl",
+          "type": "weight"
+        },
+        "legs-leg-extensions": {
+          "days": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-leg-extensions",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "5"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "140"
+            }
+          },
+          "name": "Leg Extensions",
+          "type": "weight"
+        },
+        "legs-standing-calf-raise": {
+          "days": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-standing-calf-raise",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "25"
+            },
+            "sets": {
+              "value": "4"
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "170"
+            }
+          },
+          "name": "Standing Calf Raise",
+          "type": "weight"
+        },
+        "other-stretching-time": {
+          "days": [
+            "Saturday",
+            "Sunday",
+            "Friday",
+            "Wednesday"
+          ],
+          "group": "Other",
+          "id": "other-stretching-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 0
+            },
+            "time": {
+              "unit": "min",
+              "value": 5
+            }
+          },
+          "name": "Stretching",
+          "type": "time"
+        },
+        "running-treadmill-time": {
+          "days": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "group": "Running",
+          "id": "running-treadmill-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": 1.18
+            },
+            "done": true,
+            "kcal": {
+              "value": "139"
+            },
+            "time": {
+              "unit": "min",
+              "value": 10.2
+            }
+          },
+          "name": "Treadmill",
+          "type": "time"
+        }
+      },
+      "04-13-2019": {
+        "back-close-grip-pull-down": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-close-grip-pull-down",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 150
+            }
+          },
+          "name": "Close Grip Pull Down",
+          "type": "weight"
+        },
+        "back-pull-ups": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-pull-ups",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Pull Ups",
+          "type": "weight"
+        },
+        "back-single-arm-dumbbell-row": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-single-arm-dumbbell-row",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 70
+            }
+          },
+          "name": "Single Arm Dumbbell Row",
+          "type": "weight"
+        },
+        "back-wide-grip-seated-cable-row": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-wide-grip-seated-cable-row",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 150
+            }
+          },
+          "name": "Wide Grip Seated Cable Row",
+          "type": "weight"
+        },
+        "biceps-arm-curl machine-weight": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Biceps",
+          "id": "biceps-arm-curl machine-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": "3"
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 90
+            }
+          },
+          "name": "Arm Curl Machine",
+          "type": "weight"
+        },
+        "biceps-chin-ups": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Biceps",
+          "id": "biceps-chin-ups",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 3
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Chin Ups",
+          "type": "weight"
+        },
+        "biceps-curls-bands": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Biceps",
+          "id": "biceps-curls-bands",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 10
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Curls (bands)",
+          "type": "weight"
+        },
+        "biceps-dumbbell-curls": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Biceps",
+          "id": "biceps-dumbbell-curls",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "8"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 25
+            }
+          },
+          "name": "Dumbbell Curls",
+          "type": "weight"
+        },
+        "triceps-dips": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Triceps",
+          "id": "triceps-dips",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 15
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Dips",
+          "type": "weight"
+        },
+        "triceps-ez-bar-standing-overhead": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Triceps",
+          "id": "triceps-ez-bar-standing-overhead",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 65
+            }
+          },
+          "name": "EZ-Bar Standing Overhead",
+          "type": "weight"
+        },
+        "triceps-pushdown-rope": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Triceps",
+          "id": "triceps-pushdown-rope",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "8"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "100"
+            }
+          },
+          "name": "Pushdown (rope)",
+          "type": "weight"
+        }
+      },
+      "04-17-2019": {
+        "chest-decline-bench press-weight": {
+          "days": [
+            "Monday"
+          ],
+          "group": "Chest",
+          "id": "chest-decline-bench press-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "5"
+            },
+            "sets": {
+              "value": "3"
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "135"
+            }
+          },
+          "name": "Decline Bench Press",
+          "type": "weight"
+        },
+        "chest-dips": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Chest",
+          "id": "chest-dips",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 10
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Dips",
+          "type": "weight"
+        },
+        "chest-incline-bench press-weight": {
+          "days": [
+            "Monday"
+          ],
+          "group": "Chest",
+          "id": "chest-incline-bench press-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "3"
+            },
+            "sets": {
+              "value": "3"
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "135"
+            }
+          },
+          "name": "Incline Bench Press",
+          "type": "weight"
+        },
+        "chest-pushups": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Chest",
+          "id": "chest-pushups",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "25"
+            },
+            "sets": {
+              "value": "4"
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Pushups",
+          "type": "weight"
+        },
+        "other-stretching-time": {
+          "days": [
+            "Saturday",
+            "Sunday",
+            "Friday",
+            "Wednesday",
+            "Monday"
+          ],
+          "group": "Other",
+          "id": "other-stretching-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 0
+            },
+            "time": {
+              "unit": "min",
+              "value": 5
+            }
+          },
+          "name": "Stretching",
+          "type": "time"
+        },
+        "shoulders-front-two-dumbbell-raise": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-front-two-dumbbell-raise",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 15
+            }
+          },
+          "name": "Front Two Dumbbell Raise",
+          "type": "weight"
+        },
+        "shoulders-lateral-raise-machine": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-lateral-raise-machine",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 90
+            }
+          },
+          "name": "Lateral Raise Machine",
+          "type": "weight"
+        },
+        "shoulders-reverse-machine-flies": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-reverse-machine-flies",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 130
+            }
+          },
+          "name": "Reverse Machine Flies",
+          "type": "weight"
+        },
+        "shoulders-shrugs": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-shrugs",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 20
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 65
+            }
+          },
+          "name": "Shrugs",
+          "type": "weight"
+        }
+      },
+      "04-19-2019": {
+        "other-sauna": {
+          "days": [
+            "Wednesday",
+            "Sunday",
+            "Friday"
+          ],
+          "group": "Other",
+          "id": "other-sauna",
+          "metrics": {
+            "distance": {
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 50
+            },
+            "time": {
+              "unit": "min",
+              "value": 30
+            }
+          },
+          "name": "Sauna",
+          "type": "time"
+        }
+      },
+      "04-28-2019": {
+        "back-pull-ups": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-pull-ups",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Pull Ups",
+          "type": "weight"
+        },
+        "back-single-arm-dumbbell-row": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Back",
+          "id": "back-single-arm-dumbbell-row",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 70
+            }
+          },
+          "name": "Single Arm Dumbbell Row",
+          "type": "weight"
+        },
+        "biceps-arm-curl machine-weight": {
+          "days": [
+            "Tuesday",
+            "Saturday"
+          ],
+          "group": "Biceps",
+          "id": "biceps-arm-curl machine-weight",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 90
+            }
+          },
+          "name": "Arm Curl Machine",
+          "type": "weight"
+        },
+        "chest-dips": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Chest",
+          "id": "chest-dips",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 8
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 0
+            }
+          },
+          "name": "Dips",
+          "type": "weight"
+        },
+        "core-plank-time": {
+          "days": [
+            "Saturday",
+            "Sunday",
+            "Wednesday"
+          ],
+          "group": "Core",
+          "id": "core-plank-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 0
+            },
+            "time": {
+              "unit": "min",
+              "value": 3
+            }
+          },
+          "name": "Plank",
+          "type": "time"
+        },
+        "legs-leg-extensions": {
+          "days": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "group": "Legs",
+          "id": "legs-leg-extensions",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": "5"
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": "140"
+            }
+          },
+          "name": "Leg Extensions",
+          "type": "weight"
+        },
+        "other-stretching-time": {
+          "days": [
+            "Saturday",
+            "Sunday",
+            "Friday",
+            "Wednesday",
+            "Monday"
+          ],
+          "group": "Other",
+          "id": "other-stretching-time",
+          "metrics": {
+            "distance": {
+              "unit": "mi",
+              "value": 0
+            },
+            "done": true,
+            "kcal": {
+              "value": 0
+            },
+            "time": {
+              "unit": "min",
+              "value": 5
+            }
+          },
+          "name": "Stretching",
+          "type": "time"
+        },
+        "shoulders-lateral-raise-machine": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-lateral-raise-machine",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 4
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 90
+            }
+          },
+          "name": "Lateral Raise Machine",
+          "type": "weight"
+        },
+        "shoulders-reverse-machine-flies": {
+          "days": [
+            "Monday",
+            "Friday"
+          ],
+          "group": "Shoulders",
+          "id": "shoulders-reverse-machine-flies",
+          "metrics": {
+            "done": true,
+            "reps": {
+              "value": 5
+            },
+            "sets": {
+              "value": 3
+            },
+            "weight": {
+              "unit": "lbs",
+              "value": 130
+            }
+          },
+          "name": "Reverse Machine Flies",
+          "type": "weight"
+        }
       }
     }
   },
@@ -1543,7 +3205,7 @@
       "group": "Back",
       "id": "back-bent-over-barbell-row",
       "metrics": {
-        "done": true,
+        "done": false,
         "reps": {
           "value": 5
         },
@@ -1552,7 +3214,7 @@
         },
         "weight": {
           "unit": "lbs",
-          "value": 100
+          "value": 105
         }
       },
       "name": "Bent Over Barbell Row",
@@ -1594,7 +3256,7 @@
           "value": 5
         },
         "sets": {
-          "value": 3
+          "value": 4
         },
         "weight": {
           "unit": "lbs",
@@ -1621,7 +3283,7 @@
         },
         "weight": {
           "unit": "lbs",
-          "value": 65
+          "value": 70
         }
       },
       "name": "Single Arm Dumbbell Row",
@@ -1652,21 +3314,22 @@
     },
     "biceps-arm-curl machine-weight": {
       "days": [
-        "Tuesday"
+        "Tuesday",
+        "Saturday"
       ],
       "group": "Biceps",
       "id": "biceps-arm-curl machine-weight",
       "metrics": {
         "done": true,
         "reps": {
-          "value": "5"
+          "value": 5
         },
         "sets": {
-          "value": "4"
+          "value": 4
         },
         "weight": {
           "unit": "lbs",
-          "value": "80"
+          "value": 90
         }
       },
       "name": "Arm Curl Machine",
@@ -1682,7 +3345,7 @@
       "metrics": {
         "done": true,
         "reps": {
-          "value": 5
+          "value": 3
         },
         "sets": {
           "value": 3
@@ -1728,14 +3391,14 @@
       "metrics": {
         "done": true,
         "reps": {
-          "value": 4
+          "value": "8"
         },
         "sets": {
           "value": 4
         },
         "weight": {
           "unit": "lbs",
-          "value": 30
+          "value": 25
         }
       },
       "name": "Dumbbell Curls",
@@ -1764,15 +3427,14 @@
     },
     "chest-barbell-bench-press": {
       "days": [
-        "Monday",
         "Friday"
       ],
       "group": "Chest",
       "id": "chest-barbell-bench-press",
       "metrics": {
-        "done": true,
+        "done": false,
         "reps": {
-          "value": 6
+          "value": 5
         },
         "sets": {
           "value": 3
@@ -1785,6 +3447,28 @@
       "name": "Barbell Bench Press",
       "type": "weight"
     },
+    "chest-decline-bench press-weight": {
+      "days": [
+        "Monday"
+      ],
+      "group": "Chest",
+      "id": "chest-decline-bench press-weight",
+      "metrics": {
+        "done": true,
+        "reps": {
+          "value": "5"
+        },
+        "sets": {
+          "value": "3"
+        },
+        "weight": {
+          "unit": "lbs",
+          "value": "135"
+        }
+      },
+      "name": "Decline Bench Press",
+      "type": "weight"
+    },
     "chest-dips": {
       "days": [
         "Monday",
@@ -1795,7 +3479,7 @@
       "metrics": {
         "done": true,
         "reps": {
-          "value": 10
+          "value": 8
         },
         "sets": {
           "value": 4
@@ -1808,6 +3492,28 @@
       "name": "Dips",
       "type": "weight"
     },
+    "chest-incline-bench press-weight": {
+      "days": [
+        "Monday"
+      ],
+      "group": "Chest",
+      "id": "chest-incline-bench press-weight",
+      "metrics": {
+        "done": true,
+        "reps": {
+          "value": "3"
+        },
+        "sets": {
+          "value": "3"
+        },
+        "weight": {
+          "unit": "lbs",
+          "value": "135"
+        }
+      },
+      "name": "Incline Bench Press",
+      "type": "weight"
+    },
     "chest-pushups": {
       "days": [
         "Monday",
@@ -1818,10 +3524,10 @@
       "metrics": {
         "done": true,
         "reps": {
-          "value": 25
+          "value": "25"
         },
         "sets": {
-          "value": 4
+          "value": "4"
         },
         "weight": {
           "unit": "lbs",
@@ -1833,7 +3539,9 @@
     },
     "core-plank-time": {
       "days": [
-        "Saturday"
+        "Saturday",
+        "Sunday",
+        "Wednesday"
       ],
       "group": "Core",
       "id": "core-plank-time",
@@ -1867,11 +3575,11 @@
           "value": 5
         },
         "sets": {
-          "value": 3
+          "value": 2
         },
         "weight": {
           "unit": "lbs",
-          "value": "135"
+          "value": 135
         }
       },
       "name": "Barbell Deadlift",
@@ -1902,7 +3610,8 @@
     },
     "legs-glute-drive-weight": {
       "days": [
-        "Sunday"
+        "Sunday",
+        "Wednesday"
       ],
       "group": "Legs",
       "id": "legs-glute-drive-weight",
@@ -1916,7 +3625,7 @@
         },
         "weight": {
           "unit": "lbs",
-          "value": "90"
+          "value": "80"
         }
       },
       "name": "Glute Drive",
@@ -1924,7 +3633,8 @@
     },
     "legs-leg-curl-weight": {
       "days": [
-        "Sunday"
+        "Sunday",
+        "Wednesday"
       ],
       "group": "Legs",
       "id": "legs-leg-curl-weight",
@@ -1938,7 +3648,7 @@
         },
         "weight": {
           "unit": "lbs",
-          "value": 25
+          "value": 30
         }
       },
       "name": "Leg Curl",
@@ -1961,7 +3671,7 @@
         },
         "weight": {
           "unit": "lbs",
-          "value": "120"
+          "value": "140"
         }
       },
       "name": "Leg Extensions",
@@ -1977,7 +3687,7 @@
       "metrics": {
         "done": true,
         "reps": {
-          "value": "20"
+          "value": "25"
         },
         "sets": {
           "value": "4"
@@ -1993,7 +3703,8 @@
     "other-sauna": {
       "days": [
         "Wednesday",
-        "Sunday"
+        "Sunday",
+        "Friday"
       ],
       "group": "Other",
       "id": "other-sauna",
@@ -2001,7 +3712,7 @@
         "distance": {
           "value": 0
         },
-        "done": false,
+        "done": true,
         "kcal": {
           "value": 50
         },
@@ -2016,7 +3727,10 @@
     "other-stretching-time": {
       "days": [
         "Saturday",
-        "Sunday"
+        "Sunday",
+        "Friday",
+        "Wednesday",
+        "Monday"
       ],
       "group": "Other",
       "id": "other-stretching-time",
@@ -2031,7 +3745,7 @@
         },
         "time": {
           "unit": "min",
-          "value": 15
+          "value": 5
         }
       },
       "name": "Stretching",
@@ -2051,15 +3765,15 @@
       "metrics": {
         "distance": {
           "unit": "mi",
-          "value": "1.16"
+          "value": 1.18
         },
         "done": true,
         "kcal": {
-          "value": "117"
+          "value": "139"
         },
         "time": {
           "unit": "min",
-          "value": 10
+          "value": 10.2
         }
       },
       "name": "Treadmill",
@@ -2082,7 +3796,7 @@
         },
         "weight": {
           "unit": "lbs",
-          "value": 110
+          "value": 100
         }
       },
       "name": "Barbell Military Press",
@@ -2101,11 +3815,11 @@
           "value": 5
         },
         "sets": {
-          "value": 3
+          "value": 4
         },
         "weight": {
           "unit": "lbs",
-          "value": 30
+          "value": 15
         }
       },
       "name": "Front Two Dumbbell Raise",
@@ -2124,14 +3838,36 @@
           "value": 5
         },
         "sets": {
-          "value": 3
+          "value": 4
         },
         "weight": {
           "unit": "lbs",
-          "value": 85
+          "value": 90
         }
       },
       "name": "Lateral Raise Machine",
+      "type": "weight"
+    },
+    "shoulders-plate-loaded shoulder press-weight": {
+      "days": [
+        "Friday"
+      ],
+      "group": "Shoulders",
+      "id": "shoulders-plate-loaded shoulder press-weight",
+      "metrics": {
+        "done": false,
+        "reps": {
+          "value": "5"
+        },
+        "sets": {
+          "value": "3"
+        },
+        "weight": {
+          "unit": "lbs",
+          "value": "50"
+        }
+      },
+      "name": "Plate Loaded Shoulder Press",
       "type": "weight"
     },
     "shoulders-reverse-machine-flies": {
@@ -2151,7 +3887,7 @@
         },
         "weight": {
           "unit": "lbs",
-          "value": 120
+          "value": 130
         }
       },
       "name": "Reverse Machine Flies",
@@ -2170,37 +3906,14 @@
           "value": 20
         },
         "sets": {
-          "value": 3
+          "value": 4
         },
         "weight": {
           "unit": "lbs",
-          "value": 60
+          "value": 65
         }
       },
       "name": "Shrugs",
-      "type": "weight"
-    },
-    "shoulders-upright-cable-row": {
-      "days": [
-        "Monday",
-        "Friday"
-      ],
-      "group": "Shoulders",
-      "id": "shoulders-upright-cable-row",
-      "metrics": {
-        "done": true,
-        "reps": {
-          "value": 5
-        },
-        "sets": {
-          "value": 3
-        },
-        "weight": {
-          "unit": "lbs",
-          "value": 125
-        }
-      },
-      "name": "Upright Cable Row",
       "type": "weight"
     },
     "triceps-dips": {
@@ -2213,7 +3926,7 @@
       "metrics": {
         "done": true,
         "reps": {
-          "value": "15"
+          "value": 15
         },
         "sets": {
           "value": 4
@@ -2259,14 +3972,14 @@
       "metrics": {
         "done": true,
         "reps": {
-          "value": 5
+          "value": "8"
         },
         "sets": {
           "value": 4
         },
         "weight": {
           "unit": "lbs",
-          "value": 110
+          "value": "100"
         }
       },
       "name": "Pushdown (rope)",

@@ -24,26 +24,31 @@
   width: 90%;
 }
 
+.Progress .workout-group::-webkit-scrollbar {
+  width: 0 !important;
+}
+
 .Progress .workout-group .group-name {
   box-sizing: border-box;
   display: inline-block;
   background: var(--main-bg-color);
   color: var(--main-txt-color);
-  border: 1px solid var(--secondary-border-color);
   border-right: 0;
   display: grid;
   align-items: center;
   justify-items: center;
   text-align: center;
+  transition: all 0.3s ease 0s;
   min-width: 100px;
   width: 100%;
 }
 
-.Progress .workout-group .group-name:last-child {
-  border: 1px solid var(--secondary-border-color);
+.Progress .workout-group .group-name:hover {
+  background: var(--tertiary-bg-color);
+  color: var(--tertiary-txt-color);
+  transform: translateY(-3px);
 }
 
 .Progress .workout-group .group-name.selected {
-  background: var(--tertiary-bg-color);
-  color: var(--tertiary-txt-color);
+  border-bottom: 3px solid var(--main-green-color);
 }

@@ -58,6 +58,22 @@ textarea:focus {
   --secondary-bg-color: rgba(50,48,48);
   --secondary-border-color: #757575;
   --tertiary-txt-color: #fff;
-  --tertiary-bg-color: rgb(85,85,85);
-  --tertiary-border-color: rgb(85,85,85);
+  --tertiary-bg-color: rgba(50,48,48);
+  --tertiary-border-color: #757575;
+}
+
+:root .midnight {
+  --main-bg-color: #363640;
+  --main-border-color: #33333D;
+  --main-link-color: rgb(29,124,228);
+  --main-txt-color: #fff;
+  --main-fill-color: #76FF03;
+  --main-red-color: #d32f2f;
+  --main-green-color: #02ee7d;
+  --secondary-txt-color: #A3A3A3;
+  --secondary-bg-color: #27272f;
+  --secondary-border-color: #A3A3A3;
+  --tertiary-txt-color: #fff;
+  --tertiary-bg-color: #393943;
+  --tertiary-border-color: #A3A3A3;
 }

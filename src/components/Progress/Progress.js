@@ -20,13 +20,13 @@ class Progress extends Component {
   setDefaults() {
     const colorMode = this.context.settings.getMode();
 
-    if (colorMode === 'dark') {
-      Chart.defaults.global.defaultFontColor = '#fff';
-      Chart.defaults.scale.gridLines.color = '#757575';
-
-    } else {
+    if (colorMode === 'light') {
       Chart.defaults.global.defaultFontColor = '#000';
       Chart.defaults.scale.gridLines.color = 'rgba(0, 0, 0, 0.1)';
+
+    } else {
+      Chart.defaults.global.defaultFontColor = '#fff';
+      Chart.defaults.scale.gridLines.color = '#757575';
     }
   }
 

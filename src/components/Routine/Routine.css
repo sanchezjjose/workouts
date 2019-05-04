@@ -101,12 +101,19 @@
 .Routine .start-workout-button {
   color: var(--tertiary-txt-color);
   background: var(--tertiary-bg-color);
-  border: 1px var(--tertiary-border-color) solid;
+  border: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   margin-top: 20px;
   text-decoration: none;
+  transition: all 0.3s ease 0s;
   height: 45px;
   width: 150px;
+}
+
+.Routine .start-workout-button:hover {
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
 }
 
 .Routine .start-workout-button.hide {
