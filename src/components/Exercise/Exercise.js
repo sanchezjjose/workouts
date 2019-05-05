@@ -84,7 +84,7 @@ class Exercise extends Component {
     const exerciseDone = history.hasWorkout(workoutDate, exercise.id);
 
     const settings = this.context.settings;
-    const darkMode = settings.getMode() === 'dark';
+    const darkMode = settings.getMode() !== 'light';
 
     return (
       <div className={`Exercise ${modeClassName} ${this.props.workoutInProgress ? 'in-progress' : ''}`}>

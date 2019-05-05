@@ -44,8 +44,7 @@
 }
 
 .Progress .workout-group .group-name:hover {
-  background: var(--tertiary-bg-color);
-  color: var(--tertiary-txt-color);
+  color: var(--main-txt-color);
   transform: translateY(-3px);
 }
 
