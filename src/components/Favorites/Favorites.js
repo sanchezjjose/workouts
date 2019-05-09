@@ -10,7 +10,8 @@ class Favorites extends Component {
 
   state = {
     // TODO: remove from state, causes re-render
-    message: ''
+    message: '',
+    editFavoriteName: ''
   }
 
   displayMessage = (message) => {
@@ -33,12 +34,25 @@ class Favorites extends Component {
       });
   }
 
+  handleEdit(id) {
+    this.setState({ editFavoriteName: id });
+    this.context.updateMode(true, false, false);
+  }
+
+  componentDidUpdate() {
+    if (this.context.saveMode === true || this.context.cancelMode === true) {
+      this.setState({ editFavoriteName: '' });
+      this.context.updateMode(false, false, false);
+    }
+  }
+
   render() {
-    const editMode = this.context.editMode;
+    const editFavoriteName = this.state.editFavoriteName;
+    const editMode = this.context.editMode && editFavoriteName.length === 0;
     const workoutsVm = this.context.workouts.getViewModel();
 
     return (
-      <div className='Favorites'>
+      <div className={`Favorites ${editFavoriteName.length > 0 ? 'editing' : ''}`}>
         <div className='content-wrapper'>
           <div className='content'>
           {this.state.message.length > 0 &&
@@ -48,13 +62,13 @@ class Favorites extends Component {
           {workoutsVm.map (workoutVm =>
             workoutVm.workouts.map (workout =>
               <div key={workout.group} className='workouts'>
-                <h3 className='workout-title'>{workout.group}</h3>
+                <h3 onClick={() => this.handleEdit(workout.group)} className={`workout-title ${editFavoriteName === workout.group ? 'editing' : ''}`}>{workout.group}</h3>
                 {workout.exercises.map(exercise =>
                   <div key={exercise.id} className={`workout-group ${editMode ? 'editing' : ''}`}>
                     {editMode &&
-                      <button onClick={e => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
+                      <button onClick={() => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
                     }
-                    <div key={exercise.id} className='workout-label'>{exercise.name}</div>
+                    <div key={exercise.id} onClick={() => this.handleEdit(exercise.id)} className={`workout-label ${editFavoriteName === exercise.id ? 'editing' : ''}`}>{exercise.name}</div>
                   </div>
                 )}
               </div>

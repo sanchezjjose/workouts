@@ -25,6 +25,30 @@ const saveWorkout = (userId, workouts) => {
   });
 };
 
+const editWorkout = (userId, workout) => {
+  return new Promise((resolve, reject) => {
+    docClient.update({
+      TableName: 'Workouts',
+      Key: {
+        'id': userId
+      },
+      UpdateExpression: "SET workout.#id = :w",
+      ExpressionAttributeValues: {
+        ":w": workout
+      },
+      ReturnValues:"ALL_NEW"
+
+    }, (err, data) => {
+      if (err) {
+        console.error(err);
+        return reject('Error JSON:', JSON.stringify(err, null, 2));
+      }
+
+      resolve(data);
+    });
+  });
+};
+
 const deleteWorkout = (userId, workoutId) => {
   return new Promise((resolve, reject) => {
     const params = {
@@ -53,5 +77,6 @@ const deleteWorkout = (userId, workoutId) => {
 
 module.exports = {
   saveWorkout: saveWorkout,
-  deleteWorkout: deleteWorkout
+  deleteWorkout: deleteWorkout,
+  editWorkout: editWorkout
 };
