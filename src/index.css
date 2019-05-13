@@ -44,6 +44,7 @@ textarea:focus {
   --tertiary-txt-color: #fff;
   --tertiary-bg-color: #000;
   --tertiary-border-color: #000;
+  --focus-border-color: #4285f4;
 }
 
 :root .dark {
@@ -60,6 +61,7 @@ textarea:focus {
   --tertiary-txt-color: #fff;
   --tertiary-bg-color: rgba(50,48,48);
   --tertiary-border-color: #757575;
+  --focus-border-color: #4285f4;
 }
 
 :root .midnight {
@@ -76,4 +78,5 @@ textarea:focus {
   --tertiary-txt-color: #fff;
   --tertiary-bg-color: #393943;
   --tertiary-border-color: #A3A3A3;
+  --focus-border-color: #4285f4;
 }

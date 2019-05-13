@@ -13,7 +13,7 @@
 }
 
 .editing .Metrics input {
-  border-bottom: 0.5px solid var(--tertiary-border-color);
+  border-bottom: 0.5px solid var(--secondary-border-color);
   height: 30px;
   width: 40px;
 }

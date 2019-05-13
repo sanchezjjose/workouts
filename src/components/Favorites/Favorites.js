@@ -62,7 +62,13 @@ class Favorites extends Component {
           {workoutsVm.map (workoutVm =>
             workoutVm.workouts.map (workout =>
               <div key={workout.group} className='workouts'>
-                <h3 onClick={() => this.handleEdit(workout.group)} className={`workout-title ${editFavoriteName === workout.group ? 'editing' : ''}`}>{workout.group}</h3>
+                <input type='text'
+                  className={`workout-title ${editFavoriteName === workout.group ? 'editing' : ''}`}
+                  placeholder='Add a group name'
+                  value={workout.group}
+                  onClick={() => this.handleEdit(workout.group)}
+                  onChange={() => this.handleEdit(workout.group)}
+                  readOnly={false} />
                 {workout.exercises.map(exercise =>
                   <div key={exercise.id} className={`workout-group ${editMode ? 'editing' : ''}`}>
                     {editMode &&
