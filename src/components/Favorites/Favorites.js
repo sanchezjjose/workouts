@@ -67,6 +67,7 @@ class Favorites extends Component {
                     className={`workout-title ${editFavoriteName === workout.group ? 'editing' : ''}`}
                     placeholder='Add a group name'
                     value={workout.group}
+                    onFocus={() => this.handleEdit(workout.group)}
                     onClick={() => this.handleEdit(workout.group)}
                     onChange={() => this.handleEdit(workout.group)}
                     readOnly={false} />

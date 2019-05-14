@@ -79,6 +79,7 @@
 
 .Favorites .workouts .workout-title.editing {
   padding: 5px;
+  border: 0;
 }
 
 .Favorites .workouts .workout-label {
