@@ -39,19 +39,46 @@
   outline: 0;
 }
 
+.Favorites .workouts .workout-group-heading {
+  position: relative;
+  margin: 20px 0 5px 0;
+}
+
+.Favorites .workouts input:focus~.input-border:before, .Favorites .workouts input:focus~.input-border:after {
+  width: 50%;
+  -webkit-transition: 0.3s cubic-bezier(0.4, 0, .2, 1) all;
+  transition: 0.3s cubic-bezier(0.4, 0, .2, 1) all;
+}
+
+.Favorites .workouts .input-border:before, .Favorites .workouts .input-border:after {
+  background: #4285f4;
+  bottom: 0;
+  content: '';
+  height: 2px;
+  position: absolute;
+  width: 0;
+}
+
+.Favorites .workouts .input-border:before {
+  left: 50%;
+}
+
+.Favorites .workouts .input-border:after {
+  right: 50%;
+}
+
 .Favorites .workouts .workout-title {
   color: var(--main-txt-color);
   background: var(--main-bg-color);
   border-bottom: 1px var(--secondary-border-color) solid;
   font-size: 20px;
   font-weight: 600;
-  margin: 20px 0 10px 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .Favorites .workouts .workout-title.editing {
   padding: 5px;
-  border-bottom: 1px var(--focus-border-color) solid;
 }
 
 .Favorites .workouts .workout-label {
