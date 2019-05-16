@@ -43,7 +43,7 @@ class FavoritesTitle extends Component {
           onClick={() => this.handleEdit()}
           onFocus={() => this.handleEdit()}
           onBlur={() => this.handleOnBlur()}
-          onChange={() => this.handleOnChange()}
+          onChange={(e) => this.handleOnChange(e)}
           readOnly={false} />
         <span className='input-border'></span>
       </div>
