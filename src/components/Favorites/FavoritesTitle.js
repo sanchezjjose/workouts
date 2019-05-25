@@ -6,11 +6,15 @@ class FavoritesTitle extends Component {
 
   state = {
     workoutGroupName: this.props.workoutGroupName,
-    editing: false
+    editing: false,
+    edited: false
   }
 
   handleOnChange(e) {
-    this.setState({ workoutGroupName: e.target.value });
+    this.setState({
+      workoutGroupName: e.target.value,
+      edited: true
+    });
   }
 
   handleEdit() {
@@ -24,10 +28,21 @@ class FavoritesTitle extends Component {
   }
 
   componentDidUpdate() {
-    if (this.context.saveMode === true || this.context.cancelMode === true) {
-      this.setState({ editing: false });
-      this.props.handleEditingText(false);
-      this.context.updateMode(false, false, false);
+    if (this.state.edited) {
+      if (this.context.saveMode) {
+        console.log(`Saving name change from ${this.props.workoutGroupName} to ${this.state.workoutGroupName}`);
+
+        this.setState({ editing: false, edited: false });
+        this.props.handleEditingText(false);
+        this.context.updateMode(false, false, false);
+
+      } else if (this.context.cancelMode) {
+        console.log(`Cancelling name change from ${this.state.workoutGroupName} to ${this.props.workoutGroupName}`);
+
+        this.setState({ editing: false, edited: false, workoutGroupName: this.props.workoutGroupName });
+        this.props.handleEditingText(false);
+        this.context.updateMode(false, false, false);
+      }
     }
   }
 
