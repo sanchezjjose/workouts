@@ -54,7 +54,7 @@ class Favorites extends Component {
           {workoutsVm.map (workoutVm =>
             workoutVm.workouts.map (workout =>
               <div key={workout.group} className='workouts'>
-                <FavoritesTitle workoutGroupName={workout.group} handleEditingText={this.handleEditingText} />
+                <FavoritesTitle workout={workout} handleEditingText={this.handleEditingText} />
                 {workout.exercises.map(exercise =>
                   <div key={exercise.id} className={`workout-group ${editMode ? 'editing' : ''}`}>
                     {editMode &&

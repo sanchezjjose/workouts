@@ -63,6 +63,10 @@ class Workouts {
     delete this.workouts[id];
   }
 
+  setGroup(id, group) {
+    this.workouts[id].group = group;
+  }
+
   setStatus(id, status) {
     this.workouts[id].metrics.done = status;
   }
@@ -75,8 +79,8 @@ class Workouts {
     this.workouts[id].metrics[metricType].unit = metricUnit;
   }
 
-  get() {
-    return this.workouts;
+  get(id) {
+    return id ? this.workouts[id] : this.workouts;
   }
 
   getViewModel(dayOpt) {
