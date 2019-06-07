@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { UserContext } from '../UserContext';
 import FavoritesModal from '../FavoritesModal/FavoritesModal';
-import FavoritesTitle from './FavoritesTitle';
+import FavoritesGroup from './FavoritesGroup';
 import { deleteWorkout } from '../../api/Workouts';
 
 import './Favorites.css';
@@ -54,7 +54,7 @@ class Favorites extends Component {
           {workoutsVm.map (workoutVm =>
             workoutVm.workouts.map (workout =>
               <div key={workout.group} className='workouts'>
-                <FavoritesTitle workout={workout} handleEditingText={this.handleEditingText} />
+                <FavoritesGroup workout={workout} handleEditingText={this.handleEditingText} />
                 {workout.exercises.map(exercise =>
                   <div key={exercise.id} className={`workout-group ${editMode ? 'editing' : ''}`}>
                     {editMode &&
