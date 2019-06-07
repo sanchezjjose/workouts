@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { UserContext } from '../UserContext';
 import FavoritesModal from '../FavoritesModal/FavoritesModal';
 import FavoritesGroup from './FavoritesGroup';
+import FavoritesName from './FavoritesName';
 import { deleteWorkout } from '../../api/Workouts';
 
 import './Favorites.css';
@@ -60,7 +61,8 @@ class Favorites extends Component {
                     {editMode &&
                       <button onClick={() => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
                     }
-                    <div key={exercise.id} className={`workout-label`}>{exercise.name}</div>
+                    {/* <div key={exercise.id} className={`workout-label`}>{exercise.name}</div> */}
+                    <FavoritesName key={exercise.id} name={exercise.name} handleEditingText={this.handleEditingText} />
                   </div>
                 )}
               </div>
