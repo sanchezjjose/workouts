@@ -57,7 +57,7 @@ class Favorites extends Component {
               <div key={workout.group} className='workouts'>
                 <FavoritesGroup workout={workout} handleEditingText={this.handleEditingText} />
                 {workout.exercises.map(exercise =>
-                  <div key={exercise.id} className={`workout-group ${editMode ? 'editing' : ''}`}>
+                  <div key={exercise.id} className={`workout-names ${editMode ? 'editing' : ''}`}>
                     {editMode &&
                       <button onClick={() => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
                     }

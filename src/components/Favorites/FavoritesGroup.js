@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { UserContext } from '../UserContext';
 import { saveWorkout } from '../../api/Workouts';
 
+import './FavoritesGroup.css'
+
 class FavoritesTitle extends Component {
   static contextType = UserContext;
 
