@@ -61,8 +61,7 @@ class Favorites extends Component {
                     {editMode &&
                       <button onClick={() => this.removeWorkout(exercise)} className="delete-button mdc-icon-button material-icons">clear</button>
                     }
-                    {/* <div key={exercise.id} className={`workout-label`}>{exercise.name}</div> */}
-                    <FavoritesName key={exercise.id} name={exercise.name} handleEditingText={this.handleEditingText} />
+                    <FavoritesName key={exercise.id} id={exercise.id} name={exercise.name} handleEditingText={this.handleEditingText} />
                   </div>
                 )}
               </div>

@@ -67,6 +67,10 @@ class Workouts {
     this.workouts[id].group = group;
   }
 
+  setName(id, name) {
+    this.workouts[id].name = name;
+  }
+
   setStatus(id, status) {
     this.workouts[id].metrics.done = status;
   }

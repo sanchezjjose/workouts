@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { saveWorkout } from '../../api/Workouts';
 import { UserContext } from '../UserContext';
 
 import './FavoritesName.css'
@@ -7,16 +8,22 @@ function FavoritesName(props) {
   const [name, setName] = useState(props.name);
   const [edited, setEdited] = useState(false);
   const [editing, setEditing] = useState(false);
-  const user = useContext(UserContext);
+  const context = useContext(UserContext);
 
   useEffect(() => {
     if (edited) {
-      if (user.saveMode) {
-        console.log('Saving....');
-        setEdited(false);
-        setEditing(false);
+      if (context.saveMode) {
+        context.workouts.setName(props.id, name);
 
-      } else if (user.cancelMode) {
+        saveWorkout(context.user.id, context.workouts.get())
+          .then(() => {
+            setEdited(false);
+            setEditing(false);
+            props.handleEditingText(false);
+            context.updateMode(false, false, false);
+          });
+
+      } else if (context.cancelMode) {
         setName(props.name);
         setEdited(false);
         setEditing(false);
@@ -32,7 +39,7 @@ function FavoritesName(props) {
   function handleOnClick() {
     setEditing(true);
     props.handleEditingText(true);
-    user.updateMode(true, false, false);
+    context.updateMode(true, false, false);
   }
 
   function handleOnBlur() {

@@ -12,9 +12,9 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   console.log('Setting localhost endpoint.');
 
-  // AWS.config.update({
-  //   endpoint: 'http://localhost:8000'
-  // });
+  AWS.config.update({
+    endpoint: 'http://localhost:8000'
+  });
 }
 
 module.exports = AWS;
