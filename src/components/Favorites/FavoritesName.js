@@ -31,7 +31,7 @@ function FavoritesName(props) {
     }
   });
 
-  const handleOnChange = (e) => {
+  function handleOnChange(e) {
     setName(e.target.value);
     setEdited(true);
   };
