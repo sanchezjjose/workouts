@@ -63,10 +63,18 @@ class ProgressCharts {
     });
 
     this.history.getDates().all.forEach(date => {
-      const formattedDate = date.replace('-', '/'); // Safari workaround. Remove this.
+      const formattedDate = date.replace(/-/g, '/'); // Safari workaround. Remove this.
       const workoutMonth = months[new Date(formattedDate).getMonth()];
+      const workoutYear = new Date(formattedDate).getFullYear();
+      const currentYear = new Date().getFullYear();
 
-      workouts.find(w => w.month === workoutMonth).workouts += 1;
+      console.log(formattedDate)
+      console.log(workoutYear);
+      console.log(currentYear);
+
+      if (workoutYear === currentYear) {
+        workouts.find(w => w.month === workoutMonth && workoutYear === currentYear).workouts += 1;
+      }
     });
 
     return workouts.map(w => w.workouts);
